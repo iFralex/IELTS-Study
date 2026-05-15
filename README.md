@@ -2,7 +2,7 @@
 
 A personal IELTS preparation app that runs entirely on your Mac. Practice Listening, Reading, and Writing; run full exam simulations with timed sections; build vocabulary with AI-powered flashcards; and track every session through an analytics dashboard.
 
-All data stays local. AI features (writing feedback and flashcard generation) are powered by **Claude Haiku** — fast, cheap, and accurate enough to act as a genuine IELTS examiner.
+All data stays local. AI features (writing feedback and flashcard generation) are powered by a configurable AI model — swap provider and model via a single `.env` change, no code edits required.
 
 ---
 
@@ -23,7 +23,13 @@ All data stays local. AI features (writing feedback and flashcard generation) ar
 
 ## Getting Started
 
-**Prerequisites:** Node.js 18+ and an Anthropic API key in a `.env` file.
+**Prerequisites:** Node.js 18+ and an AI API key. Create a `.env` file at the project root:
+
+```bash
+AI_PROVIDER=anthropic          # anthropic | google | openai
+AI_MODEL=claude-haiku-4-5-20251001
+AI_API_KEY=your_key_here
+```
 
 ```bash
 npm install
@@ -95,7 +101,7 @@ Same practice modes as Listening (single, series by type, random), same band est
 1. Switch between **Task 1 — Grafico** and **Task 2 — Essay** tabs. Each task shows its type badge and target band score.
 2. Select a task. The prompt (and chart image, for Task 1) appears in a fixed area above the editor so you can refer to it while writing.
 3. Write in the full-height text editor. A **live word counter** at the bottom tracks your count against the IELTS minimum (150 words for Task 1, 250 for Task 2). The counter turns yellow when you're under the threshold and green when you meet it. The submit button stays disabled until you've written something.
-4. Click **Invia**. The text is sent to Claude Haiku (acting as an IELTS examiner). While it evaluates, the button shows a loading state.
+4. Click **Invia**. The text is sent to the configured AI model (acting as an IELTS examiner). While it evaluates, the button shows a loading state.
 
 **AI feedback includes:**
 - An estimated **IELTS band score** (e.g. 6.5), displayed large
@@ -123,7 +129,7 @@ The full simulation mode. It chains Listening, Reading, and Writing in sequence,
 - **Reading** — same 60-minute timer and snapshot mechanic.
 - **Writing** — Task 1 and Task 2 are presented back to back, each with its own editor and word counter. A snapshot of each essay is taken at the standard IELTS time limits (20 min for Task 1, 40 min for Task 2).
 
-**After the last section**, the app evaluates both writing tasks in parallel via Claude Haiku. A spinner shows "AI evaluation in progress" with a "skip evaluation" escape hatch if you don't want to wait.
+**After the last section**, the app evaluates both writing tasks in parallel via the configured AI model. A spinner shows "AI evaluation in progress" with a "skip evaluation" escape hatch if you don't want to wait.
 
 **Results page:**
 
@@ -141,7 +147,7 @@ A vocabulary trainer built on the **SM-2 spaced-repetition algorithm** — the s
 
 A **floating 🃏 button** in the bottom-right corner is always visible, on every page. Click it to open the Add modal without navigating away.
 
-Type any English word and press **Generate**. Claude Haiku produces a complete card in a few seconds:
+Type any English word and press **Generate**. The AI produces a complete card in a few seconds:
 
 - The word in English and its primary Italian translation
 - English synonyms and Italian synonyms (3 each)
@@ -242,7 +248,16 @@ SQLite file stored in the OS user data directory (`~/Library/Application Support
 
 ## AI Integration
 
-All AI calls run from the Electron **main process** over IPC, so the API key is never exposed to the renderer. The model used across all features is `claude-haiku-4-5-20251001` — chosen for its speed and low cost per call.
+All AI calls run from the Electron **main process** over IPC, so the API key is never exposed to the renderer. The provider and model are fully configurable via `.env` — no code changes required to switch.
+
+**Supported providers:** `anthropic`, `google`, `openai` (powered by the [Vercel AI SDK](https://sdk.vercel.ai))
+
+```bash
+# Example configurations
+AI_PROVIDER=anthropic  AI_MODEL=claude-haiku-4-5-20251001  # fast, cheap
+AI_PROVIDER=google     AI_MODEL=gemini-2.0-flash
+AI_PROVIDER=openai     AI_MODEL=gpt-4o-mini
+```
 
 | Call | When it fires | What the model does |
 |------|--------------|---------------------|
@@ -293,6 +308,6 @@ The macOS build script encrypts the `.env` file before calling `electron-builder
 | Routing | React Router | 7 |
 | Charts | Recharts | 3 |
 | Database | better-sqlite3 | 12 |
-| AI | Anthropic SDK + Claude Haiku | 0.96 |
+| AI | Vercel AI SDK (Anthropic / Google / OpenAI) | 6 |
 | Build tooling | electron-vite + electron-builder | 5 / 26 |
 | Testing | Vitest | 4 |
