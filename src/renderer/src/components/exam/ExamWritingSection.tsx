@@ -81,7 +81,7 @@ export function ExamWritingSection({ onComplete }: Props) {
       })
     }, 1000)
     return () => clearInterval(id)
-  }, [innerPhase === 't1'])  // eslint-disable-line react-hooks/exhaustive-deps
+  }, [innerPhase])
 
   // T2 timer
   useEffect(() => {
@@ -100,7 +100,7 @@ export function ExamWritingSection({ onComplete }: Props) {
       })
     }, 1000)
     return () => clearInterval(id)
-  }, [innerPhase === 't2'])  // eslint-disable-line react-hooks/exhaustive-deps
+  }, [innerPhase])
 
   function handleT1Next() {
     if (!t1Exercise) return
