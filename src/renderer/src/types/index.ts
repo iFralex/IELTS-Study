@@ -1,0 +1,169 @@
+export interface ListeningExercise {
+  id: string
+  title: string
+  source_url: string
+  youtube_url: string
+  question_type: 'gap_fill' | 'form_completion' | 'multiple_choice' | 'map_diagram' | 'table'
+  difficulty: 'medium' | 'hard'
+  questions: Question[]
+}
+
+export interface ReadingExercise {
+  id: string
+  title: string
+  source_url: string
+  passage: string
+  question_type: 'matching_headings' | 'true_false_ng' | 'multiple_choice' | 'sentence_completion' | 'summary_completion' | 'short_answer' | 'matching_paragraph_info'
+  difficulty: 'medium' | 'hard'
+  questions: Question[]
+}
+
+export interface WritingTask1 {
+  id: string
+  chart_type: 'bar' | 'line' | 'pie' | 'table' | 'map' | 'process'
+  prompt: string
+  image_url: string
+  model_answer: string
+  band_target: number
+  key_vocab: string[]
+}
+
+export interface WritingTask2 {
+  id: string
+  topic: string
+  essay_type: 'opinion' | 'discussion' | 'problem_solution' | 'direct_question' | 'advantages_disadvantages'
+  question: string
+  model_answer: string
+  band_target: number
+  key_phrases: string[]
+}
+
+export interface Question {
+  index: number
+  text: string
+  answer: string
+  options?: string[]
+  paragraph?: string
+}
+
+export interface SessionInput {
+  exercise_id: string
+  section: string
+  started_at: number
+  completed_at?: number
+  score?: number
+  max_score?: number
+  time_spent_seconds?: number
+}
+
+export interface Session extends SessionInput {
+  id: number
+}
+
+export interface AnswerInput {
+  session_id: number
+  question_index: number
+  user_answer: string
+  correct_answer: string
+  is_correct: boolean
+}
+
+export interface WritingInput {
+  task_id: string
+  task_type: 'task1' | 'task2'
+  submitted_at: number
+  text: string
+  word_count: number
+  self_score?: number
+  notes?: string
+}
+
+export interface ExamRunInput {
+  started_at: number
+  completed_at?: number
+  listening_score?: number
+  reading_score?: number
+  writing_score?: number
+  notes?: string
+}
+
+export interface ExamRun extends ExamRunInput {
+  id: number
+}
+
+export interface Flashcard {
+  id: number
+  english: string
+  italian: string
+  examples_en: string
+  examples_it: string
+  interval: number
+  ease_factor: number
+  repetitions: number
+  next_review: number
+  created_at: number
+  source: string
+}
+
+export interface FlashcardInput {
+  english: string
+  italian: string
+  examples_en: string
+  examples_it: string
+  source?: string
+}
+
+export interface ReviewInput {
+  flashcard_id: number
+  reviewed_at: number
+  direction: 'en-it' | 'it-en'
+  user_answer: string
+  quality: number
+  is_correct: boolean
+}
+
+export interface AIFlashcardData {
+  english: string
+  italian: string
+  examples_en: string
+  examples_it: string
+}
+
+export interface AIEvalResult {
+  is_correct: boolean
+  quality: number
+  explanation: string
+  alternatives: string[]
+}
+
+export interface AnalyticsData {
+  sessions_by_week: { week: string; listening: number; reading: number; writing: number }[]
+  accuracy_by_type: { question_type: string; accuracy: number; attempts: number }[]
+  total_sessions: number
+  total_time_seconds: number
+  average_accuracy: number
+  exam_count: number
+}
+
+export interface IElectronAPI {
+  getExercises: (section: string) => Promise<ListeningExercise[] | ReadingExercise[] | WritingTask1[] | WritingTask2[]>
+  getExercise: (id: string) => Promise<ListeningExercise | ReadingExercise | WritingTask1 | WritingTask2 | null>
+  saveSession: (session: SessionInput) => Promise<number>
+  saveAnswers: (answers: AnswerInput[]) => Promise<void>
+  getAnalytics: (days: number) => Promise<AnalyticsData>
+  getRecentSessions: (limit: number) => Promise<Session[]>
+  saveWritingSubmission: (sub: WritingInput) => Promise<void>
+  saveExamRun: (run: ExamRunInput) => Promise<void>
+  getExamRuns: () => Promise<ExamRun[]>
+  getFlashcards: () => Promise<Flashcard[]>
+  getDueFlashcards: () => Promise<Flashcard[]>
+  saveFlashcard: (card: FlashcardInput) => Promise<number>
+  updateFlashcardSM2: (id: number, quality: number) => Promise<void>
+  saveFlashcardReview: (review: ReviewInput) => Promise<void>
+  generateFlashcard: (word: string) => Promise<AIFlashcardData>
+  evaluateAnswer: (word: string, correct: string, userAnswer: string, direction: string) => Promise<AIEvalResult>
+}
+
+declare global {
+  interface Window { api: IElectronAPI }
+}
