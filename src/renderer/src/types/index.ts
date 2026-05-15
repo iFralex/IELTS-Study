@@ -2,7 +2,7 @@ export interface ListeningExercise {
   id: string
   title: string
   source_url: string
-  youtube_url: string
+  audio_url: string
   question_type: 'gap_fill' | 'form_completion' | 'multiple_choice' | 'map_diagram' | 'table'
   difficulty: 'medium' | 'hard'
   questions: Question[]
