@@ -148,8 +148,8 @@ export function registerIpcHandlers(): void {
 
   ipcMain.handle('save-flashcard', (_e, c: FlashcardInput) =>
     db.prepare(
-      'INSERT INTO flashcards (english, italian, examples_en, examples_it, next_review, created_at, source) VALUES (?,?,?,?,?,?,?)'
-    ).run(c.english, c.italian, c.examples_en, c.examples_it, Date.now(), Date.now(), c.source ?? 'manual').lastInsertRowid
+      'INSERT INTO flashcards (english, italian, synonyms_en, synonyms_it, examples_en, examples_it, next_review, created_at, source) VALUES (?,?,?,?,?,?,?,?,?)'
+    ).run(c.english, c.italian, c.synonyms_en ?? null, c.synonyms_it ?? null, c.examples_en, c.examples_it, Date.now(), Date.now(), c.source ?? 'manual').lastInsertRowid
   )
 
   ipcMain.handle('update-flashcard-sm2', (_e, id: number, quality: number) => {
@@ -185,9 +185,9 @@ export function registerIpcHandlers(): void {
   ipcMain.handle('generate-flashcard', async (_e, word: string) => {
     const msg = await anthropic().messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 1000,
+      max_tokens: 1200,
       messages: [{ role: 'user', content:
-        `Generate a flashcard for the English word: "${word}"\n\nReturn ONLY valid JSON, no markdown:\n{"english":"word","italian":"translation","examples_en":"Ex 1\\n\\nEx 2\\n\\nEx 3","examples_it":"Es 1\\n\\nEs 2\\n\\nEs 3"}`
+        `Generate a flashcard for the English word: "${word}"\n\nReturn ONLY valid JSON, no markdown:\n{"english":"word","italian":"main translation","synonyms_en":"syn1, syn2, syn3","synonyms_it":"sin1, sin2, sin3","examples_en":"Ex 1\\n\\nEx 2\\n\\nEx 3","examples_it":"Es 1\\n\\nEs 2\\n\\nEs 3"}`
       }],
     })
     return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
@@ -203,6 +203,21 @@ export function registerIpcHandlers(): void {
     })
     return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
   })
+
+  ipcMain.handle('evaluate-audio-answer', async (_e, word: string, userEnglish: string, userItalian: string) => {
+    const msg = await anthropic().messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 600,
+      messages: [{ role: 'user', content:
+        `Evaluate these two answers for the word "${word}":\nSpelling: "${userEnglish}" (correct: "${word}")\nTranslation: "${userItalian}"\n\nAccept minor spelling variants for the translation. Return ONLY valid JSON:\n{"english_correct":true,"italian_correct":true,"quality":5,"english_explanation":"brief","italian_explanation":"brief"}`
+      }],
+    })
+    return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
+  })
+
+  ipcMain.handle('delete-flashcard', (_e, id: number) =>
+    db.prepare('DELETE FROM flashcards WHERE id = ?').run(id)
+  )
 
   ipcMain.handle('evaluate-writing', async (_e, taskType: string, userText: string, prompt: string, wordCount: number) => {
     const taskLabel = taskType === 'task1' ? 'Task 1 (graph/chart/map description)' : 'Task 2 (essay)'

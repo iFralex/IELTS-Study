@@ -95,6 +95,8 @@ export interface Flashcard {
   id: number
   english: string
   italian: string
+  synonyms_en: string | null
+  synonyms_it: string | null
   examples_en: string
   examples_it: string
   interval: number
@@ -108,6 +110,8 @@ export interface Flashcard {
 export interface FlashcardInput {
   english: string
   italian: string
+  synonyms_en?: string | null
+  synonyms_it?: string | null
   examples_en: string
   examples_it: string
   source?: string
@@ -116,7 +120,7 @@ export interface FlashcardInput {
 export interface ReviewInput {
   flashcard_id: number
   reviewed_at: number
-  direction: 'en-it' | 'it-en'
+  direction: 'en-it' | 'it-en' | 'audio'
   user_answer: string
   quality: number
   is_correct: boolean
@@ -125,6 +129,8 @@ export interface ReviewInput {
 export interface AIFlashcardData {
   english: string
   italian: string
+  synonyms_en: string
+  synonyms_it: string
   examples_en: string
   examples_it: string
 }
@@ -134,6 +140,14 @@ export interface AIEvalResult {
   quality: number
   explanation: string
   alternatives: string[]
+}
+
+export interface AIAudioEvalResult {
+  english_correct: boolean
+  italian_correct: boolean
+  quality: number
+  english_explanation: string
+  italian_explanation: string
 }
 
 export interface AIWritingFeedback {
@@ -171,6 +185,8 @@ export interface IElectronAPI {
   saveFlashcardReview: (review: ReviewInput) => Promise<void>
   generateFlashcard: (word: string) => Promise<AIFlashcardData>
   evaluateAnswer: (word: string, correct: string, userAnswer: string, direction: string) => Promise<AIEvalResult>
+  evaluateAudioAnswer: (word: string, userEnglish: string, userItalian: string) => Promise<AIAudioEvalResult>
+  deleteFlashcard: (id: number) => Promise<void>
   evaluateWriting: (taskType: 'task1' | 'task2', userText: string, prompt: string, wordCount: number) => Promise<AIWritingFeedback>
 }
 

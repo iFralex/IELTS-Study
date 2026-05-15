@@ -64,6 +64,8 @@ export function migrateDb(db: Database.Database): void {
       is_correct    INTEGER NOT NULL
     );
   `)
+  try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_en TEXT') } catch {}
+  try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_it TEXT') } catch {}
 }
 
 let _db: Database.Database | null = null

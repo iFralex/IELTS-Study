@@ -23,6 +23,10 @@ contextBridge.exposeInMainWorld('api', {
   generateFlashcard:     (word: string)      => ipcRenderer.invoke('generate-flashcard', word),
   evaluateAnswer:        (word: string, correct: string, userAnswer: string, direction: string) =>
                            ipcRenderer.invoke('evaluate-answer', word, correct, userAnswer, direction),
+  evaluateAudioAnswer: (word: string, userEnglish: string, userItalian: string) =>
+    ipcRenderer.invoke('evaluate-audio-answer', word, userEnglish, userItalian),
+  deleteFlashcard: (id: number) =>
+    ipcRenderer.invoke('delete-flashcard', id),
   evaluateWriting: (taskType: string, userText: string, prompt: string, wordCount: number) =>
     ipcRenderer.invoke('evaluate-writing', taskType, userText, prompt, wordCount),
 })
