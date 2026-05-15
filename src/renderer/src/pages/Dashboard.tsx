@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import type { AnalyticsData, Session } from '../types'
+import type { AnalyticsData, Session, ExamRun } from '../types'
 import { StatCard } from '../components/StatCard'
 import { formatDuration, formatAccuracy } from '../components/analyticsUtils'
 
@@ -22,6 +22,7 @@ export function Dashboard() {
   const navigate = useNavigate()
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null)
   const [sessions, setSessions]   = useState<Session[]>([])
+  const [examRuns, setExamRuns]   = useState<ExamRun[]>([])
   const [loading, setLoading]     = useState(true)
   const [error, setError]         = useState<string | null>(null)
 
@@ -29,12 +30,18 @@ export function Dashboard() {
     setError(null)
     setAnalytics(null)
     setSessions([])
+    setExamRuns([])
     setLoading(true)
     Promise.all([
       window.api.getAnalytics(30),
       window.api.getRecentSessions(5),
+      window.api.getExamRuns(),
     ])
-      .then(([a, s]) => { setAnalytics(a); setSessions(s) })
+      .then(([a, s, runs]) => {
+        setAnalytics(a)
+        setSessions(s)
+        setExamRuns((runs as ExamRun[]).slice(0, 3))
+      })
       .catch(() => setError('Errore nel caricamento dei dati.'))
       .finally(() => setLoading(false))
   }
@@ -119,6 +126,43 @@ export function Dashboard() {
                         <span className="text-xs text-subtext0">
                           {new Date(s.started_at).toLocaleDateString('it-IT')}
                         </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Ultime simulazioni */}
+            <div>
+              <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
+                Ultime simulazioni
+              </h2>
+              {examRuns.length === 0 ? (
+                <p className="text-subtext0 text-sm">Nessuna simulazione ancora.</p>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  {examRuns.map(r => (
+                    <div
+                      key={r.id}
+                      onClick={() => navigate('/exam')}
+                      className="flex items-center justify-between px-4 py-3
+                        bg-surface0/30 border border-surface0 rounded-lg cursor-pointer
+                        hover:border-mauve/40 hover:bg-surface0/60 transition-colors"
+                    >
+                      <span className="text-sm text-text">
+                        {new Date(r.started_at).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' })}
+                      </span>
+                      <div className="flex items-center gap-4 text-sm">
+                        {r.listening_score != null && (
+                          <span className="text-green">🎧 {Math.round(r.listening_score * 100)}%</span>
+                        )}
+                        {r.reading_score != null && (
+                          <span className="text-blue">📖 {Math.round(r.reading_score * 100)}%</span>
+                        )}
+                        {r.writing_score != null && (
+                          <span className="text-yellow">✍️ {r.writing_score.toFixed(1)}</span>
+                        )}
                       </div>
                     </div>
                   ))}
