@@ -1,0 +1,33 @@
+import { countWords, isUnderMinimum, WORD_MINIMUMS } from './writingUtils'
+
+interface WritingEditorProps {
+  taskType: 'task1' | 'task2'
+  value: string
+  onChange: (value: string) => void
+  disabled?: boolean
+}
+
+export function WritingEditor({ taskType, value, onChange, disabled = false }: WritingEditorProps) {
+  const count = countWords(value)
+  const under = isUnderMinimum(count, taskType)
+  const minimum = WORD_MINIMUMS[taskType]
+
+  return (
+    <div className="flex flex-col h-full">
+      <textarea
+        className="flex-1 resize-none bg-surface0 text-text font-mono text-sm p-4
+          focus:outline-none focus:ring-1 focus:ring-mauve/50 disabled:opacity-60"
+        placeholder={`Scrivi qui la tua risposta… (minimo ${minimum} parole)`}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        disabled={disabled}
+        spellCheck={false}
+      />
+      <div className="px-4 py-2 bg-mantle border-t border-surface0 text-xs shrink-0">
+        <span className={under ? 'text-yellow' : 'text-green'}>
+          {count} / {minimum} parole
+        </span>
+      </div>
+    </div>
+  )
+}

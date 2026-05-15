@@ -68,6 +68,12 @@ export function registerIpcHandlers(): void {
     db.prepare('SELECT * FROM sessions ORDER BY started_at DESC LIMIT ?').all(limit)
   )
 
+  ipcMain.handle('get-completed-exercise-ids', (_e, section: string) =>
+    (db.prepare(
+      'SELECT DISTINCT exercise_id FROM sessions WHERE section = ? AND completed_at IS NOT NULL'
+    ).all(section) as { exercise_id: string }[]).map(r => r.exercise_id)
+  )
+
   // ── Writing ──────────────────────────────────────────────────────────────────
   ipcMain.handle('save-writing-submission', (_e, s: WritingInput) =>
     db.prepare(
@@ -193,6 +199,18 @@ export function registerIpcHandlers(): void {
       max_tokens: 500,
       messages: [{ role: 'user', content:
         `Evaluate this translation answer:\nWord: ${word}\nDirection: ${direction}\nUser answer: "${userAnswer}"\nCorrect: "${correct}"\n\nAccept variants and synonyms. Return ONLY valid JSON:\n{"is_correct":true,"quality":5,"explanation":"brief","alternatives":["alt1"]}`
+      }],
+    })
+    return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
+  })
+
+  ipcMain.handle('evaluate-writing', async (_e, taskType: string, userText: string, prompt: string, wordCount: number) => {
+    const taskLabel = taskType === 'task1' ? 'Task 1 (graph/chart/map description)' : 'Task 2 (essay)'
+    const msg = await anthropic().messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 1000,
+      messages: [{ role: 'user', content:
+        `You are an IELTS examiner. Evaluate this IELTS Writing ${taskLabel} response.\n\nPrompt: ${prompt}\n\nWord count: ${wordCount}\n\nResponse:\n${userText}\n\nReturn ONLY valid JSON, no markdown:\n{"band":6.5,"overall":"2-3 sentence summary","strengths":["point 1","point 2"],"improvements":["point 1","point 2"],"vocab_suggestions":["word 1","word 2","word 3"]}`
       }],
     })
     return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())

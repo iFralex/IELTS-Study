@@ -1,2714 +1,772 @@
 [
   {
     "id": "ielts_listening_multiple_choice_essential_tips",
-    "title": "IELTS Listening Multiple Choice Practice & Essential Tips",
+    "title": "Multiple Choice: Health Care Conference",
     "source_url": "https://ieltsliz.com/ielts-listening-multiple-choice-essential-tips/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2090/09/130525_004.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2090/09/130525_004.mp3",
     "question_type": "multiple_choice",
     "difficulty": "medium",
     "questions": [
       {
         "index": 0,
-        "text": "Multiple Choice Tips",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Multiple Choice Practice Lessons Practice 1: Long List Selection Practice 2: Picture Selection Practice 3: Common IELTS MC questions.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Practice 1: Long List Selection",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "Practice 2: Picture Selection",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Practice 3: Common IELTS MC questions.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "check for a title",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "you might be asked to respond to a question or complete a sentence",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "find keywords in the question the keywords will help you understand which answers are right and which are wrong paraphrase the keywords if it is a list selection multiple choice, underline the number of answers you need to find – for example, choose three letters.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "the keywords will help you understand which answers are right and which are wrong",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "paraphrase the keywords",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "if it is a list selection multiple choice, underline the number of answers you need to find – for example, choose three letters.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "Read through the answer options highlight similar options so you don’t get confused note the differences between those options think of paraphrases for keywords",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "highlight similar options so you don’t get confused",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "note the differences between those options",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "think of paraphrases for keywords",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "All answer options will probably be mentioned in the recording – but only one will be the right answer.",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "The questions come in order but the answer options will not come in order in the recording, for example you might hear language about option B before you hear option A.",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "Don’t think that the first answer you hear is the correct one – keep listening.",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "Watch out for answers that are given and then taken away again by the speaker. This means the speaking say “green” but later says “sorry, I meant blue”.",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "Listen for the word “but” or “however” this can mean a negative is coming which means it might not be the right answer.",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "If you think an answer is correct, put a tick but keep listening to make sure it is right.",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "You can write on your question paper for the paper test so use ticks and crosses for right and wrong answers.",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "Don’t forget, you can only listen once to the recording in your test. You can’t pause the recording.",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "You must develop speed reading skills to be able to read all answers and spot keywords before the recording starts. This skill comes with practice.",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "E ‘Dr Roger Dean who will be presenting his speech…’",
-        "answer": ""
-      },
-      {
-        "index": 25,
-        "text": "‘Dr Roger Dean who will be presenting his speech…’",
-        "answer": ""
-      },
-      {
-        "index": 26,
-        "text": "A ‘Dr Christopher Lord will address everyone…’",
-        "answer": ""
-      },
-      {
-        "index": 27,
-        "text": "‘Dr Christopher Lord will address everyone…’",
-        "answer": ""
-      },
-      {
-        "index": 28,
-        "text": "B ‘Dr David Bishop, as I mentioned earlier, will take the floor to tell you about…’",
-        "answer": ""
-      },
-      {
-        "index": 29,
-        "text": "‘Dr David Bishop, as I mentioned earlier, will take the floor to tell you about…’",
-        "answer": ""
-      },
-      {
-        "index": 30,
-        "text": "Membership at the study center is 20 pounds",
-        "answer": ""
-      },
-      {
-        "index": 31,
-        "text": "B Common trap – Always be careful of words that you hear in the recording and see in the answer options – always look out for extra words such as “everyone else“.",
-        "answer": ""
-      },
-      {
-        "index": 32,
-        "text": "Common trap – Always be careful of words that you hear in the recording and see in the answer options – always look out for extra words such as “everyone else“.",
-        "answer": ""
-      },
-      {
-        "index": 33,
-        "text": "B A maximum of 3 = up to 3. This is a direct paraphrase.",
-        "answer": ""
-      },
-      {
-        "index": 34,
-        "text": "A maximum of 3 = up to 3. This is a direct paraphrase.",
-        "answer": ""
-      },
-      {
-        "index": 35,
-        "text": "C unlimited places = no need to bookThe trap in this question is that the word ‘booking’ was used with the information about yoga, dance and exercise – IELTS often give the same word with the wrong answer.",
-        "answer": ""
-      },
-      {
-        "index": 36,
-        "text": "unlimited places = no need to bookThe trap in this question is that the word ‘booking’ was used with the information about yoga, dance and exercise – IELTS often give the same word with the wrong answer.",
-        "answer": ""
-      },
-      {
-        "index": 37,
-        "text": "B The classes are run by teachers = the classes are taught by teachers. The volunteers only support, they do not teach.",
-        "answer": ""
-      },
-      {
-        "index": 38,
-        "text": "The classes are run by teachers = the classes are taught by teachers. The volunteers only support, they do not teach.",
-        "answer": ""
+        "text": "Who will be lecturing at the conference today? Choose THREE letters from A-G. A=Dr Christopher Lord, B=Dr David Bishop, C=Dr George Ripley, D=Dr William Benson, E=Dr Roger Dean, F=Dr Daisy Mandalay, G=Dr Ralph Morris",
+        "answer": "A, B, E"
       }
     ]
   },
   {
-    "id": "ielts_map_listening_practice",
-    "title": "IELTS Listening Map Techniques & Practice",
-    "source_url": "https://ieltsliz.com/ielts-map-listening-practice/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/Taj_Mahal_ListeningMP3.mp3?_=1",
-    "question_type": "map_diagram",
+    "id": "ielts_listening_multiple_choice_mammoths",
+    "title": "Multiple Choice: Mammoth Ancestors",
+    "source_url": "https://ieltsliz.com/ielts-listening-multiple-choice-essential-tips/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Mammoth_Ancestors.mp3",
+    "question_type": "multiple_choice",
     "difficulty": "medium",
     "questions": [
       {
         "index": 0,
-        "text": "Maps can appear in any part of the listening test, although they appear more often in section 2. Section 2 is one speaker talking about something of general interest, such as a museum or, in the practice lesson below, a farm.",
-        "answer": ""
+        "text": "Which type of mammoth is this lecture going to focus on?",
+        "options": ["A – Woolly mammoth", "B – Columbian mammoth", "C – Steppe mammoth"],
+        "answer": "B"
+      }
+    ]
+  },
+  {
+    "id": "ielts_listening_multiple_choice_dashford",
+    "title": "Multiple Choice: Dashford Study Center",
+    "source_url": "https://ieltsliz.com/ielts-listening-multiple-choice-essential-tips/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Dashford_Study_Center.mp3",
+    "question_type": "multiple_choice",
+    "difficulty": "medium",
+    "questions": [
+      {
+        "index": 0,
+        "text": "Membership at the study center costs…",
+        "options": ["A – 10 pounds", "B – 20 pounds", "C – 30 pounds"],
+        "answer": "B"
       },
       {
         "index": 1,
-        "text": "Maps are visual so there is a lot to look at in a short amount of time before the recording begins. For this reason, you need to be ready to tackle this type of question.",
-        "answer": ""
+        "text": "Members are able to take out…",
+        "options": ["A – 3 books", "B – 5 books", "C – 10 books"],
+        "answer": "B"
       },
       {
         "index": 2,
-        "text": "First notice the title which tells you what the map is showing.",
-        "answer": ""
+        "text": "Booking is unnecessary for…",
+        "options": ["A – study rooms", "B – computers", "C – meeting rooms"],
+        "answer": "C"
       },
       {
         "index": 3,
-        "text": "Maps will nearly always have rooms and buildings labelled to help you. These words are likely to appear in the recording.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "When you see the location of the places on the map, you’ll be able to recognise the type of language you might hear, such as: beyond, next to, after that, further in, to the side, to the left, to the east, opposite, at the end of the road, by the gate etc.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "beyond, next to, after that, further in, to the side, to the left, to the east, opposite, at the end of the road, by the gate etc.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "Then check the location of the questions. The questions will come in order in the recording, but they might be placed in different parts of the map. So, make sure you know where they are on the map and which order they are in so you can move to the next question easily.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Locate north. This is often helpful if it is given on the map.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "See if there are any arrows or if the map shows a logical path that the speaker might take as they talk about the place. Don’t forget that the speaker will always give information in a logical order as they describe the place.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "Always note how many words you need for the answers. Many people forget to read the instructions properly.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "As you move from question to question, follow the order of information in the recording. You’ll notice which places on the map have been mentioned so that you can keep your place in the recording. Getting lost in the recording is a common reason why people miss answers.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "Most map recordings are similar to a guided tour which follows a logical order.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "Don’t be distracted by extra information. you will hear a lot of extra words. Don’t get lost in detail and focus on listening for those answers.",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "The Taj Mahal was completed in ……………..",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "Around ………… labourers were used in its creation.",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "1653",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "20,000",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "forecourt (you must have the correct spelling)",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "Great Gate (capital letters not important – see IELTS Exam FAQ page)",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "pond / marble pond",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "mausoleum",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "guesthouse / guest house",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "pasture area",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "milk house",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "maternity pens",
-        "answer": ""
-      },
-      {
-        "index": 25,
-        "text": "feed storage",
-        "answer": ""
+        "text": "Arts and crafts classes are taught by…",
+        "options": ["A – professional tutors", "B – volunteers", "C – staff members"],
+        "answer": "B"
       }
+    ]
+  },
+  {
+    "id": "ielts_map_listening_practice_taj_mahal",
+    "title": "Map Completion: The Taj Mahal",
+    "source_url": "https://ieltsliz.com/ielts-map-listening-practice/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/Taj_Mahal_ListeningMP3.mp3",
+    "question_type": "map_diagram",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "The Taj Mahal was completed in ______", "answer": "1653"},
+      {"index": 1, "text": "Around ______ labourers were used in its creation.", "answer": "20,000"},
+      {"index": 2, "text": "Map label 3 (entrance area)", "answer": "Forecourt"},
+      {"index": 3, "text": "Map label 4 (main gateway)", "answer": "Great Gate"},
+      {"index": 4, "text": "Map label 5 (central water feature)", "answer": "Pond"},
+      {"index": 5, "text": "Map label 6 (central building)", "answer": "Mausoleum"},
+      {"index": 6, "text": "Map label 7 (building on the side)", "answer": "Guesthouse"}
+    ]
+  },
+  {
+    "id": "ielts_map_listening_practice_farm",
+    "title": "Diagram Completion: The Farm",
+    "source_url": "https://ieltsliz.com/ielts-map-listening-practice/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2018/05/Z0000068.mp3",
+    "question_type": "map_diagram",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "Diagram label 1 (grazing area)", "answer": "Pasture area"},
+      {"index": 1, "text": "Diagram label 2 (where milk is processed)", "answer": "Milk house"},
+      {"index": 2, "text": "Diagram label 3 (for new-born animals)", "answer": "Maternity pens"},
+      {"index": 3, "text": "Diagram label 4 (where animal food is kept)", "answer": "Feed storage"}
     ]
   },
   {
     "id": "ielts_listening_diagrams_practice_tips",
-    "title": "IELTS Listening Diagrams Practice & Tips",
+    "title": "Diagram Completion: NASA InSight Mars Probe",
     "source_url": "https://ieltsliz.com/ielts-listening-diagrams-practice-tips/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/11/Z0000116.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/11/Z0000116.mp3",
     "question_type": "map_diagram",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Title: Always notice the heading/title of the diagram. This gives you valuable information to understand the content.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Note completion – often the questions require you to fill in the gap of a note or sentence. In this case, the other words in the notes will help you understand the type of answer you are looking for, such as a noun, verb, adjective, number etc.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Empty Gaps – you must just have an empty gap relating to a part of the diagram with no extra words to help you. This usually indicates the name of that particular part of the illustration.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "Location: Notice where the questions are located and what order they come in. The questions will follow the order of the recording, but be placed in different places within the diagram.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Answers: They will come in order. You must spell the word correctly.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Instructions: Notice how many words or numbers you are allowed for your answer.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "Keywords: The diagram will contain keywords that are already labelled – pay attention to them. They will help you understand the recording and keep your place in the diagram.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Always be ready to move on to the next question. It’s easy to lose your place in the recording, particularly when you are looking at the diagram as well as listening. This really is a multi-tasking listening test.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "Guess: If you are not sure about an answer, don’t leave it empty – guess. Your guess might be right.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "The Insight probe will investigate Mars’ ………………",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "The probe is currently situated near Mars’ …………..",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "Scientists aim to learn about Mars’ composition from its core to its ………..",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "INTERIOR",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "EQUATOR",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "CRUST",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "ROBOTIC ARM",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "TEMPERATURE / WIND",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "WIND / TEMPERATURE Note: questions 5 & 6 can be in any order. You can only have one word for each question. Writing two words for each answer would be marked wrong.",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "Note: questions 5 & 6 can be in any order.",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "You can only have one word for each question. Writing two words for each answer would be marked wrong.",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "You must have the “s” on panels or the answer will be marked wrong.",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "HEAT FLOW",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "16 Note: if you wrote 16ft, it would be wrong because “ft” is already given. You cannot write 5, because that is meters not feet.",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "Note: if you wrote 16ft, it would be wrong because “ft” is already given.",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "You cannot write 5, because that is meters not feet.",
-        "answer": ""
-      }
+      {"index": 0, "text": "The Insight probe will investigate Mars' ________", "answer": "interior"},
+      {"index": 1, "text": "The probe is currently situated near Mars' ________", "answer": "equator"},
+      {"index": 2, "text": "Scientists aim to learn about Mars' composition from its core to its ________", "answer": "crust"},
+      {"index": 3, "text": "Diagram label 4", "answer": "robotic arm"},
+      {"index": 4, "text": "Diagram label 5", "answer": "temperature"},
+      {"index": 5, "text": "Diagram label 6", "answer": "wind"},
+      {"index": 6, "text": "Diagram label 7", "answer": "solar panels"},
+      {"index": 7, "text": "Diagram label 8", "answer": "heat flow"},
+      {"index": 8, "text": "Diagram label 9 (measurement in feet)", "answer": "16"}
     ]
   },
   {
     "id": "listening_multiple_choice_practice_moles",
-    "title": "Listening Multiple Choice Practice: Moles",
+    "title": "Multiple Choice: Moles",
     "source_url": "https://ieltsliz.com/listening-multiple-choice-practice-moles/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/04/Z0000030.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/04/Z0000030.mp3",
     "question_type": "multiple_choice",
     "difficulty": "medium",
     "questions": [
       {
         "index": 0,
-        "text": "To exaggerate mean to make something small appear bigger than it is. Such as acting like a small spot on your face, it is huge tumour.",
-        "answer": ""
+        "text": "The mole hill idiom means…",
+        "options": ["A – To exaggerate; make something small appear bigger", "B – A mountain made of dirt", "C – Underground tunneling"],
+        "answer": "A"
       },
       {
         "index": 1,
-        "text": "Also note, IELTS listening never tests your understanding of idioms. But in this question the meaning as given so it tested only your listening.",
-        "answer": ""
+        "text": "Most people are worried that mole hills…",
+        "options": ["A – Cause serious garden damage", "B – Are unsightly", "C – Spread disease"],
+        "answer": "B"
       },
       {
         "index": 2,
-        "text": "This isn’t a realistic question for IELTS listening because many of you could guess the answer. This isn’t normal for IELTS listening questions. But I thought you’d all enjoy the question anyway 🙂",
-        "answer": ""
+        "text": "Moles…",
+        "options": ["A – Are actually blind creatures", "B – Eat only worms", "C – Are sensitive to vibrations in soil"],
+        "answer": "C"
       },
       {
         "index": 3,
-        "text": "The recording says “mole hills don’t cause much damage”. This means option A is wrong. Just because you hear the word “damage” which is also found in the question doesn’t mean it is the answer. Don’t try to match words.",
-        "answer": ""
+        "text": "Moles can dig…",
+        "options": ["A – Over 200 yards in a day", "B – 50 yards in a day", "C – 100 yards in a day"],
+        "answer": "A"
       },
       {
         "index": 4,
-        "text": "The recording says “many people think they are unsightly”. The word “unsightly” means ugly.",
-        "answer": ""
+        "text": "Moles give birth…",
+        "options": ["A – In tunnel bedrooms", "B – Underground in birthing chambers", "C – Above ground in nests"],
+        "answer": "B"
       },
       {
         "index": 5,
-        "text": "The recording says “Moles can carry rabies which can cause serious illness if someone is bitten, but as most people rarely come into contact with a living mole, they are hardly considered a health risk” This means that while moles can carry disease, they aren’t actually a risk.",
-        "answer": ""
+        "text": "The birthing chamber is…",
+        "options": ["A – Located below the biggest mole hill", "B – About the size of a football", "C – Lined with leaves"],
+        "answer": "A"
       },
       {
         "index": 6,
-        "text": "The recording says that blind moles “are a myth”. This means it is not true.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "The recording says they eat worms. But it does not say they eat “ONLY” worms. Pay attention to the word “only”. It means they eat worms and nothing else.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "The answer is found here “They are particularly sensitive to vibrations in the soil. ” This means they can feel movement in the earth.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "Moles can dig … A The recording says “A mole is capable of digging upward of 200 yards in a day”. The word “upward of” means “over”.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "A The recording says “A mole is capable of digging upward of 200 yards in a day”. The word “upward of” means “over”.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "The recording says “A mole is capable of digging upward of 200 yards in a day”. The word “upward of” means “over”.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "The recording says “Their tunnel systems are also used to connect subterranean living chambers such as bedrooms and birthing chambers. “.",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "This was a difficult question. The birthing chamber is where moles give birth and the recording shows it is also one of the “subterranean living chamber”. This means “underground”.",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "You could also arrive at this answer by process of elimination. This means to delete the wrong answers. They don’t give birth in a bedroom, but in a birthing chamber and definitely not in a tunnel.",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "The recording showed that moles have “massive hands, short limbs and strong claws all designed as excellent digging tools. “",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "Limbs are said to be short, no mention about strength. So, answer A is wrong.",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "Claws (nails) are strong, but no mention of being curved. So, answer B is wrong.",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "The word “immense” is the same as: huge, very big, massive.",
-        "answer": ""
+        "text": "Moles are equipped with…",
+        "options": ["A – Short, weak limbs", "B – Curved, sharp claws", "C – Immense hands and strong claws"],
+        "answer": "C"
       }
     ]
   },
   {
     "id": "ielts_listening_practice_nadiya_hussain",
-    "title": "IELTS Listening Practice: Nadiya Hussain",
+    "title": "Gap Fill: Nadiya Hussain",
     "source_url": "https://ieltsliz.com/ielts-listening-practice-nadiya-hussain/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/12/Z0000004.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/12/Z0000004.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "How many children does Nadiya have?",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "In what year did she enter The Great British Bake Off?",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "3 (three)",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "2015",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "baking competition Did you remember to read the instructions? The instructions change each time the question type changes. If you thought you could only write one word, go back and look at the instructions for Questions 3-5.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Did you remember to read the instructions? The instructions change each time the question type changes. If you thought you could only write one word, go back and look at the instructions for Questions 3-5.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "culinary",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "columnist",
-        "answer": ""
-      }
+      {"index": 0, "text": "How many children does Nadiya have?", "answer": "3"},
+      {"index": 1, "text": "In what year did she enter The Great British Bake Off?", "answer": "2015"},
+      {"index": 2, "text": "She was launched into her career by winning a UK ________.", "answer": "baking competition"},
+      {"index": 3, "text": "The BBC documentary followed her around Bangladesh on a ________ tour.", "answer": "culinary"},
+      {"index": 4, "text": "She also writes as a ________ for the Times magazine.", "answer": "columnist"}
     ]
   },
   {
     "id": "ielts_listening_section_4_practice",
-    "title": "IELTS Listening: Section 4 Practice",
+    "title": "Gap Fill: Dolphin Intelligence (Section 4)",
     "source_url": "https://ieltsliz.com/ielts-listening-section-4-practice/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Dolphin_IntelligenceMP3.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Dolphin_IntelligenceMP3.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Section 4 is an academic talk by one speaker, a lecture. Please note, for candidates taking the General Training IELTS Test, you will be taking the same listening test and the same speaking test as the Academic candidates.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Please note, for candidates taking the General Training IELTS Test, you will be taking the same listening test and the same speaking test as the Academic candidates.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Academic lectures are usually structured: Introduction – what the talk main points will be Middle – with main points, details and examples Conclusion – a summary This logical organisation of information will help you keep your place in the recording.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "Introduction – what the talk main points will be",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Middle – with main points, details and examples",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Conclusion – a summary",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "This logical organisation of information will help you keep your place in the recording.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Signposts: As the speaker moves from one point to another, they will say things like: Looking at X Moving on to Y Another interesting point is … X is another interesting feature of … You need to pay attention to these words because they tell you that the lecture is moving to another main point.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "As the speaker moves from one point to another, they will say things like: Looking at X Moving on to Y Another interesting point is … X is another interesting feature of …",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "Looking at X",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "Moving on to Y",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "Another interesting point is …",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "X is another interesting feature of …",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "You need to pay attention to these words because they tell you that the lecture is moving to another main point.",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "Firstly, Secondly, Thirdly",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "Also, in addition, moreover, furthermore",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "by contrast, conversely, on the other hand",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "for example, such as, like, namely",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "You can find a list of common linking words on this page: Linking Words. Although the page is for writing task 2, they are formal linking words used for formal talks as well.",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "Academic talks contain vocabulary relevant to the topic. Such vocabulary often isn’t paraphrased, which can be very useful in navigating the recording.",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "Don’t try to understand everything. Focus on listening for answers only",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "Predict the type of answer you need to listen for.",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "Listen out for paraphrases of common words.",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "For the listening practice below, answers will come in order.",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "The most common type of question in section 4 is note completion because notes are normal to write in lectures.",
-        "answer": ""
-      },
-      {
-        "index": 25,
-        "text": "Note completion questions do not usually require articles or prepositions for answers. And the answers come in order. However, for other types of questions, you must adapt that accordingly.",
-        "answer": ""
-      },
-      {
-        "index": 26,
-        "text": "Section 4 usually has 10 questions.",
-        "answer": ""
-      },
-      {
-        "index": 27,
-        "text": "The practice listening lessons below have either more or less than 10 questions because they are lessons designed to teach you exam skills, test awareness and strategy. The aim is for you to get used to the language and layout of listening section 4.",
-        "answer": ""
-      },
-      {
-        "index": 28,
-        "text": "Type your answers while you listen.",
-        "answer": ""
-      },
-      {
-        "index": 29,
-        "text": "You will hear the recording only once in the real test. You won’t be able to pause the recording.",
-        "answer": ""
-      },
-      {
-        "index": 30,
-        "text": "You will have only a short time to read the questions before the recording starts in the real test.",
-        "answer": ""
-      }
+      {"index": 0, "text": "What will the speaker discuss last?", "answer": "sensory capacity"},
+      {"index": 1, "text": "What is the bottlenosed dolphin's brain weight?", "answer": "1500 grams"},
+      {"index": 2, "text": "Which species besides dolphins uses tools?", "answer": "primates"},
+      {"index": 3, "text": "What can dolphins copy from other species?", "answer": "movements"},
+      {"index": 4, "text": "Can dolphins see outside water? (Yes/No)", "answer": "Yes"},
+      {"index": 5, "text": "Why do dolphins have small holes instead of larger ears?", "answer": "small hole"}
     ]
   },
   {
-    "id": "listening_practice_summary_completion_questions",
-    "title": "IELTS Listening Summary Completion: Practice & Tips",
+    "id": "listening_practice_summary_buckingham_palace",
+    "title": "Summary Completion: Buckingham Palace",
     "source_url": "https://ieltsliz.com/listening-practice-summary-completion-questions/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/Buckingham_PalaceMP3.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/Buckingham_PalaceMP3.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Task: You will be given a paragraph with missing words. Your task is to fill in the gaps with words or numbers from the recording to complete the paragraph.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Your task is to fill in the gaps with words or numbers from the recording to complete the paragraph.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "A Summary: The paragraph is a summary. This means you are not going to hear each sentence the same as in the recording. The information in the paragraph is summarised which means it focuses on key information rather than all details.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "Title: The summary completion questions will have a title. This will tell you what the paragraph focuses on.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Answer Order: The answers will come in order in the recording. So, you will hear the answer to question 1 and after that the answer to question 2.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Word Count: You will be told how many words or number you can have in your answer. Pay attention to this information.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "Predict the type of answer from the sentence given: noun, verb etc.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Grammar is important. The sentence must be grammatically correct when you complete it.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "Keywords in the question are critical to keeping your place and spotting the correct answer.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "See all tips on this page: SENTENCE COMPLETION TIPS",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "Paraphrasing: Some of the words in the summary paragraph will be paraphrased and others will not. You can’t predict which words will be the same or not. but be ready for synonyms and re-phrasing.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "Precise Words: Your answer must be the precise word from the recording. You can’t alter the word.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "Spelling counts. Check your spelling because words incorrectly spelled are marked wrong.",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "balcony",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "1851",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "9 / nine",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "50,000",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "garden",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "protect",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "third century BC / 3rd century BC",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "local farmers",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "soldiers",
-        "answer": ""
-      }
+      {"index": 0, "text": "The famous feature of the palace where the Royal Family appears (answer: 1 word)", "answer": "balcony"},
+      {"index": 1, "text": "Year the palace was extended with a new façade", "answer": "1851"},
+      {"index": 2, "text": "Number of state rooms open to the public", "answer": "9"},
+      {"index": 3, "text": "Total number of rooms in Buckingham Palace", "answer": "775"},
+      {"index": 4, "text": "Number of staff bedrooms", "answer": "760"},
+      {"index": 5, "text": "Number of people the garden can host for a garden party", "answer": "50,000"},
+      {"index": 6, "text": "The palace grounds feature a ________", "answer": "garden"}
     ]
   },
   {
-    "id": "ielts_listening_practice_tables",
-    "title": "IELTS Listening Table Completion: Practice and Tips",
+    "id": "listening_practice_summary_terracotta_army",
+    "title": "Summary Completion: The Terracotta Army",
+    "source_url": "https://ieltsliz.com/listening-practice-summary-completion-questions/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/IELTS_Terracotta_ArmyMP3.mp3",
+    "question_type": "gap_fill",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "The purpose of the Terracotta Army was to ________ the emperor in the afterlife.", "answer": "protect"},
+      {"index": 1, "text": "The army was created in the ________", "answer": "third century BC"},
+      {"index": 2, "text": "The army was discovered by ________", "answer": "local farmers"},
+      {"index": 3, "text": "The figures represent ________", "answer": "soldiers"},
+      {"index": 4, "text": "Number of pits containing the army", "answer": "150"}
+    ]
+  },
+  {
+    "id": "ielts_listening_practice_tables_non_native",
+    "title": "Table Completion: Introduced Species of the British Isles",
     "source_url": "https://ieltsliz.com/ielts-listening-practice-tables/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/11/Non-native_species.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/11/Non-native_species.mp3",
     "question_type": "table",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Section 2 is based on social situations and is one person talking about a place, a service – something specific.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Section 4 is based on an educational lecture. This is one person speaking who is giving a lecture. All lectures have introduction, middle (with main points and examples) and a conclusion.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Both of these sections are often very structured in content which is why table questions are so suitable.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "However, tables can appear in Section 1 and 3 – but they are less common in those sections.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "This is useful because you will know what the table questions relate to.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Table questions do not cover all questions for one single listening section. They will only cover about 5 questions out of 10 for that section.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "This means during the recording you might have to listen carefully to the information to know when to move to the table questions. The title will help you with this because it will tell you what the questions relate to.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Tables are organised logically and labelled with either rows, columns or both. You must read those headings carefully because they tell you the content of each question.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "You must read those headings carefully because they tell you the content of each question.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "The questions will come in order in the recording.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "Notice which direction the question take in the table – do the questions follow the rows or the columns? Notice this quickly so that you do not get lost during the listening.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "The recording will follow the organisation that exists within the table.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "Notice how the other answers are given already in the table. It shows you the type of answers you will need to write down. Often the answers do not require “a” or “the”. You can usually see this by the examples of information already given in the table.",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "Always pay attention to how many words you can have for the answer. If it asks for no more than two words, it means you can have one word, two words but not three words.",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "Spelling counts. You’ll lose marks if you spell the word incorrectly.",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "gray squirrel / grey squirrel you can have either US or UK spelling",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "you can have either US or UK spelling",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "(mature) (dense) woodland / forest either word is fine",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "either word is fine",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "seeds (and) nuts you can either have the word “and” or not. It isn’t common that the word and is included in an answer for IELTS listening.",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "you can either have the word “and” or not. It isn’t common that the word and is included in an answer for IELTS listening.",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "rivers (and) lakes",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "insects (and) fish / insects small fish you could have: insects fish insects and fish insects small fish",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "you could have:",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "insects fish",
-        "answer": ""
-      },
-      {
-        "index": 25,
-        "text": "insects and fish",
-        "answer": ""
-      },
-      {
-        "index": 26,
-        "text": "insects small fish",
-        "answer": ""
-      }
+      {"index": 0, "text": "Table cell 1 (type of squirrel introduced)", "answer": "grey squirrel"},
+      {"index": 1, "text": "Table cell 2 (habitat type where species thrives)", "answer": "mature dense woodland"},
+      {"index": 2, "text": "Table cell 3 (food sources)", "answer": "seeds and nuts"},
+      {"index": 3, "text": "Table cell 4 (natural habitat locations)", "answer": "rivers and lakes"},
+      {"index": 4, "text": "Table cell 5 (other food sources)", "answer": "insects and fish"}
+    ]
+  },
+  {
+    "id": "ielts_listening_practice_tables_london_tour",
+    "title": "Table Completion: London Attractions",
+    "source_url": "https://ieltsliz.com/ielts-listening-practice-tables/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/11/London_TourMP3.mp3",
+    "question_type": "table",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "Admission cost for attraction 1", "answer": "free"},
+      {"index": 1, "text": "Opening hours start and end time", "answer": "10am; 6pm"},
+      {"index": 2, "text": "Number of exhibits", "answer": "28"},
+      {"index": 3, "text": "Adult ticket price (in pounds)", "answer": "22.50"},
+      {"index": 4, "text": "Last admission time", "answer": "5.30pm"}
     ]
   },
   {
     "id": "ielts_multiple_choice_listening_turtles",
-    "title": "IELTS Multiple Choice Listening Practice Lesson",
+    "title": "Multiple Choice: Turtle Conservation",
     "source_url": "https://ieltsliz.com/ielts-multiple-choice-listening-turtles/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/01/Z0000127.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/01/Z0000127.mp3",
     "question_type": "multiple_choice",
     "difficulty": "medium",
     "questions": [
       {
         "index": 0,
-        "text": "The key to multiple choice questions is to spot the difference between the options given.",
-        "answer": ""
+        "text": "The volunteer program relates to…",
+        "options": ["A – All kinds of turtles", "B – Only Olive Ridley turtles", "C – Various kinds of turtles"],
+        "answer": "C"
       },
       {
         "index": 1,
-        "text": "You will probably hear words from all options.",
-        "answer": ""
+        "text": "Volunteers can join the program for…",
+        "options": ["A – As long as they want", "B – No more than 12 weeks", "C – One week"],
+        "answer": "B"
       },
       {
         "index": 2,
-        "text": "Don’t try to match words – aim for meaning.",
-        "answer": ""
+        "text": "Accommodation is…",
+        "options": ["A – Luxury with a local family", "B – With a local family in the best house", "C – Basic with a local family"],
+        "answer": "C"
       },
       {
         "index": 3,
-        "text": "Your task is to locate the keyword(s) that will help you find the right answer.",
-        "answer": ""
+        "text": "Volunteers must be…",
+        "options": ["A – Individuals of 18 years old", "B – Individuals or groups with experience", "C – Over the age of 18 but do not need experience"],
+        "answer": "C"
       },
       {
         "index": 4,
-        "text": "Keep listening after you choose your answer in case the speaker adds more information that changes the answer.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Be ready to move to the next question – do this by keeping an eye on the keywords for the next question.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "“is aimed at helping to conserve and protect the population of Olive Ridley turtles in Costa Rica, although other species of turtles are also involved”",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "The above part of the sentence shows that it was not exclusively Olive Ridley turtles because other types of turtles were in involved. This means if you continued to listen, you find that answer B is not possible.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "Also this part of the sentence does not state that ALL turtles (100% of all turtle species) were involved. This means the answer cannot be A.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "B “Volunteers can sign up for any length of time from 2 to 12 weeks.” This means that option A is not possible because there is definitely a time limit. And option C is not possible because the minimum time is 2 weeks, not 1 week.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "“Volunteers can sign up for any length of time from 2 to 12 weeks.”",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "This means that option A is not possible because there is definitely a time limit. And option C is not possible because the minimum time is 2 weeks, not 1 week.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "C “All volunteers will be housed with local families near the beach – do not expect luxury, this is basic at best” This means that it is not luxury (A). Also it is not B. Option is there to make sure you are not trying to match words ie the word “best”.",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "“All volunteers will be housed with local families near the beach – do not expect luxury, this is basic at best”",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "This means that it is not luxury (A). Also it is not B. Option is there to make sure you are not trying to match words ie the word “best”.",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "“It is possible to sign up as a group or just as an individual without prior experience but we do have an age requirement of over 18.”",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "The keyword in the question is “MUST” . This means you are listening for a requirement of the programme.",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "A is not the answer because it is not a requirement to be an individual – groups are also possible.",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "B is not the answer because experience is not a requirement.",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "“The main involvement in this program is with recording data, helping with tagging, removing debris from the beach to ensure clear passage for adult and baby turtles and also to assist in egg relocation.”",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "The answer A can only be recognised if you are good with paraphrasing. The word “rubbish” is a synonym of “debris”. Also “to clear the beach” is a paraphrase for “removing debris to ensure a clear passage”.",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "B is not the answer because the recording shows that eggs are relocated (not baby turtles). This option is checking to make sure you are not trying to match words “relocation”.",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "C is not possible because at no time are turtles assisted in being able to move.",
-        "answer": ""
+        "text": "Volunteers will…",
+        "options": ["A – Clear the beach of rubbish", "B – Relocate baby turtles", "C – Help adult turtles move along the beach"],
+        "answer": "A"
       }
     ]
   },
   {
-    "id": "ielts_listening_practice_gap_fill_question",
-    "title": "IELTS Listening Practice: Sentence Completion",
+    "id": "ielts_listening_practice_gap_fill_autism",
+    "title": "Gap Fill: Autism Awareness",
     "source_url": "https://ieltsliz.com/ielts-listening-practice-gap-fill-question/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/10/Z0000142.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/10/Z0000142.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Prepare Sentences: You will have time to read through the sentences before the recording starts.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Question 1 above shows that you will probably be listening for a verb because it has the preposition to before the gap. Of course, the preposition to can also be in front of other kinds of words as well, but when we say “useful to …..” it usually requires a verb to follow.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Question 2 shows that you will need to listen for a noun because before the gap are the words a cultural.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "So, grammar will help you to predict answers.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Grammar Will Help: The sentence must be grammatically correct when you put the missing word into the sentence. This means you need to think about articles a/the . They might or might not be needed.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Answers in Order: The answers to the questions will come in order in the recording. This means the answer to question 1 will come first and then the answer to question 2 will follow. This will help you keep track of which question you are on and where you are in the recording.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "Answer Word Count: The instructions will always tell you how many words or numbers you can have for the answer. If it says No More Than Two Words – it means you can have two words, one word, but you can’t have three words (you can’t have more but you can have fewer).",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Keywords: The question will have useful keywords in it to help you locate the answer. For example, in question 1 above the keywords are traditions and countries.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "Speed: You do not have a lot of time to prepare question by reading them, spotting keywords and also paraphrasing. But with practice you can build these skills so that you can do them faster and faster. This should be part of your IELTS preparation.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "Before or After Keywords: One mistake people make is that they think the answer will come after you hear the keywords (or their equivalent paraphrase). This is wrong. You might hear the answer before or after you hear the keyword. This is why you must pay close attention to the recording.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "Guess: If you don’t know the answer, just guess. Never leave an answer empty.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "Spelling counts. If your answer is spelled incorrectly, it will be marked wrong. Every word and every letter must be precise.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "COMMUNICATES Communication is not possible. Your answer must have “s” at the end – communicates",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "Communication is not possible.",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "Your answer must have “s” at the end – communicates",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "OVERLOAD This is one word.",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "This is one word.",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "GEARED",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "SENSORY",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "propagate",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "belief",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "differences (the answer must be plural)",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "purpose",
-        "answer": ""
-      }
+      {"index": 0, "text": "Sentence gap 1 (how autistic people communicate differently)", "answer": "communicates"},
+      {"index": 1, "text": "Sentence gap 2 (light sensitivity description)", "answer": "dim"},
+      {"index": 2, "text": "Sentence gap 3 (sensory challenge)", "answer": "overload"},
+      {"index": 3, "text": "Sentence gap 4 (environment description)", "answer": "geared"},
+      {"index": 4, "text": "Sentence gap 5 (type of issues)", "answer": "sensory"}
+    ]
+  },
+  {
+    "id": "ielts_listening_practice_gap_fill_festivals",
+    "title": "Gap Fill: Festivals",
+    "source_url": "https://ieltsliz.com/ielts-listening-practice-gap-fill-question/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/12/FestivalsMP3.mp3",
+    "question_type": "gap_fill",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "Festivals help to ________ traditions.", "answer": "propagate"},
+      {"index": 1, "text": "Festivals reinforce shared ________.", "answer": "belief"},
+      {"index": 2, "text": "Some festivals celebrate cultural ________.", "answer": "differences"},
+      {"index": 3, "text": "Festivals provide a sense of community ________.", "answer": "purpose"}
     ]
   },
   {
     "id": "form_completion_ielts_listening_practice",
-    "title": "Form Completion for IELTS Listening Practice",
+    "title": "Form Completion: Oxford Summer Course",
     "source_url": "https://ieltsliz.com/form-completion-ielts-listening-practice/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/12/Oxford_Orientation_Summer_Course.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/12/Oxford_Orientation_Summer_Course.mp3",
     "question_type": "form_completion",
     "difficulty": "medium",
-    "questions": []
-  },
-  {
-    "id": "ielts_listening_gap_fill_practice_lesson",
-    "title": "IELTS Listening Practice: Sentence Completion",
-    "source_url": "https://ieltsliz.com/ielts-listening-gap-fill-practice-lesson/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/04/Z0000162.mp3?_=1",
-    "question_type": "gap_fill",
-    "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Does Tom currently serve in the army?",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "How much did he hope to raise in pounds?",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Where was his sponsored walk to take place?",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "1,000",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "GARDEN",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "STAGGERING",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "KNIGHTED",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "STRUCK “to strike a chord” is idiomatic and means: a) to say or do something that other people agree or approve of. b) to say or do something that causes emotions to rise or triggers memories in another person.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "“to strike a chord” is idiomatic and means:",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "a) to say or do something that other people agree or approve of.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "b) to say or do something that causes emotions to rise or triggers memories in another person.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "STIR to stir a nation means to raise emotions within a country.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "to stir a nation means to raise emotions within a country.",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "News: Unfortunately, Captain Sir Tom Moore died in 2021. He eventually raised a total of just over £30 million before he died. What a man!",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "On ………………. 2014, Philae landed on a comet.",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "Philae’s goal is to collect information about a comet’s composition and also to capture ………….. of the surface.",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "Because of an ………… relating to Rosetta’s orbit, Philae could have missed landing on the comet.",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "The time delay between Rosetta and the controllers on Earth was ……………….",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "Because of a lack of ……………., the lander had to find its own way down to the comet.",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "There is an element of ………. in landing in a good location on the comet.",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "The lander can drill ……………… into the exterior of the comet for stability.",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "Analysis will be done on surface composition, amino acids and ……………..",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "12th november / 12 november capital letters at the start are not required IELTS listening does not pay attention to punctuation or the use of capital letters. So, you can use or not use capital letters as you wish.",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "capital letters at the start are not required",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "IELTS listening does not pay attention to punctuation or the use of capital letters. So, you can use or not use capital letters as you wish.",
-        "answer": ""
-      },
-      {
-        "index": 25,
-        "text": "images",
-        "answer": ""
-      },
-      {
-        "index": 26,
-        "text": "inaccuracy",
-        "answer": ""
-      },
-      {
-        "index": 27,
-        "text": "(about) 28 minutes",
-        "answer": ""
-      },
-      {
-        "index": 28,
-        "text": "steering",
-        "answer": ""
-      },
-      {
-        "index": 29,
-        "text": "luck",
-        "answer": ""
-      },
-      {
-        "index": 30,
-        "text": "footscrews / foot screws",
-        "answer": ""
-      },
-      {
-        "index": 31,
-        "text": "temperature",
-        "answer": ""
-      }
+      {"index": 0, "text": "Student's last name:", "answer": "Bueno"},
+      {"index": 1, "text": "Date of birth:", "answer": "September 12th, 1985"},
+      {"index": 2, "text": "Country of origin:", "answer": "Spain"},
+      {"index": 3, "text": "Subject of study:", "answer": "photography"},
+      {"index": 4, "text": "Course dates:", "answer": "August to September"},
+      {"index": 5, "text": "Type of accommodation: shared ________", "answer": "flat"},
+      {"index": 6, "text": "Flight number:", "answer": "IB316"},
+      {"index": 7, "text": "Email address:", "answer": "m.bueno@gmail.com"}
     ]
   },
   {
-    "id": "ielts_listening_practice_lesson",
-    "title": "Short Answer Questions: IELTS Listening Practice",
-    "source_url": "https://ieltsliz.com/ielts-listening-practice-lesson/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/11/Sports_CenterMP3.mp3?_=1",
+    "id": "ielts_listening_gap_fill_toms_walk",
+    "title": "Gap Fill: Tom's Sponsored Walk",
+    "source_url": "https://ieltsliz.com/ielts-listening-gap-fill-practice-lesson/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/04/Z0000162.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Check the title of the listening because they will tell you the type of language you are likely to hear.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Note keywords in the question that: tell you the type of word you need to listening for, such as a noun, verb, adjective or number indicates the answer is coming in the recording",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "tell you the type of word you need to listening for, such as a noun, verb, adjective or number",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "indicates the answer is coming in the recording",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Words given in the question are likely to be paraphrased.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Pay attention to the word count for the answer.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "Get the answer from the recording – you need the precise word or words.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "The answers come in order.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "Which mammals are often considered to be the strongest?",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "How much weight in comparison to their body’s weight can a leaf-cutter ant pull?",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "What animal was present on Earth when ants emerged?",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "What are ant societies called?",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "How much of the Earth’s biomass do ants make up?",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "A dung beetle can pull the equivalent to what as a human being?",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "What type of sound do dung beetles mostly use as communication?",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "How much cattle dung are dung beetles thought to bury in some areas of Texas?",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "ELEPHANT RHINO",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "20 TIMES",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "DINOSAURS",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "COLONIES",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "6 DOUBLE-DECKER BUSES",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "(ACOUSTIC) VIBRATION",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "FORMIDABLE",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "FRAGMENTS",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "TRUCK",
-        "answer": ""
-      },
-      {
-        "index": 25,
-        "text": "ACOUSTIC",
-        "answer": ""
-      },
-      {
-        "index": 26,
-        "text": "EXCREMENT",
-        "answer": ""
-      }
+      {"index": 0, "text": "Does Tom currently serve in the army? (Yes/No)", "answer": "No"},
+      {"index": 1, "text": "How much did he hope to raise (in pounds)?", "answer": "1,000"},
+      {"index": 2, "text": "Where was his sponsored walk to take place?", "answer": "garden"},
+      {"index": 3, "text": "Tom eventually raised a ________ £21 million.", "answer": "staggering"},
+      {"index": 4, "text": "Many hope that Tom will be ________ for his efforts.", "answer": "knighted"},
+      {"index": 5, "text": "Tom's aims to support the NHS ________ a chord with many people.", "answer": "struck"},
+      {"index": 6, "text": "Tom has shown how a single person can ________ the nation.", "answer": "stir"}
+    ]
+  },
+  {
+    "id": "ielts_listening_gap_fill_comet",
+    "title": "Gap Fill: Philae Comet Landing",
+    "source_url": "https://ieltsliz.com/ielts-listening-gap-fill-practice-lesson/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/11/IELTS_Philae_LanderMP3.mp3",
+    "question_type": "gap_fill",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "On ________ 2014, Philae landed on a comet.", "answer": "12th November"},
+      {"index": 1, "text": "Philae's goal is to collect information and capture ________ of the surface.", "answer": "images"},
+      {"index": 2, "text": "Because of an ________ relating to Rosetta's orbit, Philae could have missed landing.", "answer": "inaccuracy"},
+      {"index": 3, "text": "The time delay between Rosetta and controllers on Earth was ________.", "answer": "about 28 minutes"},
+      {"index": 4, "text": "Because of a lack of ________, the lander had to find its own way down.", "answer": "steering"},
+      {"index": 5, "text": "There is an element of ________ in landing in a good location.", "answer": "luck"},
+      {"index": 6, "text": "The lander can drill ________ into the exterior for stability.", "answer": "footscrews"},
+      {"index": 7, "text": "Analysis will examine surface composition, amino acids and ________.", "answer": "temperature"}
+    ]
+  },
+  {
+    "id": "ielts_listening_practice_lesson_sports_center",
+    "title": "Short Answer: Dashwood Sports Center",
+    "source_url": "https://ieltsliz.com/ielts-listening-practice-lesson/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/11/Sports_CenterMP3.mp3",
+    "question_type": "gap_fill",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "What time does the center open?", "answer": "9am"},
+      {"index": 1, "text": "What kind of sports equipment does it sell?", "answer": "professional equipment"},
+      {"index": 2, "text": "How many days to return faulty items?", "answer": "3 days"},
+      {"index": 3, "text": "Who can give sports advice?", "answer": "John Roberts"},
+      {"index": 4, "text": "What time does the center close on Tuesdays?", "answer": "9pm"}
+    ]
+  },
+  {
+    "id": "ielts_listening_practice_lesson_superbugs",
+    "title": "Short Answer: Superbugs",
+    "source_url": "https://ieltsliz.com/ielts-listening-practice-lesson/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/12/IELTS-Listening-Superbugs.mp3",
+    "question_type": "gap_fill",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "Which mammals are considered the strongest?", "answer": "elephant"},
+      {"index": 1, "text": "A leaf-cutter ant can pull how many times its body weight?", "answer": "20 times"},
+      {"index": 2, "text": "Which animal was present when ants first emerged?", "answer": "dinosaurs"},
+      {"index": 3, "text": "What are ant societies called?", "answer": "colonies"},
+      {"index": 4, "text": "Ants represent what percentage of Earth's biomass?", "answer": "15%"},
+      {"index": 5, "text": "A dung beetle's pulling strength is equivalent to how many double-decker buses?", "answer": "6"},
+      {"index": 6, "text": "How do dung beetles communicate?", "answer": "acoustic vibration"},
+      {"index": 7, "text": "What percentage of cattle dung is buried in Texas?", "answer": "80%"}
     ]
   },
   {
     "id": "listening_practice_plastic_straws",
-    "title": "Listening Practice for IELTS: Plastic Straws",
+    "title": "Gap Fill: Plastic Straws",
     "source_url": "https://ieltsliz.com/listening-practice-plastic-straws/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/02/Z0000041.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/02/Z0000041.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Plastic straws have a limited ……………… owing to their predominantly single usage.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "These straws do not …………….. and can pollute the environment for hundreds of years.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "……………….. straws are thought to be used annually in the UK.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "Kasey Turner found ………… straws during her 20-minute ………………",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "One plastic straw was even found in the airway of a …………………",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Understanding the relationship between what we do and the negative ……………. can be a motivation for ………..",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "LIFESPAN Plastic straws have a limited LIFESPAN owing to their predominantly single usage.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Plastic straws have a limited LIFESPAN owing to their predominantly single usage.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "BIODEGRADE / BREAK DOWN These straws do not BIODEGRADE and can pollute the environment for hundreds of years. Both options are correct. However, you must choose one only as You cannot have the answer “break down”. Biodegrade and break down are the same.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "These straws do not BIODEGRADE and can pollute the environment for hundreds of years.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "Both options are correct. However, you must choose one only as",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "You cannot have the answer “break down”. Biodegrade and break down are the same.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "8.5 BILLION 8.5 BILLION straws are thought to be used annually in the UK.",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "8.5 BILLION straws are thought to be used annually in the UK.",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "Kasey Turner found 319 straws during her 20-minute SNORKEL.",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "It is not necessary to use punctuation to separate the number and word. However, if you do use punctuation, your answer would still be marked correct.",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "If you wrote “319 and SNORKEL”, it would be wrong because the word “and” is an extra word that is not given for the answer.",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "SEA TURTLE One plastic straw was even found in the airway of a SEA TURTLE. If you wrote only “turtle”, the answer would be wrong.",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "One plastic straw was even found in the airway of a SEA TURTLE.",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "If you wrote only “turtle”, the answer would be wrong.",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "OUTCOMES CHANGE",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "Understanding the relationship between what we do and the negative OUTCOMES can be a motivation for CHANGE.",
-        "answer": ""
-      }
+      {"index": 0, "text": "Plastic straws have a limited ________ owing to their predominantly single usage.", "answer": "lifespan"},
+      {"index": 1, "text": "These straws do not ________ and can pollute the environment for hundreds of years.", "answer": "biodegrade"},
+      {"index": 2, "text": "________ straws are thought to be used annually in the UK.", "answer": "8.5 billion"},
+      {"index": 3, "text": "Kasey Turner found ________ straws during her 20-minute ________", "answer": "319 / snorkel"},
+      {"index": 4, "text": "One plastic straw was even found in the airway of a ________", "answer": "sea turtle"},
+      {"index": 5, "text": "Understanding the relationship between what we do and the negative ________ can be a motivation for ________", "answer": "outcomes / change"}
     ]
   },
   {
     "id": "listening_practice_for_numbers",
-    "title": "Listening Practice for Numbers",
+    "title": "Number Practice: 1 to 100",
     "source_url": "https://ieltsliz.com/listening-practice-for-numbers/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/120318_008.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/120318_008.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "2,350",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "6,719",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "10,300",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "80,500 (this one is missing from the audio)",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "65,000",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "12,450",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "15,000",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "28,560",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "990,999",
-        "answer": ""
-      }
+      {"index": 0, "text": "Write the 10 numbers you hear (1-100 range):", "answer": "8, 13, 50, 24, 47, 86, 19, 97, 17, 29"}
     ]
   },
   {
     "id": "new_year_in_vietnam_ielts_listening_practice",
-    "title": "New Year in Vietnam: IELTS Listening Practice",
+    "title": "Gap Fill: New Year in Vietnam (Tết)",
     "source_url": "https://ieltsliz.com/new-year-in-vietnam-ielts-listening-practice/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/120327_003.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/120327_003.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "SPRING FESTIVAL",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "(DRIED) (YOUNG) BAMBOO This means there are three possible answers to this question: bamboo / young bamboo / dried young bamboo some books use brackets to show optional answers in the answer keys – but you can’t do this in your test. You can’t use brackets in the listening test.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "This means there are three possible answers to this question:",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "bamboo / young bamboo / dried young bamboo",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "some books use brackets to show optional answers in the answer keys – but you can’t do this in your test. You can’t use brackets in the listening test.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "(LUCKY) MONEY",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "PEACH BLOSSOM both words are needed no punctuation is needed between the words – just leave a reasonable space",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "both words are needed",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "no punctuation is needed between the words – just leave a reasonable space",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "SWEEPING",
-        "answer": ""
-      }
+      {"index": 0, "text": "Another name for Tết is ________", "answer": "Spring Festival"},
+      {"index": 1, "text": "One typical dish at this time is a soup which is made from ________", "answer": "dried young bamboo"},
+      {"index": 2, "text": "________ is given to older people and kids", "answer": "Lucky money"},
+      {"index": 3, "text": "At Tết, houses are adorned with ________ and kumquat trees", "answer": "peach blossom"},
+      {"index": 4, "text": "________ the house is forbidden during Tết", "answer": "Sweeping"}
     ]
   },
   {
     "id": "multiple_choice_question_ielts_listening",
-    "title": "Multiple Choice Question in IELTS Listening",
+    "title": "Multiple Choice: Dinner Invitation",
     "source_url": "https://ieltsliz.com/multiple-choice-question-ielts-listening/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Dinner_Invitation.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Dinner_Invitation.mp3",
     "question_type": "multiple_choice",
     "difficulty": "medium",
     "questions": [
       {
         "index": 0,
-        "text": "Dinner is on",
-        "answer": ""
+        "text": "Dinner is on…",
+        "options": ["A – Friday at 6pm", "B – Friday at 7pm", "C – Friday at 7.30pm"],
+        "answer": "C"
       },
       {
         "index": 1,
-        "text": "Beth is",
-        "answer": ""
+        "text": "Beth is…",
+        "options": ["A – Vegetarian", "B – Unable to eat anything made from milk", "C – Able to eat cheesecake"],
+        "answer": "B"
       },
       {
         "index": 2,
-        "text": "Beth will need to park",
-        "answer": ""
+        "text": "Beth will need to park…",
+        "options": ["A – In another part of the street", "B – Next door", "C – In a car park down the road"],
+        "answer": "A"
       }
     ]
   },
   {
-    "id": "ielts_listening_practice_missing_words",
-    "title": "IELTS Listening: Filling in the Missing Word",
+    "id": "ielts_listening_practice_missing_words_fireworks",
+    "title": "Gap Fill: Fireworks",
     "source_url": "https://ieltsliz.com/ielts-listening-practice-missing-words/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2030/02/fireworks.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2030/02/fireworks.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Specialists in fireworks include ……….. to create special effects.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Fireworks are made by putting all materials in a ………",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Fireworks were invented by the ……………",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "The first firework created a loud ……….",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Fireworks appeared in Europe by the ………………",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "The ………… firework launches high into the air and explodes at a certain height.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "The long tube fireworks are called ……………..",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "…………… is used to create a bright white light.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "chemicals",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "shell",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "Chinese (You do not need a capital letter at the beginning for this to be correct)",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "bang",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "13th century",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "rocket",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "Roman candles (If your spelling is wrong, the answer is incorrect. The capital letter is not important.)",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "Magnesium (if your spelling is wrong, your answer is incorrect – you don’t need a capital letter even if it is at the beginning of the word. See my tips for info about this: IELTS Listening Tips)",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "Libraries provide creative spaces and learning ………..",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "Libraries can help to improve technological ……….. in society.",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "………… to any given book becomes possible using Library Bookmark.",
-        "answer": ""
-      },
-      {
-        "index": 19,
-        "text": "Patrons would be able to receive books at home using …………….",
-        "answer": ""
-      },
-      {
-        "index": 20,
-        "text": "Fingerlink allows the user to combine …………….. with a printed book.",
-        "answer": ""
-      },
-      {
-        "index": 21,
-        "text": "Library Bookmark: First of all, the device would be a perfect companion when navigating through the library, by giving turn-by-turn directions to the book the patron wants. The device could also keep track of all borrowed books, as well as remind the user of the return dates.",
-        "answer": ""
-      },
-      {
-        "index": 22,
-        "text": "Delivery Drones: To get the book from a library, you can either go and find it, or you can let it find you. The future belongs to the unmanned flying machines, and just like Amazon drones can deliver the goods to customers, libraries could deliver the books to patrons.",
-        "answer": ""
-      },
-      {
-        "index": 23,
-        "text": "HUBS You must have “s”. If you write this answer as “hub” it will be marked wrong. You are being tested on being able to hear the difference between plural and singular.",
-        "answer": ""
-      },
-      {
-        "index": 24,
-        "text": "You must have “s”. If you write this answer as “hub” it will be marked wrong. You are being tested on being able to hear the difference between plural and singular.",
-        "answer": ""
-      },
-      {
-        "index": 25,
-        "text": "LITERACY",
-        "answer": ""
-      },
-      {
-        "index": 26,
-        "text": "NAVIGATING",
-        "answer": ""
-      },
-      {
-        "index": 27,
-        "text": "Brackets are used in the answer key of test books to show possible answers. In this case, it is possible to have the answer “drones” or “delivery drones”. You cannot use brackets in your test – you must choose only one answer.",
-        "answer": ""
-      },
-      {
-        "index": 28,
-        "text": "It is not possible to have “flying machines”. The paraphrase of drones is actually “unmanned flying machines” but it contains 3 words which goes over the word count limit.",
-        "answer": ""
-      },
-      {
-        "index": 29,
-        "text": "DIGITAL TOOLS",
-        "answer": ""
-      }
+      {"index": 0, "text": "Specialists in fireworks include ________ to create special effects.", "answer": "chemicals"},
+      {"index": 1, "text": "Fireworks are made by putting all materials in a ________", "answer": "shell"},
+      {"index": 2, "text": "Fireworks were invented by the ________", "answer": "Chinese"},
+      {"index": 3, "text": "The first firework created a loud ________", "answer": "bang"},
+      {"index": 4, "text": "Fireworks appeared in Europe by the ________", "answer": "13th century"},
+      {"index": 5, "text": "The ________ firework launches high into the air and explodes at a certain height.", "answer": "rocket"},
+      {"index": 6, "text": "The long tube fireworks are called ________", "answer": "Roman candles"},
+      {"index": 7, "text": "________ is used to create a bright white light.", "answer": "Magnesium"}
+    ]
+  },
+  {
+    "id": "ielts_listening_practice_missing_words_libraries",
+    "title": "Gap Fill: Future Libraries",
+    "source_url": "https://ieltsliz.com/ielts-listening-practice-missing-words/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/10/Z0000093.mp3",
+    "question_type": "gap_fill",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "Libraries provide creative spaces and learning ________", "answer": "hubs"},
+      {"index": 1, "text": "Libraries can help to improve technological ________ in society.", "answer": "literacy"},
+      {"index": 2, "text": "________ to any given book becomes possible using Library Bookmark.", "answer": "Navigating"},
+      {"index": 3, "text": "Patrons would be able to receive books at home using ________", "answer": "delivery drones"},
+      {"index": 4, "text": "Fingerlink allows the user to combine ________ with a printed book.", "answer": "digital tools"}
     ]
   },
   {
     "id": "map_completion_question_ielts_listening",
-    "title": "Map Completion for IELTS Listening",
+    "title": "Map Completion: Bedford Doctor's Surgery",
     "source_url": "https://ieltsliz.com/map-completion-question-ielts-listening/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/12/Z0000201.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/12/Z0000201.mp3",
     "question_type": "map_diagram",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Notice the title which gives you an idea of the type of building it is.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Notice the entrance to the building. Most listening recordings for buildings will start at the entrance.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Most listening recordings for buildings will start at the entrance.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "Your answer will be a word or words from the recording. You can’t alter the words.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Pay attention to the number of words you can have for your answer.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Answers will come in order.",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "reception (room)",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "cloakroom one word",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "one word",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "consultation room A",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "consultation room B",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "(small) waiting area",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "practice nurse room",
-        "answer": ""
-      }
+      {"index": 0, "text": "Map label 1 (entrance area)", "answer": "reception"},
+      {"index": 1, "text": "Map label 2 (toilets area)", "answer": "cloakroom"},
+      {"index": 2, "text": "Map label 3 (doctor's room A)", "answer": "consultation room A"},
+      {"index": 3, "text": "Map label 4 (doctor's room B)", "answer": "consultation room B"},
+      {"index": 4, "text": "Map label 5 (small area for waiting)", "answer": "small waiting area"},
+      {"index": 5, "text": "Map label 6 (nurse's room)", "answer": "practice nurse room"}
     ]
   },
   {
     "id": "brain_drain_listening",
-    "title": "Brain Drain Listening Practice",
+    "title": "Multiple Choice: Brain Drain",
     "source_url": "https://ieltsliz.com/brain-drain-listening/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/03/Brain_DrainMP3.mp3?_=1",
-    "question_type": "gap_fill",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/03/Brain_DrainMP3.mp3",
+    "question_type": "multiple_choice",
     "difficulty": "medium",
     "questions": [
       {
         "index": 0,
-        "text": "E (answers to questions 1-3 can be given in any order)",
-        "answer": ""
+        "text": "Which THREE reasons are given for the brain drain? Choose letters A-G. A=Money, B=Education, C=Climate, D=Quality of life, E=State-of-the-art equipment, F=Language, G=Culture",
+        "answer": "A, D, E"
+      },
+      {
+        "index": 1,
+        "text": "What problem does the brain drain cause developing countries? A=Loss of skilled workers, B=Population decline, C=Reduced tax revenue, D=Loss of investment, E=Loss of money",
+        "options": ["A – Loss of skilled workers", "B – Population decline", "C – Reduced tax revenue", "D – Loss of investment", "E – Loss of money"],
+        "answer": "E"
+      },
+      {
+        "index": 2,
+        "text": "In 2000, ________ million people living outside their home country were employed.",
+        "answer": "65"
       }
     ]
   },
   {
     "id": "ielts_listening_practice_sports_festival",
-    "title": "IELTS Listening Practice: Sports Festival",
+    "title": "Gap Fill: Naadam Sports Festival",
     "source_url": "https://ieltsliz.com/ielts-listening-practice-sports-festival/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2080/04/120921_006.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2080/04/120921_006.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "wrestling",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "midsummer (one word)",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "participate / compete (two possible options)",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "warriors / skilful warriors (must be plural) / skilful men",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "colourful clothes / traditional clothes/ distinctive clothes three possible options but no more than two words possible for the answer",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "three possible options but no more than two words possible for the answer",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "11 13 July / 11th 13th July you must have both numbers and the month.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "you must have both numbers and the month.",
-        "answer": ""
-      }
+      {"index": 0, "text": "Naadam is a festival of three sports in Mongolia: ________ horse racing and archery.", "answer": "wrestling"},
+      {"index": 1, "text": "This festival takes place during ________.", "answer": "midsummer"},
+      {"index": 2, "text": "Previously, women were unable to ________ in the festival.", "answer": "participate"},
+      {"index": 3, "text": "Historically, this festival was used to generate ________.", "answer": "warriors"},
+      {"index": 4, "text": "People don ________ for the festival.", "answer": "colourful clothes"},
+      {"index": 5, "text": "Each year the celebration is held between ________ and ________ July.", "answer": "11th / 13th"}
     ]
   },
   {
     "id": "ielts_listening_list_selection",
-    "title": "IELTS Listening: List Selection",
+    "title": "List Selection: Museum Visit",
     "source_url": "https://ieltsliz.com/ielts-listening-list-selection/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/10/Museum-visit.mp3?_=1",
-    "question_type": "gap_fill",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2014/10/Museum-visit.mp3",
+    "question_type": "multiple_choice",
     "difficulty": "medium",
-    "questions": []
+    "questions": [
+      {
+        "index": 0,
+        "text": "What THREE things are NOT allowed to be brought into the museum? (Choose THREE from A-G: A=Camera, B=Bags, C=Food and drink, D=Phone, E=Pens, F=Notebooks, G=Coats)",
+        "answer": "A, C, D"
+      }
+    ]
   },
   {
     "id": "listening_practice_my_university",
-    "title": "Listening Practice: My University",
+    "title": "Gap Fill: My University (Royal Holloway)",
     "source_url": "https://ieltsliz.com/listening-practice-my-university/",
     "audio_url": "",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "The University of London is made up of ………. different institutions.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "The college was established in ………..",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Nowadays, the university has ………… students from over 100 countries.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "The campus feels like a peaceful, ……….. place in the countryside.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Royal Holloway is located ………… from the centre of London.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "There are three world class faculties: the arts faculty, …………….and ……………………, and the science faculty.",
-        "answer": ""
-      }
+      {"index": 0, "text": "The University of London is made up of ________ different institutions.", "answer": "19"},
+      {"index": 1, "text": "The college was established in ________.", "answer": "1879"},
+      {"index": 2, "text": "Nowadays, the university has ________ students from over 100 countries.", "answer": "8,000"},
+      {"index": 3, "text": "The campus feels like a peaceful, ________ place in the countryside.", "answer": "secluded"},
+      {"index": 4, "text": "Royal Holloway is located ________ from the centre of London.", "answer": "19 miles"},
+      {"index": 5, "text": "There are three world class faculties: the arts faculty, ________ and ________, and the science faculty.", "answer": "history / social sciences"}
     ]
   },
   {
     "id": "ielts_listening_practice_the_eiffel_tower",
-    "title": "IELTS Listening Practice: Building the Eiffel Tower",
+    "title": "Gap Fill: Building the Eiffel Tower",
     "source_url": "https://ieltsliz.com/ielts-listening-practice-the-eiffel-tower/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/09/121023_013.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/09/121023_013.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "In 1884, two …………… came up with the concept of building tall tower.",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "The plan was for the tower to be ……….. feet in height.",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Assembly of the supports took ……………. to finish.",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "During construction, precision of work was measured to …………. of a millimetre.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "The construction team has responsibility for ……………. to ………… workers.",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "engineers / chief engineers (either answer is correct)",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "1000",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "22 months (the number can be written as a hyphenated word. The word “months” must be plural.)",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "a tenth (“a” is needed for the answer to be correct. All sentences must be grammatically correct when completed)",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "150 300 (both numbers are needed for the correct answer. No punctuation is required between them)",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "15 March 1888 / 15th March 1888 (the full date is required)",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "12 March 1889 / 12th March 1889 (the full date is required)",
-        "answer": ""
-      }
+      {"index": 0, "text": "In 1884, two ________ came up with the concept of building a tall tower.", "answer": "engineers"},
+      {"index": 1, "text": "The plan was for the tower to be ________ feet in height.", "answer": "1000"},
+      {"index": 2, "text": "Assembly of the supports took ________ to finish.", "answer": "22 months"},
+      {"index": 3, "text": "During construction, precision of work was measured to ________ of a millimetre.", "answer": "a tenth"},
+      {"index": 4, "text": "The construction team had responsibility for ________ to ________ workers.", "answer": "150 / 300"},
+      {"index": 5, "text": "Diagram label 6 (date on construction timeline)", "answer": "15 March 1888"},
+      {"index": 6, "text": "Diagram label 7 (completion date)", "answer": "12 March 1889"}
     ]
   },
   {
     "id": "listening_practice_blue_footed_boobies",
-    "title": "Listening Practice Blue-Footed Boobie Birds",
+    "title": "Gap Fill: Blue-Footed Boobies",
     "source_url": "https://ieltsliz.com/listening-practice-blue-footed-boobies/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/06/Z0000092.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/06/Z0000092.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "Strutting and showing off feet is part of the mating …………",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "When a male boobie has very blue feet, he is considered ……………..",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Their name comes from the Spanish word for …………..",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "On land, blue-footed boobies move in a ………. manner.",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Blue-footed boobies fish in ……………….",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "They eat small fish, for example ………….",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "Their bodies are ……….. which is advantageous when diving.",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "Adult boobies warm their chicks with their ……………….",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "They usually have a maximum of ………. chicks.",
-        "answer": ""
-      }
+      {"index": 0, "text": "Strutting and showing off feet is part of the mating ________", "answer": "rituals"},
+      {"index": 1, "text": "When a male boobie has very blue feet, he is considered ________", "answer": "more attractive"},
+      {"index": 2, "text": "Their name comes from the Spanish word for ________", "answer": "stupid"},
+      {"index": 3, "text": "On land, blue-footed boobies move in a ________ manner.", "answer": "clumsy"},
+      {"index": 4, "text": "Blue-footed boobies fish in ________", "answer": "cooperative groups"},
+      {"index": 5, "text": "They eat small fish, for example ________", "answer": "anchovies"},
+      {"index": 6, "text": "Their bodies are ________ which is advantageous when diving.", "answer": "streamlined"},
+      {"index": 7, "text": "Adult boobies warm their chicks with their ________", "answer": "webbed feet"},
+      {"index": 8, "text": "They usually have a maximum of ________ chicks.", "answer": "3"}
     ]
   },
   {
     "id": "listening_practice_for_addresses",
-    "title": "Listening Practice for Addresses",
+    "title": "Gap Fill: Listening for Addresses",
     "source_url": "https://ieltsliz.com/listening-practice-for-addresses/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2070/04/120628_002.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2070/04/120628_002.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "150 Church Street",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "68C Bridge Lane",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "52 Burlington Road",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "3 West Street",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "94A Notts Way",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Flat 2, 24 Sleet Street",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "63 Green Avenue",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "54 Station Road",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "102 Seaview Crescent",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "41 Drummond Square",
-        "answer": ""
-      }
+      {"index": 0, "text": "Address 1:", "answer": "150 Church Street"},
+      {"index": 1, "text": "Address 2:", "answer": "68C Bridge Lane"},
+      {"index": 2, "text": "Address 3:", "answer": "52 Burlington Road"},
+      {"index": 3, "text": "Address 4:", "answer": "3 West Street"},
+      {"index": 4, "text": "Address 5:", "answer": "94A Notts Way"},
+      {"index": 5, "text": "Address 6:", "answer": "Flat 2, 24 Sleet Street"},
+      {"index": 6, "text": "Address 7:", "answer": "63 Green Avenue"},
+      {"index": 7, "text": "Address 8:", "answer": "54 Station Road"},
+      {"index": 8, "text": "Address 9:", "answer": "102 Seaview Crescent"},
+      {"index": 9, "text": "Address 10:", "answer": "41 Drummond Square"}
     ]
   },
   {
     "id": "alphabet_practice_for_spelling",
-    "title": "Alphabet Practice for Spelling",
+    "title": "Spelling Practice: Letter Identification",
     "source_url": "https://ieltsliz.com/alphabet-practice-for-spelling/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2070/04/120526_003.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2070/04/120526_005.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "B / P",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "D / T",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "S / X",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "J / G",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "M / N",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "K / Q",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "U / Y",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "V / W",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "Z (UK pronunciation & US pronunciation)",
-        "answer": ""
-      }
+      {"index": 0, "text": "Letter 1:", "answer": "S"},
+      {"index": 1, "text": "Letter 2:", "answer": "T"},
+      {"index": 2, "text": "Letter 3:", "answer": "P"},
+      {"index": 3, "text": "Letter 4:", "answer": "R"},
+      {"index": 4, "text": "Letter 5:", "answer": "U"},
+      {"index": 5, "text": "Letter 6:", "answer": "G"},
+      {"index": 6, "text": "Letter 7:", "answer": "I"},
+      {"index": 7, "text": "Letter 8:", "answer": "A"},
+      {"index": 8, "text": "Letter 9:", "answer": "Q"},
+      {"index": 9, "text": "Letter 10:", "answer": "X"},
+      {"index": 10, "text": "Letter 11:", "answer": "J"},
+      {"index": 11, "text": "Letter 12:", "answer": "B"},
+      {"index": 12, "text": "Letter 13:", "answer": "C"},
+      {"index": 13, "text": "Letter 14:", "answer": "F"},
+      {"index": 14, "text": "Letter 15:", "answer": "N"}
     ]
   },
   {
     "id": "listening_dictation_practice",
-    "title": "Listen & Write: Dealing with Natural Disasters",
+    "title": "Dictation: Dealing with Natural Disasters",
     "source_url": "https://ieltsliz.com/listening-dictation-practice/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/02/2021-11-09-15-53-27-1.mp3",
+    "audio_url": "",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "listen for keywords such as nouns",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "make notes at the same time as listening",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "recreate what you hear in writing – produce a written script of what you hear",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "check your grammar",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "check your spelling",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "check your basic punctuation",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "get a pen and paper",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "write down all the nouns you hear. Nouns are always the most important words to write down when you want to reproduce what you hear on paper.",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "the aim is not to pause the audio, but to keep it running while you make notes. Of course, the first time, you will only get about 15% of the words. But you can listen again to collect more nouns.",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "when you write down the nouns, don’t worry about spelling the full word. You can edit all this later after you have finished listening three times.",
-        "answer": ""
-      },
-      {
-        "index": 10,
-        "text": "make sure you keep the order of nouns correct so that you can create the sentences afterwards. You will use those nouns to recreate the full script.",
-        "answer": ""
-      },
-      {
-        "index": 11,
-        "text": "Your aim is not to write all the words while listening. It is to write only key nouns and keywords so you can then recreate the script. This is the same as you do in a university lecture.",
-        "answer": ""
-      },
-      {
-        "index": 12,
-        "text": "listening again and add more nouns to your list",
-        "answer": ""
-      },
-      {
-        "index": 13,
-        "text": "Listen a third time and even a fourth if necessary. You can also write down other useful words as well.",
-        "answer": ""
-      },
-      {
-        "index": 14,
-        "text": "review what you have written and put in full stops, commas and capital letters.",
-        "answer": ""
-      },
-      {
-        "index": 15,
-        "text": "when you think your writing is accurate, listen one more time to see what words you have missed.",
-        "answer": ""
-      },
-      {
-        "index": 16,
-        "text": "after those steps, when you are sure your writing is an accurate reproduction, check the answer. Check which words you are making mistakes with – are they plurals, articles, verb agreement – which aspects of grammar do you make the most mistakes with check your spelling and punctuation",
-        "answer": ""
-      },
-      {
-        "index": 17,
-        "text": "Check which words you are making mistakes with – are they plurals, articles, verb agreement – which aspects of grammar do you make the most mistakes with",
-        "answer": ""
-      },
-      {
-        "index": 18,
-        "text": "check your spelling and punctuation",
-        "answer": ""
-      }
+      {"index": 0, "text": "Listen and write the sentences you hear about natural disaster management. (Open dictation exercise — no fixed gaps)", "answer": "Visit source for audio and answers"}
     ]
   },
   {
     "id": "listening_practice_for_english_names",
-    "title": "Listening Practice for English Names",
+    "title": "Gap Fill: Listening for English Names (Practice 1)",
     "source_url": "https://ieltsliz.com/listening-practice-for-english-names/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/11/Z0000021.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/11/Z0000021.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "David Darwin",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "Mrs Alice Smith",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "Balthazar Jones",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "Sara Bartholomew",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "Sean Bean",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "Mr Frank Allenson",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "A R Beevers",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "James Chichester",
-        "answer": ""
-      },
-      {
-        "index": 8,
-        "text": "Mary Schooling",
-        "answer": ""
-      },
-      {
-        "index": 9,
-        "text": "Sir Paul McKellen",
-        "answer": ""
-      }
+      {"index": 0, "text": "Name 1:", "answer": "David Darwin"},
+      {"index": 1, "text": "Name 2:", "answer": "Mrs Alice Smith"},
+      {"index": 2, "text": "Name 3:", "answer": "Balthazar Jones"},
+      {"index": 3, "text": "Name 4:", "answer": "Sara Bartholomew"},
+      {"index": 4, "text": "Name 5:", "answer": "Sean Bean"},
+      {"index": 5, "text": "Name 6:", "answer": "Mr Frank Allenson"},
+      {"index": 6, "text": "Name 7:", "answer": "A R Beevers"},
+      {"index": 7, "text": "Name 8:", "answer": "James Chichester"},
+      {"index": 8, "text": "Name 9:", "answer": "Mary Schooling"},
+      {"index": 9, "text": "Name 10:", "answer": "Sir Paul McKellen"}
+    ]
+  },
+  {
+    "id": "listening_practice_for_english_names_2",
+    "title": "Gap Fill: Listening for English Names (Practice 2)",
+    "source_url": "https://ieltsliz.com/listening-practice-for-english-names/",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2099/11/Z0000019.mp3",
+    "question_type": "gap_fill",
+    "difficulty": "medium",
+    "questions": [
+      {"index": 0, "text": "Name 1:", "answer": "Dr Davis"},
+      {"index": 1, "text": "Name 2:", "answer": "Richard Chamberlain"},
+      {"index": 2, "text": "Name 3:", "answer": "Miss Victoria Halley"},
+      {"index": 3, "text": "Name 4:", "answer": "Mr C J Billings"},
+      {"index": 4, "text": "Name 5:", "answer": "Robert Powers"},
+      {"index": 5, "text": "Name 6:", "answer": "Emily Jackson"},
+      {"index": 6, "text": "Name 7:", "answer": "Nora Ingalls"},
+      {"index": 7, "text": "Name 8:", "answer": "Mrs Caroline Castle"},
+      {"index": 8, "text": "Name 9:", "answer": "Charles Pringle"},
+      {"index": 9, "text": "Name 10:", "answer": "Emma Ford"}
     ]
   },
   {
     "id": "listening_practice_big_numbers",
-    "title": "Listening Practice: Big Numbers",
+    "title": "Number Practice: Big Numbers",
     "source_url": "https://ieltsliz.com/listening-practice-big-numbers/",
-    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Big-Numbers.mp3?_=1",
+    "audio_url": "https://ieltsliz.com/wp-content/uploads/2015/01/Big-Numbers.mp3",
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {
-        "index": 0,
-        "text": "1,600",
-        "answer": ""
-      },
-      {
-        "index": 1,
-        "text": "2,460",
-        "answer": ""
-      },
-      {
-        "index": 2,
-        "text": "6,768",
-        "answer": ""
-      },
-      {
-        "index": 3,
-        "text": "10,550",
-        "answer": ""
-      },
-      {
-        "index": 4,
-        "text": "20,200",
-        "answer": ""
-      },
-      {
-        "index": 5,
-        "text": "35,050",
-        "answer": ""
-      },
-      {
-        "index": 6,
-        "text": "102,700",
-        "answer": ""
-      },
-      {
-        "index": 7,
-        "text": "1,400,002",
-        "answer": ""
-      }
+      {"index": 0, "text": "Number 1:", "answer": "451"},
+      {"index": 1, "text": "Number 2:", "answer": "730"},
+      {"index": 2, "text": "Number 3:", "answer": "1,600"},
+      {"index": 3, "text": "Number 4:", "answer": "2,460"},
+      {"index": 4, "text": "Number 5:", "answer": "6,768"},
+      {"index": 5, "text": "Number 6:", "answer": "10,550"},
+      {"index": 6, "text": "Number 7:", "answer": "20,200"},
+      {"index": 7, "text": "Number 8:", "answer": "35,050"},
+      {"index": 8, "text": "Number 9:", "answer": "102,700"},
+      {"index": 9, "text": "Number 10:", "answer": "1,400,002"}
     ]
   },
   {
     "id": "ielts_listening_for_plurals_tips_practice",
-    "title": "IELTS Listening for Plurals: Tips & Practice",
+    "title": "Gap Fill: Listening for Plurals",
     "source_url": "https://ieltsliz.com/ielts-listening-for-plurals-tips-practice/",
     "audio_url": "",
     "question_type": "gap_fill",
     "difficulty": "medium",
-    "questions": []
+    "questions": [
+      {"index": 0, "text": "Listen carefully and write the exact form (singular or plural) of each word you hear. (Video-based exercise — no direct audio link)", "answer": "Visit source for video and practice"}
+    ]
   }
 ]

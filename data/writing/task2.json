@@ -1,155 +1,119 @@
 [
   {
-    "id": "task2_q0",
-    "topic": "General",
-    "essay_type": "advantages_disadvantages",
-    "question": "There are 5 main types of essay questions in IELTS writing task 2 (opinion essays, discussion essay, advantage/disadvantage essays, solution essay and direct question essays). Click on the links below to see some sample essay questions for you to practice with at home.",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
+    "id": "discussion_university_vs_experience",
+    "topic": "Education & Employment",
+    "essay_type": "discussion",
+    "question": "Completing university education is thought by some to be the best way to get a good job. On the other hand, other people think that getting experience and developing soft skills is more important. Discuss both sides and give your opinion.",
+    "model_answer": "Some people think that being a university graduate is the key to securing a good job, while others think experience and soft skills are better. In my opinion, I believe that the former is essential for academic jobs, while the latter are more useful in business and related industries.\n\nOn the one hand, many people think it is easy to find good employment with an undergrad degree or above because it puts people one step ahead of other applicants, and can be the deciding factor between applicants. Furthermore, certain career paths are not open to those without a higher level of education, such as jobs requiring academic or specialist knowledge, namely teachers, lecturers, doctors and lawyers. Not only that, but academia does promote the development of useful skills, not just academic knowledge, for example analytical thinking, research skills and intellectual curiosity, which are valuable transferable skills. For this reason, I believe that tertiary education offers an advantage mainly for those aiming for a professional or academic career.\n\nOn the other hand, having relevant work experience and soft skills can throw the balance in favour of the job applicant for certain types of work. For instance, for a corporate management position, having experience of managing others, running projects, delegating tasks and strong emotional intelligence is of more importance than the theory of management with no real hands-on experience when fresh out of university. Also, certain industries require interpersonal skills which can only be developed through extensive experience with people, such as in customer service, hospitality and sales. Consequently, it can be seen that tertiary education is no advantage at all in some areas.\n\nIn conclusion, I think that securing a good job requires a relevant background specific to the career or job the applicant is applying for. Some positions will require an academic background, whilst others benefit more from experience and skills.",
+    "band_target": 9,
+    "key_phrases": ["key to securing a good job", "one step ahead of other applicants", "analytical thinking", "throw the balance in favour of", "relevant background specific to the career"]
   },
   {
-    "id": "task2_q1",
-    "topic": "General",
-    "essay_type": "direct_question",
-    "question": "Discussion Essay Questions\n\nDiscussion Essay Model Answer with Useful Tips",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "task2_q2",
-    "topic": "General",
-    "essay_type": "direct_question",
-    "question": "Discussion Essay Model Answer with Useful Tips",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "100_ielts_essay_questions",
-    "topic": "100 IELTS Essay Questions",
-    "essay_type": "direct_question",
-    "question": "FREE SUBSCRIBE\n\t\t\t\n\t\t\t\n\t\t\t\t\t\t\t\t\tSubscribe to get new lessons & tips by email.\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\tEmail Address\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tSubscribe",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_writing_task_2_band_scores_5_to_8_with_tips",
-    "topic": "IELTS Writing Task 2 Band Scores 5 to 8 with Tips",
-    "essay_type": "direct_question",
-    "question": "FREE SUBSCRIBE\n\t\t\t\n\t\t\t\n\t\t\t\t\t\t\t\t\tSubscribe to get new lessons & tips by email.\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\tEmail Address\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tSubscribe",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_essays_five_types_of_ielts_essays",
-    "topic": "IELTS Essays: Five Types of IELTS Essays",
-    "essay_type": "opinion",
-    "question": "Some people think that only electric cars should be allowed on the road by 2040. Do you agree?",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_essay_structure_paragraphs",
-    "topic": "IELTS Essay Structure & Paragraphs",
-    "essay_type": "direct_question",
-    "question": "What to do with the last 5 mins of your writing task? Is it ok to not have a conclusion paragraph?",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_writing_task_2_essay_planning_tips",
-    "topic": "IELTS Writing Task 2: Essay Planning Tips",
-    "essay_type": "direct_question",
-    "question": "FREE SUBSCRIBE\n\t\t\t\n\t\t\t\n\t\t\t\t\t\t\t\t\tSubscribe to get new lessons & tips by email.\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\tEmail Address\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tSubscribe",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "20_common_essay_topics_for_ielts_writing_task_2",
-    "topic": "20 Common Essay Topics for IELTS Writing Task 2",
-    "essay_type": "direct_question",
-    "question": "FREE SUBSCRIBE\n\t\t\t\n\t\t\t\n\t\t\t\t\t\t\t\t\tSubscribe to get new lessons & tips by email.\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\tEmail Address\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tSubscribe",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_writing_task_2_should_i_give_my_opinion_when",
-    "topic": "IELTS Writing Task 2: Should I give my opinion? When & How?",
-    "essay_type": "opinion",
-    "question": "Some people think that rich countries should support poor countries in terms of aid for health care and education. To what extent do you agree?",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_agree_disagree_essay_sample_answer_with_tips",
-    "topic": "IELTS Agree Disagree Essay Sample Answer with Tips",
-    "essay_type": "opinion",
-    "question": "The growing number of overweight people is putting a strain on the health care system in an effort to deal with the health issues involved. Some people think that the best way to deal with this problem is to introduce more physical education lessons in the school curriculum. To what extent do you agree or disagree?",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_advantage_disadvantage_model_essay_with_usef",
-    "topic": "IELTS Advantage Disadvantage Model Essay With Useful Tips",
-    "essay_type": "advantages_disadvantages",
-    "question": "The development of tourism contributed to English becoming the most prominent language in the world. Some people think this will lead to English becoming the only language to be spoken globally.\nWhat are the advantages and disadvantages to having one language in the world?",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_solution_essay_band_9_model_with_useful_tips",
-    "topic": "IELTS Solution Essay Band 9 Model with Useful Tips",
+    "id": "problem_solution_reoffending",
+    "topic": "Crime & Punishment",
     "essay_type": "problem_solution",
     "question": "Many offenders commit more crimes after serving their first punishment. Why is this happening, and what measures can be taken to tackle this problem?",
-    "model_answer": "Many offenders commit more crimes after serving their first punishment. Why is this happening, and what measures can be taken to tackle this problem?\n\nA large number of criminals who serve their first prison sentence, leave prison only to reoffend. This is mainly because of the lack of rehabilitation and difficulty finding regular employment once released. There are a number of solutions which should be implemented to deal with criminals who reoffend.\n\nFirstly, the reason for most first-time offenders committing crimes again, once they have been released from prison, is due to the lack of rehabilitation whilst in prison. In other words, offenders are not given a chance to retrain and learn new skills for their future or develop a deeper understanding of correct moral behaviour and instead mix with other criminals, which only strengthens their criminal intentions. Secondly, repeat offending is also owing to the difficulty in finding employment after being released. As a result, many of them struggle financially which leads them back to crime, regardless of the consequences.\n\nThere are two effective solutions to the problem of repeat offenders. One way to tackle this is to ensure that all criminals entering prison are given the chance to retrain with useful skills which will hopefully ensure them a job after they have served their sentence. By doing this, it will help them reintegrate back into society and give them some means of supporting themselves financially. Another method of dealing with criminals who reoffend is to have more supervision and checks in place when they are back in society. This solution would hopefully prevent them from taking any chances and deter them from reoffending because they are being so closely watched.\n\nIn conclusion, regardless of the reasons for reoffending, having skills training and education in prison as well as closer observation for newly released offenders can be effective in preventing criminals from committing crimes again.\n\nVOCABULARY FOR THIS TOPIC: Word List for Crime & Punishment Topic\n\nExaminer Comments: This essay addresses the task completely. All parts of the essay question have been covered with relevant ideas. Both causes and solutions have been well-explained. Ideas are logically organised and there is a flexible use of linking devices, which help sign post the direct of the essay. There is a range of sentence structures and also tenses. Vocabulary is also flexible with a good range of less common words that allows for precise meaning. Essay Length: 290 words\n\nRECOMMENDED FOR YOU:\n\nIELTS Problem Solution Essay\nIELTS Opinion Essay Model\nIELTS Advantage Disadvantage Essay Model\nIELTS Discussion Essay Model\nOver 100 IELTS Essay Questions\nAll Model Essays & Tips for Writing Task 2\n\nFREE SUBSCRIBE\n\t\t\t\n\t\t\t\n\t\t\t\t\t\t\t\t\tSubscribe to get new lessons & tips by email.\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\tEmail Address\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tSubscribe\n\n.",
-    "band_target": 7,
-    "key_phrases": []
+    "model_answer": "A large number of criminals who serve their first prison sentence, leave prison only to reoffend. This is mainly because of the lack of rehabilitation and difficulty finding regular employment once released. There are a number of solutions which should be implemented to deal with criminals who reoffend.\n\nFirstly, the reason for most first-time offenders committing crimes again, once they have been released from prison, is due to the lack of rehabilitation whilst in prison. In other words, offenders are not given a chance to retrain and learn new skills for their future or develop a deeper understanding of correct moral behaviour and instead mix with other criminals, which only strengthens their criminal intentions. Secondly, repeat offending is also owing to the difficulty in finding employment after being released. As a result, many of them struggle financially which leads them back to crime, regardless of the consequences.\n\nThere are two effective solutions to the problem of repeat offenders. One way to tackle this is to ensure that all criminals entering prison are given the chance to retrain with useful skills which will hopefully ensure them a job after they have served their sentence. By doing this, it will help them reintegrate back into society and give them some means of supporting themselves financially. Another method of dealing with criminals who reoffend is to have more supervision and checks in place when they are back in society. This solution would hopefully prevent them from taking any chances and deter them from reoffending because they are being so closely watched.\n\nIn conclusion, regardless of the reasons for reoffending, having skills training and education in prison as well as closer observation for newly released offenders can be effective in preventing criminals from committing crimes again.",
+    "band_target": 9,
+    "key_phrases": ["lack of rehabilitation", "reintegrate back into society", "supervision and checks", "deter from reoffending", "skills training and education in prison"]
   },
   {
-    "id": "ielts_model_essay_score_9_for_direct_questions",
-    "topic": "IELTS Model Essay Score 9 for Direct Questions",
-    "essay_type": "direct_question",
-    "question": "Some people think that money is one of the most essential factors in promoting happiness.\nDo you think people can be happy without much money?\nWhat other factors contribute towards happiness?",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_writing_task_2_sample_answer_band_9",
-    "topic": "IELTS Writing Task 2 Sample Answer Band 9",
+    "id": "opinion_social_networking_facebook",
+    "topic": "Technology & Society",
     "essay_type": "opinion",
-    "question": "Many people believe that social networking sites (such as Facebook) have had a huge negative impact on both individuals and society.\nTo what extent do you agree?",
-    "model_answer": "",
-    "band_target": 7,
-    "key_phrases": []
+    "question": "Many people believe that social networking sites (such as Facebook) have had a huge negative impact on both individuals and society. To what extent do you agree?",
+    "model_answer": "Social networking sites, for instance Facebook, are thought by some to have had a detrimental effect on individual people as well as society and local communities. However, while I believe that such sites are mainly beneficial to the individual, I agree that they have had a damaging effect on local communities.\n\nWith regards to individuals, the impact that online social media has had on each individual person has clear advantages. Firstly, people from different countries are brought together through such sites as Facebook whereas before the development of technology and social networking sites, people rarely had the chance to meet or communicate with anyone outside of their immediate circle or community. Secondly, Facebook also has social groups which offer individuals a chance to meet and participate in discussions with people who share common interests.\n\nOn the other hand, the effect that Facebook and other social networking sites have had on societies and local communities can only be seen as negative. Rather than individual people taking part in their local community, they are instead choosing to take more interest in people online. Consequently, the people within local communities are no longer forming close or supportive relationships. Furthermore, society as a whole is becoming increasingly disjointed and fragmented as people spend more time online with people they have never met face to face and who they are unlikely to ever meet in the future.\n\nTo conclude, although social networking sites have brought individuals closer together, they have not had the same effect on society or local communities. Local communities should do more to try and involve local people in local activities in order to promote the future of community life.",
+    "band_target": 9,
+    "key_phrases": ["detrimental effect", "mainly beneficial to the individual", "damaging effect on local communities", "increasingly disjointed and fragmented", "brought individuals closer together"]
   },
   {
-    "id": "ielts_discussion_essay_model_answer_with_technique",
-    "topic": "IELTS Discussion Essay Model Answer with Techniques & Tips",
-    "essay_type": "discussion",
-    "question": "Completing university education is thought by some to be the best way to get a good job. On the other hand, other people think that getting experience and developing soft skills is more important.Discuss both sides and give your opinion.",
-    "model_answer": "Discussion Essay Question\n\nCompleting university education is thought by some to be the best way to get a good job. On the other hand, other people think that getting experience and developing soft skills is more important.Discuss both sides and give your opinion.\n\nDiscussion Essay Model Answer\n\nSome people think that being a university graduate is the key to securing a good job, while others think experience and soft skills are better. In my opinion, I believe that the former is essential for academic jobs, while the latter are more useful in business and related industries.\n\nOn the one hand, many people think it is easy find good employment with an undergrad degree or above because it puts people one step ahead of other applicants, and can be the deciding factor between applicants. Furthermore, certain career paths are not open to those without a higher level of education, such as jobs requiring academic or specialist knowledge, namely teachers, lecturers, doctors and lawyers. Not only that, but academia does promote the development of useful skills, not just academic knowledge, for example analytical thinking, research skills and intellectual curiosity, which are valuable transferable skills. For this reason, I believe that in tertiary education offers an advantage mainly for those aiming for a professional or academic career.\n\nOn the other hand, having relevant work experience and soft skills can throw the balance in favour of the job applicant for certain types of work. For instance, for a corporate management position, having experience of managing others, running projects, delegating tasks and strong emotional intelligence is of more importance than the theory of management with no real hands-on experience when fresh out of university. Also, certain industries require interpersonal skills which can only be developed through extensive experience with people, such as in customer service, hospitality and sales. Consequently, it can be seen that tertiary education is no advantage at all in some areas.\n\nIn conclusion, I think that securing a good job requires a relevant background specific to the career or job the applicant is applying for. Some positions will require an academic background, whilst others benefit more from experience and skills.\n\nNote: Please note that this essay is over 300 words. Longer doesn’t mean better. Most IELTS essays will be between 270 and 290 words, even for band 9. However, 300 words or just over is possible as long as ideas and supporting points remain highly relevant, and language errors are kept to an absolute minimum.\n\n<img fetchpriority=\"high\" decoding=\"async\" width=\"1724\" height=\"1412\" src=\"https://ieltsliz.com/wp-content/uploads/2025/11/Smaller-10.jpg\" alt=\"\" class=\"wp-image-20876\" style=\"width:277px;height:auto\" srcset=\"https://ieltsliz.com/wp-content/uploads/2025/11/Smaller-10.jpg 1724w, https://ieltsliz.com/wp-content/uploads/2025/11/Smaller-10-300x246.jpg 300w, https://ieltsliz.com/wp-content/uploads/2025/11/Smaller-10-1024x839.jpg 1024w, https://ieltsliz.com/wp-content/uploads/2025/11/Smaller-10-768x629.jpg 768w, https://ieltsliz.com/wp-content/uploads/2025/11/Smaller-10-1536x1258.jpg 1536w\" sizes=\"(max-width: 1724px) 100vw, 1724px\" />\n\nADVANCED IELTS ESSAY LESSONS\n\nIELTS LIZ STORE\n\nDevelop your skills & techniques!\n\n.\n\nRECOMMENDED FOR YOU\n\nIELTS Opinion Essay Model\nIELTS Advantage Disadvantage Essay Model\nOver 100 IELTS Essay Questions\nDiscussion Essay Practice Questions\nALL MODEL ESSAYS AND TIPS FOR WRITING TASK 2\n\nFREE SUBSCRIBE\n\t\t\t\n\t\t\t\n\t\t\t\t\t\t\t\t\tSubscribe to get new lessons & tips by email.\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\tEmail Address\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tSubscribe\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\n.",
-    "band_target": 7,
-    "key_phrases": []
-  },
-  {
-    "id": "ielts_writing_task_2_model",
-    "topic": "IELTS Writing Task 2 Model",
+    "id": "direct_q_money_happiness",
+    "topic": "Happiness & Wellbeing",
     "essay_type": "direct_question",
-    "question": "In some parts of the world it is becoming popular to research the history of one’s own family. Why might people want to do this? Is it a positive or negative development?",
-    "model_answer": "",
+    "question": "Some people think that money is one of the most essential factors in promoting happiness. Do you think people can be happy without much money? What other factors contribute towards happiness?",
+    "model_answer": "Money is considered by many people to be one of the most important contributing factors towards happiness. In my opinion, it is possible for people to be happy even if they have little money and other aspects of life can play a more vital role in creating happiness than wealth alone.\n\nAlthough money allows people to afford luxuries and treats, which certainly do bring temporary enjoyment and satisfaction, a substantial number of people are happy without money. Firstly, money is no guarantee of happiness, particularly if disease or disaster feature largely in someone's life. Secondly, as long as people have the money to cover their necessities, doing without luxury items does not negatively affect the pleasures that a good life can bring.\n\nAnother way people can gain satisfaction in their life is through their work rather than money. For instance, a doctor doing volunteer service overseas in underdeveloped countries may earn little or no money, but the reward of doing such work is profoundly rewarding. Not only that but it can be a long-term fulfilment that they carry with them through life in the form of rich memories and the knowledge of a life well-lived.\n\nFinally, another influencing factor of contentment in life is having supportive and loving people in one's life. While money may bring opportunities to enjoy pleasures, few people would enjoy them in isolation. Being surrounded by a loving and caring family is considered by many people to be the most valuable thing in life. This is one aspect of life that money certainly cannot buy.\n\nIn conclusion, money is not essential for happiness, which can be found through job satisfaction as well as family. If more people strived in life towards true happiness rather than money, the world would be a better place.",
+    "band_target": 9,
+    "key_phrases": ["temporary enjoyment", "no guarantee of happiness", "profoundly rewarding", "long-term fulfilment", "money certainly cannot buy"]
+  },
+  {
+    "id": "advantages_disadvantages_one_global_language",
+    "topic": "Language & Culture",
+    "essay_type": "advantages_disadvantages",
+    "question": "The development of tourism contributed to English becoming the most prominent language in the world. Some people think this will lead to English becoming the only language to be spoken globally. What are the advantages and disadvantages to having one language in the world?",
+    "model_answer": "It is thought by some people that English, which is now the most widely spoken language in the world, may one day predominate over all other languages and result in their eventual disappearance. Having one language would certainly aid understanding and economic growth but there will also be some drawbacks.\n\nOne evident benefit to having one global language is that it would enable greater understanding between countries. In other words, if everyone spoke one language, there would be complete understanding between not only countries but all people throughout the world which would promote learning, the flow of information and ideas. Another reason that one language would be advantageous is that it would help economic growth. With all people speaking the same language, there would be fewer barriers and therefore trade would flourish between countries, resulting in a healthier world economy.\n\nOn the other hand, there are obvious downsides to having only one global language. Firstly, it would mean that all other languages would eventually disappear and, along with them, their cultures. The diversity of cultures is one of the joys this world has to offer. Each culture is unique with its own way of life and own perspectives of the world which would all be lost if there were only one language. Secondly, it would result in the collapse of tourism because there would be no reason to travel for pleasure and interest if all countries had the same language and similar cultures. This would devastate many countries economically that rely on tourism as a source of income.\n\nIn conclusion, while there are plus points to having one global language, too much would be lost as a result. Maintaining local languages and cultures should be prioritised to ensure a rich world heritage for future generations.",
     "band_target": 7,
-    "key_phrases": []
+    "key_phrases": ["promote learning and the flow of information", "trade would flourish", "diversity of cultures", "collapse of tourism", "rich world heritage for future generations"]
+  },
+  {
+    "id": "opinion_overweight_pe_lessons",
+    "topic": "Health & Lifestyle",
+    "essay_type": "opinion",
+    "question": "The growing number of overweight people is putting a strain on the health care system in an effort to deal with the health issues involved. Some people think that the best way to deal with this problem is to introduce more physical education lessons in the school curriculum. To what extent do you agree or disagree?",
+    "model_answer": "Owing to the problems which a growing population of overweight people cause for the health care system, it is thought that the key to solving this issue is to have more sport and exercise in schools. I agree that this is one way to tackle the problem, but diet must also be taken into consideration.\n\nIncreasing sport or regular exercise in schools is a useful way to tackle weight problems in the long run in the general population. This method will encourage a new generation to develop vital habits which support overall health and also help them maintain a reasonable weight. At the moment, the average child in the West does sport possibly twice a week, which is not enough to counteract their otherwise sedentary lifestyle that comes from many hours each day of sitting at a desk for their lessons. By incorporating more exercise time and possibly extracurricular physical activities, they will undoubtedly become fitter and more active, and continue living that way after leaving schools.\n\nHowever, targeting physical exercise in school children to reduce the current issue of obesity in the wider population is not effective enough on its own. Firstly, children in schools need to also be educated about what constitutes healthy foods and why in order to ensure a new generation of people who understand clean eating. Secondly, for a more immediate impact, it is important to look at reducing the number of ultra processed foods (UPFs) on the market which too many people gravitate towards. For example, the government could impose a tax on UPFs to increase the price, and also reduce the cost of healthy foods, such as vegetables, to encourage a better diet.\n\nIn conclusion, I believe the best approach to tackling weight issues in the population starts with diet and exercise in schools but must also include encouraging a healthier diet through price changes targeting specific foods on the market.",
+    "band_target": 7,
+    "key_phrases": ["tackle the problem", "sedentary lifestyle", "vital habits", "ultra processed foods", "diet and exercise in schools"]
+  },
+  {
+    "id": "advantages_disadvantages_ebooks",
+    "topic": "Technology & Society",
+    "essay_type": "advantages_disadvantages",
+    "question": "In recent years, more and more people are choosing to read e-books rather than paper books. Do the advantages outweigh the disadvantages?",
+    "model_answer": "An increasing number of people are using e-books as a reading tool, such as a kindle, instead of traditional paper books. I believe there are significant benefits to using e-books over paper books with only a few minor drawbacks.\n\nE-books have enormous advantages over the paper book mainly because of the vast number of books that an e-book device, namely a kindle, can contain. Kindles are able to contain thousands of books which you can categorise and organise on a device that is lighter than a tablet. For people who are travelling or those who want easy access to multiple books, these devices are perfect. Furthermore, e-books can be purchased with the click of a button giving instant access to the book without having to wait for delivery.\n\nOn the other hand, there is a downside to choosing an e-book over a paper book. The main issue is that it can be hard to find books on specialist subjects in electronic form. Many specialist and old books are only available as a paper book and can only be found in libraries. Another point to consider is that e-books are yet another device which people are glued to and that does have an impact on eye sight and health in general. It has long been known that people spend too much time on their devices and therefore reading a paper book might actually be preferable from time to time.\n\nIn conclusion, I think e-books have brought numerous gains to people's lives through accessibility and convenience that truly benefit people's lives, but there are disadvantages that should not be ignored.",
+    "band_target": 7,
+    "key_phrases": ["vast number of books", "lighter than a tablet", "instant access", "specialist subjects not available electronically", "impact on eye sight"]
+  },
+  {
+    "id": "direct_q_family_history_research",
+    "topic": "Culture & Identity",
+    "essay_type": "direct_question",
+    "question": "In some parts of the world it is becoming popular to research the history of one's own family. Why might people want to do this? Is it a positive or negative development?",
+    "model_answer": "Exploring one's family background and history is becoming increasingly popular in numerous countries around the world. In my opinion, through research and knowing more about one's family, people can see common trends passed through generations and useful information which can only be seen as beneficial for people's future.\n\nFirstly, some people look into their family history in order to discover any common trends with family members of a previous generation. This can be especially so with people who have particular skills, gifts or interests in uncommon fields. In other words, as some gifts and skills are hereditary, it can be interesting for people to learn how many others in their family shared these talents from previous generations.\n\nAnother reason for the popularity of finding out about one's family history is often due to general curiosity of one's geographical origins. That is to say, some families moved abroad, away from their own country, generations ago which resulted in them losing their original culture and adopting the culture of the country they moved to. Therefore, through research, people can learn more about their country of origin and understand more about the culture that their family originally came from.\n\nFinally, the trend of researching family history is certainly beneficial and can help people find their place in the world. Some people feel a lack of direction in life or are dislocated from others but by learning more about their past family history, it can help them relate to the world and feel more comfortable about who they are. Take, for example, a person who feels nervous about making a certain choice in life, they may feel comforted by knowing that others in their family made the same choice many generations ago.\n\nIn conclusion, it can be advantageous for people to learn more about their family's background and origins. It would be useful for children to learn about their own family history, if this was incorporated into the school curriculum.",
+    "band_target": 7,
+    "key_phrases": ["common trends passed through generations", "hereditary skills", "geographical origins", "find their place in the world", "feel more comfortable about who they are"]
+  },
+  {
+    "id": "opinion_online_socialising",
+    "topic": "Technology & Society",
+    "essay_type": "opinion",
+    "question": "Nowadays, more people are choosing to socialise online rather than face to face. Is this a positive or negative development?",
+    "model_answer": "An increasing number of people meet and talk to their friends online instead of in person. In my opinion, this is a negative development which can lead to isolation, potentially harmful situations and also problems later on in life.\n\nOne serious problem that can arise from people socialising online is that it can lead to isolation. Before the internet, people would frequently go out to meet friends, for example in cafes, bars or restaurants, whereas now people prefer to stay at home alone, chatting online. As a result, people are starting to spend the majority of their time alone at home in their room without meeting others. Isolation of this kind is not healthy and can sometimes lead to depression and other issues.\n\nAnother issue is that meeting people online can be risky. In other words, people can assume fake identities online as well as hide their true characteristics. This is particularly concerning for teenagers who are impressionable and can easily be led into dangerous situations. Furthermore, as this interaction is online, parents have no way of monitoring it and protecting their children.\n\nFinally, socialising online can end in difficulties years later as conversations and shared photos that had been forgotten reappear. This situation is currently critical for many people, again especially for teenagers who do not think carefully before posting online. That is to say, information which is put online can remain there forever and while people may share intimate communications with close friends, these words can then resurface later on leading to much embarrassment.\n\nIn conclusion, although it has become more popular for people to socialise through the internet, it has brought about too many problems for this to be considered a positive trend.",
+    "band_target": 7,
+    "key_phrases": ["lead to isolation", "fake identities online", "impressionable teenagers", "information put online can remain there forever", "negative development"]
+  },
+  {
+    "id": "opinion_price_vs_quality",
+    "topic": "Consumer Behaviour",
+    "essay_type": "opinion",
+    "question": "Some people consider price as the most important thing to think about when buying a product (such as a cell phone) or a service (such as medical treatment). Do you agree or disagree?",
+    "model_answer": "It is thought by some people that the price of a product or service is essential to consider before deciding to purchase something. While I agree that price does play a role in many purchase choices, there are other factors that can influence a person.\n\nFirstly, when deciding whether or not to buy something, people will invariably consider if they can afford it. Taking the example of cell phones, these items vary greatly in price from under £100 to well over £1,000, which is a considerable price hike for a functional item. In this case, people on moderate or low incomes are unlikely to choose a more expensive product if a cheaper one can perform the role perfectly so as to avoid going into personal debt.\n\nHowever, price becomes less important for items or services that offer excellent quality. For instance, some high-end phones offer better performance, larger RAM and their cameras take top quality pictures with a variety of editing options. These features could be worth the high price for some people if it impacts their work or if their income is high enough that price is not a factor they need to consider.\n\nFinally, if an item or service is vital to someone's life, price rarely factors into the decision. To illustrate, in the case of a life threatening condition, people are usually willing to spend hundreds of thousands of pounds if the treatment offers them hope of a cure. This is particularly so when there are long waiting lists for treatments making time a major factor or when certain treatments are not readily available to the public thus requiring costly private treatment.\n\nIn conclusion, price is important when making a common purchase for people on limited incomes needing to budget, but it plays less of a role for high quality products and vital services.",
+    "band_target": 7,
+    "key_phrases": ["price does play a role", "people on moderate or low incomes", "price becomes less important", "vital to someone's life", "price rarely factors into the decision"]
+  },
+  {
+    "id": "advantages_disadvantages_apartment_blocks",
+    "topic": "Urban Living",
+    "essay_type": "advantages_disadvantages",
+    "question": "In many cities, many people are living in large apartment blocks. Does this accommodation have more advantages or disadvantages?",
+    "model_answer": "An increasing number of people are choosing to live in high rise apartment blocks. In my opinion, although these blocks of flats are often cheaper, they offer cramped living space and can present serious fire risks.\n\nOne obvious advantage to living in a multi-story apartment block is that it offers people affordable accommodation in urban areas. With the growth of urban populations, land is becoming increasingly expensive and, as a result, many people are no longer able to afford their own house. Large apartment blocks require a small area of land but can provide a lot of flats which enable people on low incomes to continue living near city centers and near their jobs.\n\nHowever, high rise apartment blocks usually offer small apartments with no outdoor areas. For families, this can be a problem as each individual member of the family has little personal space which can result in a build up of tension as relationships can become strained. Another problem is that such restricted living quarters offer no space for exercise which is a vital requirement for healthy living.\n\nFinally, one of the worst problems of living in a high rise block of flats is the fire risk that it presents. If a fire should break out in one of the flats, the number of floors in the building means that people can become easily trapped on the top floors, unable to escape the fire. This was unfortunately illustrated by the Grenfell Tower block fire that claimed 71 lives in London in 2017. The speed with which the fire spread through the 24 floors, made it impossible for everyone to escape.\n\nIn conclusion, while large blocks of flats may be a cheaper living option, they are lower quality accommodation with serious fire risks.",
+    "band_target": 7,
+    "key_phrases": ["affordable accommodation in urban areas", "cramped living space", "no outdoor areas", "little personal space", "serious fire risks"]
+  },
+  {
+    "id": "direct_q_adults_computer_games",
+    "topic": "Technology & Leisure",
+    "essay_type": "direct_question",
+    "question": "More and more adults are playing computer games. Why is this happening? Is it a positive or negative trend?",
+    "model_answer": "It seems that the current trend is for an increasing number of adults to enjoy playing computer games in their free time. With the development of game technology, it is hardly surprising that adults are playing games, but whether it is positive or negative depends on the games played and the time spent on them.\n\nIn terms of why so many adults are choosing to spend time playing computer games, it is mainly because the technology behind the games is becoming more sophisticated. Initially, when games first came out, they were very simplistic and appealed mainly to children. However, things have moved on since then and games have become visually appealing, very absorbing, require great dexterity and some also have a strategic challenge to them which adults particularly like. Such games can attract professional adults looking to hone tactics and skills to other adults wishing just to relax and switch off.\n\nHowever, whether this trend in adults towards computer games is beneficial or not can be challenged. Some adults use complex, challenging games as a form of escapism which keeps their mind sharp and helps them relax at the same time. As long as the time spent on such games is balanced with other healthier pursuits, it can be constructive. Unfortunately, adults who ignore their physical health and spend too much time on mindless, repetitive games develop a sedentary lifestyle which can be detrimental to their wellbeing.\n\nIn conclusion, computer games have become more fascinating and tempting to adults. While games that help develop tactics and knowledge might be advantageous, no game, particularly senseless games, should be played to excess and certainly should not replace healthier leisure activities.",
+    "band_target": 7,
+    "key_phrases": ["more sophisticated technology", "visually appealing and absorbing", "form of escapism", "sedentary lifestyle", "balanced with healthier pursuits"]
+  },
+  {
+    "id": "direct_q_art_education_children",
+    "topic": "Education & Arts",
+    "essay_type": "direct_question",
+    "question": "Art is considered an important part of a society as well as an expression of its culture. Do you think it is important for children to be taught art? Do you think children should be encouraged to focus on art rather than other subjects?",
+    "model_answer": "It is commonly believed that art plays a fundamental role in society as artists are able to express their thoughts and their culture in their work. In my opinion, children should definitely learn art because they can develop creativity and learn to express themselves in their artwork but it should not be taught to the detriment of other subjects.\n\nFirstly, art is an essential subject which children, especially young children, should learn in order to help promote their creativity and imagination. Without the development of imagination and creative thinking, children will struggle to grow into dynamic, individual thinkers when they reach adulthood. Furthermore, some children are particularly gifted in their creative abilities and studying art can help them nurture their talents.\n\nAnother important advantage for children when practicing art is that it provides a medium through which they can express their emotions and feelings. In other words, young children do not have the linguistic capabilities to put their ideas into language and thus communicate directly. Therefore, by using art, they are able to convey meaning through pictures and symbols. For this reason, many child psychologists often study the artwork of children to gain an insight into what they think and feel.\n\nFinally, however, regardless of how useful the study of art is for children, this should not result in more focus being placed on art rather than other subjects. Children need to have a balance of all subjects so as to facilitate a healthy development both mentally and physically. Thus, ensuring that there is a healthy balance of art, sciences, languages and physical education in the school syllabus is essential.\n\nIn conclusion, while art certainly helps a child develop creativity as well as express their thoughts, it should be taught equally alongside all other subjects. A school curriculum should offer a balance of subjects.",
+    "band_target": 7,
+    "key_phrases": ["promote creativity and imagination", "dynamic individual thinkers", "medium through which children express emotions", "healthy balance of all subjects", "school curriculum should offer a balance"]
   }
 ]

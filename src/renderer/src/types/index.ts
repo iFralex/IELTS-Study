@@ -136,6 +136,14 @@ export interface AIEvalResult {
   alternatives: string[]
 }
 
+export interface AIWritingFeedback {
+  band: number
+  overall: string
+  strengths: string[]
+  improvements: string[]
+  vocab_suggestions: string[]
+}
+
 export interface AnalyticsData {
   sessions_by_week: { week: string; listening: number; reading: number; writing: number }[]
   accuracy_by_type: { question_type: string; accuracy: number; attempts: number }[]
@@ -152,6 +160,7 @@ export interface IElectronAPI {
   saveAnswers: (answers: AnswerInput[]) => Promise<void>
   getAnalytics: (days: number) => Promise<AnalyticsData>
   getRecentSessions: (limit: number) => Promise<Session[]>
+  getCompletedExerciseIds: (section: string) => Promise<string[]>
   saveWritingSubmission: (sub: WritingInput) => Promise<void>
   saveExamRun: (run: ExamRunInput) => Promise<void>
   getExamRuns: () => Promise<ExamRun[]>
@@ -162,6 +171,7 @@ export interface IElectronAPI {
   saveFlashcardReview: (review: ReviewInput) => Promise<void>
   generateFlashcard: (word: string) => Promise<AIFlashcardData>
   evaluateAnswer: (word: string, correct: string, userAnswer: string, direction: string) => Promise<AIEvalResult>
+  evaluateWriting: (taskType: 'task1' | 'task2', userText: string, prompt: string, wordCount: number) => Promise<AIWritingFeedback>
 }
 
 declare global {

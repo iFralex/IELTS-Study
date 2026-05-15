@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('api', {
   saveAnswers:           (a: AnswerInput[])  => ipcRenderer.invoke('save-answers', a),
   getAnalytics:          (days: number)      => ipcRenderer.invoke('get-analytics', days),
   getRecentSessions:     (limit: number)     => ipcRenderer.invoke('get-recent-sessions', limit),
+  getCompletedExerciseIds: (section: string) => ipcRenderer.invoke('get-completed-exercise-ids', section),
   saveWritingSubmission: (s: WritingInput)   => ipcRenderer.invoke('save-writing-submission', s),
   saveExamRun:           (r: ExamRunInput)   => ipcRenderer.invoke('save-exam-run', r),
   getExamRuns:           ()                  => ipcRenderer.invoke('get-exam-runs'),
@@ -22,4 +23,6 @@ contextBridge.exposeInMainWorld('api', {
   generateFlashcard:     (word: string)      => ipcRenderer.invoke('generate-flashcard', word),
   evaluateAnswer:        (word: string, correct: string, userAnswer: string, direction: string) =>
                            ipcRenderer.invoke('evaluate-answer', word, correct, userAnswer, direction),
+  evaluateWriting: (taskType: string, userText: string, prompt: string, wordCount: number) =>
+    ipcRenderer.invoke('evaluate-writing', taskType, userText, prompt, wordCount),
 })
