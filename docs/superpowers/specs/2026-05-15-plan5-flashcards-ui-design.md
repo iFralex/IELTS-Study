@@ -148,10 +148,12 @@ ipcMain.handle('evaluate-audio-answer', async (_e, word: string, userEnglish: st
 })
 ```
 
-`preload/index.ts` addition:
+`preload/index.ts` additions:
 ```ts
 evaluateAudioAnswer: (word: string, userEnglish: string, userItalian: string) =>
   ipcRenderer.invoke('evaluate-audio-answer', word, userEnglish, userItalian),
+deleteFlashcard: (id: number) =>
+  ipcRenderer.invoke('delete-flashcard', id),
 ```
 
 ---
@@ -196,7 +198,7 @@ export function Flashcard() {
 }
 ```
 
-`FloatingFlashcardButton` is wired externally via a global state atom or context — see Section 9.
+`FloatingFlashcardButton` receives `onClick` from `App.tsx` via props — see Section 11.
 
 ---
 
