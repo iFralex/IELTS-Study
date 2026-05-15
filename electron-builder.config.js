@@ -13,7 +13,7 @@ module.exports = {
   ],
   extraResources: [
     { from: 'data', to: 'data', filter: ['**/*.json'] },
-    { from: '.env', to: '.env' },
+    { from: 'resources/env.enc', to: 'env.enc' },
   ],
   asarUnpack: [
     '**/node_modules/better-sqlite3/**',

@@ -2,13 +2,14 @@ import { app, BrowserWindow, shell } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { registerIpcHandlers } from './ipc'
+import { loadEncryptedEnv } from './keyStore'
 import * as dotenv from 'dotenv'
 
-dotenv.config({
-  path: app.isPackaged
-    ? join(process.resourcesPath, '.env')
-    : join(app.getAppPath(), '.env'),
-})
+if (app.isPackaged) {
+  loadEncryptedEnv()
+} else {
+  dotenv.config({ path: join(app.getAppPath(), '.env') })
+}
 
 function createWindow(): void {
   const win = new BrowserWindow({
