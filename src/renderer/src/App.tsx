@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Sidebar } from './components/Sidebar'
 import { FloatingFlashcardButton } from './components/FloatingFlashcardButton'
+import { AddCardModal } from './components/flashcard/AddCardModal'
 import { Dashboard } from './pages/Dashboard'
 import { Listening } from './pages/practice/Listening'
 import { Reading } from './pages/practice/Reading'
@@ -11,6 +13,8 @@ import { Library } from './pages/Library'
 import { Flashcard } from './pages/Flashcard'
 
 export default function App() {
+  const [flashModalOpen, setFlashModalOpen] = useState(false)
+
   return (
     <HashRouter>
       <div className="flex h-screen bg-base text-text overflow-hidden">
@@ -27,7 +31,8 @@ export default function App() {
             <Route path="/flashcard" element={<Flashcard />} />
           </Routes>
         </main>
-        <FloatingFlashcardButton />
+        <FloatingFlashcardButton onClick={() => setFlashModalOpen(true)} />
+        {flashModalOpen && <AddCardModal onClose={() => setFlashModalOpen(false)} />}
       </div>
     </HashRouter>
   )
