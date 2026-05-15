@@ -2,6 +2,10 @@ import { app } from 'electron'
 import crypto from 'crypto'
 import path from 'path'
 import fs from 'fs'
+import { generateText, type LanguageModel } from 'ai'
+import { createAnthropic } from '@ai-sdk/anthropic'
+import { createGoogleGenerativeAI } from '@ai-sdk/google'
+import { createOpenAI } from '@ai-sdk/openai'
 
 // 32-byte AES-256 key — must match scripts/encrypt-env.js
 const SECRET = Buffer.from('IeltsStudySecureKey2024xK7pQ!!!!', 'utf8')
@@ -24,6 +28,18 @@ export function loadEncryptedEnv(): void {
       process.env[k] = v
     }
   } catch {
-    // silently ignore — key will be missing and AI features will fail gracefully
+    // silently ignore — AI features will fail gracefully
   }
 }
+
+export function getModel(): LanguageModel {
+  const provider = process.env.AI_PROVIDER ?? 'anthropic'
+  const model    = process.env.AI_MODEL    ?? 'claude-haiku-4-5-20251001'
+  const key      = process.env.AI_API_KEY  ?? ''
+  if (provider === 'anthropic') return createAnthropic({ apiKey: key })(model)
+  if (provider === 'google')    return createGoogleGenerativeAI({ apiKey: key })(model)
+  if (provider === 'openai')    return createOpenAI({ apiKey: key })(model)
+  throw new Error(`Provider non supportato: ${provider}`)
+}
+
+export { generateText }

@@ -1,8 +1,8 @@
 import { ipcMain, app } from 'electron'
 import path from 'path'
 import fs from 'fs'
-import Anthropic from '@anthropic-ai/sdk'
 import { getDb } from './db'
+import { getModel, generateText } from './keyStore'
 import type {
   SessionInput, AnswerInput, WritingInput,
   ExamRunInput, FlashcardInput, ReviewInput
@@ -20,11 +20,6 @@ function readJson<T>(relPath: string): T[] {
   }
 }
 
-let _anthropic: Anthropic | null = null
-function anthropic(): Anthropic {
-  if (!_anthropic) _anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-  return _anthropic
-}
 
 export function registerIpcHandlers(): void {
   const db = getDb(app.getPath('userData'))
@@ -183,36 +178,30 @@ export function registerIpcHandlers(): void {
 
   // ── AI (Flashcard) ───────────────────────────────────────────────────────────
   ipcMain.handle('generate-flashcard', async (_e, word: string) => {
-    const msg = await anthropic().messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 1200,
-      messages: [{ role: 'user', content:
-        `Generate a flashcard for the English word: "${word}"\n\nReturn ONLY valid JSON, no markdown:\n{"english":"word","italian":"main translation","synonyms_en":"syn1, syn2, syn3","synonyms_it":"sin1, sin2, sin3","examples_en":"Ex 1\\n\\nEx 2\\n\\nEx 3","examples_it":"Es 1\\n\\nEs 2\\n\\nEs 3"}`
-      }],
+    const { text } = await generateText({
+      model: getModel(),
+      maxOutputTokens: 1200,
+      prompt: `Generate a flashcard for the English word: "${word}"\n\nReturn ONLY valid JSON, no markdown:\n{"english":"word","italian":"main translation","synonyms_en":"syn1, syn2, syn3","synonyms_it":"sin1, sin2, sin3","examples_en":"Ex 1\\n\\nEx 2\\n\\nEx 3","examples_it":"Es 1\\n\\nEs 2\\n\\nEs 3"}`,
     })
-    return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
+    return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
 
   ipcMain.handle('evaluate-answer', async (_e, word: string, correct: string, userAnswer: string, direction: string) => {
-    const msg = await anthropic().messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 500,
-      messages: [{ role: 'user', content:
-        `Evaluate this translation answer:\nWord: ${word}\nDirection: ${direction}\nUser answer: "${userAnswer}"\nCorrect: "${correct}"\n\nAccept variants and synonyms. Return ONLY valid JSON:\n{"is_correct":true,"quality":5,"explanation":"brief","alternatives":["alt1"]}`
-      }],
+    const { text } = await generateText({
+      model: getModel(),
+      maxOutputTokens: 500,
+      prompt: `Evaluate this translation answer:\nWord: ${word}\nDirection: ${direction}\nUser answer: "${userAnswer}"\nCorrect: "${correct}"\n\nAccept variants and synonyms. Return ONLY valid JSON:\n{"is_correct":true,"quality":5,"explanation":"brief","alternatives":["alt1"]}`,
     })
-    return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
+    return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
 
   ipcMain.handle('evaluate-audio-answer', async (_e, word: string, userEnglish: string, userItalian: string) => {
-    const msg = await anthropic().messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 600,
-      messages: [{ role: 'user', content:
-        `Evaluate these two answers for the word "${word}":\nSpelling: "${userEnglish}" (correct: "${word}")\nTranslation: "${userItalian}"\n\nAccept minor spelling variants for the translation. Return ONLY valid JSON:\n{"english_correct":true,"italian_correct":true,"quality":5,"english_explanation":"brief","italian_explanation":"brief"}`
-      }],
+    const { text } = await generateText({
+      model: getModel(),
+      maxOutputTokens: 600,
+      prompt: `Evaluate these two answers for the word "${word}":\nSpelling: "${userEnglish}" (correct: "${word}")\nTranslation: "${userItalian}"\n\nAccept minor spelling variants for the translation. Return ONLY valid JSON:\n{"english_correct":true,"italian_correct":true,"quality":5,"english_explanation":"brief","italian_explanation":"brief"}`,
     })
-    return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
+    return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
 
   ipcMain.handle('delete-flashcard', (_e, id: number) =>
@@ -221,14 +210,12 @@ export function registerIpcHandlers(): void {
 
   ipcMain.handle('evaluate-writing', async (_e, taskType: string, userText: string, prompt: string, wordCount: number) => {
     const taskLabel = taskType === 'task1' ? 'Task 1 (graph/chart/map description)' : 'Task 2 (essay)'
-    const msg = await anthropic().messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 1000,
-      messages: [{ role: 'user', content:
-        `You are an IELTS examiner. Evaluate this IELTS Writing ${taskLabel} response.\n\nPrompt: ${prompt}\n\nWord count: ${wordCount}\n\nResponse:\n${userText}\n\nReturn ONLY valid JSON, no markdown:\n{"band":6.5,"overall":"2-3 sentence summary","strengths":["point 1","point 2"],"improvements":["point 1","point 2"],"vocab_suggestions":["word 1","word 2","word 3"]}`
-      }],
+    const { text } = await generateText({
+      model: getModel(),
+      maxOutputTokens: 1000,
+      prompt: `You are an IELTS examiner. Evaluate this IELTS Writing ${taskLabel} response.\n\nPrompt: ${prompt}\n\nWord count: ${wordCount}\n\nResponse:\n${userText}\n\nReturn ONLY valid JSON, no markdown:\n{"band":6.5,"overall":"2-3 sentence summary","strengths":["point 1","point 2"],"improvements":["point 1","point 2"],"vocab_suggestions":["word 1","word 2","word 3"]}`,
     })
-    return JSON.parse((msg.content[0] as { text: string }).text.replace(/```json|```/g, '').trim())
+    return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
 }
 
