@@ -10,7 +10,7 @@ import { scoreAnswers } from '../components/practice/utils'
 import { countWords } from '../components/practice/writingUtils'
 
 type SectionType = 'listening' | 'reading' | 'writing'
-type ExamPhase = 'loading' | 'setup' | 'running' | 'evaluating' | 'results' | 'error'
+type ExamPhase = 'loading' | 'setup' | 'running' | 'evaluating' | 'results'
 
 interface AIWritingPair {
   t1: AIWritingFeedback | null
@@ -25,6 +25,17 @@ function fmtSec(s: number): string {
   const m = Math.floor(s / 60)
   const sec = s % 60
   return `${m}:${sec.toString().padStart(2, '0')}`
+}
+
+function scoreRow(result: ListeningResult | ReadingResult): { snap: string; total: string } {
+  if (!result.exercise) return { snap: '—', total: '—' }
+  let snap = '—'
+  if (result.snapshotAnswers) {
+    const { correctCount, maxScore } = scoreAnswers(result.exercise.questions, result.snapshotAnswers)
+    snap = `${correctCount}/${maxScore}`
+  }
+  const { correctCount, maxScore } = scoreAnswers(result.exercise.questions, result.answers)
+  return { snap, total: `${correctCount}/${maxScore}` }
 }
 
 export function ExamSimulator() {
@@ -122,6 +133,10 @@ export function ExamSimulator() {
     const { listening, reading, writing } = resultsRef.current
     const now = Date.now()
 
+    let listenScore: number | undefined
+    let readScore: number | undefined
+    let writeScore: number | undefined
+
     if (listening?.exercise) {
       const { correctCount, maxScore } = scoreAnswers(listening.exercise.questions, listening.answers)
       window.api.saveSession({
@@ -133,6 +148,7 @@ export function ExamSimulator() {
         max_score: maxScore,
         time_spent_seconds: listening.elapsedSeconds,
       }).catch(() => {})
+      listenScore = maxScore > 0 ? correctCount / maxScore : undefined
     }
     if (reading?.exercise) {
       const { correctCount, maxScore } = scoreAnswers(reading.exercise.questions, reading.answers)
@@ -145,6 +161,7 @@ export function ExamSimulator() {
         max_score: maxScore,
         time_spent_seconds: reading.elapsedSeconds,
       }).catch(() => {})
+      readScore = maxScore > 0 ? correctCount / maxScore : undefined
     }
     if (writing) {
       window.api.saveWritingSubmission({
@@ -163,17 +180,6 @@ export function ExamSimulator() {
       }).catch(() => {})
     }
 
-    let listenScore: number | undefined
-    let readScore: number | undefined
-    let writeScore: number | undefined
-    if (listening?.exercise) {
-      const { correctCount, maxScore } = scoreAnswers(listening.exercise.questions, listening.answers)
-      listenScore = maxScore > 0 ? correctCount / maxScore : undefined
-    }
-    if (reading?.exercise) {
-      const { correctCount, maxScore } = scoreAnswers(reading.exercise.questions, reading.answers)
-      readScore = maxScore > 0 ? correctCount / maxScore : undefined
-    }
     if (pair) {
       const bands = [pair.t1?.band, pair.t2?.band].filter((b): b is number => b != null)
       writeScore = bands.length > 0 ? bands.reduce((a, b) => a + b, 0) / bands.length : undefined
@@ -240,15 +246,6 @@ export function ExamSimulator() {
 
   if (phase === 'results') {
     const { listening, reading, writing } = resultsRef.current
-
-    function scoreRow(result: ListeningResult | ReadingResult) {
-      if (!result.exercise) return { snap: '—', total: '—' }
-      const snap = result.snapshotAnswers
-        ? (() => { const { correctCount, maxScore } = scoreAnswers(result.exercise!.questions, result.snapshotAnswers!); return `${correctCount}/${maxScore}` })()
-        : '—'
-      const { correctCount, maxScore } = scoreAnswers(result.exercise.questions, result.answers)
-      return { snap, total: `${correctCount}/${maxScore}` }
-    }
 
     const listenRow = listening ? scoreRow(listening) : null
     const readRow = reading ? scoreRow(reading) : null
