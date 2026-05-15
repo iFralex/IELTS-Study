@@ -157,8 +157,8 @@ export function ExamWritingSection({ onComplete }: Props) {
       </div>
 
       {/* Prompt */}
-      <div className="px-6 py-3 bg-mantle/40 border-b border-surface0 shrink-0">
-        <p className="text-sm text-text leading-relaxed line-clamp-3">{prompt}</p>
+      <div className="px-6 py-3 bg-mantle/40 border-b border-surface0 max-h-40 overflow-y-auto shrink-0">
+        <p className="text-sm text-text leading-relaxed">{prompt}</p>
       </div>
 
       {/* Editor */}

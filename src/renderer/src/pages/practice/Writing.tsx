@@ -226,6 +226,16 @@ export function Writing() {
 
         {/* Bottom bar */}
         <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-end gap-3">
+          {(() => {
+            const wc = countWords(session.text)
+            const min = taskType === 'task1' ? 150 : 250
+            const color = wc === 0 ? 'text-subtext0' : wc >= min ? 'text-green' : 'text-yellow'
+            return (
+              <span className={`text-xs font-mono ${color}`}>
+                {wc} / {min} parole
+              </span>
+            )
+          })()}
           {isEvaluating ? (
             <span className="text-sm text-subtext0 animate-pulse">Valutazione in corso…</span>
           ) : (

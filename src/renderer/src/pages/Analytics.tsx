@@ -82,7 +82,7 @@ export function Analytics() {
         {analytics && (
           <>
             {/* Stat cards */}
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <StatCard value={String(analytics.total_sessions)}             label="Sessioni totali" />
               <StatCard value={formatAccuracy(analytics.average_accuracy)}   label="Accuratezza media" color="text-green" />
               <StatCard value={formatDuration(analytics.total_time_seconds)} label="Tempo studio"     color="text-blue" />

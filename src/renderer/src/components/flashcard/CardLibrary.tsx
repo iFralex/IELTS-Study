@@ -7,6 +7,7 @@ export function CardLibrary({ onStartReview }: Props) {
   const [cards, setCards] = useState<Flashcard[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
 
   function load() {
     setError(null)
@@ -90,13 +91,30 @@ export function CardLibrary({ onStartReview }: Props) {
                     ? <span className="text-xs bg-yellow/20 text-yellow px-2 py-0.5 rounded">oggi</span>
                     : <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">inter. {card.interval}</span>
                   }
-                  <button
-                    onClick={() => handleDelete(card.id)}
-                    className="text-subtext0 hover:text-red transition-colors text-sm px-1"
-                    title="Elimina"
-                  >
-                    🗑
-                  </button>
+                  {confirmDeleteId === card.id ? (
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => { void handleDelete(card.id); setConfirmDeleteId(null) }}
+                        className="text-xs text-red hover:text-red/80 transition-colors px-1"
+                      >
+                        Elimina
+                      </button>
+                      <button
+                        onClick={() => setConfirmDeleteId(null)}
+                        className="text-xs text-subtext0 hover:text-text transition-colors px-1"
+                      >
+                        Annulla
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setConfirmDeleteId(card.id)}
+                      className="text-subtext0 hover:text-red transition-colors text-sm px-1"
+                      title="Elimina"
+                    >
+                      🗑
+                    </button>
+                  )}
                 </div>
               </div>
             )

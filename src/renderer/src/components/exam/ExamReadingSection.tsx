@@ -28,6 +28,7 @@ export function ExamReadingSection({ onComplete }: Props) {
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [elapsed, setElapsed] = useState(0)
   const [snapshotTaken, setSnapshotTaken] = useState(false)
+  const [snapshotFlash, setSnapshotFlash] = useState(false)
   const snapshotRef = useRef<Record<number, string> | null>(null)
   const answersRef = useRef<Record<number, string>>({})
 
@@ -53,6 +54,8 @@ export function ExamReadingSection({ onComplete }: Props) {
         if (next === TARGET_SECONDS && snapshotRef.current === null) {
           snapshotRef.current = { ...answersRef.current }
           setSnapshotTaken(true)
+          setSnapshotFlash(true)
+          setTimeout(() => setSnapshotFlash(false), 3000)
         }
         return next
       })
@@ -94,12 +97,12 @@ export function ExamReadingSection({ onComplete }: Props) {
   return (
     <div className="h-full flex flex-col overflow-hidden">
       {/* Timer bar */}
-      <div className="px-6 py-2 bg-surface0/50 border-b border-surface0 flex items-center justify-between shrink-0">
+      <div className={`px-6 py-2 border-b border-surface0 flex items-center justify-between shrink-0 transition-colors duration-500 ${snapshotFlash ? 'bg-yellow/20' : 'bg-surface0/50'}`}>
         <span className="text-xs text-subtext0 truncate">{exercise.title}</span>
         <div className="flex items-center gap-3 shrink-0">
           <span className="text-sm font-mono font-semibold text-text">{fmtSec(elapsed)}</span>
           {snapshotTaken
-            ? <span className="text-xs text-yellow bg-yellow/10 px-2 py-0.5 rounded-full">📸 snapshot a 1:00:00</span>
+            ? <span className={`text-xs text-yellow px-2 py-0.5 rounded-full transition-colors ${snapshotFlash ? 'bg-yellow/30' : 'bg-yellow/10'}`}>📸 snapshot a 1:00:00</span>
             : <span className="text-xs text-subtext0">/ 1:00:00 target</span>}
         </div>
       </div>

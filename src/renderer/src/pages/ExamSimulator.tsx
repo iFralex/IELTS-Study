@@ -208,6 +208,12 @@ export function ExamSimulator() {
       <div className="h-full flex flex-col items-center justify-center gap-4">
         <div className="w-8 h-8 border-2 border-mauve border-t-transparent rounded-full animate-spin" />
         <p className="text-subtext0 text-sm">Valutazione AI in corso…</p>
+        <button
+          onClick={() => void saveAndShowResults(null)}
+          className="text-xs text-subtext0 hover:text-text underline transition-colors mt-2"
+        >
+          Salta valutazione
+        </button>
       </div>
     )
   }
@@ -283,7 +289,10 @@ export function ExamSimulator() {
               <tbody>
                 {listenRow && listening && (
                   <tr className="border-b border-surface0/50">
-                    <td className="px-4 py-3 text-text">🎧 Listening</td>
+                    <td className="px-4 py-3 text-text">
+                      🎧 Listening
+                      {!listening.exercise && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
+                    </td>
                     <td className="px-4 py-3 text-right text-subtext0">{listenRow.snap}</td>
                     <td className="px-4 py-3 text-right font-medium text-green">{listenRow.total}</td>
                     <td className="px-4 py-3 text-right text-subtext0">{fmtSec(listening.elapsedSeconds)}</td>
@@ -291,7 +300,10 @@ export function ExamSimulator() {
                 )}
                 {readRow && reading && (
                   <tr className="border-b border-surface0/50">
-                    <td className="px-4 py-3 text-text">📖 Reading</td>
+                    <td className="px-4 py-3 text-text">
+                      📖 Reading
+                      {!reading.exercise && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
+                    </td>
                     <td className="px-4 py-3 text-right text-subtext0">{readRow.snap}</td>
                     <td className="px-4 py-3 text-right font-medium text-green">{readRow.total}</td>
                     <td className="px-4 py-3 text-right text-subtext0">{fmtSec(reading.elapsedSeconds)}</td>

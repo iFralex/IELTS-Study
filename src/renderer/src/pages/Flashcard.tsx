@@ -17,7 +17,7 @@ export function Flashcard() {
               className={`px-4 py-1.5 rounded text-sm transition-colors ${
                 activeTab === t ? 'bg-mauve text-base font-medium' : 'bg-surface0 text-subtext0 hover:text-text'
               }`}>
-              {t === 'review' ? 'Ripasso' : 'Le mie card'}
+              {t === 'review' ? 'Ripasso' : 'Libreria'}
             </button>
           ))}
         </div>
