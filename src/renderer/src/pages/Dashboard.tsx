@@ -27,6 +27,8 @@ export function Dashboard() {
 
   function load() {
     setError(null)
+    setAnalytics(null)
+    setSessions([])
     setLoading(true)
     Promise.all([
       window.api.getAnalytics(30),
