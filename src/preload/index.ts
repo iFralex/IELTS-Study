@@ -1,22 +1,25 @@
-import { contextBridge } from 'electron'
-import { electronAPI } from '@electron-toolkit/preload'
+import { contextBridge, ipcRenderer } from 'electron'
+import type {
+  SessionInput, AnswerInput, WritingInput, ExamRunInput,
+  FlashcardInput, ReviewInput
+} from '../renderer/src/types'
 
-// Custom APIs for renderer
-const api = {}
-
-// Use `contextBridge` APIs to expose Electron APIs to
-// renderer only if context isolation is enabled, otherwise
-// just add to the DOM global.
-if (process.contextIsolated) {
-  try {
-    contextBridge.exposeInMainWorld('electron', electronAPI)
-    contextBridge.exposeInMainWorld('api', api)
-  } catch (error) {
-    console.error(error)
-  }
-} else {
-  // @ts-ignore (define in dts)
-  window.electron = electronAPI
-  // @ts-ignore (define in dts)
-  window.api = api
-}
+contextBridge.exposeInMainWorld('api', {
+  getExercises:          (section: string)   => ipcRenderer.invoke('get-exercises', section),
+  getExercise:           (id: string)        => ipcRenderer.invoke('get-exercise', id),
+  saveSession:           (s: SessionInput)   => ipcRenderer.invoke('save-session', s),
+  saveAnswers:           (a: AnswerInput[])  => ipcRenderer.invoke('save-answers', a),
+  getAnalytics:          (days: number)      => ipcRenderer.invoke('get-analytics', days),
+  getRecentSessions:     (limit: number)     => ipcRenderer.invoke('get-recent-sessions', limit),
+  saveWritingSubmission: (s: WritingInput)   => ipcRenderer.invoke('save-writing-submission', s),
+  saveExamRun:           (r: ExamRunInput)   => ipcRenderer.invoke('save-exam-run', r),
+  getExamRuns:           ()                  => ipcRenderer.invoke('get-exam-runs'),
+  getFlashcards:         ()                  => ipcRenderer.invoke('get-flashcards'),
+  getDueFlashcards:      ()                  => ipcRenderer.invoke('get-due-flashcards'),
+  saveFlashcard:         (c: FlashcardInput) => ipcRenderer.invoke('save-flashcard', c),
+  updateFlashcardSM2:    (id: number, q: number) => ipcRenderer.invoke('update-flashcard-sm2', id, q),
+  saveFlashcardReview:   (r: ReviewInput)    => ipcRenderer.invoke('save-flashcard-review', r),
+  generateFlashcard:     (word: string)      => ipcRenderer.invoke('generate-flashcard', word),
+  evaluateAnswer:        (word: string, correct: string, userAnswer: string, direction: string) =>
+                           ipcRenderer.invoke('evaluate-answer', word, correct, userAnswer, direction),
+})
