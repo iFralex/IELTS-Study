@@ -67,7 +67,7 @@ export function AudioPlayer({ audioUrl, sourceUrl }: AudioPlayerProps) {
   }
 
   return (
-    <div className="bg-surface0/50 border border-surface1 rounded-xl px-4 py-3 flex items-center gap-3 max-w-sm">
+    <div className="bg-surface0/50 border border-surface1 rounded-xl px-4 py-3 flex items-center gap-3 w-full">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
       <button
         onClick={togglePlay}
@@ -82,21 +82,18 @@ export function AudioPlayer({ audioUrl, sourceUrl }: AudioPlayerProps) {
           </svg>
         ) : '▶'}
       </button>
-      <div className="flex-1 flex flex-col gap-1 min-w-0">
-        <input
-          type="range"
-          min={0}
-          max={duration || 0}
-          step={0.1}
-          value={currentTime}
-          onChange={handleSeek}
-          className="w-full accent-mauve h-1"
-        />
-        <div className="flex justify-between text-xs text-subtext0 tabular-nums">
-          <span>{formatTime(currentTime)}</span>
-          <span>{formatTime(duration)}</span>
-        </div>
-      </div>
+      <input
+        type="range"
+        min={0}
+        max={duration || 0}
+        step={0.1}
+        value={currentTime}
+        onChange={handleSeek}
+        className="flex-1 accent-mauve h-1"
+      />
+      <span className="text-xs text-subtext0 tabular-nums shrink-0">
+        {formatTime(currentTime)} / {formatTime(duration)}
+      </span>
     </div>
   )
 }
