@@ -225,42 +225,42 @@ export function Writing() {
     const isSeries = session.exercises.length > 1
 
     const header = (
-      <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
-            {t1 ? (exercise as WritingTask1).chart_type : (exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
-          </span>
-          <span className="text-xs text-subtext0">{taskType === 'task1' ? 'Task 1' : 'Task 2'}</span>
-          {isSeries && (
-            <span className="text-xs text-subtext0">· {session.currentIndex + 1} / {session.exercises.length}</span>
-          )}
-        </div>
-        <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
-          ← Abbandona
-        </button>
+      <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center gap-2">
+        <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
+          {t1 ? (exercise as WritingTask1).chart_type : (exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
+        </span>
+        <span className="text-xs text-subtext0">{taskType === 'task1' ? 'Task 1' : 'Task 2'}</span>
+        {isSeries && (
+          <span className="text-xs text-subtext0">· {session.currentIndex + 1} / {session.exercises.length}</span>
+        )}
       </div>
     )
 
     const footer = (
-      <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-end gap-3">
-        {(() => {
-          const wc = countWords(session.text)
-          const min = taskType === 'task1' ? 150 : 250
-          const color = wc === 0 ? 'text-subtext0' : wc >= min ? 'text-green' : 'text-yellow'
-          return <span className={`text-xs font-mono ${color}`}>{wc} / {min} parole</span>
-        })()}
-        {isEvaluating ? (
-          <span className="text-sm text-subtext0 animate-pulse">Valutazione in corso…</span>
-        ) : (
-          <button
-            onClick={handleSubmit}
-            disabled={session.text.trim() === ''}
-            className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm
-              hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-          >
-            Invia ▶
-          </button>
-        )}
+      <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-between gap-3">
+        <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
+          ← Abbandona
+        </button>
+        <div className="flex items-center gap-3">
+          {(() => {
+            const wc = countWords(session.text)
+            const min = taskType === 'task1' ? 150 : 250
+            const color = wc === 0 ? 'text-subtext0' : wc >= min ? 'text-green' : 'text-yellow'
+            return <span className={`text-xs font-mono ${color}`}>{wc} / {min} parole</span>
+          })()}
+          {isEvaluating ? (
+            <span className="text-sm text-subtext0 animate-pulse">Valutazione in corso…</span>
+          ) : (
+            <button
+              onClick={handleSubmit}
+              disabled={session.text.trim() === ''}
+              className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm
+                hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              Invia ▶
+            </button>
+          )}
+        </div>
       </div>
     )
 
@@ -312,22 +312,24 @@ export function Writing() {
 
   // ── Results phase ────────────────────────────────────────────────────────────
   return (
-    <div className="h-full overflow-y-auto">
-      {evalError && (
-        <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-          ⚠ Valutazione AI non disponibile — il testo è stato salvato.
-        </div>
-      )}
-      {saveError && (
-        <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-          ⚠ Invio non salvato — nessuna connessione al database.
-        </div>
-      )}
-      <WritingFeedback
-        feedback={feedback}
-        exercise={session.exercises[session.currentIndex]}
-      />
-      <div className="px-6 pb-6 flex items-center gap-3">
+    <div className="h-full flex flex-col overflow-hidden">
+      <div className="flex-1 overflow-y-auto">
+        {evalError && (
+          <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
+            ⚠ Valutazione AI non disponibile — il testo è stato salvato.
+          </div>
+        )}
+        {saveError && (
+          <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
+            ⚠ Invio non salvato — nessuna connessione al database.
+          </div>
+        )}
+        <WritingFeedback
+          feedback={feedback}
+          exercise={session.exercises[session.currentIndex]}
+        />
+      </div>
+      <div className="px-6 py-3 border-t border-surface0 shrink-0 flex items-center gap-3">
         <button
           onClick={handleBack}
           className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
