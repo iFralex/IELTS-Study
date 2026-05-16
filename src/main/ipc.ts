@@ -181,7 +181,7 @@ export function registerIpcHandlers(): void {
     const { text } = await generateText({
       model: getModel(),
       maxOutputTokens: 1200,
-      prompt: `Generate a flashcard for the English word: "${word}"\n\nReturn ONLY valid JSON, no markdown:\n{"english":"word","italian":"main translation","synonyms_en":"syn1, syn2, syn3","synonyms_it":"sin1, sin2, sin3","examples_en":"Ex 1\\n\\nEx 2\\n\\nEx 3","examples_it":"Es 1\\n\\nEs 2\\n\\nEs 3"}`,
+      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\n\nReturn ONLY valid JSON, no markdown:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Example sentence 1\\n\\nExample sentence 2\\n\\nExample sentence 3","examples_it":"Frase esempio 1\\n\\nFrase esempio 2\\n\\nFrase esempio 3"}`,
     })
     return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
