@@ -3,6 +3,7 @@ import type { WritingTask1, WritingTask2, AIWritingFeedback } from '../../types'
 import { WritingEditor } from '../../components/practice/WritingEditor'
 import { WritingFeedback } from '../../components/practice/WritingFeedback'
 import { countWords, isTask1 } from '../../components/practice/writingUtils'
+import { Lightbox } from '../../components/Lightbox'
 
 type Phase = 'selecting' | 'active' | 'results'
 type TaskType = 'task1' | 'task2'
@@ -22,6 +23,7 @@ export function Writing() {
   const [session, setSession] = useState<ActiveSession | null>(null)
   const [feedback, setFeedback] = useState<AIWritingFeedback | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const [isEvaluating, setIsEvaluating] = useState(false)
   const [evalError, setEvalError] = useState(false)
   const [saveError, setSaveError] = useState(false)
@@ -174,82 +176,89 @@ export function Writing() {
   // ── Active phase ─────────────────────────────────────────────────────────────
   if (phase === 'active') {
     const t1 = isTask1(session.exercise)
+    const imageUrl = t1 ? (session.exercise as WritingTask1).image_url : undefined
     const prompt = t1 ? (session.exercise as WritingTask1).prompt : (session.exercise as WritingTask2).question
 
-    return (
-      <div className="h-full flex flex-col overflow-hidden">
-        {/* Header */}
-        <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
-              {t1
-                ? (session.exercise as WritingTask1).chart_type
-                : (session.exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
-            </span>
-            <span className="text-xs text-subtext0">
-              {taskType === 'task1' ? 'Task 1' : 'Task 2'}
-            </span>
-          </div>
+    const header = (
+      <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
+            {t1
+              ? (session.exercise as WritingTask1).chart_type
+              : (session.exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
+          </span>
+          <span className="text-xs text-subtext0">{taskType === 'task1' ? 'Task 1' : 'Task 2'}</span>
+        </div>
+        <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
+          ← Abbandona
+        </button>
+      </div>
+    )
+
+    const footer = (
+      <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-end gap-3">
+        {(() => {
+          const wc = countWords(session.text)
+          const min = taskType === 'task1' ? 150 : 250
+          const color = wc === 0 ? 'text-subtext0' : wc >= min ? 'text-green' : 'text-yellow'
+          return <span className={`text-xs font-mono ${color}`}>{wc} / {min} parole</span>
+        })()}
+        {isEvaluating ? (
+          <span className="text-sm text-subtext0 animate-pulse">Valutazione in corso…</span>
+        ) : (
           <button
-            onClick={handleBack}
-            className="text-sm text-subtext0 hover:text-text transition-colors"
+            onClick={handleSubmit}
+            disabled={session.text.trim() === ''}
+            className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm
+              hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
-            ← Abbandona
+            Invia ▶
           </button>
-        </div>
+        )}
+      </div>
+    )
 
-        {/* Prompt / image area */}
-        <div className="px-5 py-4 border-b border-surface0 shrink-0 max-h-[35%] overflow-y-auto">
-          {t1 && (session.exercise as WritingTask1).image_url ? (
-            <img
-              src={(session.exercise as WritingTask1).image_url}
-              alt="Chart"
-              className="max-h-48 object-contain rounded mx-auto mb-3"
-            />
-          ) : t1 ? (
-            <div className="flex items-center justify-center h-16 bg-surface0/30 rounded mb-3 text-sm text-subtext0">
-              Immagine non disponibile
+    return (
+      <>
+        <div className="h-full flex flex-col overflow-hidden">
+          {header}
+          {imageUrl ? (
+            <div className="flex-1 flex overflow-hidden">
+              <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4 flex flex-col gap-4">
+                <img
+                  src={imageUrl}
+                  alt="Chart"
+                  onClick={() => setLightboxUrl(imageUrl)}
+                  className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
+                />
+                <p className="text-sm text-text leading-relaxed">{prompt}</p>
+              </div>
+              <div className="w-1/2 h-full flex flex-col overflow-hidden">
+                <div className="flex-1 overflow-hidden">
+                  <WritingEditor taskType={taskType} value={session.text} onChange={handleTextChange} disabled={isEvaluating} />
+                </div>
+                {footer}
+              </div>
             </div>
-          ) : null}
-          <p className="text-sm text-text leading-relaxed">{prompt}</p>
-        </div>
-
-        {/* Editor */}
-        <div className="flex-1 overflow-hidden">
-          <WritingEditor
-            taskType={taskType}
-            value={session.text}
-            onChange={handleTextChange}
-            disabled={isEvaluating}
-          />
-        </div>
-
-        {/* Bottom bar */}
-        <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-end gap-3">
-          {(() => {
-            const wc = countWords(session.text)
-            const min = taskType === 'task1' ? 150 : 250
-            const color = wc === 0 ? 'text-subtext0' : wc >= min ? 'text-green' : 'text-yellow'
-            return (
-              <span className={`text-xs font-mono ${color}`}>
-                {wc} / {min} parole
-              </span>
-            )
-          })()}
-          {isEvaluating ? (
-            <span className="text-sm text-subtext0 animate-pulse">Valutazione in corso…</span>
           ) : (
-            <button
-              onClick={handleSubmit}
-              disabled={session.text.trim() === ''}
-              className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm
-                hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-            >
-              Invia ▶
-            </button>
+            <>
+              <div className="px-5 py-4 border-b border-surface0 shrink-0 max-h-[30%] overflow-y-auto">
+                {t1 && (
+                  <div className="flex items-center justify-center h-12 bg-surface0/30 rounded mb-3 text-sm text-subtext0">
+                    Immagine non disponibile
+                  </div>
+                )}
+                <p className="text-sm text-text leading-relaxed">{prompt}</p>
+              </div>
+              <div className="flex-1 overflow-hidden">
+                <WritingEditor taskType={taskType} value={session.text} onChange={handleTextChange} disabled={isEvaluating} />
+              </div>
+              {footer}
+            </>
           )}
         </div>
-      </div>
+        {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
+      </>
     )
   }
 

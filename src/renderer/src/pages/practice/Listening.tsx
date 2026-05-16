@@ -5,6 +5,7 @@ import { AudioPlayer } from '../../components/practice/AudioPlayer'
 import { QuestionInput } from '../../components/practice/QuestionInput'
 import { ResultsPanel } from '../../components/practice/ResultsPanel'
 import { scoreAnswers, normalizeAnswer } from '../../components/practice/utils'
+import { Lightbox } from '../../components/Lightbox'
 
 type Phase = 'selecting' | 'active' | 'results'
 
@@ -188,18 +189,7 @@ export function Listening() {
             </div>
           )}
         </div>
-        {lightboxUrl && (
-          <div
-            className="fixed inset-0 z-50 bg-base/90 cursor-zoom-out"
-            onClick={() => setLightboxUrl(null)}
-          >
-            <img
-              src={lightboxUrl}
-              alt=""
-              className="w-full h-full object-contain p-6"
-            />
-          </div>
-        )}
+        {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
       </>
     )
   }
