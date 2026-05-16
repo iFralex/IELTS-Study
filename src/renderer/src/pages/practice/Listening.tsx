@@ -157,14 +157,16 @@ export function Listening() {
       </div>
     )
 
+    const player = (
+      <div className="flex flex-col gap-1.5">
+        <p className="text-xs text-subtext0 font-medium">{currentExercise.title}</p>
+        <AudioPlayer audioUrl={currentExercise.audio_url} sourceUrl={currentExercise.source_url} />
+      </div>
+    )
+
     return (
       <>
         <div className="h-full flex flex-col overflow-hidden">
-          <AudioPlayer
-            audioUrl={currentExercise.audio_url}
-            title={currentExercise.title}
-            sourceUrl={currentExercise.source_url}
-          />
           {currentExercise.image_url ? (
             <div className="flex-1 flex overflow-hidden">
               <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4">
@@ -176,14 +178,20 @@ export function Listening() {
                 />
               </div>
               <div className="w-1/2 h-full flex flex-col overflow-hidden">
-                <div className="flex-1 overflow-y-auto">{questions}</div>
+                <div className="flex-1 overflow-y-auto">
+                  <div className="px-5 pt-4 pb-2">{player}</div>
+                  {questions}
+                </div>
                 {footer}
               </div>
             </div>
           ) : (
             <div className="flex-1 flex flex-col overflow-hidden">
               <div className="flex-1 overflow-y-auto">
-                <div className="max-w-2xl mx-auto">{questions}</div>
+                <div className="max-w-2xl mx-auto">
+                  <div className="px-5 pt-4 pb-2">{player}</div>
+                  {questions}
+                </div>
               </div>
               {footer}
             </div>

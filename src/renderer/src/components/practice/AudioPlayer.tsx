@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react'
 
 interface AudioPlayerProps {
   audioUrl: string
-  title: string
   sourceUrl?: string
 }
 
@@ -13,7 +12,7 @@ function formatTime(s: number): string {
   return `${m}:${sec.toString().padStart(2, '0')}`
 }
 
-export function AudioPlayer({ audioUrl, title, sourceUrl }: AudioPlayerProps) {
+export function AudioPlayer({ audioUrl, sourceUrl }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
@@ -56,16 +55,11 @@ export function AudioPlayer({ audioUrl, title, sourceUrl }: AudioPlayerProps) {
 
   if (!audioUrl) {
     return (
-      <div className="sticky top-0 z-10 bg-mantle border-b border-surface0 px-5 py-3 flex items-center gap-3">
-        <span className="text-sm text-red">Audio non disponibile.</span>
+      <div className="flex items-center gap-2 text-sm text-subtext0">
+        <span className="text-red">Audio non disponibile.</span>
         {sourceUrl && (
-          <a
-            href={sourceUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm text-blue hover:underline"
-          >
-            Visita la sorgente →
+          <a href={sourceUrl} target="_blank" rel="noreferrer" className="text-blue hover:underline text-xs">
+            Sorgente →
           </a>
         )}
       </div>
@@ -73,22 +67,22 @@ export function AudioPlayer({ audioUrl, title, sourceUrl }: AudioPlayerProps) {
   }
 
   return (
-    <div className="sticky top-0 z-10 bg-mantle border-b border-surface0 px-5 py-3">
+    <div className="bg-surface0/50 border border-surface1 rounded-xl px-4 py-3 flex items-center gap-3 max-w-sm">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
-      <div className="flex items-center gap-3">
-        <button
-          onClick={togglePlay}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-mauve text-base text-sm
-            hover:bg-mauve/90 transition-colors shrink-0"
-          aria-label={isPlaying ? 'Pausa' : 'Play'}
-        >
-          {isPlaying ? (
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-              <rect x="2" y="1" width="4" height="12" rx="1"/>
-              <rect x="8" y="1" width="4" height="12" rx="1"/>
-            </svg>
-          ) : '▶'}
-        </button>
+      <button
+        onClick={togglePlay}
+        className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-mauve text-base
+          hover:bg-mauve/90 transition-colors"
+        aria-label={isPlaying ? 'Pausa' : 'Play'}
+      >
+        {isPlaying ? (
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <rect x="2" y="1" width="4" height="12" rx="1"/>
+            <rect x="8" y="1" width="4" height="12" rx="1"/>
+          </svg>
+        ) : '▶'}
+      </button>
+      <div className="flex-1 flex flex-col gap-1 min-w-0">
         <input
           type="range"
           min={0}
@@ -96,13 +90,13 @@ export function AudioPlayer({ audioUrl, title, sourceUrl }: AudioPlayerProps) {
           step={0.1}
           value={currentTime}
           onChange={handleSeek}
-          className="flex-1 accent-mauve h-1"
+          className="w-full accent-mauve h-1"
         />
-        <span className="text-subtext0 text-xs tabular-nums shrink-0">
-          {formatTime(currentTime)} / {formatTime(duration)}
-        </span>
+        <div className="flex justify-between text-xs text-subtext0 tabular-nums">
+          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime(duration)}</span>
+        </div>
       </div>
-      <p className="text-xs text-subtext0 mt-1.5 truncate">{title}</p>
     </div>
   )
 }
