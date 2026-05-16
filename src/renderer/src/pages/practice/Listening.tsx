@@ -190,13 +190,13 @@ export function Listening() {
         </div>
         {lightboxUrl && (
           <div
-            className="fixed inset-0 z-50 bg-base/90 flex items-center justify-center cursor-zoom-out"
+            className="fixed inset-0 z-50 bg-base/90 cursor-zoom-out"
             onClick={() => setLightboxUrl(null)}
           >
             <img
               src={lightboxUrl}
               alt=""
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              className="w-full h-full object-contain p-6"
             />
           </div>
         )}
