@@ -4,20 +4,23 @@ import type { AIFlashcardData, FlashcardInput } from '../../types'
 interface Props {
   onClose: () => void
   initialWord?: string
+  initialData?: AIFlashcardData
 }
 
 type Phase = 'input' | 'loading' | 'preview' | 'saving'
 
-export function AddCardModal({ onClose, initialWord }: Props) {
-  const [phase, setPhase] = useState<Phase>(initialWord ? 'loading' : 'input')
+export function AddCardModal({ onClose, initialWord, initialData }: Props) {
+  const [phase, setPhase] = useState<Phase>(
+    initialData ? 'preview' : initialWord ? 'loading' : 'input'
+  )
   const [word, setWord] = useState(initialWord ?? '')
   const [error, setError] = useState<string | null>(null)
-  const [data, setData] = useState<AIFlashcardData>({
-    english: '', italian: '', synonyms_en: '', synonyms_it: '', examples_en: '', examples_it: '',
-  })
+  const [data, setData] = useState<AIFlashcardData>(
+    initialData ?? { english: '', italian: '', synonyms_en: '', synonyms_it: '', examples_en: '', examples_it: '' }
+  )
 
   useEffect(() => {
-    if (initialWord) handleGenerate(initialWord)
+    if (initialWord && !initialData) handleGenerate(initialWord)
   }, [])
 
   async function handleGenerate(w = word) {

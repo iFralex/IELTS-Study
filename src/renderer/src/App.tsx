@@ -76,7 +76,7 @@ export default function App() {
         </main>
 
         {/* Selection popover */}
-        {popoverPos && selectedWord && !flashModalOpen && (
+        {popoverPos && selectedWord !== null && !flashModalOpen && (
           <div
             data-selection-popover
             style={{
@@ -123,7 +123,11 @@ export default function App() {
           >
             💬
           </button>
-          <FloatingFlashcardButton onClick={() => { setSelectedWord(null); setFlashModalOpen(true) }} />
+          <FloatingFlashcardButton onClick={() => {
+            setChatPopoverOpen(false)
+            setPopoverPos({ x: window.innerWidth / 2, y: window.innerHeight - 80 })
+            setSelectedWord('')
+          }} />
         </div>
         {flashModalOpen && (
           <AddCardModal
