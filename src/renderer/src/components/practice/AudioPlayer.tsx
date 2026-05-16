@@ -82,7 +82,12 @@ export function AudioPlayer({ audioUrl, title, sourceUrl }: AudioPlayerProps) {
             hover:bg-mauve/90 transition-colors shrink-0"
           aria-label={isPlaying ? 'Pausa' : 'Play'}
         >
-          {isPlaying ? '⏸' : '▶'}
+          {isPlaying ? (
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <rect x="2" y="1" width="4" height="12" rx="1"/>
+              <rect x="8" y="1" width="4" height="12" rx="1"/>
+            </svg>
+          ) : '▶'}
         </button>
         <input
           type="range"
