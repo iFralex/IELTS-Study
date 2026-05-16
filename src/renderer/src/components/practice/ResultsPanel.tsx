@@ -76,6 +76,13 @@ export function ResultsPanel({
                     )}
                   </div>
 
+                  {/* Explanation — always show if present */}
+                  {q.explanation && (
+                    <p className="mt-2 text-xs text-subtext0 leading-relaxed border-l-2 border-surface1 pl-2">
+                      {q.explanation}
+                    </p>
+                  )}
+
                   {/* "Trova nel brano" — Reading only, wrong answers only */}
                   {!correct && section === 'reading' && passage && (
                     <button

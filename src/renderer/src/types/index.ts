@@ -44,6 +44,7 @@ export interface Question {
   answer: string
   options?: string[]
   paragraph?: string
+  explanation?: string
 }
 
 export interface SessionInput {
