@@ -180,11 +180,13 @@ export function registerIpcHandlers(): void {
   ipcMain.handle('generate-flashcard', async (_e, word: string) => {
     const { text } = await generateText({
       model: getModel(),
-      maxOutputTokens: 1200,
-      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\n\nReturn ONLY valid JSON:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Sentence 1.\\n\\nSentence 2.\\n\\nSentence 3.","examples_it":"Frase 1.\\n\\nFrase 2.\\n\\nFrase 3."}`,
+      maxOutputTokens: 2000,
+      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\nKeep each example sentence SHORT (max 12 words).\n\nReturn ONLY valid JSON, no markdown, no explanation:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Short sentence 1.\\n\\nShort sentence 2.\\n\\nShort sentence 3.","examples_it":"Frase breve 1.\\n\\nFrase breve 2.\\n\\nFrase breve 3."}`,
     })
     console.log('[generate-flashcard] raw:', text)
-    const match = text.match(/\{[\s\S]*\}/)
+    // strip markdown fences, then find the JSON object
+    const stripped = text.replace(/```json|```/g, '').trim()
+    const match = stripped.match(/\{[\s\S]*\}/)
     if (!match) throw new Error('No JSON in response')
     // fix literal newlines inside JSON string values character by character
     let inStr = false, esc = false, fixed = ''
