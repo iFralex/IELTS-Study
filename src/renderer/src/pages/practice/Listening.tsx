@@ -132,6 +132,13 @@ export function Listening() {
         />
         <div className="flex-1 overflow-y-auto px-5 py-4">
           <div className="max-w-2xl mx-auto flex flex-col gap-5">
+            {currentExercise.image_url && (
+              <img
+                src={currentExercise.image_url}
+                alt={currentExercise.title}
+                className="w-full rounded-lg border border-surface1 object-contain max-h-96"
+              />
+            )}
             {currentExercise.questions.map(q => (
               <div key={q.index} className="flex flex-col gap-2">
                 <label className="text-sm text-text font-medium">

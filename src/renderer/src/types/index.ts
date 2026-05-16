@@ -3,6 +3,7 @@ export interface ListeningExercise {
   title: string
   source_url: string
   audio_url: string
+  image_url?: string
   question_type: 'gap_fill' | 'form_completion' | 'multiple_choice' | 'map_diagram' | 'table'
   difficulty: 'medium' | 'hard'
   questions: Question[]
