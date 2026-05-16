@@ -11,6 +11,7 @@ import { ExamSimulator } from './pages/ExamSimulator'
 import { Analytics } from './pages/Analytics'
 import { Library } from './pages/Library'
 import { Flashcard } from './pages/Flashcard'
+import { Chat } from './pages/Chat'
 
 export default function App() {
   const [flashModalOpen, setFlashModalOpen] = useState(false)
@@ -65,6 +66,7 @@ export default function App() {
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/library"   element={<Library />} />
             <Route path="/flashcard" element={<Flashcard />} />
+            <Route path="/chat"      element={<Chat />} />
           </Routes>
         </main>
 

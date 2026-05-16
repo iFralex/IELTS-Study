@@ -30,4 +30,5 @@ contextBridge.exposeInMainWorld('api', {
   evaluateWriting: (taskType: string, userText: string, prompt: string, wordCount: number) =>
     ipcRenderer.invoke('evaluate-writing', taskType, userText, prompt, wordCount),
   resetAllData: () => ipcRenderer.invoke('reset-all-data'),
+  chatMessage: (messages: { role: string; content: string }[]) => ipcRenderer.invoke('chat-message', messages),
 })

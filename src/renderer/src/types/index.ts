@@ -169,6 +169,11 @@ export interface AnalyticsData {
   exam_count: number
 }
 
+export interface ChatMessage {
+  role: 'user' | 'assistant'
+  content: string
+}
+
 export interface IElectronAPI {
   getExercises: (section: string) => Promise<ListeningExercise[] | ReadingExercise[] | WritingTask1[] | WritingTask2[]>
   getExercise: (id: string) => Promise<ListeningExercise | ReadingExercise | WritingTask1 | WritingTask2 | null>
@@ -191,6 +196,7 @@ export interface IElectronAPI {
   deleteFlashcard: (id: number) => Promise<void>
   evaluateWriting: (taskType: 'task1' | 'task2', userText: string, prompt: string, wordCount: number) => Promise<AIWritingFeedback>
   resetAllData: () => Promise<void>
+  chatMessage: (messages: ChatMessage[]) => Promise<string>
 }
 
 declare global {

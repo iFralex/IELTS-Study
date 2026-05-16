@@ -11,6 +11,7 @@ const TOP_ROUTES = [
   { to: '/analytics', label: 'Analytics',      icon: '📊' },
   { to: '/library',   label: 'Library',        icon: '🗂' },
   { to: '/flashcard', label: 'Flashcard',      icon: '🃏' },
+  { to: '/chat',      label: 'AI Tutor',       icon: '💬' },
 ]
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>

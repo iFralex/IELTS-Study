@@ -218,6 +218,16 @@ export function registerIpcHandlers(): void {
     return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
 
+  ipcMain.handle('chat-message', async (_e, messages: { role: 'user' | 'assistant'; content: string }[]) => {
+    const { text } = await generateText({
+      model: getModel(),
+      system: `You are an expert IELTS tutor and English language teacher. Help students with English grammar, vocabulary, pronunciation, IELTS strategies, writing, reading, and listening skills. Be concise and clear. When the student writes in Italian, respond in Italian.`,
+      messages,
+      maxOutputTokens: 1500,
+    })
+    return text
+  })
+
   ipcMain.handle('reset-all-data', () => {
     const tables = ['flashcard_reviews', 'flashcards', 'writing_submissions', 'exam_runs', 'answers', 'sessions']
     for (const t of tables) db.prepare(`DELETE FROM ${t}`).run()
