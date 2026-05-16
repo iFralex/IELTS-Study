@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { ListeningExercise, ReadingExercise } from '../../types'
-import { scoreAnswers, estimateBand, highlightPassage } from './utils'
+import { scoreAnswers, estimateBand, findPassageExcerpt } from './utils'
 
 type AnyExercise = ListeningExercise | ReadingExercise
 
@@ -87,13 +87,14 @@ export function ResultsPanel({
                   )}
 
                   {isHighlightOpen && passage && (() => {
-                    const excerpt = highlightPassage(passage, q.answer)
-                    if (!excerpt) return (
+                    const result = findPassageExcerpt(passage, q.text, q.answer, (exercise as ReadingExercise).question_type)
+                    if (!result) return (
                       <p className="mt-2 text-xs text-subtext0 italic">
                         Testo non trovato nel brano.
                       </p>
                     )
-                    const parts = excerpt.split(new RegExp(`(${q.answer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i'))
+                    const { excerpt, term } = result
+                    const parts = excerpt.split(new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i'))
                     return (
                       <div className="mt-2 p-3 bg-surface0 rounded text-xs text-subtext0 leading-relaxed">
                         {parts.map((part, i) =>

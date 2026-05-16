@@ -61,3 +61,43 @@ export function highlightPassage(passage: string, searchText: string): string | 
   const end = Math.min(passage.length, idx + searchText.length + 150)
   return passage.slice(start, end)
 }
+
+// Question types where the answer is an actual phrase from the passage
+const LITERAL_ANSWER_TYPES = new Set(['sentence_completion', 'summary_completion', 'short_answer'])
+
+const STOP_WORDS = new Set(['the','a','an','is','are','was','were','be','been','being','have',
+  'has','had','do','does','did','will','would','could','should','may','might','shall','can',
+  'not','no','nor','so','yet','both','either','neither','for','and','but','or','in','on',
+  'at','to','of','by','with','from','that','this','these','those','it','its','they','them',
+  'their','there','than','then','when','which','who','what','how','if','as','up','out','into'])
+
+export function findPassageExcerpt(
+  passage: string,
+  questionText: string,
+  answer: string,
+  questionType: string
+): { excerpt: string; term: string } | null {
+  // For types where answer IS literal passage text, search the answer directly
+  if (LITERAL_ANSWER_TYPES.has(questionType)) {
+    const excerpt = highlightPassage(passage, answer)
+    return excerpt ? { excerpt, term: answer } : null
+  }
+
+  // For matching_headings, extract the heading name after the dash
+  if (questionType === 'matching_headings') {
+    const match = answer.match(/[-–—]\s*(.+)/)
+    const term = match ? match[1].trim() : answer
+    const excerpt = highlightPassage(passage, term)
+    return excerpt ? { excerpt, term } : null
+  }
+
+  // For true_false_ng, multiple_choice, matching_paragraph_info:
+  // find content words (4+ chars, not stop words) from the question text
+  const words = (questionText.match(/\b[a-zA-Z]{4,}\b/g) ?? [])
+    .filter(w => !STOP_WORDS.has(w.toLowerCase()))
+  for (const word of words) {
+    const excerpt = highlightPassage(passage, word)
+    if (excerpt) return { excerpt, term: word }
+  }
+  return null
+}
