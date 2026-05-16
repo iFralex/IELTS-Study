@@ -157,16 +157,30 @@ export function Listening() {
       </div>
     )
 
-    const player = (
-      <div className="flex flex-col gap-1.5">
-        <p className="text-xs text-subtext0 font-medium">{currentExercise.title}</p>
-        <AudioPlayer audioUrl={currentExercise.audio_url} sourceUrl={currentExercise.source_url} />
+    const isSeries = queue.exercises.length > 1
+
+    const header = (
+      <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center gap-2">
+        <p className="text-sm font-medium text-text flex-1 truncate">{currentExercise.title}</p>
+        <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded shrink-0">
+          {currentExercise.question_type.replace(/_/g, ' ')}
+        </span>
+        {isSeries && (
+          <span className="text-xs text-subtext0 shrink-0">
+            {queue.currentIndex + 1} / {queue.exercises.length}
+          </span>
+        )}
       </div>
+    )
+
+    const player = (
+      <AudioPlayer audioUrl={currentExercise.audio_url} sourceUrl={currentExercise.source_url} />
     )
 
     return (
       <>
         <div className="h-full flex flex-col overflow-hidden">
+          {header}
           {currentExercise.image_url ? (
             <div className="flex-1 flex overflow-hidden">
               <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4">
