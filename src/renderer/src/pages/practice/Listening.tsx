@@ -17,6 +17,7 @@ interface Queue {
 
 export function Listening() {
   const [phase, setPhase] = useState<Phase>('selecting')
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const [exercises, setExercises] = useState<ListeningExercise[]>([])
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
   const [queue, setQueue] = useState<Queue | null>(null)
@@ -123,52 +124,83 @@ export function Listening() {
   if (!currentExercise || !queue) return null
 
   if (phase === 'active') {
+    const questions = (
+      <div className="flex flex-col gap-5 px-5 py-4">
+        {currentExercise.questions.map(q => (
+          <div key={q.index} className="flex flex-col gap-2">
+            <label className="text-sm text-text font-medium">
+              {q.index + 1}. {q.text}
+            </label>
+            <QuestionInput
+              question={q}
+              questionType={currentExercise.question_type}
+              value={queue.answers[q.index] ?? ''}
+              onChange={val => handleAnswerChange(q.index, val)}
+            />
+          </div>
+        ))}
+      </div>
+    )
+
+    const footer = (
+      <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-between">
+        <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
+          ← Abbandona
+        </button>
+        <button
+          onClick={handleSubmit}
+          className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm hover:bg-mauve/90 transition-colors"
+        >
+          Controlla
+        </button>
+      </div>
+    )
+
     return (
-      <div className="h-full flex flex-col">
-        <AudioPlayer
-          audioUrl={currentExercise.audio_url}
-          title={currentExercise.title}
-          sourceUrl={currentExercise.source_url}
-        />
-        <div className="flex-1 overflow-y-auto px-5 py-4">
-          <div className="max-w-2xl mx-auto flex flex-col gap-5">
-            {currentExercise.image_url && (
-              <img
-                src={currentExercise.image_url}
-                alt={currentExercise.title}
-                className="w-full rounded-lg border border-surface1 object-contain max-h-96"
-              />
-            )}
-            {currentExercise.questions.map(q => (
-              <div key={q.index} className="flex flex-col gap-2">
-                <label className="text-sm text-text font-medium">
-                  {q.index + 1}. {q.text}
-                </label>
-                <QuestionInput
-                  question={q}
-                  questionType={currentExercise.question_type}
-                  value={queue.answers[q.index] ?? ''}
-                  onChange={val => handleAnswerChange(q.index, val)}
+      <>
+        <div className="h-full flex flex-col overflow-hidden">
+          <AudioPlayer
+            audioUrl={currentExercise.audio_url}
+            title={currentExercise.title}
+            sourceUrl={currentExercise.source_url}
+          />
+          {currentExercise.image_url ? (
+            <div className="flex-1 flex overflow-hidden">
+              <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4">
+                <img
+                  src={currentExercise.image_url}
+                  alt={currentExercise.title}
+                  onClick={() => setLightboxUrl(currentExercise.image_url!)}
+                  className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
                 />
               </div>
-            ))}
+              <div className="w-1/2 h-full flex flex-col overflow-hidden">
+                <div className="flex-1 overflow-y-auto">{questions}</div>
+                {footer}
+              </div>
+            </div>
+          ) : (
+            <div className="flex-1 flex flex-col overflow-hidden">
+              <div className="flex-1 overflow-y-auto">
+                <div className="max-w-2xl mx-auto">{questions}</div>
+              </div>
+              {footer}
+            </div>
+          )}
+        </div>
+        {lightboxUrl && (
+          <div
+            className="fixed inset-0 z-50 bg-base/90 flex items-center justify-center cursor-zoom-out"
+            onClick={() => setLightboxUrl(null)}
+          >
+            <img
+              src={lightboxUrl}
+              alt=""
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+            />
           </div>
-        </div>
-        <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-between">
-          <button
-            onClick={handleBack}
-            className="text-sm text-subtext0 hover:text-text transition-colors"
-          >
-            ← Abbandona
-          </button>
-          <button
-            onClick={handleSubmit}
-            className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm hover:bg-mauve/90 transition-colors"
-          >
-            Controlla
-          </button>
-        </div>
-      </div>
+        )}
+      </>
     )
   }
 
