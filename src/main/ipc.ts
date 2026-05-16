@@ -181,9 +181,13 @@ export function registerIpcHandlers(): void {
     const { text } = await generateText({
       model: getModel(),
       maxOutputTokens: 1200,
-      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\n\nReturn ONLY valid JSON, no markdown:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Example sentence 1\\n\\nExample sentence 2\\n\\nExample sentence 3","examples_it":"Frase esempio 1\\n\\nFrase esempio 2\\n\\nFrase esempio 3"}`,
+      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\nIMPORTANT: Return ONLY a single-line JSON object. Do NOT use real newlines inside string values — use the two-character sequence \\n instead.\n\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Sentence 1.\\n\\nSentence 2.\\n\\nSentence 3.","examples_it":"Frase 1.\\n\\nFrase 2.\\n\\nFrase 3."}`,
     })
-    return JSON.parse(text.replace(/```json|```/g, '').trim())
+    console.log('[generate-flashcard] raw:', text)
+    const cleaned = text.replace(/```json|```/g, '').trim()
+    // collapse real newlines inside JSON string values so JSON.parse doesn't choke
+    const safe = cleaned.replace(/:\s*"([\s\S]*?)"/g, (_m, v) => `:"${v.replace(/\n/g, '\\n')}"`)
+    return JSON.parse(safe)
   })
 
   ipcMain.handle('evaluate-answer', async (_e, word: string, correct: string, userAnswer: string, direction: string) => {
