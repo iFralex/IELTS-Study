@@ -77,12 +77,20 @@ export default function App() {
               top: Math.max(8, popoverPos.y - 44),
               transform: 'translateX(-50%)',
             }}
-            className="z-40 bg-mantle border border-surface1 rounded-lg px-3 py-1.5 shadow-xl flex items-center gap-2"
+            className="z-40 bg-mantle border border-surface1 rounded-lg px-2 py-1.5 shadow-xl flex items-center gap-2"
           >
-            <span className="text-xs text-subtext0 max-w-[140px] truncate">{selectedWord}</span>
+            <input
+              data-selection-popover
+              value={selectedWord}
+              onChange={e => setSelectedWord(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && selectedWord.trim() && openModalFromSelection()}
+              className="text-xs text-text bg-surface0 border border-surface1 rounded px-2 py-1 w-36 outline-none focus:border-mauve"
+              autoFocus
+            />
             <button
               onClick={openModalFromSelection}
-              className="text-xs text-mauve hover:text-mauve/80 font-semibold whitespace-nowrap"
+              disabled={!selectedWord.trim()}
+              className="text-xs text-mauve hover:text-mauve/80 font-semibold whitespace-nowrap disabled:opacity-40"
             >
               + Flashcard
             </button>
