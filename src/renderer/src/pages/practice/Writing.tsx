@@ -224,16 +224,18 @@ export function Writing() {
           {header}
           {imageUrl ? (
             <div className="flex-1 flex overflow-hidden">
-              <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4 flex flex-col gap-4">
+              <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4">
                 <img
                   src={imageUrl}
                   alt="Chart"
                   onClick={() => setLightboxUrl(imageUrl)}
                   className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
                 />
-                <p className="text-sm text-text leading-relaxed">{prompt}</p>
               </div>
               <div className="w-1/2 h-full flex flex-col overflow-hidden">
+                <div className="px-5 py-3 border-b border-surface0 shrink-0 max-h-[30%] overflow-y-auto">
+                  <p className="text-sm text-text leading-relaxed">{prompt}</p>
+                </div>
                 <div className="flex-1 overflow-hidden">
                   <WritingEditor taskType={taskType} value={session.text} onChange={handleTextChange} disabled={isEvaluating} />
                 </div>
