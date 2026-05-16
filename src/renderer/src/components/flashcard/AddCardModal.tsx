@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { AIFlashcardData, FlashcardInput } from '../../types'
 
 interface Props {
@@ -19,8 +19,12 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
     initialData ?? { english: '', italian: '', synonyms_en: '', synonyms_it: '', examples_en: '', examples_it: '' }
   )
 
+  const didGenerate = useRef(false)
   useEffect(() => {
-    if (initialWord && !initialData) handleGenerate(initialWord)
+    if (initialWord && !initialData && !didGenerate.current) {
+      didGenerate.current = true
+      handleGenerate(initialWord)
+    }
   }, [])
 
   async function handleGenerate(w = word) {
