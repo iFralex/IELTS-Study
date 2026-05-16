@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Sidebar } from './components/Sidebar'
 import { FloatingFlashcardButton } from './components/FloatingFlashcardButton'
+import { FloatingChatPopover } from './components/FloatingChatPopover'
 import { AddCardModal } from './components/flashcard/AddCardModal'
 import { Dashboard } from './pages/Dashboard'
 import { Listening } from './pages/practice/Listening'
@@ -15,6 +16,7 @@ import { Chat } from './pages/Chat'
 
 export default function App() {
   const [flashModalOpen, setFlashModalOpen] = useState(false)
+  const [chatPopoverOpen, setChatPopoverOpen] = useState(false)
   const [selectedWord, setSelectedWord] = useState<string | null>(null)
   const [popoverPos, setPopoverPos] = useState<{ x: number; y: number } | null>(null)
 
@@ -37,6 +39,9 @@ export default function App() {
       if (!target.closest('[data-selection-popover]')) {
         setPopoverPos(null)
         setSelectedWord(null)
+      }
+      if (!target.closest('[data-chat-popover]')) {
+        setChatPopoverOpen(false)
       }
     }
     document.addEventListener('mouseup', onMouseUp)
@@ -100,7 +105,26 @@ export default function App() {
           </div>
         )}
 
-        <FloatingFlashcardButton onClick={() => { setSelectedWord(null); setFlashModalOpen(true) }} />
+        {/* Floating buttons — bottom center */}
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-30">
+          {chatPopoverOpen && (
+            <div
+              data-chat-popover
+              className="absolute bottom-16 left-1/2 -translate-x-1/2"
+            >
+              <FloatingChatPopover onClose={() => setChatPopoverOpen(false)} />
+            </div>
+          )}
+          <button
+            data-chat-popover
+            onClick={() => setChatPopoverOpen(o => !o)}
+            className="w-12 h-12 rounded-full bg-surface1 text-text flex items-center justify-center text-xl shadow-lg hover:scale-110 hover:bg-surface2 transition-all"
+            title="AI Tutor Chat"
+          >
+            💬
+          </button>
+          <FloatingFlashcardButton onClick={() => { setSelectedWord(null); setFlashModalOpen(true) }} />
+        </div>
         {flashModalOpen && (
           <AddCardModal
             initialWord={selectedWord ?? undefined}
