@@ -17,6 +17,10 @@ function isReadingExercise(e: AnyExercise): e is ReadingExercise {
   return 'passage' in e
 }
 
+function isListeningExercise(e: AnyExercise): e is ListeningExercise {
+  return 'audio_url' in e
+}
+
 export function ResultsPanel({
   exercise,
   answers,
@@ -26,6 +30,8 @@ export function ResultsPanel({
   seriesProgress,
 }: ResultsPanelProps) {
   const [expandedHighlight, setExpandedHighlight] = useState<number | null>(null)
+  const [transcriptOpen, setTranscriptOpen] = useState(false)
+  const transcript = isListeningExercise(exercise) ? exercise.transcript : undefined
   const { correctCount, maxScore } = scoreAnswers(exercise.questions, answers)
   const band = estimateBand(correctCount, maxScore)
   const pct = maxScore > 0 ? Math.round((correctCount / maxScore) * 100) : 0
@@ -118,6 +124,24 @@ export function ResultsPanel({
           )
         })}
       </div>
+
+      {/* Transcript — listening only */}
+      {transcript && (
+        <div className="border border-surface1 rounded-lg overflow-hidden">
+          <button
+            onClick={() => setTranscriptOpen(o => !o)}
+            className="w-full flex items-center justify-between px-4 py-3 text-sm text-subtext0 hover:text-text hover:bg-surface0/50 transition-colors"
+          >
+            <span className="font-medium">Trascrizione audio</span>
+            <span>{transcriptOpen ? '▲' : '▼'}</span>
+          </button>
+          {transcriptOpen && (
+            <div className="px-4 pb-4 text-xs text-subtext0 leading-relaxed border-t border-surface1 pt-3">
+              {transcript}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-2 border-t border-surface0">
