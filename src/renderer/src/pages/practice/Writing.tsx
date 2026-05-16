@@ -111,6 +111,7 @@ export function Writing() {
         submitted_at: startedAt,
         text,
         word_count: wordCount,
+        band_score: fb?.band,
       })
     } catch {
       setSaveError(true)

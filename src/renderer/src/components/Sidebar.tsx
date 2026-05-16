@@ -9,8 +9,7 @@ const PRACTICE_ROUTES = [
 const TOP_ROUTES = [
   { to: '/exam',      label: 'Exam Simulator', icon: '📝' },
   { to: '/analytics', label: 'Analytics',      icon: '📊' },
-  { to: '/library',   label: 'Library',        icon: '🗂' },
-  { to: '/flashcard', label: 'Flashcard',      icon: '🃏' },
+{ to: '/flashcard', label: 'Flashcard',      icon: '🃏' },
   { to: '/chat',      label: 'AI Tutor',       icon: '💬' },
 ]
 

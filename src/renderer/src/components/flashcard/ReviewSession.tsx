@@ -228,6 +228,7 @@ export function ReviewSession() {
                 type="text"
                 value={audioEnInput}
                 onChange={e => setAudioEnInput(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter' && canSubmit && phase === 'reviewing') handleSubmit() }}
                 disabled={phase === 'evaluating'}
                 placeholder="Spelling..."
                 className="w-full bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text
@@ -240,6 +241,7 @@ export function ReviewSession() {
                 type="text"
                 value={audioItInput}
                 onChange={e => setAudioItInput(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter' && canSubmit && phase === 'reviewing') handleSubmit() }}
                 disabled={phase === 'evaluating'}
                 placeholder="Traduzione..."
                 className="w-full bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text

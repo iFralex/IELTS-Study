@@ -4,7 +4,7 @@ import { ExerciseList } from '../../components/practice/ExerciseList'
 import { AudioPlayer } from '../../components/practice/AudioPlayer'
 import { QuestionInput } from '../../components/practice/QuestionInput'
 import { ResultsPanel } from '../../components/practice/ResultsPanel'
-import { scoreAnswers, normalizeAnswer } from '../../components/practice/utils'
+import { scoreAnswers, answersMatch } from '../../components/practice/utils'
 import { Lightbox } from '../../components/Lightbox'
 
 type Phase = 'selecting' | 'active' | 'results'
@@ -66,6 +66,7 @@ export function Listening() {
       const sessionId = await window.api.saveSession({
         exercise_id: currentExercise.id,
         section: 'listening',
+        question_type: currentExercise.question_type,
         started_at: queue.startedAt,
         completed_at: now,
         score: correctCount,
@@ -78,7 +79,7 @@ export function Listening() {
           question_index: q.index,
           user_answer: queue.answers[q.index] ?? '',
           correct_answer: q.answer,
-          is_correct: normalizeAnswer(queue.answers[q.index] ?? '') === normalizeAnswer(q.answer),
+          is_correct: answersMatch(queue.answers[q.index] ?? '', q.answer),
         }))
       )
       setCompletedIds(prev => new Set([...prev, currentExercise.id]))
@@ -130,7 +131,7 @@ export function Listening() {
         {currentExercise.questions.map(q => (
           <div key={q.index} className="flex flex-col gap-2">
             <label className="text-sm text-text font-medium">
-              {q.index + 1}. {q.text}
+              {q.index + 1}. {q.text.replace(/\s*\([^)]*[A-G]=[^)]+\)/, '').replace(/\s*[A-G]=.+$/, '').trim()}
             </label>
             <QuestionInput
               question={q}

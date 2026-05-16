@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { ListeningExercise, ReadingExercise } from '../../types'
-import { scoreAnswers, estimateBand, findPassageExcerpt } from './utils'
+import { scoreAnswers, estimateBand, findPassageExcerpt, answersMatch } from './utils'
+import { AudioPlayer } from './AudioPlayer'
 
 type AnyExercise = ListeningExercise | ReadingExercise
 
@@ -50,11 +51,16 @@ export function ResultsPanel({
         </div>
       </div>
 
+      {/* Audio player — listening only */}
+      {isListeningExercise(exercise) && exercise.audio_url && (
+        <AudioPlayer audioUrl={exercise.audio_url} sourceUrl={exercise.source_url} />
+      )}
+
       {/* Per-question results */}
       <div className="flex flex-col gap-3">
         {exercise.questions.map(q => {
           const userAnswer = answers[q.index] ?? ''
-          const correct = userAnswer.toLowerCase().trim() === q.answer.toLowerCase().trim()
+          const correct = answersMatch(userAnswer, q.answer)
           const passage = isReadingExercise(exercise) ? exercise.passage : null
           const isHighlightOpen = expandedHighlight === q.index
 
@@ -70,7 +76,9 @@ export function ResultsPanel({
                   {correct ? '✓' : '✗'}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-text font-medium leading-snug">{q.text}</p>
+                  <p className="text-text font-medium leading-snug">
+                    {q.text.replace(/\s*\([^)]*[A-G]=[^)]+\)/, '').replace(/\s*[A-G]=.+$/, '').trim()}
+                  </p>
                   <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
                     <span className={correct ? 'text-green' : 'text-red'}>
                       La tua risposta: <strong>{userAnswer || '(vuota)'}</strong>

@@ -4,13 +4,27 @@ export function normalizeAnswer(s: string): string {
   return s.toLowerCase().trim()
 }
 
+export function answersMatch(user: string, correct: string): boolean {
+  const u = normalizeAnswer(user)
+  const c = normalizeAnswer(correct)
+  if (u === c) return true
+  // "A, B, E" vs "A, B, E" — order-independent comma-separated sets
+  if (u.includes(',') || c.includes(',')) {
+    const toSet = (s: string) => s.split(',').map(x => x.trim()).sort().join(',')
+    return toSet(u) === toSet(c)
+  }
+  // "B – Columbian mammoth" matching answer key "B"
+  if (u.startsWith(c) && u.length > c.length && !/\w/.test(u[c.length])) return true
+  return false
+}
+
 export function scoreAnswers(
   questions: Question[],
   answers: Record<number, string>
 ): { correctCount: number; maxScore: number } {
   let correctCount = 0
   for (const q of questions) {
-    if (normalizeAnswer(answers[q.index] ?? '') === normalizeAnswer(q.answer)) {
+    if (answersMatch(answers[q.index] ?? '', q.answer)) {
       correctCount++
     }
   }
@@ -51,7 +65,7 @@ export function scoreMultiExercises<T extends { id: string; questions: Question[
   let correctCount = 0
   for (const ex of exercises) {
     for (const q of ex.questions) {
-      if (normalizeAnswer(answers[`${ex.id}:${q.index}`] ?? '') === normalizeAnswer(q.answer)) {
+      if (answersMatch(answers[`${ex.id}:${q.index}`] ?? '', q.answer)) {
         correctCount++
       }
     }

@@ -81,6 +81,8 @@ export function migrateDb(db: Database.Database): void {
   `)
   try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_en TEXT') } catch {}
   try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_it TEXT') } catch {}
+  try { db.exec('ALTER TABLE sessions ADD COLUMN question_type TEXT') } catch {}
+  try { db.exec('ALTER TABLE writing_submissions ADD COLUMN band_score REAL') } catch {}
 }
 
 let _db: Database.Database | null = null

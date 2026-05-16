@@ -49,8 +49,29 @@ export function QuestionInput({
             <input
               type="radio"
               name={`q-${question.index}`}
-              value={opt.toUpperCase().replace(' ', '_')}
-              checked={value === opt.toUpperCase().replace(' ', '_')}
+              value={opt.toUpperCase()}
+              checked={value === opt.toUpperCase()}
+              onChange={e => onChange(e.target.value)}
+              disabled={disabled}
+              className="accent-mauve"
+            />
+            <span className="text-text">{opt}</span>
+          </label>
+        ))}
+      </div>
+    )
+  }
+
+  if (questionType === 'yes_no_ng') {
+    return (
+      <div className="flex gap-4">
+        {['Yes', 'No', 'Not Given'].map(opt => (
+          <label key={opt} className="flex items-center gap-1.5 cursor-pointer text-sm">
+            <input
+              type="radio"
+              name={`q-${question.index}`}
+              value={opt.toUpperCase()}
+              checked={value === opt.toUpperCase()}
               onChange={e => onChange(e.target.value)}
               disabled={disabled}
               className="accent-mauve"
@@ -64,6 +85,42 @@ export function QuestionInput({
 
   if (questionType === 'multiple_choice') {
     const options = question.options ?? []
+
+    // Inline multi-select: "A=Label, B=Label" embedded in question text, answer is "A, B, E"
+    const inlineOpts: { key: string; label: string }[] = []
+    if (options.length === 0) {
+      const re = /([A-G])=([^,=]+?)(?=\s*,\s*[A-G]=|$)/g
+      let m: RegExpExecArray | null
+      while ((m = re.exec(question.text)) !== null) {
+        inlineOpts.push({ key: m[1], label: m[2].trim() })
+      }
+    }
+
+    if (inlineOpts.length > 0) {
+      const selected = new Set(value.split(',').map(s => s.trim()).filter(Boolean))
+      function toggle(key: string) {
+        const next = new Set(selected)
+        if (next.has(key)) next.delete(key); else next.add(key)
+        onChange([...next].sort().join(', '))
+      }
+      return (
+        <div className="flex flex-col gap-1.5">
+          {inlineOpts.map(({ key, label }) => (
+            <label key={key} className="flex items-start gap-2 cursor-pointer text-sm">
+              <input
+                type="checkbox"
+                checked={selected.has(key)}
+                onChange={() => toggle(key)}
+                disabled={disabled}
+                className="accent-mauve mt-0.5 shrink-0"
+              />
+              <span className="text-text">{key} – {label}</span>
+            </label>
+          ))}
+        </div>
+      )
+    }
+
     return (
       <div className="flex flex-col gap-1.5">
         {options.map(opt => (

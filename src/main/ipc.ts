@@ -46,8 +46,8 @@ export function registerIpcHandlers(): void {
   // ── Sessions ─────────────────────────────────────────────────────────────────
   ipcMain.handle('save-session', (_e, s: SessionInput) =>
     db.prepare(
-      'INSERT INTO sessions (exercise_id, section, started_at, completed_at, score, max_score, time_spent_seconds) VALUES (?,?,?,?,?,?,?)'
-    ).run(s.exercise_id, s.section, s.started_at, s.completed_at ?? null, s.score ?? null, s.max_score ?? null, s.time_spent_seconds ?? null).lastInsertRowid
+      'INSERT INTO sessions (exercise_id, section, question_type, started_at, completed_at, score, max_score, time_spent_seconds) VALUES (?,?,?,?,?,?,?,?)'
+    ).run(s.exercise_id, s.section, s.question_type ?? null, s.started_at, s.completed_at ?? null, s.score ?? null, s.max_score ?? null, s.time_spent_seconds ?? null).lastInsertRowid
   )
 
   ipcMain.handle('save-answers', (_e, rows: AnswerInput[]) => {
@@ -72,8 +72,8 @@ export function registerIpcHandlers(): void {
   // ── Writing ──────────────────────────────────────────────────────────────────
   ipcMain.handle('save-writing-submission', (_e, s: WritingInput) =>
     db.prepare(
-      'INSERT INTO writing_submissions (task_id, task_type, submitted_at, text, word_count, self_score, notes) VALUES (?,?,?,?,?,?,?)'
-    ).run(s.task_id, s.task_type, s.submitted_at, s.text, s.word_count, s.self_score ?? null, s.notes ?? null)
+      'INSERT INTO writing_submissions (task_id, task_type, submitted_at, text, word_count, band_score, self_score, notes) VALUES (?,?,?,?,?,?,?,?)'
+    ).run(s.task_id, s.task_type, s.submitted_at, s.text, s.word_count, s.band_score ?? null, s.self_score ?? null, s.notes ?? null)
   )
 
   // ── Exam ─────────────────────────────────────────────────────────────────────
@@ -90,16 +90,19 @@ export function registerIpcHandlers(): void {
   // ── Analytics ────────────────────────────────────────────────────────────────
   ipcMain.handle('get-analytics', (_e, days: number) => {
     const since = days === 0 ? 0 : Date.now() - days * 86_400_000
+
+    type SessionRow = SessionInput & { id: number; question_type: string | null; time_spent_seconds: number | null }
     const sessions = db.prepare(
       'SELECT * FROM sessions WHERE started_at >= ? AND completed_at IS NOT NULL'
-    ).all(since) as (SessionInput & { id: number })[]
+    ).all(since) as SessionRow[]
 
     const answers = db.prepare(
-      `SELECT a.is_correct, s.section, s.started_at
+      `SELECT a.is_correct, s.section, s.question_type
        FROM answers a JOIN sessions s ON a.session_id = s.id
        WHERE s.started_at >= ? AND s.completed_at IS NOT NULL`
-    ).all(since) as { is_correct: number; section: string; started_at: number }[]
+    ).all(since) as { is_correct: number; section: string; question_type: string | null }[]
 
+    // Weekly band chart
     const weekMap = new Map<string, { l: number[]; r: number[]; w: number[] }>()
     for (const s of sessions) {
       const week = new Date(s.started_at).toISOString().slice(0, 10)
@@ -108,7 +111,6 @@ export function registerIpcHandlers(): void {
       const key = s.section.startsWith('listening') ? 'l' : s.section.startsWith('reading') ? 'r' : 'w'
       weekMap.get(week)![key].push(pct)
     }
-
     const sessions_by_week = [...weekMap.entries()]
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([week, v]) => ({
@@ -118,17 +120,193 @@ export function registerIpcHandlers(): void {
         writing:   v.w.length ? +(avg(v.w) * 9).toFixed(1) : 0,
       }))
 
-    const total_time_seconds = sessions.reduce((s, r) => s + ((r as unknown as { time_spent_seconds?: number }).time_spent_seconds ?? 0), 0)
+    // Accuracy + avg time per question type
+    const typeMap = new Map<string, { correct: number; total: number }>()
+    for (const a of answers) {
+      if (!a.question_type) continue
+      const e = typeMap.get(a.question_type) ?? { correct: 0, total: 0 }
+      e.total++
+      if (a.is_correct) e.correct++
+      typeMap.set(a.question_type, e)
+    }
+    const timeByType = new Map<string, number[]>()
+    for (const s of sessions) {
+      if (!s.question_type || !s.max_score || !s.time_spent_seconds) continue
+      const arr = timeByType.get(s.question_type) ?? []
+      arr.push(s.time_spent_seconds / s.max_score)
+      timeByType.set(s.question_type, arr)
+    }
+    const accuracy_by_type = [...typeMap.entries()]
+      .sort(([, a], [, b]) => b.total - a.total)
+      .map(([qt, { correct, total }]) => ({
+        question_type: qt,
+        accuracy: total ? correct / total : 0,
+        attempts: total,
+        avg_time_per_question: avg(timeByType.get(qt) ?? []),
+      }))
+
+    // Per-section breakdown
+    const sectionMap = new Map<string, { correct: number; total: number; sessions: number; time: number }>()
+    for (const a of answers) {
+      const sec = a.section.startsWith('listening') ? 'listening' : a.section.startsWith('reading') ? 'reading' : 'writing'
+      const e = sectionMap.get(sec) ?? { correct: 0, total: 0, sessions: 0, time: 0 }
+      e.total++
+      if (a.is_correct) e.correct++
+      sectionMap.set(sec, e)
+    }
+    for (const s of sessions) {
+      const sec = s.section.startsWith('listening') ? 'listening' : s.section.startsWith('reading') ? 'reading' : 'writing'
+      const e = sectionMap.get(sec) ?? { correct: 0, total: 0, sessions: 0, time: 0 }
+      e.sessions++
+      e.time += s.time_spent_seconds ?? 0
+      sectionMap.set(sec, e)
+    }
+    const by_section = ['listening', 'reading', 'writing']
+      .filter(sec => sectionMap.has(sec))
+      .map(sec => {
+        const e = sectionMap.get(sec)!
+        return { section: sec, accuracy: e.total ? e.correct / e.total : 0, sessions: e.sessions, total_time_seconds: e.time }
+      })
+
+    // Days active + streak (all-time, not filtered)
+    const allSessions = days === 0 ? sessions : db.prepare(
+      'SELECT started_at FROM sessions WHERE completed_at IS NOT NULL'
+    ).all() as { started_at: number }[]
+    const daySet = new Set(allSessions.map(s => new Date(s.started_at).toISOString().slice(0, 10)))
+    const days_active = daySet.size
+    let current_streak = 0
+    const d = new Date()
+    while (true) {
+      const key = d.toISOString().slice(0, 10)
+      if (!daySet.has(key)) break
+      current_streak++
+      d.setDate(d.getDate() - 1)
+    }
+
+    // Accuracy trend by day (listening + reading only, writing has no score)
+    const trendMap = new Map<string, { l: number[]; r: number[] }>()
+    for (const s of sessions) {
+      if (!s.max_score) continue
+      const date = new Date(s.started_at).toISOString().slice(0, 10)
+      if (!trendMap.has(date)) trendMap.set(date, { l: [], r: [] })
+      const pct = Math.round(((s.score ?? 0) / s.max_score) * 100)
+      if (s.section.startsWith('listening')) trendMap.get(date)!.l.push(pct)
+      else if (s.section.startsWith('reading')) trendMap.get(date)!.r.push(pct)
+    }
+    const accuracy_trend = [...trendMap.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([date, v]) => ({
+        date,
+        listening: v.l.length ? Math.round(avg(v.l)) : null,
+        reading:   v.r.length ? Math.round(avg(v.r)) : null,
+      }))
+
+    // Estimated current bands (from filtered sessions)
+    const bandBySection = { l: [] as number[], r: [] as number[] }
+    for (const s of sessions) {
+      if (!s.max_score) continue
+      const pct = (s.score ?? 0) / s.max_score
+      if (s.section.startsWith('listening')) bandBySection.l.push(pct)
+      else if (s.section.startsWith('reading')) bandBySection.r.push(pct)
+    }
+    const writingBandsRaw = db.prepare(
+      `SELECT task_type, AVG(band_score) as avg_band, COUNT(*) as cnt
+       FROM writing_submissions WHERE band_score IS NOT NULL AND submitted_at >= ?
+       GROUP BY task_type`
+    ).all(since) as { task_type: string; avg_band: number; cnt: number }[]
+    const wBand = writingBandsRaw.reduce((acc, r) => acc + r.avg_band * r.cnt, 0) /
+      (writingBandsRaw.reduce((acc, r) => acc + r.cnt, 0) || 1)
+    const estL = bandBySection.l.length ? +(avg(bandBySection.l) * 9).toFixed(1) : 0
+    const estR = bandBySection.r.length ? +(avg(bandBySection.r) * 9).toFixed(1) : 0
+    const estW = writingBandsRaw.length ? +wBand.toFixed(1) : 0
+    const overallParts = [estL, estR, estW].filter(x => x > 0)
+    const estimated_bands = {
+      listening: estL,
+      reading: estR,
+      writing: estW,
+      overall: overallParts.length ? +(avg(overallParts)).toFixed(1) : 0,
+    }
+
+    // Flashcard stats
+    const fcTotal = (db.prepare('SELECT COUNT(*) as c FROM flashcards').get() as { c: number }).c
+    const fcMastered = (db.prepare('SELECT COUNT(*) as c FROM flashcards WHERE interval >= 21').get() as { c: number }).c
+    const fcDue = (db.prepare('SELECT COUNT(*) as c FROM flashcards WHERE next_review <= ?').get(Date.now()) as { c: number }).c
+    const fcReviews = db.prepare('SELECT COUNT(*) as total, SUM(is_correct) as correct FROM flashcard_reviews').get() as { total: number; correct: number }
+    const flashcard_stats = {
+      total: fcTotal,
+      mastered: fcMastered,
+      due_today: fcDue,
+      retention_rate: fcReviews.total ? fcReviews.correct / fcReviews.total : 0,
+    }
+
+    // Writing bands by task type
+    const wBandRows = db.prepare(
+      `SELECT task_type, AVG(band_score) as avg_band, COUNT(*) as cnt
+       FROM writing_submissions WHERE band_score IS NOT NULL AND submitted_at >= ?
+       GROUP BY task_type`
+    ).all(since) as { task_type: string; avg_band: number; cnt: number }[]
+    const wMap = Object.fromEntries(wBandRows.map(r => [r.task_type, r]))
+    const writing_bands = {
+      task1_avg: wMap['task1']?.avg_band ?? 0,
+      task1_count: wMap['task1']?.cnt ?? 0,
+      task2_avg: wMap['task2']?.avg_band ?? 0,
+      task2_count: wMap['task2']?.cnt ?? 0,
+    }
+
+    // Exercise coverage (all-time)
+    const listeningTotal = readJson<{ id: string }>('listening/exercises.json').length
+    const readingTotal   = readJson<{ id: string }>('reading/exercises.json').length
+    const writingTotal   = readJson<{ id: string }>('writing/task1.json').length + readJson<{ id: string }>('writing/task2.json').length
+    const allSessionsAll = db.prepare('SELECT exercise_id, section FROM sessions WHERE completed_at IS NOT NULL').all() as { exercise_id: string; section: string }[]
+    const doneL = new Set(allSessionsAll.filter(s => s.section === 'listening').map(s => s.exercise_id)).size
+    const doneR = new Set(allSessionsAll.filter(s => s.section === 'reading').map(s => s.exercise_id)).size
+    const doneW = (db.prepare('SELECT COUNT(DISTINCT task_id) as c FROM writing_submissions').get() as { c: number }).c
+    const exercise_coverage = [
+      { section: 'listening', done: doneL, total: listeningTotal },
+      { section: 'reading',   done: doneR, total: readingTotal   },
+      { section: 'writing',   done: doneW, total: writingTotal   },
+    ]
+
+    // Speed trend: compare first-half vs second-half sessions per type
+    const speedMap = new Map<string, { time: number; date: number }[]>()
+    for (const s of sessions) {
+      if (!s.question_type || !s.max_score || !s.time_spent_seconds) continue
+      const arr = speedMap.get(s.question_type) ?? []
+      arr.push({ time: s.time_spent_seconds / s.max_score, date: s.started_at })
+      speedMap.set(s.question_type, arr)
+    }
+    const speed_trend = [...speedMap.entries()]
+      .filter(([, arr]) => arr.length >= 4)
+      .map(([qt, arr]) => {
+        arr.sort((a, b) => a.date - b.date)
+        const half = Math.floor(arr.length / 2)
+        return {
+          question_type: qt,
+          older_avg: avg(arr.slice(0, half).map(x => x.time)),
+          recent_avg: avg(arr.slice(half).map(x => x.time)),
+        }
+      })
+
+    const total_time_seconds = sessions.reduce((s, r) => s + (r.time_spent_seconds ?? 0), 0)
     const correct = answers.filter(a => a.is_correct).length
     const exam_count = (db.prepare('SELECT COUNT(*) as c FROM exam_runs').get() as { c: number }).c
 
     return {
       sessions_by_week,
-      accuracy_by_type: [],
+      accuracy_by_type,
+      by_section,
+      accuracy_trend,
+      estimated_bands,
+      flashcard_stats,
+      writing_bands,
+      exercise_coverage,
+      speed_trend,
       total_sessions: sessions.length,
       total_time_seconds,
       average_accuracy: answers.length ? correct / answers.length : 0,
       exam_count,
+      days_active,
+      current_streak,
     }
   })
 
@@ -183,21 +361,7 @@ export function registerIpcHandlers(): void {
       maxOutputTokens: 2000,
       prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\nKeep each example sentence SHORT (max 12 words).\n\nReturn ONLY valid JSON, no markdown, no explanation:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Short sentence 1.\\n\\nShort sentence 2.\\n\\nShort sentence 3.","examples_it":"Frase breve 1.\\n\\nFrase breve 2.\\n\\nFrase breve 3."}`,
     })
-    console.log('[generate-flashcard] raw:', text)
-    // strip markdown fences, then find the JSON object
-    const stripped = text.replace(/```json|```/g, '').trim()
-    const match = stripped.match(/\{[\s\S]*\}/)
-    if (!match) throw new Error('No JSON in response')
-    // fix literal newlines inside JSON string values character by character
-    let inStr = false, esc = false, fixed = ''
-    for (const ch of match[0]) {
-      if (esc) { fixed += ch; esc = false }
-      else if (ch === '\\' && inStr) { fixed += ch; esc = true }
-      else if (ch === '"') { fixed += ch; inStr = !inStr }
-      else if (inStr && (ch === '\n' || ch === '\r')) { fixed += '\\n' }
-      else fixed += ch
-    }
-    return JSON.parse(fixed)
+    return parseAiJson(text)
   })
 
   ipcMain.handle('evaluate-answer', async (_e, word: string, correct: string, userAnswer: string, direction: string) => {
@@ -206,7 +370,7 @@ export function registerIpcHandlers(): void {
       maxOutputTokens: 500,
       prompt: `Evaluate this translation answer:\nWord: ${word}\nDirection: ${direction}\nUser answer: "${userAnswer}"\nCorrect: "${correct}"\n\nAccept variants and synonyms. Return ONLY valid JSON:\n{"is_correct":true,"quality":5,"explanation":"brief","alternatives":["alt1"]}`,
     })
-    return JSON.parse(text.replace(/```json|```/g, '').trim())
+    return parseAiJson(text)
   })
 
   ipcMain.handle('evaluate-audio-answer', async (_e, word: string, userEnglish: string, userItalian: string) => {
@@ -215,7 +379,7 @@ export function registerIpcHandlers(): void {
       maxOutputTokens: 600,
       prompt: `Evaluate these two answers for the word "${word}":\nSpelling: "${userEnglish}" (correct: "${word}")\nTranslation: "${userItalian}"\n\nAccept minor spelling variants for the translation. Return ONLY valid JSON:\n{"english_correct":true,"italian_correct":true,"quality":5,"english_explanation":"brief","italian_explanation":"brief"}`,
     })
-    return JSON.parse(text.replace(/```json|```/g, '').trim())
+    return parseAiJson(text)
   })
 
   ipcMain.handle('delete-flashcard', (_e, id: number) =>
@@ -229,7 +393,7 @@ export function registerIpcHandlers(): void {
       maxOutputTokens: 1000,
       prompt: `You are an IELTS examiner. Evaluate this IELTS Writing ${taskLabel} response.\n\nPrompt: ${prompt}\n\nWord count: ${wordCount}\n\nResponse:\n${userText}\n\nReturn ONLY valid JSON, no markdown:\n{"band":6.5,"overall":"2-3 sentence summary","strengths":["point 1","point 2"],"improvements":["point 1","point 2"],"vocab_suggestions":["word 1","word 2","word 3"]}`,
     })
-    return JSON.parse(text.replace(/```json|```/g, '').trim())
+    return parseAiJson(text)
   })
 
   // ── Chat ─────────────────────────────────────────────────────────────────────
@@ -275,6 +439,21 @@ export function registerIpcHandlers(): void {
     const tables = ['flashcard_reviews', 'flashcards', 'writing_submissions', 'exam_runs', 'answers', 'sessions']
     for (const t of tables) db.prepare(`DELETE FROM ${t}`).run()
   })
+}
+
+function parseAiJson<T>(text: string): T {
+  const stripped = text.replace(/```json|```/g, '').trim()
+  const match = stripped.match(/\{[\s\S]*\}/)
+  if (!match) throw new Error('No JSON in AI response')
+  let inStr = false, esc = false, fixed = ''
+  for (const ch of match[0]) {
+    if (esc) { fixed += ch; esc = false }
+    else if (ch === '\\' && inStr) { fixed += ch; esc = true }
+    else if (ch === '"') { fixed += ch; inStr = !inStr }
+    else if (inStr && (ch === '\n' || ch === '\r')) { fixed += '\\n' }
+    else fixed += ch
+  }
+  return JSON.parse(fixed)
 }
 
 function avg(arr: number[]): number {

@@ -15,7 +15,7 @@ export interface ReadingExercise {
   title: string
   source_url: string
   passage: string
-  question_type: 'matching_headings' | 'true_false_ng' | 'multiple_choice' | 'sentence_completion' | 'summary_completion' | 'short_answer' | 'matching_paragraph_info'
+  question_type: 'matching_headings' | 'true_false_ng' | 'yes_no_ng' | 'multiple_choice' | 'sentence_completion' | 'summary_completion' | 'short_answer' | 'matching_paragraph_info'
   difficulty: 'medium' | 'hard'
   questions: Question[]
 }
@@ -52,6 +52,7 @@ export interface Question {
 export interface SessionInput {
   exercise_id: string
   section: string
+  question_type?: string
   started_at: number
   completed_at?: number
   score?: number
@@ -77,6 +78,7 @@ export interface WritingInput {
   submitted_at: number
   text: string
   word_count: number
+  band_score?: number
   self_score?: number
   notes?: string
 }
@@ -163,11 +165,20 @@ export interface AIWritingFeedback {
 
 export interface AnalyticsData {
   sessions_by_week: { week: string; listening: number; reading: number; writing: number }[]
-  accuracy_by_type: { question_type: string; accuracy: number; attempts: number }[]
+  accuracy_by_type: { question_type: string; accuracy: number; attempts: number; avg_time_per_question: number }[]
+  by_section: { section: string; accuracy: number; sessions: number; total_time_seconds: number }[]
+  accuracy_trend: { date: string; listening: number | null; reading: number | null }[]
+  estimated_bands: { listening: number; reading: number; writing: number; overall: number }
+  flashcard_stats: { total: number; mastered: number; due_today: number; retention_rate: number }
+  writing_bands: { task1_avg: number; task1_count: number; task2_avg: number; task2_count: number }
+  exercise_coverage: { section: string; done: number; total: number }[]
+  speed_trend: { question_type: string; older_avg: number; recent_avg: number }[]
   total_sessions: number
   total_time_seconds: number
   average_accuracy: number
   exam_count: number
+  days_active: number
+  current_streak: number
 }
 
 export interface ChatMessage {

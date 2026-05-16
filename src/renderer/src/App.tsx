@@ -10,7 +10,6 @@ import { Reading } from './pages/practice/Reading'
 import { Writing } from './pages/practice/Writing'
 import { ExamSimulator } from './pages/ExamSimulator'
 import { Analytics } from './pages/Analytics'
-import { Library } from './pages/Library'
 import { Flashcard } from './pages/Flashcard'
 import { Chat } from './pages/Chat'
 
@@ -69,7 +68,6 @@ export default function App() {
             <Route path="/writing"   element={<Writing />} />
             <Route path="/exam"      element={<ExamSimulator />} />
             <Route path="/analytics" element={<Analytics />} />
-            <Route path="/library"   element={<Library />} />
             <Route path="/flashcard" element={<Flashcard />} />
             <Route path="/chat"      element={<Chat />} />
           </Routes>
@@ -95,6 +93,21 @@ export default function App() {
               className="text-xs text-text bg-surface0 border border-surface1 rounded px-2 py-1 w-36 outline-none focus:border-mauve"
               autoFocus
             />
+            <button
+              onClick={() => {
+                const u = new SpeechSynthesisUtterance(selectedWord.trim())
+                u.lang = 'en-GB'
+                speechSynthesis.cancel()
+                speechSynthesis.speak(u)
+              }}
+              disabled={!selectedWord.trim()}
+              title="Pronuncia"
+              className="text-subtext0 hover:text-text disabled:opacity-40 transition-colors"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+              </svg>
+            </button>
             <button
               onClick={openModalFromSelection}
               disabled={!selectedWord.trim()}

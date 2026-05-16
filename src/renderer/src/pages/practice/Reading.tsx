@@ -4,7 +4,7 @@ import { ExerciseList } from '../../components/practice/ExerciseList'
 import { ReadingPassage } from '../../components/practice/ReadingPassage'
 import { QuestionInput } from '../../components/practice/QuestionInput'
 import { ResultsPanel } from '../../components/practice/ResultsPanel'
-import { scoreAnswers, normalizeAnswer } from '../../components/practice/utils'
+import { scoreAnswers, answersMatch } from '../../components/practice/utils'
 
 type Phase = 'selecting' | 'active' | 'results'
 
@@ -67,6 +67,7 @@ export function Reading() {
       const sessionId = await window.api.saveSession({
         exercise_id: currentExercise.id,
         section: 'reading',
+        question_type: currentExercise.question_type,
         started_at: queue.startedAt,
         completed_at: now,
         score: correctCount,
@@ -79,7 +80,7 @@ export function Reading() {
           question_index: q.index,
           user_answer: queue.answers[q.index] ?? '',
           correct_answer: q.answer,
-          is_correct: normalizeAnswer(queue.answers[q.index] ?? '') === normalizeAnswer(q.answer),
+          is_correct: answersMatch(queue.answers[q.index] ?? '', q.answer),
         }))
       )
       setCompletedIds(prev => new Set([...prev, currentExercise.id]))
