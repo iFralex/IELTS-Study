@@ -181,13 +181,21 @@ export function registerIpcHandlers(): void {
     const { text } = await generateText({
       model: getModel(),
       maxOutputTokens: 1200,
-      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\nIMPORTANT: Return ONLY a single-line JSON object. Do NOT use real newlines inside string values — use the two-character sequence \\n instead.\n\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Sentence 1.\\n\\nSentence 2.\\n\\nSentence 3.","examples_it":"Frase 1.\\n\\nFrase 2.\\n\\nFrase 3."}`,
+      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\n\nReturn ONLY valid JSON:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Sentence 1.\\n\\nSentence 2.\\n\\nSentence 3.","examples_it":"Frase 1.\\n\\nFrase 2.\\n\\nFrase 3."}`,
     })
     console.log('[generate-flashcard] raw:', text)
-    const cleaned = text.replace(/```json|```/g, '').trim()
-    // collapse real newlines inside JSON string values so JSON.parse doesn't choke
-    const safe = cleaned.replace(/:\s*"([\s\S]*?)"/g, (_m, v) => `:"${v.replace(/\n/g, '\\n')}"`)
-    return JSON.parse(safe)
+    const match = text.match(/\{[\s\S]*\}/)
+    if (!match) throw new Error('No JSON in response')
+    // fix literal newlines inside JSON string values character by character
+    let inStr = false, esc = false, fixed = ''
+    for (const ch of match[0]) {
+      if (esc) { fixed += ch; esc = false }
+      else if (ch === '\\' && inStr) { fixed += ch; esc = true }
+      else if (ch === '"') { fixed += ch; inStr = !inStr }
+      else if (inStr && (ch === '\n' || ch === '\r')) { fixed += '\\n' }
+      else fixed += ch
+    }
+    return JSON.parse(fixed)
   })
 
   ipcMain.handle('evaluate-answer', async (_e, word: string, correct: string, userAnswer: string, direction: string) => {
