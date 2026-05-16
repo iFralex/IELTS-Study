@@ -72,6 +72,30 @@ export function filterExercises<T extends { id: string; question_type: string }>
   })
 }
 
+export function buildInterleavedSeries<T>(exercises: T[], getType: (e: T) => string): T[] {
+  const groups = new Map<string, T[]>()
+  for (const ex of exercises) {
+    const t = getType(ex)
+    const g = groups.get(t) ?? []
+    g.push(ex)
+    groups.set(t, g)
+  }
+  for (const g of groups.values()) g.sort(() => Math.random() - 0.5)
+  const types = [...groups.keys()].sort(() => Math.random() - 0.5)
+  const result: T[] = []
+  let round = 0
+  while (true) {
+    let added = false
+    for (const t of types) {
+      const g = groups.get(t)!
+      if (round < g.length) { result.push(g[round]); added = true }
+    }
+    if (!added) break
+    round++
+  }
+  return result
+}
+
 export function buildSeries<T extends { id: string; question_type: string }>(
   exercises: T[],
   mode: 'type' | 'random',

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { ListeningExercise, ReadingExercise } from '../../types'
-import { filterExercises } from './utils'
+import { filterExercises, buildInterleavedSeries } from './utils'
 
 type AnyExercise = ListeningExercise | ReadingExercise
 
@@ -24,14 +24,19 @@ export function ExerciseList({
 }: ExerciseListProps) {
   const [typeFilter, setTypeFilter] = useState('all')
   const [showCompleted, setShowCompleted] = useState(true)
+  const [varyTypes, setVaryTypes] = useState(true)
 
   const allTypes = ['all', ...new Set(exercises.map(e => e.question_type))]
   const visible = filterExercises(exercises, completedIds, typeFilter, showCompleted)
   const seriesPool = visible.filter(e => !completedIds.has(e.id))
+  const multipleTypes = new Set(seriesPool.map(e => e.question_type)).size > 1
 
   function handleStartSeries() {
-    const shuffled = [...seriesPool].sort(() => Math.random() - 0.5)
-    if (shuffled.length > 0) onStartSeries(shuffled)
+    if (seriesPool.length === 0) return
+    const ordered = varyTypes && multipleTypes
+      ? buildInterleavedSeries(seriesPool, e => e.question_type)
+      : [...seriesPool].sort(() => Math.random() - 0.5)
+    onStartSeries(ordered)
   }
 
   if (error) {
@@ -74,15 +79,18 @@ export function ExerciseList({
       </div>
 
       {/* Show completed toggle */}
-      <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer w-fit">
-        <input
-          type="checkbox"
-          checked={showCompleted}
-          onChange={e => setShowCompleted(e.target.checked)}
-          className="accent-mauve"
-        />
-        Mostra già fatti
-      </label>
+      <div className="flex items-center gap-4">
+        <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
+          <input type="checkbox" checked={showCompleted} onChange={e => setShowCompleted(e.target.checked)} className="accent-mauve" />
+          Mostra già fatti
+        </label>
+        {multipleTypes && (
+          <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
+            <input type="checkbox" checked={varyTypes} onChange={e => setVaryTypes(e.target.checked)} className="accent-mauve" />
+            Varia i tipi
+          </label>
+        )}
+      </div>
 
       {/* Exercise list */}
       {visible.length === 0 ? (

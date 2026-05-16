@@ -3,6 +3,7 @@ import type { WritingTask1, WritingTask2, AIWritingFeedback } from '../../types'
 import { WritingEditor } from '../../components/practice/WritingEditor'
 import { WritingFeedback } from '../../components/practice/WritingFeedback'
 import { countWords, isTask1 } from '../../components/practice/writingUtils'
+import { buildInterleavedSeries } from '../../components/practice/utils'
 import { Lightbox } from '../../components/Lightbox'
 
 type Phase = 'selecting' | 'active' | 'results'
@@ -25,6 +26,7 @@ export function Writing() {
   const [feedback, setFeedback] = useState<AIWritingFeedback | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
+  const [varyTypes, setVaryTypes] = useState(true)
   const [isEvaluating, setIsEvaluating] = useState(false)
   const [evalError, setEvalError] = useState(false)
   const [saveError, setSaveError] = useState(false)
@@ -62,8 +64,13 @@ export function Writing() {
   }
 
   function handleStartSeries(exs: (WritingTask1 | WritingTask2)[]) {
-    const shuffled = [...exs].sort(() => Math.random() - 0.5)
-    setSession({ exercises: shuffled, currentIndex: 0, taskType, startedAt: Date.now(), text: '' })
+    const getType = (e: WritingTask1 | WritingTask2) =>
+      isTask1(e) ? (e as WritingTask1).chart_type : (e as WritingTask2).essay_type
+    const multipleTypes = new Set(exs.map(getType)).size > 1
+    const ordered = varyTypes && multipleTypes
+      ? buildInterleavedSeries(exs, getType)
+      : [...exs].sort(() => Math.random() - 0.5)
+    setSession({ exercises: ordered, currentIndex: 0, taskType, startedAt: Date.now(), text: '' })
     setFeedback(null)
     setEvalError(false)
     setSaveError(false)
@@ -156,11 +163,21 @@ export function Writing() {
             <p className="text-subtext0 text-sm text-center pt-10">Nessun esercizio disponibile.</p>
           ) : (
             <div className="max-w-3xl mx-auto flex flex-col gap-4">
-              <div className="flex justify-end">
+              <div className="flex items-center justify-between">
+                {(() => {
+                  const getType = (e: WritingTask1 | WritingTask2) =>
+                    isTask1(e) ? (e as WritingTask1).chart_type : (e as WritingTask2).essay_type
+                  const multipleTypes = new Set(exercises.map(getType)).size > 1
+                  return multipleTypes ? (
+                    <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
+                      <input type="checkbox" checked={varyTypes} onChange={e => setVaryTypes(e.target.checked)} className="accent-mauve" />
+                      Varia i tipi
+                    </label>
+                  ) : <span />
+                })()}
                 <button
                   onClick={() => handleStartSeries(exercises)}
-                  className="px-4 py-1.5 bg-mauve text-base rounded text-sm font-medium
-                    hover:bg-mauve/90 transition-colors"
+                  className="px-4 py-1.5 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
                 >
                   ▶ Serie ({exercises.length})
                 </button>
