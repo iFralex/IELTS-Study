@@ -10,9 +10,11 @@
       {
         "index": 0,
         "text": "Who will be lecturing at the conference today? Choose THREE letters from A-G. A=Dr Christopher Lord, B=Dr David Bishop, C=Dr George Ripley, D=Dr William Benson, E=Dr Roger Dean, F=Dr Daisy Mandalay, G=Dr Ralph Morris",
-        "answer": "A, B, E"
+        "answer": "A, B, E",
+        "explanation": "The answer is A (Dr Christopher Lord), B (Dr David Bishop), E (Dr Roger Dean). The answer is not C (Dr George Ripley) because he is talking tomorrow not today. The answer is not D (Dr William Benson) because he oversees a debate, not a lecture. The answer is not F (Dr Daisy Mandalay) because she is showing a video, not lecturing. The answer is not G (Dr Ralph Morris) because he collects feedback."
       }
-    ]
+    ],
+    "transcript": "Today's topic under discussion is the health care system both past and present. We have a number of guests for today's lectures, videos and debates, one of them the notable Dr David Bishop. The morning will be kicked off by Dr Roger Dean who will be presenting his speech summarising the major changes and challenges of the health care system from the year 2000 to around 2012. Following him, will be Dr William Benson who will oversee the debate on today's problems for hospitals. After lunch, Dr Daisy Mandalay will be showing a revealing video relating to the current trends in health problems faced by today's society. Dr Christopher Lord will then address everyone on the problems faced by family doctors and the vital role they play in the health care system. Last, but not least, Dr David Bishop, as I mentioned earlier, will take the floor to tell you about his current research. Dr Ralph Morris will be responsible for collecting your feedback on the various parts of the conference at the end of the day. That will conclude our seminars for the day. Tomorrow's conference details will be put up on the notice board later this afternoon but you will be all please to know that Dr George Ripley has agreed to lecture you all."
   },
   {
     "id": "ielts_listening_multiple_choice_mammoths",
@@ -25,10 +27,16 @@
       {
         "index": 0,
         "text": "Which type of mammoth is this lecture going to focus on?",
-        "options": ["A – Woolly mammoth", "B – Columbian mammoth", "C – Steppe mammoth"],
-        "answer": "B"
+        "options": [
+          "A – Woolly mammoth",
+          "B – Columbian mammoth",
+          "C – Steppe mammoth"
+        ],
+        "answer": "B",
+        "explanation": "The answer is B. The speaker says: \"Today, I'm going to be focusing, on the one most of us associate with the 'so-called' classic shape and size of a mammoth and which is most known for its huge curving tusks and colossal size.\" This lesson is the perfect example of how you need to be patient and not get lost in long, technical words — the answer keywords appear at the end."
       }
-    ]
+    ],
+    "transcript": "There is evidence of much change and development in the mammoth. We can see the Ambelodon 20 million years ago, the Stegodon 12 million years ago and finally the Stegotetrabelodon which existed somewhere between 7.5 to 4.5 million years ago. There seem to have been a number of changes in the physiology of the mammoth, the most prominent were in the height, the size of the ears and the shape of the head and tusks. Today, I'm going to be focusing, on the one most of us associate with the 'so-called' classic shape and size of a mammoth and which is most known for its huge curving tusks and colossal size."
   },
   {
     "id": "ielts_listening_multiple_choice_dashford",
@@ -41,28 +49,49 @@
       {
         "index": 0,
         "text": "Membership at the study center costs…",
-        "options": ["A – 10 pounds", "B – 20 pounds", "C – 30 pounds"],
-        "answer": "B"
+        "options": [
+          "A – 10 pounds",
+          "B – 20 pounds",
+          "C – 30 pounds"
+        ],
+        "answer": "B",
+        "explanation": "The answer is B. The recording says membership is free for over 65s and students, but \"for everyone else it is an annual membership of 20 pounds.\" Always be careful of the word \"everyone else\" in both the recording and the answer options."
       },
       {
         "index": 1,
         "text": "Members are able to take out…",
-        "options": ["A – 3 books", "B – 5 books", "C – 10 books"],
-        "answer": "B"
+        "options": [
+          "A – 3 books",
+          "B – 5 books",
+          "C – 10 books"
+        ],
+        "answer": "B",
+        "explanation": "The answer is B — \"a maximum of 3\" = \"up to 3\". The recording says: \"you are able to borrow up to 3 books at a time.\""
       },
       {
         "index": 2,
         "text": "Booking is unnecessary for…",
-        "options": ["A – study rooms", "B – computers", "C – meeting rooms"],
-        "answer": "C"
+        "options": [
+          "A – study rooms",
+          "B – computers",
+          "C – meeting rooms"
+        ],
+        "answer": "C",
+        "explanation": "The answer is C — \"unlimited places\" = \"no need to book.\" The recording says the walking group offers \"unlimited places.\" The trap is hearing \"booking\" mentioned in relation to yoga/dance — but booking is required for those classes, not the walking group."
       },
       {
         "index": 3,
         "text": "Arts and crafts classes are taught by…",
-        "options": ["A – professional tutors", "B – volunteers", "C – staff members"],
-        "answer": "B"
+        "options": [
+          "A – professional tutors",
+          "B – volunteers",
+          "C – staff members"
+        ],
+        "answer": "B",
+        "explanation": "The answer is B — \"the classes are run by a qualified teacher\" = \"the classes are taught by teachers.\" Volunteers only provide support. The recording says: \"arts and crafts classes which are run by a qualified teacher with volunteer support.\""
       }
-    ]
+    ],
+    "transcript": "The study center in Dashford was opened to give free educational and recreational services to the community of Dashford. Membership is free for over 65's as well as for students, as long as they have a student ID. For everyone else it is an annual membership of 20 pounds. Members are able to enjoy full access to our extensive library. The library comprises of a comprehensive collection of classic literature, resource books, children's books, history books and popular literature. As members, you are able to borrow up to 3 books at a time for up to 4 days. Our recreational services extend for both members and non-members. We offer social and leisure activities for all age groups. Our yoga, dance and gentle exercise classes are extremely popular and booking ahead is required to ensure your place on one of these courses. However, our walking group, who meet once a week, offer unlimited places but you do have to have a good level of general fitness. We also have IT classes at beginner, intermediate and advanced levels. But for those of you who are more creative, there are arts and crafts classes which are run by a qualified teacher with volunteer support."
   },
   {
     "id": "ielts_map_listening_practice_taj_mahal",
@@ -72,14 +101,50 @@
     "question_type": "map_diagram",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The Taj Mahal was completed in ______", "answer": "1653"},
-      {"index": 1, "text": "Around ______ labourers were used in its creation.", "answer": "20,000"},
-      {"index": 2, "text": "Map label 3 (entrance area)", "answer": "Forecourt"},
-      {"index": 3, "text": "Map label 4 (main gateway)", "answer": "Great Gate"},
-      {"index": 4, "text": "Map label 5 (central water feature)", "answer": "Pond"},
-      {"index": 5, "text": "Map label 6 (central building)", "answer": "Mausoleum"},
-      {"index": 6, "text": "Map label 7 (building on the side)", "answer": "Guesthouse"}
-    ]
+      {
+        "index": 0,
+        "text": "The Taj Mahal was completed in ______",
+        "answer": "1653",
+        "explanation": "The recording says it was \"built between 1631 and 1653.\" The question asks when it was completed — the completion date is 1653."
+      },
+      {
+        "index": 1,
+        "text": "Around ______ labourers were used in its creation.",
+        "answer": "20,000",
+        "explanation": "The recording states: \"The construction involved some 20,000 workers.\""
+      },
+      {
+        "index": 2,
+        "text": "Map label 3 (entrance area)",
+        "answer": "Forecourt",
+        "explanation": "The recording says: \"directly in front of us is the forecourt.\""
+      },
+      {
+        "index": 3,
+        "text": "Map label 4 (main gateway)",
+        "answer": "Great Gate",
+        "explanation": "The recording says: \"If you go straight ahead, you will come to the Great Gate.\""
+      },
+      {
+        "index": 4,
+        "text": "Map label 5 (central water feature)",
+        "answer": "Pond",
+        "explanation": "The recording says: \"Midway, where the paths intersect, is a marble pond.\""
+      },
+      {
+        "index": 5,
+        "text": "Map label 6 (central building)",
+        "answer": "Mausoleum",
+        "explanation": "The recording says: \"you will come to the mausoleum itself which has a marble dome, 35m high.\""
+      },
+      {
+        "index": 6,
+        "text": "Map label 7 (building on the side)",
+        "answer": "Guesthouse",
+        "explanation": "The recording says: \"to the right you can find a guesthouse.\""
+      }
+    ],
+    "transcript": "Welcome to the Taj Mahal. This is one of the most famous monuments to love in the world. It was built between 1631 and 1653 in the city of Agra by the Mughal Emperor Shah as a mausoleum for his wife. The construction involved some 20,000 workers and incorporated materials from China, Tibet, Sri Lanka and Arabia. We are here at the Outer Gate and directly in front of us is the forecourt. On the left hand side of the forecourt, you will see some subsidiary tombs and opposite that are the tomb attendants' quarters. If you go straight ahead, you will come to the Great Gate and beyond that is the formal gardens. The gardens are divided into 4 sections by paths which represent the 4 rivers of paradise. Midway, where the paths intersect, is a marble pond, in which the mausoleum is beautifully reflected. Walking through the gardens, past the pond, you will come to the mausoleum itself which has a marble dome, 35m high. Each side of the building has archways which are framed by carefully chosen verses from the Qur'an in beautifully stylised calligraphy. To the left of this, is the mosque and to the right you can find a guesthouse. Now I'll give you some time to wander round and see this marvel for yourself."
   },
   {
     "id": "ielts_map_listening_practice_farm",
@@ -89,11 +154,32 @@
     "question_type": "map_diagram",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Diagram label 1 (grazing area)", "answer": "Pasture area"},
-      {"index": 1, "text": "Diagram label 2 (where milk is processed)", "answer": "Milk house"},
-      {"index": 2, "text": "Diagram label 3 (for new-born animals)", "answer": "Maternity pens"},
-      {"index": 3, "text": "Diagram label 4 (where animal food is kept)", "answer": "Feed storage"}
-    ]
+      {
+        "index": 0,
+        "text": "Diagram label 1 (grazing area)",
+        "answer": "Pasture area",
+        "explanation": "The recording says: \"In the northwest corner of the farm is a pasture area which is a wide grassy expanse.\""
+      },
+      {
+        "index": 1,
+        "text": "Diagram label 2 (where milk is processed)",
+        "answer": "Milk house",
+        "explanation": "The recording says: \"From the parking area, you go east through the milk house, which is used daily.\""
+      },
+      {
+        "index": 2,
+        "text": "Diagram label 3 (for new-born animals)",
+        "answer": "Maternity pens",
+        "explanation": "The recording says: \"the calf hutches which are located just beyond the maternity pens.\" The maternity pens come before the calf hutches."
+      },
+      {
+        "index": 3,
+        "text": "Diagram label 4 (where animal food is kept)",
+        "answer": "Feed storage",
+        "explanation": "The recording says: \"To the south are two circular areas, one of which is the feed storage and the other the deadstock area.\""
+      }
+    ],
+    "transcript": "As you drive up the driveway you will immediately arrive in the parking area. You will see to your left the farmhouse where the farmer lives as you drive up and directly to the left of the parking area is the main shed. There are a number of smaller sheds located around the main shed which are not currently labelled on the map. In the northwest corner of the farm is a pasture area which is a wide grassy expanse. It provides rich organic grass for our cows and, along with other types of feed, gives us our organic status and key selling point. From the parking area, you go east through the milk house, which is used daily, and then into the barn. This is where the cows are often sheltered. On the other side of the barn is the manure storage. To the north you will find the calf hutches which are located just beyond the maternity pens. Only 30% of our cows are used for breeding. In the bottom left corner of the barn is the loading chute. To the south are two circular areas, one of which is the feed storage and the other the deadstock area. We hope you will enjoy looking around our farm and learning about how we manage our cows."
   },
   {
     "id": "ielts_listening_diagrams_practice_tips",
@@ -103,16 +189,62 @@
     "question_type": "map_diagram",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The Insight probe will investigate Mars' ________", "answer": "interior"},
-      {"index": 1, "text": "The probe is currently situated near Mars' ________", "answer": "equator"},
-      {"index": 2, "text": "Scientists aim to learn about Mars' composition from its core to its ________", "answer": "crust"},
-      {"index": 3, "text": "Diagram label 4", "answer": "robotic arm"},
-      {"index": 4, "text": "Diagram label 5", "answer": "temperature"},
-      {"index": 5, "text": "Diagram label 6", "answer": "wind"},
-      {"index": 6, "text": "Diagram label 7", "answer": "solar panels"},
-      {"index": 7, "text": "Diagram label 8", "answer": "heat flow"},
-      {"index": 8, "text": "Diagram label 9 (measurement in feet)", "answer": "16"}
-    ]
+      {
+        "index": 0,
+        "text": "The Insight probe will investigate Mars' ________",
+        "answer": "interior",
+        "explanation": "The recording says: \"The Insight probe aims to study the world's deep interior.\""
+      },
+      {
+        "index": 1,
+        "text": "The probe is currently situated near Mars' ________",
+        "answer": "equator",
+        "explanation": "The recording says: \"Insight is now sitting on a vast, flat plain, close to the Red Planet's equator.\""
+      },
+      {
+        "index": 2,
+        "text": "Scientists aim to learn about Mars' composition from its core to its ________",
+        "answer": "crust",
+        "explanation": "The recording says: \"Scientists want to know how the world is constructed – from its core to its crust.\""
+      },
+      {
+        "index": 3,
+        "text": "Diagram label 4",
+        "answer": "robotic arm",
+        "explanation": "The recording says: \"at the top there is a robotic arm which places instruments such as the seismometer on the planet's surface.\""
+      },
+      {
+        "index": 4,
+        "text": "Diagram label 5",
+        "answer": "temperature",
+        "explanation": "The recording says: \"On the main body of the probe there are sensors for both temperature and wind.\" Temperature is one of the two sensors."
+      },
+      {
+        "index": 5,
+        "text": "Diagram label 6",
+        "answer": "wind",
+        "explanation": "The recording says: \"sensors for both temperature and wind.\" Wind is the second sensor."
+      },
+      {
+        "index": 6,
+        "text": "Diagram label 7",
+        "answer": "solar panels",
+        "explanation": "The recording says: \"two large circular solar panels which were deployed immediately on landing.\" Note: the plural \"panels\" is required — \"solar panel\" (singular) would be wrong."
+      },
+      {
+        "index": 7,
+        "text": "Diagram label 8",
+        "answer": "heat flow",
+        "explanation": "The recording says: \"there is a heat flow probe that will penetrate to a depth of 5m or 16ft.\""
+      },
+      {
+        "index": 8,
+        "text": "Diagram label 9 (measurement in feet)",
+        "answer": "16",
+        "explanation": "The recording says: \"penetrate to a depth of 5m or 16ft.\" Since the question asks for a measurement in feet, the answer is 16 (not 5m)."
+      }
+    ],
+    "transcript": "The US space agency Nasa has landed a new robot on Mars, otherwise known as the Red Planet. after a dramatic seven-minute plunge to the surface. The Insight probe aims to study the world's deep interior, and make it the only planet – apart from Earth – that has been examined in this way. Insight is now sitting on a vast, flat plain, close to the Red Planet's equator. This will be the first probe to dedicate its investigations to understanding Mars' interior. Scientists want to know how the world is constructed – from its core to its crust. Looking at the functions of the Insight probe shown on the diagram, we can see that at the top there is a robotic arm which places instruments such as the seismometer on the planet's surface. Attached to the arm is an instrument monitoring camera. On the main body of the probe there are sensors for both temperature and wind as well as a rise antenna. This measures the movement of Mars' North Pole as it orbits the sun giving pointers about the iron-rich centre of the planet and hopefully more information about the composition and size of the planet's core. On either side of the main body of the probe are two large circular solar panels which were deployed immediately on landing to operate its systems and warm equipment in the sub-zero temperatures on the planet. To delve deep into the ground and measure the planet's temperature, there is a heat flow probe that will penetrate to a depth of 5m or 16ft."
   },
   {
     "id": "listening_multiple_choice_practice_moles",
@@ -125,46 +257,82 @@
       {
         "index": 0,
         "text": "The mole hill idiom means…",
-        "options": ["A – To exaggerate; make something small appear bigger", "B – A mountain made of dirt", "C – Underground tunneling"],
-        "answer": "A"
+        "options": [
+          "A – To exaggerate; make something small appear bigger",
+          "B – A mountain made of dirt",
+          "C – Underground tunneling"
+        ],
+        "answer": "A",
+        "explanation": "The recording says the idiom means \"exaggerating something that is in fact quite small and trivial.\" To exaggerate = to make something small appear bigger than it is."
       },
       {
         "index": 1,
         "text": "Most people are worried that mole hills…",
-        "options": ["A – Cause serious garden damage", "B – Are unsightly", "C – Spread disease"],
-        "answer": "B"
+        "options": [
+          "A – Cause serious garden damage",
+          "B – Are unsightly",
+          "C – Spread disease"
+        ],
+        "answer": "B",
+        "explanation": "The recording says mole hills \"do not cause the garden much damage\" (eliminates option A). Many people think they are \"unsightly\" (= ugly). While moles can carry rabies, \"they are hardly considered a health risk\" because people rarely come into contact with a living mole."
       },
       {
         "index": 2,
         "text": "Moles…",
-        "options": ["A – Are actually blind creatures", "B – Eat only worms", "C – Are sensitive to vibrations in soil"],
-        "answer": "C"
+        "options": [
+          "A – Are actually blind creatures",
+          "B – Eat only worms",
+          "C – Are sensitive to vibrations in soil"
+        ],
+        "answer": "C",
+        "explanation": "The recording states that the belief moles are blind is \"a myth.\" The correct answer comes from: \"They are particularly sensitive to vibrations in the soil.\""
       },
       {
         "index": 3,
         "text": "Moles can dig…",
-        "options": ["A – Over 200 yards in a day", "B – 50 yards in a day", "C – 100 yards in a day"],
-        "answer": "A"
+        "options": [
+          "A – Over 200 yards in a day",
+          "B – 50 yards in a day",
+          "C – 100 yards in a day"
+        ],
+        "answer": "A",
+        "explanation": "The recording states: \"A mole is capable of digging upward of 200 yards in a day.\" The phrase \"upward of\" means \"over/more than.\""
       },
       {
         "index": 4,
         "text": "Moles give birth…",
-        "options": ["A – In tunnel bedrooms", "B – Underground in birthing chambers", "C – Above ground in nests"],
-        "answer": "B"
+        "options": [
+          "A – In tunnel bedrooms",
+          "B – Underground in birthing chambers",
+          "C – Above ground in nests"
+        ],
+        "answer": "B",
+        "explanation": "The recording says: \"Their tunnel systems are also used to connect subterranean living chambers such as bedrooms and birthing chambers.\" The word \"subterranean\" means underground."
       },
       {
         "index": 5,
         "text": "The birthing chamber is…",
-        "options": ["A – Located below the biggest mole hill", "B – About the size of a football", "C – Lined with leaves"],
-        "answer": "A"
+        "options": [
+          "A – Located below the biggest mole hill",
+          "B – About the size of a football",
+          "C – Lined with leaves"
+        ],
+        "answer": "A",
+        "explanation": "The recording says: \"The birthing chamber is about the size of a football\" and \"the mole hill above it is the biggest\" — so you can identify it by the largest mole hill above it."
       },
       {
         "index": 6,
         "text": "Moles are equipped with…",
-        "options": ["A – Short, weak limbs", "B – Curved, sharp claws", "C – Immense hands and strong claws"],
-        "answer": "C"
+        "options": [
+          "A – Short, weak limbs",
+          "B – Curved, sharp claws",
+          "C – Immense hands and strong claws"
+        ],
+        "answer": "C",
+        "explanation": "The recording describes moles as having \"massive hands, short limbs and strong claws all designed as excellent digging tools.\" Massive = immense (huge)."
       }
-    ]
+    ],
+    "transcript": "Moles and Mole Hills. The earliest species of mole was found more or less 55 million years ago. Since then, they have developed into 42 species all of which are categorised as insectivores. Nowadays, most people in the UK come across moles when they discover mole hills on their lawns. It is from these mole hills that the idiom \"making a mountain out of a mole hill\" was formed. This is a very common idiom used by most native English speakers and means exaggerating something that is in fact quite small and trivial. Mole hills are created by the mole digging out earth to create tunnels and throwing the earth outwards into the garden which creates little mounds of earth on the surface. These mole hills do not cause the garden much damage but many people think they are unsightly. Moles can carry rabies which can cause serious illness if someone is bitten, but as most people rarely come into contact with a living mole, they are hardly considered a health risk. As people, particularly in the UK, are very proud of their gardens, the unsightly mole hills result in them laying down traps which kill the moles. Some people think moles are blind which is why they live underground in the dark. However, this is a myth. Although, it's true that their eyes are very small and play little role in their life underground. They rely mostly on their sense of smell and hearing which they use to find food, such as worms. They are particularly sensitive to vibrations in the soil. A mole is capable of digging upward of 200 yards in a day, which considering that a mole only grows to about 15cm is a great achievement. They often use their tunnels as highways to travel from one place to another. They can run down their tunnels, go backwards and even do little somersaults all inside their tunnels. Their tunnel systems are also used to connect subterranean living chambers such as bedrooms and birthing chambers. The birthing chamber is about the size of a football and the female mole lines it with dry grass and leaves for the young. It's easy to spot the breeding chamber because the mole hill above it is the biggest. She is the only adult mole who is responsible for taking care of the young. Moles are sweet looking creatures with massive hands, short limbs and strong claws all designed as excellent digging tools. Unfortunately, for moles, their skins used to be prized highly by British High Society for clothing which meant that many moles died for the vanity of people."
   },
   {
     "id": "ielts_listening_practice_nadiya_hussain",
@@ -174,12 +342,38 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "How many children does Nadiya have?", "answer": "3"},
-      {"index": 1, "text": "In what year did she enter The Great British Bake Off?", "answer": "2015"},
-      {"index": 2, "text": "She was launched into her career by winning a UK ________.", "answer": "baking competition"},
-      {"index": 3, "text": "The BBC documentary followed her around Bangladesh on a ________ tour.", "answer": "culinary"},
-      {"index": 4, "text": "She also writes as a ________ for the Times magazine.", "answer": "columnist"}
-    ]
+      {
+        "index": 0,
+        "text": "How many children does Nadiya have?",
+        "answer": "3",
+        "explanation": "The recording says she is \"mother of three.\" The answer is 3."
+      },
+      {
+        "index": 1,
+        "text": "In what year did she enter The Great British Bake Off?",
+        "answer": "2015",
+        "explanation": "The recording explicitly states she \"entered The Great British Bake Off in 2015.\""
+      },
+      {
+        "index": 2,
+        "text": "She was launched into her career by winning a UK ________.",
+        "answer": "baking competition",
+        "explanation": "The recording says she won \"the biggest baking competition in the UK.\" The answer is \"baking competition.\" Note: questions like this allow no more than two words and/or a number."
+      },
+      {
+        "index": 3,
+        "text": "The BBC documentary followed her around Bangladesh on a ________ tour.",
+        "answer": "culinary",
+        "explanation": "The recording says \"her culinary journey around Bangladesh.\" The word \"tour\" is already in the question sentence as a paraphrase for \"journey.\" The answer is \"culinary.\""
+      },
+      {
+        "index": 4,
+        "text": "She also writes as a ________ for the Times magazine.",
+        "answer": "columnist",
+        "explanation": "The recording says \"She is also a columnist for the Times magazine.\" The sentence uses \"writes as a ______\" which requires a profession/person (columnist), not an object (column)."
+      }
+    ],
+    "transcript": "Nadiya Hussain was born into a British Bangladeshi family in the south of England. Both a wife and mother of three, she entered The Great British Bake Off in 2015. Her ability to produce amazingly creative, tasty bakes earned her the title of Champion in the biggest baking competition in the UK. This launched her career. Later, she was asked to bake a cake for Queen Elizabeth II's 90th birthday. And then she went on to film the Chronicles of Nadiya, a BBC documentary of her culinary journey around Bangladesh. She is also a columnist for the Times magazine presenting mouth watering recipes for baking."
   },
   {
     "id": "ielts_listening_section_4_practice",
@@ -189,13 +383,44 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "What will the speaker discuss last?", "answer": "sensory capacity"},
-      {"index": 1, "text": "What is the bottlenosed dolphin's brain weight?", "answer": "1500 grams"},
-      {"index": 2, "text": "Which species besides dolphins uses tools?", "answer": "primates"},
-      {"index": 3, "text": "What can dolphins copy from other species?", "answer": "movements"},
-      {"index": 4, "text": "Can dolphins see outside water? (Yes/No)", "answer": "Yes"},
-      {"index": 5, "text": "Why do dolphins have small holes instead of larger ears?", "answer": "small hole"}
-    ]
+      {
+        "index": 0,
+        "text": "What will the speaker discuss last?",
+        "answer": "sensory capacity",
+        "explanation": "The recording introduces the topics in this order: tools, communication, sonar, and \"also their sensory capacity.\" Sensory capacity is listed last."
+      },
+      {
+        "index": 1,
+        "text": "What is the bottlenosed dolphin's brain weight?",
+        "answer": "1500 grams",
+        "explanation": "The recording states: \"the bottlenosed dolphin at 1,500 grams.\" The answer is 1500 grams."
+      },
+      {
+        "index": 2,
+        "text": "Which species besides dolphins uses tools?",
+        "answer": "primates",
+        "explanation": "The recording says: \"while many believe that primates, such as chimpanzees, are the only species who use tools for activities.\" The answer is primates (or chimpanzees)."
+      },
+      {
+        "index": 3,
+        "text": "What can dolphins copy from other species?",
+        "answer": "movements",
+        "explanation": "The recording says: \"dolphins also mimic movements of both humans and other animals.\" The answer is movements."
+      },
+      {
+        "index": 4,
+        "text": "Can dolphins see outside water? (Yes/No)",
+        "answer": "Yes",
+        "explanation": "The recording says dolphins \"have the ability to focus their eyesight due to the curvy characteristics of their lenses, thus they are able to see both in and out of water.\" The answer is Yes."
+      },
+      {
+        "index": 5,
+        "text": "Why do dolphins have small holes instead of larger ears?",
+        "answer": "small hole",
+        "explanation": "The recording says dolphins \"have little more than a small hole for hearing rather than having larger ears which would severely affect the creature's ability to swim.\" Large ears would impair their swimming ability."
+      }
+    ],
+    "transcript": "Today I'm going to talk to you about dolphin intelligence and in particular their use of tools, methods of communication, sonar and also their sensory capacity. But first let's look at how the dolphin brain compares to the brains of other species in terms of size. The largest brain in the world belongs to the sperm whale. Weighing some 9,000 grams, it is six to seven times larger than the human brain. The second largest brain in the world is the killer whale (or orca) at 6,000 grams. The next largest brain among the marine mammals is the bottlenosed dolphin at 1,500 grams, followed by human brains at approximately 1,200 grams. Strong connections between the sensorial and motive areas of a dolphin's brain to the body indicate that it is very much sensitive to pain and stress. Looking at the way dolphin's use tools, while many believe that primates, such as chimpanzees, are the only species who use tools for activities, dolphins studied in the wild have been seen using sea sponges to protect their snouts from getting scratches as they scavenge for food on the ocean floor. Dependent calves, young baby dolphins, are also provided with sponges from their mothers, as research in the wild has seen infant dolphins wearing tiny sponges on their snouts while swimming close to their mothers. With regards to dolphin communication, dolphins utilize \"signature whistles\" to identify themselves to others. In other words, these whistles can be seen as representing their names. Furthermore, dolphins also mimic movements of both humans and other animals. Another interesting point about dolphins is of course their sonar. It has been suggested by several noted scientists that dolphins may be able to create acoustical holographic images from the interlacing of their sonic output. It is well known that dolphins can see inside the bodies of their fellow dolphins, and other animals in the water. This is because dolphin sonar evolved to pass through water and does not reflect until it hits something like bone or air sacs. Since animal bodies are more than 50% water, their sonar enables them to literally \"see\" inside other animals. And finally let's look at the, dolphins fantastic sensory capacity. They have the ability to focus their eyesight due to the curvy characteristics of their lenses, thus they are able to see both in and out of water. Moreover, dolphins have little more than a small hole for hearing rather than having larger ears which would severely affect the creature's ability to swim. Rather, studies show that sounds are obtained through tiny bones inside their ear hole, which then transfer sound to the inner ear through the fatty material that surrounds the eardrum."
   },
   {
     "id": "listening_practice_summary_buckingham_palace",
@@ -205,14 +430,50 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The famous feature of the palace where the Royal Family appears (answer: 1 word)", "answer": "balcony"},
-      {"index": 1, "text": "Year the palace was extended with a new façade", "answer": "1851"},
-      {"index": 2, "text": "Number of state rooms open to the public", "answer": "9"},
-      {"index": 3, "text": "Total number of rooms in Buckingham Palace", "answer": "775"},
-      {"index": 4, "text": "Number of staff bedrooms", "answer": "760"},
-      {"index": 5, "text": "Number of people the garden can host for a garden party", "answer": "50,000"},
-      {"index": 6, "text": "The palace grounds feature a ________", "answer": "garden"}
-    ]
+      {
+        "index": 0,
+        "text": "The famous feature of the palace where the Royal Family appears (answer: 1 word)",
+        "answer": "balcony",
+        "explanation": "The recording states: \"The balcony of Buckingham Palace is one of the most famous in the world.\""
+      },
+      {
+        "index": 1,
+        "text": "Year the palace was extended with a new façade",
+        "answer": "1851",
+        "explanation": "The recording states the first Royal balcony appearance took place \"in 1851, when Queen Victoria stepped onto it during celebrations for the opening of the Great Exhibition.\""
+      },
+      {
+        "index": 2,
+        "text": "Number of state rooms open to the public",
+        "answer": "9",
+        "explanation": "The recording states: \"Buckingham Palace suffered nine direct bomb hits.\" The word \"direct\" is additional descriptive information — the answer is 9."
+      },
+      {
+        "index": 3,
+        "text": "Total number of rooms in Buckingham Palace",
+        "answer": "775",
+        "explanation": "The recording states: \"There are 775 rooms in the palace.\""
+      },
+      {
+        "index": 4,
+        "text": "Number of staff bedrooms",
+        "answer": "760",
+        "explanation": "The recording states: \"There are 1,514 doors and 760 windows in Buckingham Palace.\" The answer is 760 windows."
+      },
+      {
+        "index": 5,
+        "text": "Number of people the garden can host for a garden party",
+        "answer": "50,000",
+        "explanation": "The recording states: \"More than 50,000 people visit the Palace annually as The Queen's guests.\""
+      },
+      {
+        "index": 6,
+        "text": "The palace grounds feature a ________",
+        "answer": "garden",
+        "explanation": "The recording ends with a list of official events including \"garden parties.\" The answer is \"garden.\""
+      }
+    ],
+    "transcript": "Buckingham Palace is The Queen's official London residence. The balcony of Buckingham Palace is one of the most famous in the world. The first recorded Royal balcony appearance took place in 1851, when Queen Victoria stepped onto it during celebrations for the opening of the Great Exhibition. During the Second World War, Buckingham Palace suffered nine direct bomb hits. Buckingham Palace has its own chapel, post office, swimming pool, staff cafeteria, doctor's surgery and cinema. There are 775 rooms in the palace. Some rooms at Buckingham Palace have a Chinese theme. There are 1,514 doors and 760 windows in Buckingham Palace. All windows are cleaned every six weeks. More than 50,000 people visit the Palace annually as The Queen's guests at banquets, lunches, dinners, receptions and garden parties."
   },
   {
     "id": "listening_practice_summary_terracotta_army",
@@ -222,12 +483,38 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The purpose of the Terracotta Army was to ________ the emperor in the afterlife.", "answer": "protect"},
-      {"index": 1, "text": "The army was created in the ________", "answer": "third century BC"},
-      {"index": 2, "text": "The army was discovered by ________", "answer": "local farmers"},
-      {"index": 3, "text": "The figures represent ________", "answer": "soldiers"},
-      {"index": 4, "text": "Number of pits containing the army", "answer": "150"}
-    ]
+      {
+        "index": 0,
+        "text": "The purpose of the Terracotta Army was to ________ the emperor in the afterlife.",
+        "answer": "protect",
+        "explanation": "The recording states the purpose of the Terracotta Army was \"to protect the emperor in his afterlife.\""
+      },
+      {
+        "index": 1,
+        "text": "The army was created in the ________",
+        "answer": "third century BC",
+        "explanation": "The recording states the figures date \"from approximately the late third century BC.\""
+      },
+      {
+        "index": 2,
+        "text": "The army was discovered by ________",
+        "answer": "local farmers",
+        "explanation": "The recording states they \"were discovered in 1974 by local farmers in Xi'an.\""
+      },
+      {
+        "index": 3,
+        "text": "The figures represent ________",
+        "answer": "soldiers",
+        "explanation": "The recording states the pits held \"more than 8,000 soldiers.\" The figures represent soldiers (warriors)."
+      },
+      {
+        "index": 4,
+        "text": "Number of pits containing the army",
+        "answer": "150",
+        "explanation": "The recording states there were \"150 cavalry horses.\" The answer is 150."
+      }
+    ],
+    "transcript": "The Terracotta Army is a collection of terracotta sculptures depicting the armies the first Emperor of China. It is a form of funerary art buried with the emperor in 210–209 BC and whose purpose was to protect the emperor in his afterlife. The figures, dating from approximately the late third century BC, were discovered in 1974 by local farmers in, Xi'an. The figures vary in height according to their roles, with the tallest being the generals. The figures include warriors, chariots and horses. Estimates from 2007 were that the three pits containing the Terracotta Army held more than 8,000 soldiers, 130 chariots with 520 horses and 150 cavalry horses, the majority of which remained buried in the pits nearby. Other terracotta non-military figures were found in other pits, including officials, acrobats, strongmen and musicians."
   },
   {
     "id": "ielts_listening_practice_tables_non_native",
@@ -237,12 +524,38 @@
     "question_type": "table",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Table cell 1 (type of squirrel introduced)", "answer": "grey squirrel"},
-      {"index": 1, "text": "Table cell 2 (habitat type where species thrives)", "answer": "mature dense woodland"},
-      {"index": 2, "text": "Table cell 3 (food sources)", "answer": "seeds and nuts"},
-      {"index": 3, "text": "Table cell 4 (natural habitat locations)", "answer": "rivers and lakes"},
-      {"index": 4, "text": "Table cell 5 (other food sources)", "answer": "insects and fish"}
-    ]
+      {
+        "index": 0,
+        "text": "Table cell 1 (type of squirrel introduced)",
+        "answer": "grey squirrel",
+        "explanation": "The recording identifies the gray squirrel (also spelled grey squirrel) as the invasive species example. Both US and UK spelling variants are acceptable."
+      },
+      {
+        "index": 1,
+        "text": "Table cell 2 (habitat type where species thrives)",
+        "answer": "mature dense woodland",
+        "explanation": "The recording states: \"gray squirrels can be found living in large areas of mature, dense woodland.\" The answer is \"mature dense woodland\" or \"woodland/forest.\""
+      },
+      {
+        "index": 2,
+        "text": "Table cell 3 (food sources)",
+        "answer": "seeds and nuts",
+        "explanation": "The recording states: \"gray squirrels exist mainly on nuts and seeds.\" The answer is \"seeds and nuts\" (either order is fine)."
+      },
+      {
+        "index": 3,
+        "text": "Table cell 4 (natural habitat locations)",
+        "answer": "rivers and lakes",
+        "explanation": "The recording states the rainbow trout is \"native only to the rivers and lakes of North America.\" The answer is \"rivers and lakes.\""
+      },
+      {
+        "index": 4,
+        "text": "Table cell 5 (other food sources)",
+        "answer": "insects and fish",
+        "explanation": "The recording states rainbow trout \"survive on insects and small fish.\" The answer is \"insects and fish\" (or variations). No article is required."
+      }
+    ],
+    "transcript": "Islands, such as the British Isles, can be adversely affected by the introduction of non-native species. Many species have been introduced to Britain during historical times. Some species have been introduced with no adverse consequences. However, others have had a severe impact both economically and ecologically. One good example of an invasive species is the gray squirrel which, at the turn of the 20th century, was introduced into South Africa, Ireland, and England from North America. On mainland Britain, it has almost entirely displaced the populations of native red squirrels. Schemes have been introduced to control the population in Ireland to encourage the native red squirrels. In the wild, gray squirrels can be found living in large areas of mature, dense woodland. These forests usually contain large amounts of dense understory vegetation that provides them sufficient amount of food sources and favorable shelters. On very rare occasions, when their usual food sources are scarce, gray squirrels will eat insects and small birds. However, in general gray squirrels exist mainly on nuts and seeds. They even have a high enough tolerance for humans to inhabit residential neighborhoods and are known to raid bird feeders. Among those species which have been introduced with little harm to the local ecosystem is the rainbow trout which is native only to the rivers and lakes of North America but its value as a hard-fighting game fish and tasty meal has led to its introduction throughout the world. Rainbow trout are gorgeous fish, with coloring and patterns that vary widely depending on habitat, age, and spawning condition. They are members of the salmon family and, like their salmon cousins, can grow quite large. They prefer cool, clear rivers and lakes and survive on insects and small fish."
   },
   {
     "id": "ielts_listening_practice_tables_london_tour",
@@ -252,12 +565,38 @@
     "question_type": "table",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Admission cost for attraction 1", "answer": "free"},
-      {"index": 1, "text": "Opening hours start and end time", "answer": "10am; 6pm"},
-      {"index": 2, "text": "Number of exhibits", "answer": "28"},
-      {"index": 3, "text": "Adult ticket price (in pounds)", "answer": "22.50"},
-      {"index": 4, "text": "Last admission time", "answer": "5.30pm"}
-    ]
+      {
+        "index": 0,
+        "text": "Admission cost for attraction 1",
+        "answer": "free",
+        "explanation": "The recording states: \"if your child is under 5, it's free.\" Children under 5 get free admission to Hampton Court Palace."
+      },
+      {
+        "index": 1,
+        "text": "Opening hours start and end time",
+        "answer": "10am; 6pm",
+        "explanation": "The recording states Hampton Court \"opens daily at 10 in the morning\" and \"closing time is at 6.\" Both answers are required."
+      },
+      {
+        "index": 2,
+        "text": "Number of exhibits",
+        "answer": "28",
+        "explanation": "The recording states adult tickets for Madame Tussauds are \"28.00.\" The answer is 28 or 28.00."
+      },
+      {
+        "index": 3,
+        "text": "Adult ticket price (in pounds)",
+        "answer": "22.50",
+        "explanation": "The recording states tickets are \"22.50 for all children\" at Madame Tussauds."
+      },
+      {
+        "index": 4,
+        "text": "Last admission time",
+        "answer": "5.30pm",
+        "explanation": "The recording states Madame Tussauds doors \"close at 5.30pm.\" The answer is 5.30pm."
+      }
+    ],
+    "transcript": "London has uncountable attractions for first time visitors but for those of you looking for interest and history, Hampton Court Palace and Madame Tussauds are unmissable. Hampton Court Palace, which was the favourite royal residence of Henry VIII, boasts 60 acres of formal gardens as well as the famous maze and Great Vine. For adults the price for an entry ticket is 16.50 but a child's ticket is 8.25 although if your child is under 5, it's free. If you are only interested in the gardens rather than entering the court itself, then you can get a garden ticket only. It opens daily at 10 in the morning, last admissions are at 5pm and closing time is at 6. Another popular favourite place to put on your London itinerary is Madame Tussauds. Filled with life size wax models of celebrities, there are 14 interactive zones as well as the amazing Marvel Super Heroes 4D movie experience. Why don't you take a walk down the red carpet and strike a pose next your favourite film star. Tickets are 28.00 for an adult and 22.50 for all children. That may sound like a steep price but it really is a once-in-a-life-time experience. Doors open at 9.30 each morning and close at 5.30pm."
   },
   {
     "id": "ielts_multiple_choice_listening_turtles",
@@ -270,34 +609,60 @@
       {
         "index": 0,
         "text": "The volunteer program relates to…",
-        "options": ["A – All kinds of turtles", "B – Only Olive Ridley turtles", "C – Various kinds of turtles"],
-        "answer": "C"
+        "options": [
+          "A – All kinds of turtles",
+          "B – Only Olive Ridley turtles",
+          "C – Various kinds of turtles"
+        ],
+        "answer": "C",
+        "explanation": "The recording says the program targets \"Olive Ridley turtles in Costa Rica, although other species of turtles are also involved.\" This means various kinds of turtles are involved, not just one species."
       },
       {
         "index": 1,
         "text": "Volunteers can join the program for…",
-        "options": ["A – As long as they want", "B – No more than 12 weeks", "C – One week"],
-        "answer": "B"
+        "options": [
+          "A – As long as they want",
+          "B – No more than 12 weeks",
+          "C – One week"
+        ],
+        "answer": "B",
+        "explanation": "The recording states: \"Volunteers can sign up for any length of time from 2 to 12 weeks.\" The maximum is 12 weeks — \"no more than 12 weeks.\""
       },
       {
         "index": 2,
         "text": "Accommodation is…",
-        "options": ["A – Luxury with a local family", "B – With a local family in the best house", "C – Basic with a local family"],
-        "answer": "C"
+        "options": [
+          "A – Luxury with a local family",
+          "B – With a local family in the best house",
+          "C – Basic with a local family"
+        ],
+        "answer": "C",
+        "explanation": "The recording states: \"All volunteers will be housed with local families near the beach – do not expect luxury, this is basic at best.\" Accommodation is basic and with a local family."
       },
       {
         "index": 3,
         "text": "Volunteers must be…",
-        "options": ["A – Individuals of 18 years old", "B – Individuals or groups with experience", "C – Over the age of 18 but do not need experience"],
-        "answer": "C"
+        "options": [
+          "A – Individuals of 18 years old",
+          "B – Individuals or groups with experience",
+          "C – Over the age of 18 but do not need experience"
+        ],
+        "answer": "C",
+        "explanation": "The recording states: \"It is possible to sign up as a group or just as an individual without prior experience but we do have an age requirement of over 18.\" Age over 18 is required; prior experience is not."
       },
       {
         "index": 4,
         "text": "Volunteers will…",
-        "options": ["A – Clear the beach of rubbish", "B – Relocate baby turtles", "C – Help adult turtles move along the beach"],
-        "answer": "A"
+        "options": [
+          "A – Clear the beach of rubbish",
+          "B – Relocate baby turtles",
+          "C – Help adult turtles move along the beach"
+        ],
+        "answer": "A",
+        "explanation": "The recording states volunteers will be \"removing debris from the beach to ensure clear passage for adult and baby turtles.\" Debris = rubbish. The task is clearing the beach of rubbish, not moving adult turtles or baby turtles directly."
       }
-    ]
+    ],
+    "transcript": "The volunteer program is aimed at helping to conserve and protect the population of Olive Ridley turtles in Costa Rica, although other species of turtles are also involved. The program is run at Ostional beach which has been an active conservation area for the last 40 years. Volunteers can sign up for any length of time from 2 to 12 weeks. All volunteers will be housed with local families near the beach – do not expect luxury, this is basic at best. Have your dictionary ready because English is not usual in local families. It is possible to sign up as a group or just as an individual without prior experience but we do have an age requirement of over 18. A health check and police check will also be required. The main involvement in this program is with recording data, helping with tagging, removing debris from the beach to ensure clear passage for adult and baby turtles and also to assist in egg relocation. This is a unique experience for anyone interested in turtles and conservation."
   },
   {
     "id": "ielts_listening_practice_gap_fill_autism",
@@ -307,12 +672,38 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Sentence gap 1 (how autistic people communicate differently)", "answer": "communicates"},
-      {"index": 1, "text": "Sentence gap 2 (light sensitivity description)", "answer": "dim"},
-      {"index": 2, "text": "Sentence gap 3 (sensory challenge)", "answer": "overload"},
-      {"index": 3, "text": "Sentence gap 4 (environment description)", "answer": "geared"},
-      {"index": 4, "text": "Sentence gap 5 (type of issues)", "answer": "sensory"}
-    ]
+      {
+        "index": 0,
+        "text": "Sentence gap 1 (how autistic people communicate differently)",
+        "answer": "communicates",
+        "explanation": "The recording says autism \"affects how a person communicates and responds to people.\" The answer is \"communicates\" — a verb in third person singular form (not \"communication\" which is a noun)."
+      },
+      {
+        "index": 1,
+        "text": "Sentence gap 2 (light sensitivity description)",
+        "answer": "dim",
+        "explanation": "The recording says businesses \"agree to dim their lights.\" The answer is \"dim\" — a verb in infinitive form following \"agree to.\""
+      },
+      {
+        "index": 2,
+        "text": "Sentence gap 3 (sensory challenge)",
+        "answer": "overload",
+        "explanation": "The recording says: \"Autistic people have difficulty processing sensory information leading to sensory overload.\" The answer is \"overload.\""
+      },
+      {
+        "index": 3,
+        "text": "Sentence gap 4 (environment description)",
+        "answer": "geared",
+        "explanation": "The recording says: \"In a world geared towards neuro-typical people.\" The answer is \"geared\" — a past participle used as an adjective."
+      },
+      {
+        "index": 4,
+        "text": "Sentence gap 5 (type of issues)",
+        "answer": "sensory",
+        "explanation": "The recording says: \"sensory information can have on people.\" The answer is \"sensory\" — an adjective modifying \"information.\""
+      }
+    ],
+    "transcript": "There are 700,000 autistic people in the UK. Autism is a lifelong disability which affects how a person communicates and responds to people and how they experience the world around them. Although most of the public have heard of autism, few actually understand what it is like to live with it and how to support someone with autism. Autism Hour is when businesses agree to dim their lights and reduce background noise, such as music, to create an environment that is more suitable for autistic people. Autistic people have difficulty processing sensory information leading to sensory overload which can cause great stress and even physical pain. In a world geared towards neuro-typical people, this problem can leave autistic people restricted in where they can go and what they can enjoy. Autism Hour not only opens doors to autistic shoppers and their families, it also provides an opportunity for staff members to learn more about autism which is essential if autistic people are to get the support and respect they need from society. Autism Hour is also important in bringing to light the general affect that sensory information can have on people who are not neuro-typical or who have an illness affecting their ability to cope with light or noise or any other type of sensory information."
   },
   {
     "id": "ielts_listening_practice_gap_fill_festivals",
@@ -322,11 +713,32 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Festivals help to ________ traditions.", "answer": "propagate"},
-      {"index": 1, "text": "Festivals reinforce shared ________.", "answer": "belief"},
-      {"index": 2, "text": "Some festivals celebrate cultural ________.", "answer": "differences"},
-      {"index": 3, "text": "Festivals provide a sense of community ________.", "answer": "purpose"}
-    ]
+      {
+        "index": 0,
+        "text": "Festivals help to ________ traditions.",
+        "answer": "propagate",
+        "explanation": "The recording says festivals \"are mostly celebrated to propagate the cultural heritage of nations.\" The answer is \"propagate\" — a verb in infinitive form."
+      },
+      {
+        "index": 1,
+        "text": "Festivals reinforce shared ________.",
+        "answer": "belief",
+        "explanation": "The recording says: \"Most festivals have their origins in a cultural belief.\" The answer is \"belief\" — a noun (not \"believe\" which is a verb)."
+      },
+      {
+        "index": 2,
+        "text": "Some festivals celebrate cultural ________.",
+        "answer": "differences",
+        "explanation": "The recording says: \"During this time, differences are forgotten.\" The answer is \"differences\" — plural noun."
+      },
+      {
+        "index": 3,
+        "text": "Festivals provide a sense of community ________.",
+        "answer": "purpose",
+        "explanation": "The recording says: \"there is a similarity in the purpose that the festival serves.\" The answer is \"purpose.\""
+      }
+    ],
+    "transcript": "A festival is an event which is celebrated collectively. Festivals are mostly celebrated to propagate the cultural heritage of nations. Most festivals have their origins in a cultural belief which has been passed down through the generations. Festivals help to promote solidarity and the patriotic spirit in society by bring people closer together in harmony as they celebrate the festival. During this time, differences are forgotten and the national cultural identity predominates. By celebrating international festivals, it helps to promote tolerance, reduce racial conflict and encourages the acceptance of cultural diversity in a country. While there are marked differences in the way festivals are celebrated all over the world, there is a similarity in the purpose that the festival serves."
   },
   {
     "id": "form_completion_ielts_listening_practice",
@@ -336,15 +748,56 @@
     "question_type": "form_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Student's last name:", "answer": "Bueno"},
-      {"index": 1, "text": "Date of birth:", "answer": "September 12th, 1985"},
-      {"index": 2, "text": "Country of origin:", "answer": "Spain"},
-      {"index": 3, "text": "Subject of study:", "answer": "photography"},
-      {"index": 4, "text": "Course dates:", "answer": "August to September"},
-      {"index": 5, "text": "Type of accommodation: shared ________", "answer": "flat"},
-      {"index": 6, "text": "Flight number:", "answer": "IB316"},
-      {"index": 7, "text": "Email address:", "answer": "m.bueno@gmail.com"}
-    ]
+      {
+        "index": 0,
+        "text": "Student's last name:",
+        "answer": "Bueno",
+        "explanation": "The speaker spells out the name: \"it's BUENO.\" Note: the clerk initially writes \"BENO\" but the student corrects it to \"BUENO.\""
+      },
+      {
+        "index": 1,
+        "text": "Date of birth:",
+        "answer": "September 12th, 1985",
+        "explanation": "The recording states: \"I was born on September 12th, 1985.\" Multiple date formats are acceptable (Sept 12 1985 / 09/12/85 etc.), commas are optional."
+      },
+      {
+        "index": 2,
+        "text": "Country of origin:",
+        "answer": "Spain",
+        "explanation": "The recording states: \"I'm from Spain.\" Write the country name, not the nationality."
+      },
+      {
+        "index": 3,
+        "text": "Subject of study:",
+        "answer": "photography",
+        "explanation": "The recording mentions two courses — art history and photography — and the student chooses \"the latter\" (= the second one = photography). The answer is \"photography.\""
+      },
+      {
+        "index": 4,
+        "text": "Course dates:",
+        "answer": "August to September",
+        "explanation": "The recording states the course runs \"from June to July and again from August to September.\" The student chooses \"the August to September\" session."
+      },
+      {
+        "index": 5,
+        "text": "Type of accommodation: shared ________",
+        "answer": "flat",
+        "explanation": "The recording states: \"I'd prefer the shared flat.\" The form has \"shared ___\" so the answer is just \"flat.\""
+      },
+      {
+        "index": 6,
+        "text": "Flight number:",
+        "answer": "IB316",
+        "explanation": "The recording states: \"I'm coming on Iberia Lines flight IB316.\" Write only the flight number, not the arrival date."
+      },
+      {
+        "index": 7,
+        "text": "Email address:",
+        "answer": "m.bueno@gmail.com",
+        "explanation": "The recording states: \"my email address is m.bueno@gmail.com.\" Email addresses count as one word because there are no spaces."
+      }
+    ],
+    "transcript": "Hello, this is the Oxford Orientation Summer Course booking office. How can I help you? I'd like to book a place on a summer course this summer. Certainly, let me take some details and then I'll reserve a place for you. What is your full name? It's Maria Bueno. So that's Maria Beno – BENO? No, actually it's BUENO. When were you born? I was born on September 12th, 1985. And which country do you come from? I'm from Spain. Well, we've got two different courses this summer. We've got the orientation for art history and museums and also one for photography. Which one would you like to book for? The latter, please. And is that just the one place for the photography course? Yes, that's right. The course you're interested in runs twice this summer, from June to July and again from August to September. Which one suits you best? I think the August to September. That's fine. Just a few more details and then we're done. The accommodation we offer on the course is all shared so you can choose from a shared room, a shared flat or a shared house. Oh definitely not the shared room. I'd prefer the shared flat if you have one. OK. What I need now are your flight details and also your email address. Well, I'm coming on Iberia Lines flight IB316 arriving on July 29th. And my email address is m.bueno@gmail.com. Well, that's you booked then for a summer course starting in August. Is there anything else I can do for you? No, that's all. If you could just email me confirmation of my booking, that's would be great. I will do. Thank you. Goodbye."
   },
   {
     "id": "ielts_listening_gap_fill_toms_walk",
@@ -354,14 +807,50 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Does Tom currently serve in the army? (Yes/No)", "answer": "No"},
-      {"index": 1, "text": "How much did he hope to raise (in pounds)?", "answer": "1,000"},
-      {"index": 2, "text": "Where was his sponsored walk to take place?", "answer": "garden"},
-      {"index": 3, "text": "Tom eventually raised a ________ £21 million.", "answer": "staggering"},
-      {"index": 4, "text": "Many hope that Tom will be ________ for his efforts.", "answer": "knighted"},
-      {"index": 5, "text": "Tom's aims to support the NHS ________ a chord with many people.", "answer": "struck"},
-      {"index": 6, "text": "Tom has shown how a single person can ________ the nation.", "answer": "stir"}
-    ]
+      {
+        "index": 0,
+        "text": "Does Tom currently serve in the army? (Yes/No)",
+        "answer": "No",
+        "explanation": "Tom is described as an \"army veteran\" — a veteran is someone who has previously served but no longer does. The answer is No."
+      },
+      {
+        "index": 1,
+        "text": "How much did he hope to raise (in pounds)?",
+        "answer": "1,000",
+        "explanation": "The recording says: \"His aim was to raise £1,000.\" The answer is 1,000."
+      },
+      {
+        "index": 2,
+        "text": "Where was his sponsored walk to take place?",
+        "answer": "garden",
+        "explanation": "The recording says: \"an ambitious walk of 1.6 miles in his back garden.\" The answer is \"garden.\""
+      },
+      {
+        "index": 3,
+        "text": "Tom eventually raised a ________ £21 million.",
+        "answer": "staggering",
+        "explanation": "The recording says: \"he had raised not £1,000 but a staggering £21 million.\" Staggering = shockingly large/impressive."
+      },
+      {
+        "index": 4,
+        "text": "Many hope that Tom will be ________ for his efforts.",
+        "answer": "knighted",
+        "explanation": "The recording says: \"Many around the country are now calling for Tom Moore to be knighted.\" Knighted = receiving the title Sir."
+      },
+      {
+        "index": 5,
+        "text": "Tom's aims to support the NHS ________ a chord with many people.",
+        "answer": "struck",
+        "explanation": "The recording says: \"His praise for the NHS struck a chord with many.\" The phrase \"strike a chord\" means to say or do something that others approve of, or to trigger emotions."
+      },
+      {
+        "index": 6,
+        "text": "Tom has shown how a single person can ________ the nation.",
+        "answer": "stir",
+        "explanation": "The recording says: \"how a humble, unambitious person can stir the nation.\" To stir a nation = to raise emotions or inspire people across the country."
+      }
+    ],
+    "transcript": "Army veteran Tom Moore did a sponsored walk at the age of 99 years old to raise money for the NHS (the National Health Service in the UK). His aim was to raise £1,000. This was an ambitious walk of 1.6 miles in his back garden given that he had recently been treated for a broken hip and skin cancer. As he began his sponsored walk, he was surprised to see the response from the British public as donations started pouring in. By the end of this sponsored walk, he had raised not £1,000 but a staggering £21 million. Many around the country are now calling for Tom Moore to be knighted for his remarkable fund-raising efforts. Tom Moore has stated that he was \"overwhelmed by this sum of money\" that was donated. His praise for the NHS struck a chord with many around the country today as the population watch doctors, nurses, other hospital staff and all front-line workers put themselves in harms way to save lives as they battle against the coronavirus crisis. This story truly is an example of how a humble, unambitious person can stir the nation and effect incredible change. Surely we should all be doing more in one way or another. As the saying goes \"Every little helps\" and who knows whether your modest attempt to help might not also create a flame of support throughout your own country."
   },
   {
     "id": "ielts_listening_gap_fill_comet",
@@ -371,15 +860,56 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "On ________ 2014, Philae landed on a comet.", "answer": "12th November"},
-      {"index": 1, "text": "Philae's goal is to collect information and capture ________ of the surface.", "answer": "images"},
-      {"index": 2, "text": "Because of an ________ relating to Rosetta's orbit, Philae could have missed landing.", "answer": "inaccuracy"},
-      {"index": 3, "text": "The time delay between Rosetta and controllers on Earth was ________.", "answer": "about 28 minutes"},
-      {"index": 4, "text": "Because of a lack of ________, the lander had to find its own way down.", "answer": "steering"},
-      {"index": 5, "text": "There is an element of ________ in landing in a good location.", "answer": "luck"},
-      {"index": 6, "text": "The lander can drill ________ into the exterior for stability.", "answer": "footscrews"},
-      {"index": 7, "text": "Analysis will examine surface composition, amino acids and ________.", "answer": "temperature"}
-    ]
+      {
+        "index": 0,
+        "text": "On ________ 2014, Philae landed on a comet.",
+        "answer": "12th November",
+        "explanation": "The recording states it landed \"on 12 November 2014.\" Capitalisation and punctuation are not required."
+      },
+      {
+        "index": 1,
+        "text": "Philae's goal is to collect information and capture ________ of the surface.",
+        "answer": "images",
+        "explanation": "The recording says: \"The aim of Philae is to obtain the first images of the surface of the comet.\" The answer is \"images.\" Note: \"first images\" without the article \"the\" would be incorrect in the sentence."
+      },
+      {
+        "index": 2,
+        "text": "Because of an ________ relating to Rosetta's orbit, Philae could have missed landing.",
+        "answer": "inaccuracy",
+        "explanation": "The recording says: \"An inaccuracy of a few millimetres per second in Rosetta's orbit could have resulted in Philae completely missing the comet.\" The answer is \"inaccuracy.\""
+      },
+      {
+        "index": 3,
+        "text": "The time delay between Rosetta and controllers on Earth was ________.",
+        "answer": "about 28 minutes",
+        "explanation": "The recording says: \"communication between Rosetta and controllers takes about 28 minutes each way.\" The word \"about\" is needed because the measurement is approximate."
+      },
+      {
+        "index": 4,
+        "text": "Because of a lack of ________, the lander had to find its own way down.",
+        "answer": "steering",
+        "explanation": "The recording says: \"There was no steering of the lander down to the comet's surface.\" The answer is \"steering.\""
+      },
+      {
+        "index": 5,
+        "text": "There is an element of ________ in landing in a good location.",
+        "answer": "luck",
+        "explanation": "The recording says: \"A certain amount of luck was needed for Philae to land in a nice spot.\" An \"element of luck\" = luck plays a role to some extent."
+      },
+      {
+        "index": 6,
+        "text": "The lander can drill ________ into the exterior for stability.",
+        "answer": "footscrews",
+        "explanation": "The recording says: \"The lander also has footscrews to drill into the surface of the comet to keep it secure.\" The answer is \"footscrews.\""
+      },
+      {
+        "index": 7,
+        "text": "Analysis will examine surface composition, amino acids and ________.",
+        "answer": "temperature",
+        "explanation": "The recording says: \"analyse everything from the surface composition and temperature to the presence of amino acids.\" Temperature is the last item listed before amino acids."
+      }
+    ],
+    "transcript": "Rosetta spacecraft released Philae lander which landed successfully on a comet on 12 November 2014 at 08:35 GMT. The Philae lander achieved the first-ever controlled touchdown on a comet nucleus. The aim of Philae is to obtain the first images of the surface of the comet as well as make the first in situ analysis to determine the composition of the comet. An inaccuracy of a few millimetres per second in Rosetta's orbit could have resulted in Philae completely missing the comet. The descent, monitored from Esa's mission control in Darmstadt, Germany, lasted about seven hours. Because the comet is about 510 million km from Earth, communication between Rosetta and controllers takes about 28 minutes each way. As a consequence, confirmation of the landing came through just after 16:04 GMT. There was no steering of the lander down to the comet's surface. Once released, it was on a path of its own. A certain amount of luck was needed for Philae to land in a nice spot. When the lander hit the surface, harpoons were fired to be used as anchors, although they do not appear to have anchored the craft as intended. The lander also has footscrews to drill into the surface of the comet to keep it secure. Now it's on the surface of the comet, Philae can get to work. Drills, ovens, cameras and sensors onboard Philae will analyse everything from the surface composition and temperature to the presence of amino acids – essential building blocks in the chemistry of life."
   },
   {
     "id": "ielts_listening_practice_lesson_sports_center",
@@ -389,11 +919,36 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "What time does the center open?", "answer": "9am"},
-      {"index": 1, "text": "What kind of sports equipment does it sell?", "answer": "professional equipment"},
-      {"index": 2, "text": "How many days to return faulty items?", "answer": "3 days"},
-      {"index": 3, "text": "Who can give sports advice?", "answer": "John Roberts"},
-      {"index": 4, "text": "What time does the center close on Tuesdays?", "answer": "9pm"}
+      {
+        "index": 0,
+        "text": "What time does the center open?",
+        "answer": "9am",
+        "explanation": "The recording states the center \"opens daily at 9am.\""
+      },
+      {
+        "index": 1,
+        "text": "What kind of sports equipment does it sell?",
+        "answer": "professional equipment",
+        "explanation": "The recording states the shop \"sells only professional equipment.\""
+      },
+      {
+        "index": 2,
+        "text": "How many days to return faulty items?",
+        "answer": "3 days",
+        "explanation": "The recording states customers have \"three days to get a refund if there's anything wrong with it.\""
+      },
+      {
+        "index": 3,
+        "text": "Who can give sports advice?",
+        "answer": "John Roberts",
+        "explanation": "The recording identifies John Roberts (an ex-professional athlete) as the person who provides sports advice at the center's desk."
+      },
+      {
+        "index": 4,
+        "text": "What time does the center close on Tuesdays?",
+        "answer": "9pm",
+        "explanation": "The recording mentions \"late night opening until 9pm\" specifically on Tuesdays — different from the standard closing time."
+      }
     ]
   },
   {
@@ -404,14 +959,54 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Which mammals are considered the strongest?", "answer": "elephant"},
-      {"index": 1, "text": "A leaf-cutter ant can pull how many times its body weight?", "answer": "20 times"},
-      {"index": 2, "text": "Which animal was present when ants first emerged?", "answer": "dinosaurs"},
-      {"index": 3, "text": "What are ant societies called?", "answer": "colonies"},
-      {"index": 4, "text": "Ants represent what percentage of Earth's biomass?", "answer": "15%"},
-      {"index": 5, "text": "A dung beetle's pulling strength is equivalent to how many double-decker buses?", "answer": "6"},
-      {"index": 6, "text": "How do dung beetles communicate?", "answer": "acoustic vibration"},
-      {"index": 7, "text": "What percentage of cattle dung is buried in Texas?", "answer": "80%"}
+      {
+        "index": 0,
+        "text": "Which mammals are considered the strongest?",
+        "answer": "elephant",
+        "explanation": "The recording presents elephants (and rhinos) as examples of \"formidable mammals\" known for their strength."
+      },
+      {
+        "index": 1,
+        "text": "A leaf-cutter ant can pull how many times its body weight?",
+        "answer": "20 times",
+        "explanation": "The recording states a leafcutter ant can \"carry over 20 times its own body weight.\""
+      },
+      {
+        "index": 2,
+        "text": "Which animal was present when ants first emerged?",
+        "answer": "dinosaurs",
+        "explanation": "The recording states ants \"emerged about 90 million years ago at the time of the dinosaurs.\""
+      },
+      {
+        "index": 3,
+        "text": "What are ant societies called?",
+        "answer": "colonies",
+        "explanation": "The recording refers to ant societies as \"organised societies or as we know them, colonies.\""
+      },
+      {
+        "index": 4,
+        "text": "Ants represent what percentage of Earth's biomass?",
+        "answer": "15%",
+        "explanation": "The recording states ants \"represent about 15% of this planet's biomass.\""
+      },
+      {
+        "index": 5,
+        "text": "A dung beetle's pulling strength is equivalent to how many double-decker buses?",
+        "answer": "6",
+        "explanation": "The recording states a dung beetle's pulling strength equals \"one person pulling six double-decker buses.\""
+      },
+      {
+        "index": 6,
+        "text": "How do dung beetles communicate?",
+        "answer": "acoustic vibration",
+        "explanation": "The recording states dung beetles' \"communication techniques mainly seem to focus on acoustic vibration.\""
+      },
+      {
+        "index": 7,
+        "text": "What percentage of cattle dung is buried in Texas?",
+        "answer": "80%",
+        "explanation": "The recording states dung beetles bury \"80% of cattle excrement\" in some Texas regions."
+      }
     ]
   },
   {
@@ -422,13 +1017,44 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Plastic straws have a limited ________ owing to their predominantly single usage.", "answer": "lifespan"},
-      {"index": 1, "text": "These straws do not ________ and can pollute the environment for hundreds of years.", "answer": "biodegrade"},
-      {"index": 2, "text": "________ straws are thought to be used annually in the UK.", "answer": "8.5 billion"},
-      {"index": 3, "text": "Kasey Turner found ________ straws during her 20-minute ________", "answer": "319 / snorkel"},
-      {"index": 4, "text": "One plastic straw was even found in the airway of a ________", "answer": "sea turtle"},
-      {"index": 5, "text": "Understanding the relationship between what we do and the negative ________ can be a motivation for ________", "answer": "outcomes / change"}
-    ]
+      {
+        "index": 0,
+        "text": "Plastic straws have a limited ________ owing to their predominantly single usage.",
+        "answer": "lifespan",
+        "explanation": "The recording says: \"These items have a shockingly short lifespan, normally used once and then discarded.\" Lifespan = how long something remains usable."
+      },
+      {
+        "index": 1,
+        "text": "These straws do not ________ and can pollute the environment for hundreds of years.",
+        "answer": "biodegrade",
+        "explanation": "The recording says: \"they never biodegrade and take hundreds of years to break down.\" Both \"biodegrade\" and \"break down\" are acceptable answers."
+      },
+      {
+        "index": 2,
+        "text": "________ straws are thought to be used annually in the UK.",
+        "answer": "8.5 billion",
+        "explanation": "The recording says: \"The Marine Conservation Society estimated that the UK uses 8.5 billion straws every year.\" The answer is \"8.5 billion.\""
+      },
+      {
+        "index": 3,
+        "text": "Kasey Turner found ________ straws during her 20-minute ________",
+        "answer": "319 / snorkel",
+        "explanation": "The recording says: \"she found 319 straws on a single 20 minute snorkel.\" The answer requires both the number (319) and the activity (snorkel)."
+      },
+      {
+        "index": 4,
+        "text": "One plastic straw was even found in the airway of a ________",
+        "answer": "sea turtle",
+        "explanation": "The recording says scientists found \"an endangered species of sea turtle with what they thought was a parasitic worm blocking its airway. They realised it was actually a plastic straw.\" The answer is \"sea turtle\" — both words are required as a compound noun."
+      },
+      {
+        "index": 5,
+        "text": "Understanding the relationship between what we do and the negative ________ can be a motivation for ________",
+        "answer": "outcomes / change",
+        "explanation": "The recording says: \"Making a connection between our actions and the often devastating outcomes they can have on the environment acts as a catalyst for change.\" The two answers are \"outcomes\" and \"change.\""
+      }
+    ],
+    "transcript": "Single use plastic is a particularly nasty form of plastic. These items have a shockingly short lifespan, normally used once and then discarded to landfill. Like other plastics they never biodegrade and take hundreds of years to break down. Plastic straws are one such single use item and are ending up in our oceans by the thousands. The Marine Conservation Society estimated that the UK uses 8.5 billion straws every year. Avid scuba diver Kasey Turner was snorkelling after work recently at a popular dive site in Manly Australia. In the area, she found 319 straws on a single 20 minute snorkel. It can be hard to see how using one measly plastic straw is going to cause huge amounts of damage to the environment but let me put it into context for you. Recently a team of scientists in Costa Rica came across an endangered species of sea turtle with what they thought was a parasitic worm blocking its airway. They realised it was actually a plastic straw. Most people just do not realise that the majority of plastic straws are not recycled. The simplest way you can eradicate straws from your life is to just stop using them at home. It's as easy as that. Making a connection between our actions and the often devastating outcomes they can have on the environment acts as a catalyst for change."
   },
   {
     "id": "listening_practice_for_numbers",
@@ -438,7 +1064,12 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Write the 10 numbers you hear (1-100 range):", "answer": "8, 13, 50, 24, 47, 86, 19, 97, 17, 29"}
+      {
+        "index": 0,
+        "text": "Write the 10 numbers you hear (1-100 range):",
+        "answer": "8, 13, 50, 24, 47, 86, 19, 97, 17, 29",
+        "explanation": "This is a pure listening exercise for number recognition. The audio reads numbers aloud and you must write what you hear. The correct answers in order are: 8, 13, 50, 24, 47, 86, 19, 97, 17, 29. Pay close attention to similar-sounding numbers such as 13 vs 30, 14 vs 40, 15 vs 50, etc. — the stress pattern distinguishes them (e.g. thir-TEEN vs THIR-ty)."
+      }
     ]
   },
   {
@@ -449,12 +1080,38 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Another name for Tết is ________", "answer": "Spring Festival"},
-      {"index": 1, "text": "One typical dish at this time is a soup which is made from ________", "answer": "dried young bamboo"},
-      {"index": 2, "text": "________ is given to older people and kids", "answer": "Lucky money"},
-      {"index": 3, "text": "At Tết, houses are adorned with ________ and kumquat trees", "answer": "peach blossom"},
-      {"index": 4, "text": "________ the house is forbidden during Tết", "answer": "Sweeping"}
-    ]
+      {
+        "index": 0,
+        "text": "Another name for Tết is ________",
+        "answer": "Spring Festival",
+        "explanation": "The recording states: \"the festival is often called spring festival.\" Both words are required."
+      },
+      {
+        "index": 1,
+        "text": "One typical dish at this time is a soup which is made from ________",
+        "answer": "dried young bamboo",
+        "explanation": "The recording lists foods including \"dried young bamboo soup.\" All three variations are acceptable: \"bamboo,\" \"young bamboo,\" or \"dried young bamboo\" — the words in brackets are optional."
+      },
+      {
+        "index": 2,
+        "text": "________ is given to older people and kids",
+        "answer": "Lucky money",
+        "explanation": "The recording states: \"giving lucky money to children and elderly people.\" Either \"lucky money\" or just \"money\" is acceptable."
+      },
+      {
+        "index": 3,
+        "text": "At Tết, houses are adorned with ________ and kumquat trees",
+        "answer": "peach blossom",
+        "explanation": "The recording states: \"People buy kumquat trees and peach blossom to decorate their houses.\" The answer is \"peach blossom\" — both words are required."
+      },
+      {
+        "index": 4,
+        "text": "________ the house is forbidden during Tết",
+        "answer": "Sweeping",
+        "explanation": "The recording states: \"Sweeping during Tết is taboo and considered to be unlucky, since it symbolizes sweeping away the luck.\" The answer is \"sweeping.\""
+      }
+    ],
+    "transcript": "Tết is celebrated on the same day as Chinese New Year, though exceptions arise due to the one-hour time difference between Hanoi and Beijing. It takes place from the first day of the first month of the Vietnamese calendar (around late January or early February) until at least the third day. Vietnamese people consider Tết to be the first day of spring and the festival is often called spring festival. Many Vietnamese prepare for Tết by cooking special holiday foods and cleaning the house. These foods include square rice cake, Vietnamese sausage, dried young bamboo soup, sticky rice and boiled chicken. There are a lot of customs practiced during Tết, such as visiting a person's house on the first day of the new year, ancestral worship, wishing New Year's greetings and giving lucky money to children and elderly people. There are certain things to observe during Tết and certain things to avoid. Houses are thoroughly cleaned in preparation for Tết. People buy kumquat trees and peach blossom to decorate their houses. There are dragon or lion dances in the streets. New clothes should be bought for every member of the family. And on New Year's Eve, the kitchen god, Ong Tao, is welcomed back to the kitchen. On the other hand, some things must be avoided. Sweeping during Tết is taboo and considered to be unlucky, since it symbolizes sweeping away the luck; that is why they clean before the new year. It is also taboo for anyone who experienced a recent loss of a family member to visit anyone else during Tết."
   },
   {
     "id": "multiple_choice_question_ielts_listening",
@@ -467,22 +1124,38 @@
       {
         "index": 0,
         "text": "Dinner is on…",
-        "options": ["A – Friday at 6pm", "B – Friday at 7pm", "C – Friday at 7.30pm"],
-        "answer": "C"
+        "options": [
+          "A – Friday at 6pm",
+          "B – Friday at 7pm",
+          "C – Friday at 7.30pm"
+        ],
+        "answer": "C",
+        "explanation": "The conversation starts with 7pm but Beth says she has a meeting and won't finish until 6, so \"there's no way I'll make it for 7.\" They agree on \"half past 7.\" The correct answer is C — Friday at 7.30pm."
       },
       {
         "index": 1,
         "text": "Beth is…",
-        "options": ["A – Vegetarian", "B – Unable to eat anything made from milk", "C – Able to eat cheesecake"],
-        "answer": "B"
+        "options": [
+          "A – Vegetarian",
+          "B – Unable to eat anything made from milk",
+          "C – Able to eat cheesecake"
+        ],
+        "answer": "B",
+        "explanation": "Beth says: \"I have just discovered that I'm lactose intolerant so I have to avoid any milk products.\" The answer is B — unable to eat anything made from milk. Note: the answer is not C because Beth says \"I'll have to pass on the cheesecake\" — she doesn't avoid all desserts, just dairy ones."
       },
       {
         "index": 2,
         "text": "Beth will need to park…",
-        "options": ["A – In another part of the street", "B – Next door", "C – In a car park down the road"],
-        "answer": "A"
+        "options": [
+          "A – In another part of the street",
+          "B – Next door",
+          "C – In a car park down the road"
+        ],
+        "answer": "A",
+        "explanation": "The recording says: \"you'll need to park a quite a few doors down because there's building work going on next door and our part of the road is occupied.\" She needs to park in another part of the street. The answer is A."
       }
-    ]
+    ],
+    "transcript": "Hi, Beth. Do you fancy coming round to dinner sometime this week? That sounds lovely I'm pretty busy at the start of the week but I'm free on Wednesday, Thursday and Friday evening. Great. Let's make it Friday at 7pm then. Oh sorry, I've just remembered that I've got a meeting on Friday and won't finish until at least 6 so there's no way I'll make it for 7. Shall we make it half past 7 then? Would that be better? Yes. I'm sure I'll be able to make it for then. I was thinking of doing a chicken roast with cheesecake to follow. Is that ok or are you vegetarian again? Well, I did go through a vegetarian period a while ago but I'm not veggie anymore. However I have just discovered that I'm lactose intolerant so I have to avoid any milk products which means I'll have to pass on the cheesecake I'm afraid. Oh that's alright. I'll just do something else for dessert then. Great. Sorry to be a bother. Don't worry it's absolutely fine. Oh by the way, you'll need to park a quite a few doors down because there's building work going on next door and our part of the road is occupied. Ok, thanks for letting me know. See you Friday. Bye"
   },
   {
     "id": "ielts_listening_practice_missing_words_fireworks",
@@ -492,15 +1165,56 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Specialists in fireworks include ________ to create special effects.", "answer": "chemicals"},
-      {"index": 1, "text": "Fireworks are made by putting all materials in a ________", "answer": "shell"},
-      {"index": 2, "text": "Fireworks were invented by the ________", "answer": "Chinese"},
-      {"index": 3, "text": "The first firework created a loud ________", "answer": "bang"},
-      {"index": 4, "text": "Fireworks appeared in Europe by the ________", "answer": "13th century"},
-      {"index": 5, "text": "The ________ firework launches high into the air and explodes at a certain height.", "answer": "rocket"},
-      {"index": 6, "text": "The long tube fireworks are called ________", "answer": "Roman candles"},
-      {"index": 7, "text": "________ is used to create a bright white light.", "answer": "Magnesium"}
-    ]
+      {
+        "index": 0,
+        "text": "Specialists in fireworks include ________ to create special effects.",
+        "answer": "chemicals",
+        "explanation": "The recording says: \"experts at handling explosives, called pyrotechnicians, add chemicals for special effects.\" Spelling must be correct; capital letters are not important."
+      },
+      {
+        "index": 1,
+        "text": "Fireworks are made by putting all materials in a ________",
+        "answer": "shell",
+        "explanation": "The recording says: \"The ingredients are placed in a shell, it is then wrapped up and a fuse is added.\""
+      },
+      {
+        "index": 2,
+        "text": "Fireworks were invented by the ________",
+        "answer": "Chinese",
+        "explanation": "The recording says: \"believed to have been first made by the Chinese.\" Capital letter is not required in IELTS listening."
+      },
+      {
+        "index": 3,
+        "text": "The first firework created a loud ________",
+        "answer": "bang",
+        "explanation": "The recording says: \"This small firecracker made a very loud bang.\" The exact word is \"bang\" — synonyms like \"sound\" are not acceptable."
+      },
+      {
+        "index": 4,
+        "text": "Fireworks appeared in Europe by the ________",
+        "answer": "13th century",
+        "explanation": "The recording says: \"By the 13th century, fireworks had made their way to Europe.\" The ordinal suffix \"th\" is optional."
+      },
+      {
+        "index": 5,
+        "text": "The ________ firework launches high into the air and explodes at a certain height.",
+        "answer": "rocket",
+        "explanation": "The recording says: \"The rocket firework has a substance which explodes and shoots the firework into the air.\""
+      },
+      {
+        "index": 6,
+        "text": "The long tube fireworks are called ________",
+        "answer": "Roman candles",
+        "explanation": "The recording says: \"Roman candles are long tubes which shoot balls of chemicals from one end.\" Spelling and capitalisation of proper nouns must be accurate."
+      },
+      {
+        "index": 7,
+        "text": "________ is used to create a bright white light.",
+        "answer": "Magnesium",
+        "explanation": "The recording says: \"Adding magnesium gives off a bright white light.\" Spelling must be exact — abbreviations like \"Mg\" are not acceptable."
+      }
+    ],
+    "transcript": "The original fireworks were made from gunpowder, which is a mixture of ingredients including saltpetre, sulphur and charcoal. Today experts at handling explosives, called pyrotechnicians, add chemicals for special effects. There are many different kinds of fireworks but they are all made in a similar way. The ingredients are placed in a shell, it is then wrapped up and a fuse is added. In factories, where the fireworks are made, safety precautions are used to make sure a single static electric shock does not create an explosion. Fireworks have been around for centuries and are believed to have been first made by the Chinese. A Chinese document, dated about 1040AD, showed how to wrap gunpowder in paper to make a 'fire pill'. This small firecracker made a very loud bang which was thought to ward off evil spirits. By the 13th century, fireworks had made their way to Europe where their popularity grew. By the 1500's, fireworks were used in celebrations and special events. The Italians were the masters of fireworks by the 17th century. There are a number of different types of fireworks these days and each of them works in a particular way. The rocket firework has a substance which explodes and shoots the firework into the air. When the rocket reaches a particular height, another spark causes it to blow up, releasing fine metal powders into the air. Roman candles are long tubes which shoot balls of chemicals from one end creating a series of flaming stars. Fountains are cone shaped and a small hole allows gases to escape, shooting coloured sparks into the air. Adding magnesium gives off a bright white light. Other ingredients give off different types of light when they become hot which is how colours are created."
   },
   {
     "id": "ielts_listening_practice_missing_words_libraries",
@@ -510,12 +1224,38 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Libraries provide creative spaces and learning ________", "answer": "hubs"},
-      {"index": 1, "text": "Libraries can help to improve technological ________ in society.", "answer": "literacy"},
-      {"index": 2, "text": "________ to any given book becomes possible using Library Bookmark.", "answer": "Navigating"},
-      {"index": 3, "text": "Patrons would be able to receive books at home using ________", "answer": "delivery drones"},
-      {"index": 4, "text": "Fingerlink allows the user to combine ________ with a printed book.", "answer": "digital tools"}
-    ]
+      {
+        "index": 0,
+        "text": "Libraries provide creative spaces and learning ________",
+        "answer": "hubs",
+        "explanation": "The recording says: \"They are economic incubators and learning hubs.\" The plural form \"hubs\" is required — \"hub\" (singular) would be grammatically wrong because the verb \"are\" is plural."
+      },
+      {
+        "index": 1,
+        "text": "Libraries can help to improve technological ________ in society.",
+        "answer": "literacy",
+        "explanation": "The recording says: \"to improve technological literacy of local communities.\" Correct spelling is mandatory."
+      },
+      {
+        "index": 2,
+        "text": "________ to any given book becomes possible using Library Bookmark.",
+        "answer": "Navigating",
+        "explanation": "The recording says: \"the device would be a perfect companion when navigating through the library.\" \"Navigating\" is a gerund (verb+ing) functioning as a noun."
+      },
+      {
+        "index": 3,
+        "text": "Patrons would be able to receive books at home using ________",
+        "answer": "delivery drones",
+        "explanation": "The recording says: \"just like Amazon drones can deliver the goods to customers, libraries could deliver the books to patrons.\" The answer is \"delivery drones.\" Note: \"flying machines\" exceeds the word limit."
+      },
+      {
+        "index": 4,
+        "text": "Fingerlink allows the user to combine ________ with a printed book.",
+        "answer": "digital tools",
+        "explanation": "The recording says: \"It is a project...that will let you use digital tools to work with a printed book.\" The answer is \"digital tools.\""
+      }
+    ],
+    "transcript": "Today, libraries are not only about lending books. They are creative spaces, not only for individuals, but also teams. They are economic incubators and learning hubs. Most of all, the libraries are the entry points to the digital world. They are the way to embrace technology and avoid digital exclusion. Therefore, to improve technological literacy of local communities, libraries should be equipped with relevant technologies. Here are some suggestions for future improvements of technology in libraries: Library Bookmark: First of all, the device would be a perfect companion when navigating through the library, by giving turn-by-turn directions to the book the patron wants. The device could also keep track of all borrowed books, as well as remind the user of the return dates. Delivery Drones: To get the book from a library, you can either go and find it, or you can let it find you. The future belongs to the unmanned flying machines, and just like Amazon drones can deliver the goods to customers, libraries could deliver the books to patrons. FingerLink: It is a project currently developed by Fujitsu that will let you use digital tools to work with a printed book. It's a stand you can put on a library desk. It includes two elements: a camera to read the information from the real world, and the projector to display digital information in the real world."
   },
   {
     "id": "map_completion_question_ielts_listening",
@@ -525,13 +1265,44 @@
     "question_type": "map_diagram",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Map label 1 (entrance area)", "answer": "reception"},
-      {"index": 1, "text": "Map label 2 (toilets area)", "answer": "cloakroom"},
-      {"index": 2, "text": "Map label 3 (doctor's room A)", "answer": "consultation room A"},
-      {"index": 3, "text": "Map label 4 (doctor's room B)", "answer": "consultation room B"},
-      {"index": 4, "text": "Map label 5 (small area for waiting)", "answer": "small waiting area"},
-      {"index": 5, "text": "Map label 6 (nurse's room)", "answer": "practice nurse room"}
-    ]
+      {
+        "index": 0,
+        "text": "Map label 1 (entrance area)",
+        "answer": "reception",
+        "explanation": "The recording says: \"please go straight to the reception room on the left.\" The word \"room\" is optional."
+      },
+      {
+        "index": 1,
+        "text": "Map label 2 (toilets area)",
+        "answer": "cloakroom",
+        "explanation": "The recording says: \"you may want to leave them in the cloakroom which is located at the other end of the building. It's the small room at the end of the corridor.\""
+      },
+      {
+        "index": 2,
+        "text": "Map label 3 (doctor's room A)",
+        "answer": "consultation room A",
+        "explanation": "The recording says: \"The first one is consultation room A used by Dr Driver,\" located to the right of the stairs."
+      },
+      {
+        "index": 3,
+        "text": "Map label 4 (doctor's room B)",
+        "answer": "consultation room B",
+        "explanation": "The recording says: \"consultation room B, next to it, is used on rotation by Dr Smith and Dr Philips.\""
+      },
+      {
+        "index": 4,
+        "text": "Map label 5 (small area for waiting)",
+        "answer": "small waiting area",
+        "explanation": "The recording says: \"At the end of the hall, next to the cloakroom is a small waiting area for people who are waiting for the nurse.\" The word \"small\" is optional."
+      },
+      {
+        "index": 5,
+        "text": "Map label 6 (nurse's room)",
+        "answer": "practice nurse room",
+        "explanation": "The recording says: \"The practice nurse room is right next the waiting area.\""
+      }
+    ],
+    "transcript": "Welcome to the Bedford Doctor's Surgery. As you are a new patient, please listen to the information about our practice to learn about our surgery and the facilities available. To enter our surgery you will need to go up the stairs to the first floor so if you are disabled and need wheelchair access, you will need to call us to organize this. Once you enter the surgery, please go straight to the reception room on the left and sign in with our receptionist. Then take a seat and wait for your name to be called. If you need the toilets, you'll have to go back down to the ground floor which belongs to the company renting that floor. Downstairs, you'll also see a small vending machine at the end of the hallway if you get peckish. Back upstairs in the surgery, if you have a large bag or a coat, you may want to leave them in the cloakroom which is located at the other end of the building. It's the small room at the end of the corridor. The two doctor's consulting rooms are situated just to the right of the stairs both with a lovely view over the town, one of them used to be the old waiting room. The first one is consultation room A used by Dr Driver and consultation room B, next to it, is used on rotation by Dr Smith and Dr Philips. At the end of the hall, next to the cloakroom is a small waiting area for people who are waiting for the nurse. The practice nurse room is right next the waiting area. For patients who will be traveling by bus, there's a bus stop just a few doors away from the surgery and for those of you coming by car, please park outside our main doors."
   },
   {
     "id": "brain_drain_listening",
@@ -544,20 +1315,30 @@
       {
         "index": 0,
         "text": "Which THREE reasons are given for the brain drain? Choose letters A-G. A=Money, B=Education, C=Climate, D=Quality of life, E=State-of-the-art equipment, F=Language, G=Culture",
-        "answer": "A, D, E"
+        "answer": "A, D, E",
+        "explanation": "The three reasons given in the recording are: A (money) = \"better remuneration\"; D (quality of life) = \"better standards of living\"; E (state-of-the-art equipment) = \"access to advanced modern technology.\" Note: political stability is also mentioned but is not among the answer options A-G."
       },
       {
         "index": 1,
         "text": "What problem does the brain drain cause developing countries? A=Loss of skilled workers, B=Population decline, C=Reduced tax revenue, D=Loss of investment, E=Loss of money",
-        "options": ["A – Loss of skilled workers", "B – Population decline", "C – Reduced tax revenue", "D – Loss of investment", "E – Loss of money"],
-        "answer": "E"
+        "options": [
+          "A – Loss of skilled workers",
+          "B – Population decline",
+          "C – Reduced tax revenue",
+          "D – Loss of investment",
+          "E – Loss of money"
+        ],
+        "answer": "E",
+        "explanation": "The recording says developing countries have \"invested in the education and training of young health professionals\" but when these people migrate, it results in \"a loss of considerable resources.\" This is a financial loss — E (loss of money)."
       },
       {
         "index": 2,
         "text": "In 2000, ________ million people living outside their home country were employed.",
-        "answer": "65"
+        "answer": "65",
+        "explanation": "The recording states: \"In 2000 almost 175 million people...were living outside their country of birth. Of these, about 65 million were economically active.\" Economically active = employed. The answer is 65."
       }
-    ]
+    ],
+    "transcript": "Brain drain is the migration of skilled human resources for trade, education, health care and other sectors. Trained health professionals are needed in every part of the world. However, better standards of living draw many of them to more developed countries. Others decide to make the move because of better remuneration or for access to advanced modern technology. For some the stable political conditions in the developed countries attract talent from less developed areas. The majority of migration is from developing to developed countries. This is of growing concern worldwide because of its impact on the health care systems in developing countries. These countries have invested in the education and training of young health professionals. This translates into a loss of considerable resources when these people migrate, with the benefit accruing to the recipient states who have not forked out to educate them. The intellectuals of any country are some of the most expensive resources because of their training in terms of material cost and time, and most importantly, because of lost opportunity. In 2000 almost 175 million people, or 2.9% of the world's population, were living outside their country of birth for more than a year. Of these, about 65 million were economically active."
   },
   {
     "id": "ielts_listening_practice_sports_festival",
@@ -567,13 +1348,44 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Naadam is a festival of three sports in Mongolia: ________ horse racing and archery.", "answer": "wrestling"},
-      {"index": 1, "text": "This festival takes place during ________.", "answer": "midsummer"},
-      {"index": 2, "text": "Previously, women were unable to ________ in the festival.", "answer": "participate"},
-      {"index": 3, "text": "Historically, this festival was used to generate ________.", "answer": "warriors"},
-      {"index": 4, "text": "People don ________ for the festival.", "answer": "colourful clothes"},
-      {"index": 5, "text": "Each year the celebration is held between ________ and ________ July.", "answer": "11th / 13th"}
-    ]
+      {
+        "index": 0,
+        "text": "Naadam is a festival of three sports in Mongolia: ________ horse racing and archery.",
+        "answer": "wrestling",
+        "explanation": "The recording lists the three sports: \"Mongolian wrestling, horse racing and archery.\" Wrestling is the missing sport in the question."
+      },
+      {
+        "index": 1,
+        "text": "This festival takes place during ________.",
+        "answer": "midsummer",
+        "explanation": "The recording says: \"It is held over midsummer throughout the country.\""
+      },
+      {
+        "index": 2,
+        "text": "Previously, women were unable to ________ in the festival.",
+        "answer": "participate",
+        "explanation": "The recording says: \"Nowadays, women are able to participate in archery and horse racing but not wrestling.\" Previously they could not participate at all."
+      },
+      {
+        "index": 3,
+        "text": "Historically, this festival was used to generate ________.",
+        "answer": "warriors",
+        "explanation": "The recording says: \"the Mongolian great kings and military generals used to train their warriors...those three manly traditional sports have been used to create skilful men for centuries.\" The answer is \"warriors.\""
+      },
+      {
+        "index": 4,
+        "text": "People don ________ for the festival.",
+        "answer": "colourful clothes",
+        "explanation": "The recording says: \"Mongolians dress in colourful and distinctive traditional clothes.\" The answer is \"colourful clothes.\""
+      },
+      {
+        "index": 5,
+        "text": "Each year the celebration is held between ________ and ________ July.",
+        "answer": "11th / 13th",
+        "explanation": "The recording says: \"Official festival celebrations take place throughout the country between 11th and 13th July annually.\" The two dates are 11th and 13th."
+      }
+    ],
+    "transcript": "Naadam is a traditional games festival in Mongolia comprising of three sports: Mongolian wrestling, horse racing and archery. It is otherwise known as 'the three games of men' because traditionally men were the only ones who could compete. It is held over midsummer throughout the country. Nowadays, women are able to participate in archery and horse racing but not wrestling. The name 'Naadam' means 'festival or feast of sports'. In ancient times, the Mongolian great kings and military generals used to train their warriors and the warriors' main battle tool, horses, through this competition. While competing and feasting, those three manly traditional sports have been used to create skilful men for centuries. During the festival, Mongolians dress in colourful and distinctive traditional clothes and ride their most beautiful horses. Official festival celebrations take place throughout the country between 11th and 13th July annually. The Naadam celebration in Ulaanbaatar, the capital of Mongolia, is the most marvellous."
   },
   {
     "id": "ielts_listening_list_selection",
@@ -586,9 +1398,11 @@
       {
         "index": 0,
         "text": "What THREE things are NOT allowed to be brought into the museum? (Choose THREE from A-G: A=Camera, B=Bags, C=Food and drink, D=Phone, E=Pens, F=Notebooks, G=Coats)",
-        "answer": "A, C, D"
+        "answer": "A, C, D",
+        "explanation": "The three items not allowed are A (camera), C (food and drink), D (phone). Camera: \"you won't be able to take your camera into the museum as photos are forbidden.\" Phone: \"that goes for phones too.\" Food/drink: \"you can't bring your own inside.\" Bags are NOT forbidden — visitors can optionally store them. Notebooks are explicitly permitted: \"You're welcome to walk around with your notebooks.\""
       }
-    ]
+    ],
+    "transcript": "There are a few things which you will need to know before you come to the museum. You won't be able to take your camera into the museum as photos are forbidden which means that that goes for phones too. If you want pictures of the exhibitions can you'll have to buy the museum guide book which has information as well as pictures of most of our famous exhibits. If you have a bag and you don't want to carry it round with you, then you can store it in the locker room on the ground floor near the entrance. You're welcome to walk around with your notebooks to sketch or make notes on our displays. If you're in need of refreshments, you'll have to make your way to our cafe as you can't bring your own inside. Well, that's the list of does and don'ts. Hope you enjoy your visit."
   },
   {
     "id": "listening_practice_my_university",
@@ -598,12 +1412,42 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The University of London is made up of ________ different institutions.", "answer": "19"},
-      {"index": 1, "text": "The college was established in ________.", "answer": "1879"},
-      {"index": 2, "text": "Nowadays, the university has ________ students from over 100 countries.", "answer": "8,000"},
-      {"index": 3, "text": "The campus feels like a peaceful, ________ place in the countryside.", "answer": "secluded"},
-      {"index": 4, "text": "Royal Holloway is located ________ from the centre of London.", "answer": "19 miles"},
-      {"index": 5, "text": "There are three world class faculties: the arts faculty, ________ and ________, and the science faculty.", "answer": "history / social sciences"}
+      {
+        "index": 0,
+        "text": "The University of London is made up of ________ different institutions.",
+        "answer": "19",
+        "explanation": "The recording says the University of London is made up of 19 different institutions. Note: 19 and 90 sound similar — listen carefully for the stress pattern (nine-TEEN vs NINE-ty)."
+      },
+      {
+        "index": 1,
+        "text": "The college was established in ________.",
+        "answer": "1879",
+        "explanation": "The recording says: \"Thomas Holloway founded the college in 1879.\" \"Established\" in the question = \"founded\" in the recording."
+      },
+      {
+        "index": 2,
+        "text": "Nowadays, the university has ________ students from over 100 countries.",
+        "answer": "8,000",
+        "explanation": "The recording says the community contains \"some 8,000 students.\" The word \"some\" means \"about\" and does not need to be included in the answer."
+      },
+      {
+        "index": 3,
+        "text": "The campus feels like a peaceful, ________ place in the countryside.",
+        "answer": "secluded",
+        "explanation": "The recording says: \"peaceful, secluded existence.\" The answer is \"secluded\" — an adjective. Spelling must be correct."
+      },
+      {
+        "index": 4,
+        "text": "Royal Holloway is located ________ from the centre of London.",
+        "answer": "19 miles",
+        "explanation": "The recording says Royal Holloway is \"19 miles from the centre of London.\" Include \"miles\" since it is not already in the question sentence."
+      },
+      {
+        "index": 5,
+        "text": "There are three world class faculties: the arts faculty, ________ and ________, and the science faculty.",
+        "answer": "history / social sciences",
+        "explanation": "The recording names three faculties: the arts faculty, history, and social sciences. Write both \"history\" and \"social sciences\" — omit \"and\" (it is already in the question). Remember the \"s\" in \"sciences.\""
+      }
     ]
   },
   {
@@ -614,14 +1458,50 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "In 1884, two ________ came up with the concept of building a tall tower.", "answer": "engineers"},
-      {"index": 1, "text": "The plan was for the tower to be ________ feet in height.", "answer": "1000"},
-      {"index": 2, "text": "Assembly of the supports took ________ to finish.", "answer": "22 months"},
-      {"index": 3, "text": "During construction, precision of work was measured to ________ of a millimetre.", "answer": "a tenth"},
-      {"index": 4, "text": "The construction team had responsibility for ________ to ________ workers.", "answer": "150 / 300"},
-      {"index": 5, "text": "Diagram label 6 (date on construction timeline)", "answer": "15 March 1888"},
-      {"index": 6, "text": "Diagram label 7 (completion date)", "answer": "12 March 1889"}
-    ]
+      {
+        "index": 0,
+        "text": "In 1884, two ________ came up with the concept of building a tall tower.",
+        "answer": "engineers",
+        "explanation": "The recording says: \"Two chief engineers in Eiffel's company, had the idea for a very tall tower.\" The answer is \"engineers\" or \"chief engineers\" — both are correct."
+      },
+      {
+        "index": 1,
+        "text": "The plan was for the tower to be ________ feet in height.",
+        "answer": "1000",
+        "explanation": "The recording says the tower was \"equivalent to the symbolic figure of 1000 feet.\" Write numbers as digits: 1000."
+      },
+      {
+        "index": 2,
+        "text": "Assembly of the supports took ________ to finish.",
+        "answer": "22 months",
+        "explanation": "The recording says: \"The assembly of the supports began on July 1, 1887 and was completed twenty-two months later.\" The answer is \"22 months.\" \"Months\" must be plural."
+      },
+      {
+        "index": 3,
+        "text": "During construction, precision of work was measured to ________ of a millimetre.",
+        "answer": "a tenth",
+        "explanation": "The recording says pieces were \"traced out to an accuracy of a tenth of a millimetre.\" The article \"a\" is required for the sentence to be grammatically correct: \"to a tenth of a millimetre.\""
+      },
+      {
+        "index": 4,
+        "text": "The construction team had responsibility for ________ to ________ workers.",
+        "answer": "150 / 300",
+        "explanation": "The recording says: \"responsible for the 150 to 300 workers on site.\" Both numbers are required. No punctuation is needed between them."
+      },
+      {
+        "index": 5,
+        "text": "Diagram label 6 (date on construction timeline)",
+        "answer": "15 March 1888",
+        "explanation": "The recording says: \"The first photo was taken after the construction of the first floor on the 15th March 1888.\" The full date is required."
+      },
+      {
+        "index": 6,
+        "text": "Diagram label 7 (completion date)",
+        "answer": "12 March 1889",
+        "explanation": "The recording says: \"The constructions were finally finished on the 12th March 1889 which is when the last photo was taken.\" The full date is required."
+      }
+    ],
+    "transcript": "The plan to build a tower 300 metres high was conceived as part of preparations for the World's Fair of 1889. Two chief engineers in Eiffel's company, had the idea for a very tall tower in June 1884. The tower project was a bold extension of this principle – equivalent to the symbolic figure of 1000 feet. The assembly of the supports began on July 1, 1887 and was completed twenty-two months later. All the elements were prepared in Eiffel's factory located on the outskirts of Paris. Each of the 18,000 pieces used to construct the Eiffel Tower were specifically designed and calculated, traced out to an accuracy of a tenth of a millimetre and then put together forming new pieces around five metres each. A team of constructors, who had worked on the great metal viaduct projects, were responsible for the 150 to 300 workers on site assembling this gigantic set. Photographic evidence at the time showed the four stages of the construction of the Eiffel Tower. The first photo was taken after the construction of the first floor on the 15th March 1888 and the following photos were taken over a period of about a year. The constructions were finally finished on the 12th March 1889 which is when the last photo was taken. On the narrow platform at the top, Eiffel received his decoration from the Legion of Honour."
   },
   {
     "id": "listening_practice_blue_footed_boobies",
@@ -631,16 +1511,62 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Strutting and showing off feet is part of the mating ________", "answer": "rituals"},
-      {"index": 1, "text": "When a male boobie has very blue feet, he is considered ________", "answer": "more attractive"},
-      {"index": 2, "text": "Their name comes from the Spanish word for ________", "answer": "stupid"},
-      {"index": 3, "text": "On land, blue-footed boobies move in a ________ manner.", "answer": "clumsy"},
-      {"index": 4, "text": "Blue-footed boobies fish in ________", "answer": "cooperative groups"},
-      {"index": 5, "text": "They eat small fish, for example ________", "answer": "anchovies"},
-      {"index": 6, "text": "Their bodies are ________ which is advantageous when diving.", "answer": "streamlined"},
-      {"index": 7, "text": "Adult boobies warm their chicks with their ________", "answer": "webbed feet"},
-      {"index": 8, "text": "They usually have a maximum of ________ chicks.", "answer": "3"}
-    ]
+      {
+        "index": 0,
+        "text": "Strutting and showing off feet is part of the mating ________",
+        "answer": "rituals",
+        "explanation": "The recording says: \"During mating rituals, male birds show off their feet.\" Both \"ritual\" and \"rituals\" are acceptable."
+      },
+      {
+        "index": 1,
+        "text": "When a male boobie has very blue feet, he is considered ________",
+        "answer": "more attractive",
+        "explanation": "The recording says: \"The bluer the feet, the more attractive the mate.\" The answer is \"more attractive.\""
+      },
+      {
+        "index": 2,
+        "text": "Their name comes from the Spanish word for ________",
+        "answer": "stupid",
+        "explanation": "The recording says: \"All half-dozen or so booby species are thought to take their name from the Spanish word 'bobo.' The term means 'stupid.'\" The answer is \"stupid.\""
+      },
+      {
+        "index": 3,
+        "text": "On land, blue-footed boobies move in a ________ manner.",
+        "answer": "clumsy",
+        "explanation": "The recording says: \"how early European colonists may have characterized these clumsy and unwary birds when they saw them on land.\" The answer is \"clumsy.\""
+      },
+      {
+        "index": 4,
+        "text": "Blue-footed boobies fish in ________",
+        "answer": "cooperative groups",
+        "explanation": "The recording says: \"sometimes fishing in cooperative groups.\" The answer is \"cooperative groups\" (or just \"groups\")."
+      },
+      {
+        "index": 5,
+        "text": "They eat small fish, for example ________",
+        "answer": "anchovies",
+        "explanation": "The recording says: \"keeping a keen eye out for schools of small fish, such as anchovies.\" The answer is \"anchovies.\""
+      },
+      {
+        "index": 6,
+        "text": "Their bodies are ________ which is advantageous when diving.",
+        "answer": "streamlined",
+        "explanation": "The recording says: \"They fold their long wings back around their streamlined bodies.\" Streamlined bodies allow efficient diving."
+      },
+      {
+        "index": 7,
+        "text": "Adult boobies warm their chicks with their ________",
+        "answer": "webbed feet",
+        "explanation": "The recording says: \"Blue-footed boobies also use their webbed feet to cover their young and keep them warm.\" The answer is \"webbed feet.\""
+      },
+      {
+        "index": 8,
+        "text": "They usually have a maximum of ________ chicks.",
+        "answer": "3",
+        "explanation": "The recording says: \"a typical brood of one to three chicks hatch.\" The maximum is three (3)."
+      }
+    ],
+    "transcript": "These boobies live off the western coasts of Central and South America. The Galápagos Islands population includes about half of all breeding pairs of blue-footed boobies. They are aptly named, and males take great pride in their fabulous feet. During mating rituals, male birds show off their feet to prospective mates with a high-stepping strut. The bluer the feet, the more attractive the mate. All half-dozen or so booby species are thought to take their name from the Spanish word \"bobo.\" The term means \"stupid,\" which is how early European colonists may have characterized these clumsy and unwary birds when they saw them on land—their least graceful environment. Like other boobies, blue-foots nest on land at night. When day breaks, they take to the air in search of seafood, sometimes fishing in cooperative groups. They may fly far out to sea while keeping a keen eye out for schools of small fish, such as anchovies. When their prey is in sight, these seabirds utilize the physical adaptations that make them exceptional divers. They fold their long wings back around their streamlined bodies and plunge into the water from as high as 80 feet. Blue-footed boobies can also dive from a sitting position on the water's surface. Blue-footed boobies also use their webbed feet to cover their young and keep them warm. When a typical brood of one to three chicks hatch, both parents feed and care for them."
   },
   {
     "id": "listening_practice_for_addresses",
@@ -650,16 +1576,56 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Address 1:", "answer": "150 Church Street"},
-      {"index": 1, "text": "Address 2:", "answer": "68C Bridge Lane"},
-      {"index": 2, "text": "Address 3:", "answer": "52 Burlington Road"},
-      {"index": 3, "text": "Address 4:", "answer": "3 West Street"},
-      {"index": 4, "text": "Address 5:", "answer": "94A Notts Way"},
-      {"index": 5, "text": "Address 6:", "answer": "Flat 2, 24 Sleet Street"},
-      {"index": 6, "text": "Address 7:", "answer": "63 Green Avenue"},
-      {"index": 7, "text": "Address 8:", "answer": "54 Station Road"},
-      {"index": 8, "text": "Address 9:", "answer": "102 Seaview Crescent"},
-      {"index": 9, "text": "Address 10:", "answer": "41 Drummond Square"}
+      {
+        "index": 0,
+        "text": "Address 1:",
+        "answer": "150 Church Street"
+      },
+      {
+        "index": 1,
+        "text": "Address 2:",
+        "answer": "68C Bridge Lane"
+      },
+      {
+        "index": 2,
+        "text": "Address 3:",
+        "answer": "52 Burlington Road"
+      },
+      {
+        "index": 3,
+        "text": "Address 4:",
+        "answer": "3 West Street"
+      },
+      {
+        "index": 4,
+        "text": "Address 5:",
+        "answer": "94A Notts Way"
+      },
+      {
+        "index": 5,
+        "text": "Address 6:",
+        "answer": "Flat 2, 24 Sleet Street"
+      },
+      {
+        "index": 6,
+        "text": "Address 7:",
+        "answer": "63 Green Avenue"
+      },
+      {
+        "index": 7,
+        "text": "Address 8:",
+        "answer": "54 Station Road"
+      },
+      {
+        "index": 8,
+        "text": "Address 9:",
+        "answer": "102 Seaview Crescent"
+      },
+      {
+        "index": 9,
+        "text": "Address 10:",
+        "answer": "41 Drummond Square"
+      }
     ]
   },
   {
@@ -670,21 +1636,81 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Letter 1:", "answer": "S"},
-      {"index": 1, "text": "Letter 2:", "answer": "T"},
-      {"index": 2, "text": "Letter 3:", "answer": "P"},
-      {"index": 3, "text": "Letter 4:", "answer": "R"},
-      {"index": 4, "text": "Letter 5:", "answer": "U"},
-      {"index": 5, "text": "Letter 6:", "answer": "G"},
-      {"index": 6, "text": "Letter 7:", "answer": "I"},
-      {"index": 7, "text": "Letter 8:", "answer": "A"},
-      {"index": 8, "text": "Letter 9:", "answer": "Q"},
-      {"index": 9, "text": "Letter 10:", "answer": "X"},
-      {"index": 10, "text": "Letter 11:", "answer": "J"},
-      {"index": 11, "text": "Letter 12:", "answer": "B"},
-      {"index": 12, "text": "Letter 13:", "answer": "C"},
-      {"index": 13, "text": "Letter 14:", "answer": "F"},
-      {"index": 14, "text": "Letter 15:", "answer": "N"}
+      {
+        "index": 0,
+        "text": "Letter 1:",
+        "answer": "S"
+      },
+      {
+        "index": 1,
+        "text": "Letter 2:",
+        "answer": "T"
+      },
+      {
+        "index": 2,
+        "text": "Letter 3:",
+        "answer": "P"
+      },
+      {
+        "index": 3,
+        "text": "Letter 4:",
+        "answer": "R"
+      },
+      {
+        "index": 4,
+        "text": "Letter 5:",
+        "answer": "U"
+      },
+      {
+        "index": 5,
+        "text": "Letter 6:",
+        "answer": "G"
+      },
+      {
+        "index": 6,
+        "text": "Letter 7:",
+        "answer": "I"
+      },
+      {
+        "index": 7,
+        "text": "Letter 8:",
+        "answer": "A"
+      },
+      {
+        "index": 8,
+        "text": "Letter 9:",
+        "answer": "Q"
+      },
+      {
+        "index": 9,
+        "text": "Letter 10:",
+        "answer": "X"
+      },
+      {
+        "index": 10,
+        "text": "Letter 11:",
+        "answer": "J"
+      },
+      {
+        "index": 11,
+        "text": "Letter 12:",
+        "answer": "B"
+      },
+      {
+        "index": 12,
+        "text": "Letter 13:",
+        "answer": "C"
+      },
+      {
+        "index": 13,
+        "text": "Letter 14:",
+        "answer": "F"
+      },
+      {
+        "index": 14,
+        "text": "Letter 15:",
+        "answer": "N"
+      }
     ]
   },
   {
@@ -695,8 +1721,23 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Listen and write the sentences you hear about natural disaster management. (Open dictation exercise — no fixed gaps)", "answer": "Visit source for audio and answers"}
-    ]
+      {
+        "index": 0,
+        "text": "Sentence 1 (write the full sentence you hear):",
+        "answer": "Strengthening community capacity to prevent and cope with the impact of disasters is a valuable way to save lives and better protect livelihoods as well as prevent such shocks from crippling development within the poorest countries."
+      },
+      {
+        "index": 1,
+        "text": "Sentence 2 (write the full sentence you hear):",
+        "answer": "Early warning and early action are more cost effective than traditional disaster responses and save more lives per pound spent."
+      },
+      {
+        "index": 2,
+        "text": "Sentence 3 (write the full sentence you hear):",
+        "answer": "In other words, public money has four times as much humanitarian impact if spending on preparation and risk reduction rather than on relief items."
+      }
+    ],
+    "transcript": "Strengthening community capacity to prevent and cope with the impact of disasters is a valuable way to save lives and better protect livelihoods as well as prevent such shocks from crippling development within the poorest countries. Early warning and early action are more cost effective than traditional disaster responses and save more lives per pound spent. In other words, public money has four times as much humanitarian impact if spending on preparation and risk reduction rather than on relief items."
   },
   {
     "id": "listening_practice_for_english_names",
@@ -706,16 +1747,56 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Name 1:", "answer": "David Darwin"},
-      {"index": 1, "text": "Name 2:", "answer": "Mrs Alice Smith"},
-      {"index": 2, "text": "Name 3:", "answer": "Balthazar Jones"},
-      {"index": 3, "text": "Name 4:", "answer": "Sara Bartholomew"},
-      {"index": 4, "text": "Name 5:", "answer": "Sean Bean"},
-      {"index": 5, "text": "Name 6:", "answer": "Mr Frank Allenson"},
-      {"index": 6, "text": "Name 7:", "answer": "A R Beevers"},
-      {"index": 7, "text": "Name 8:", "answer": "James Chichester"},
-      {"index": 8, "text": "Name 9:", "answer": "Mary Schooling"},
-      {"index": 9, "text": "Name 10:", "answer": "Sir Paul McKellen"}
+      {
+        "index": 0,
+        "text": "Name 1:",
+        "answer": "David Darwin"
+      },
+      {
+        "index": 1,
+        "text": "Name 2:",
+        "answer": "Mrs Alice Smith"
+      },
+      {
+        "index": 2,
+        "text": "Name 3:",
+        "answer": "Balthazar Jones"
+      },
+      {
+        "index": 3,
+        "text": "Name 4:",
+        "answer": "Sara Bartholomew"
+      },
+      {
+        "index": 4,
+        "text": "Name 5:",
+        "answer": "Sean Bean"
+      },
+      {
+        "index": 5,
+        "text": "Name 6:",
+        "answer": "Mr Frank Allenson"
+      },
+      {
+        "index": 6,
+        "text": "Name 7:",
+        "answer": "A R Beevers"
+      },
+      {
+        "index": 7,
+        "text": "Name 8:",
+        "answer": "James Chichester"
+      },
+      {
+        "index": 8,
+        "text": "Name 9:",
+        "answer": "Mary Schooling"
+      },
+      {
+        "index": 9,
+        "text": "Name 10:",
+        "answer": "Sir Paul McKellen"
+      }
     ]
   },
   {
@@ -726,16 +1807,56 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Name 1:", "answer": "Dr Davis"},
-      {"index": 1, "text": "Name 2:", "answer": "Richard Chamberlain"},
-      {"index": 2, "text": "Name 3:", "answer": "Miss Victoria Halley"},
-      {"index": 3, "text": "Name 4:", "answer": "Mr C J Billings"},
-      {"index": 4, "text": "Name 5:", "answer": "Robert Powers"},
-      {"index": 5, "text": "Name 6:", "answer": "Emily Jackson"},
-      {"index": 6, "text": "Name 7:", "answer": "Nora Ingalls"},
-      {"index": 7, "text": "Name 8:", "answer": "Mrs Caroline Castle"},
-      {"index": 8, "text": "Name 9:", "answer": "Charles Pringle"},
-      {"index": 9, "text": "Name 10:", "answer": "Emma Ford"}
+      {
+        "index": 0,
+        "text": "Name 1:",
+        "answer": "Dr Davis"
+      },
+      {
+        "index": 1,
+        "text": "Name 2:",
+        "answer": "Richard Chamberlain"
+      },
+      {
+        "index": 2,
+        "text": "Name 3:",
+        "answer": "Miss Victoria Halley"
+      },
+      {
+        "index": 3,
+        "text": "Name 4:",
+        "answer": "Mr C J Billings"
+      },
+      {
+        "index": 4,
+        "text": "Name 5:",
+        "answer": "Robert Powers"
+      },
+      {
+        "index": 5,
+        "text": "Name 6:",
+        "answer": "Emily Jackson"
+      },
+      {
+        "index": 6,
+        "text": "Name 7:",
+        "answer": "Nora Ingalls"
+      },
+      {
+        "index": 7,
+        "text": "Name 8:",
+        "answer": "Mrs Caroline Castle"
+      },
+      {
+        "index": 8,
+        "text": "Name 9:",
+        "answer": "Charles Pringle"
+      },
+      {
+        "index": 9,
+        "text": "Name 10:",
+        "answer": "Emma Ford"
+      }
     ]
   },
   {
@@ -746,16 +1867,56 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Number 1:", "answer": "451"},
-      {"index": 1, "text": "Number 2:", "answer": "730"},
-      {"index": 2, "text": "Number 3:", "answer": "1,600"},
-      {"index": 3, "text": "Number 4:", "answer": "2,460"},
-      {"index": 4, "text": "Number 5:", "answer": "6,768"},
-      {"index": 5, "text": "Number 6:", "answer": "10,550"},
-      {"index": 6, "text": "Number 7:", "answer": "20,200"},
-      {"index": 7, "text": "Number 8:", "answer": "35,050"},
-      {"index": 8, "text": "Number 9:", "answer": "102,700"},
-      {"index": 9, "text": "Number 10:", "answer": "1,400,002"}
+      {
+        "index": 0,
+        "text": "Number 1:",
+        "answer": "451"
+      },
+      {
+        "index": 1,
+        "text": "Number 2:",
+        "answer": "730"
+      },
+      {
+        "index": 2,
+        "text": "Number 3:",
+        "answer": "1,600"
+      },
+      {
+        "index": 3,
+        "text": "Number 4:",
+        "answer": "2,460"
+      },
+      {
+        "index": 4,
+        "text": "Number 5:",
+        "answer": "6,768"
+      },
+      {
+        "index": 5,
+        "text": "Number 6:",
+        "answer": "10,550"
+      },
+      {
+        "index": 6,
+        "text": "Number 7:",
+        "answer": "20,200"
+      },
+      {
+        "index": 7,
+        "text": "Number 8:",
+        "answer": "35,050"
+      },
+      {
+        "index": 8,
+        "text": "Number 9:",
+        "answer": "102,700"
+      },
+      {
+        "index": 9,
+        "text": "Number 10:",
+        "answer": "1,400,002"
+      }
     ]
   },
   {
@@ -766,7 +1927,11 @@
     "question_type": "gap_fill",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Listen carefully and write the exact form (singular or plural) of each word you hear. (Video-based exercise — no direct audio link)", "answer": "Visit source for video and practice"}
+      {
+        "index": 0,
+        "text": "Listen carefully and write the exact form (singular or plural) of each word you hear. (Video-based exercise — no direct audio link)",
+        "answer": "Visit source for video and practice"
+      }
     ]
   }
 ]

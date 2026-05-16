@@ -6,6 +6,7 @@ export interface ListeningExercise {
   question_type: 'gap_fill' | 'form_completion' | 'multiple_choice' | 'map_diagram' | 'table'
   difficulty: 'medium' | 'hard'
   questions: Question[]
+  transcript?: string
 }
 
 export interface ReadingExercise {
