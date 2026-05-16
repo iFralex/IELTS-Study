@@ -16,12 +16,13 @@ module.exports = {
     { from: 'resources/env.enc', to: 'env.enc' },
   ],
   asarUnpack: [
+    // Native modules must be unpacked so their .node binaries are executable
     '**/node_modules/better-sqlite3/**',
     '**/node_modules/bindings/**',
     '**/node_modules/file-uri-to-path/**',
-    '**/node_modules/zod/**',
-    '**/node_modules/ai/**',
-    '**/node_modules/@ai-sdk/**',
+    // ai, @ai-sdk/*, and zod are now bundled into out/main/index.js at build
+    // time (see electron.vite.config.ts) so they never hit the ASAR resolver
+    // and do not need to be unpacked here.
   ],
   mac: {
     target: [{ target: 'dmg', arch: ['arm64'] }],
