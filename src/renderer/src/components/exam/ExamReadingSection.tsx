@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import type { ReadingExercise } from '../../types'
-import { ReadingPassage } from '../practice/ReadingPassage'
 import { QuestionInput } from '../practice/QuestionInput'
 
 export interface ReadingResult {
-  exercise: ReadingExercise | null
-  answers: Record<number, string>
-  snapshotAnswers: Record<number, string> | null
+  exercises: ReadingExercise[]
+  answers: Record<string, string>
+  snapshotAnswers: Record<string, string> | null
   elapsedSeconds: number
 }
 
-const TARGET_SECONDS = 3600 // 60 min
+const TARGET_SECONDS = 3600
+const TARGET_QUESTIONS = 40
 
 interface Props {
   onComplete: (result: ReadingResult) => void
@@ -22,32 +22,43 @@ function fmtSec(s: number): string {
   return `${m}:${sec.toString().padStart(2, '0')}`
 }
 
+function pickExercises(all: ReadingExercise[]): ReadingExercise[] {
+  const shuffled = [...all].sort(() => Math.random() - 0.5)
+  const picked: ReadingExercise[] = []
+  let total = 0
+  for (const ex of shuffled) {
+    picked.push(ex)
+    total += ex.questions.length
+    if (total >= TARGET_QUESTIONS) break
+  }
+  return picked
+}
+
 export function ExamReadingSection({ onComplete }: Props) {
-  const [exercise, setExercise] = useState<ReadingExercise | null>(null)
+  const [exercises, setExercises] = useState<ReadingExercise[]>([])
   const [loadError, setLoadError] = useState(false)
-  const [answers, setAnswers] = useState<Record<number, string>>({})
+  const [answers, setAnswers] = useState<Record<string, string>>({})
   const [elapsed, setElapsed] = useState(0)
   const [snapshotTaken, setSnapshotTaken] = useState(false)
   const [snapshotFlash, setSnapshotFlash] = useState(false)
-  const snapshotRef = useRef<Record<number, string> | null>(null)
-  const answersRef = useRef<Record<number, string>>({})
+  const snapshotRef = useRef<Record<string, string> | null>(null)
+  const answersRef = useRef<Record<string, string>>({})
 
   function load() {
     setLoadError(false)
     ;(window.api.getExercises('reading') as Promise<ReadingExercise[]>)
       .then(exs => {
         if (exs.length === 0) { setLoadError(true); return }
-        setExercise(exs[Math.floor(Math.random() * exs.length)])
+        setExercises(pickExercises(exs))
       })
       .catch(() => setLoadError(true))
   }
 
   useEffect(() => { load() }, [])
-
   useEffect(() => { answersRef.current = answers }, [answers])
 
   useEffect(() => {
-    if (!exercise) return
+    if (!exercises.length) return
     const id = setInterval(() => {
       setElapsed(s => {
         const next = s + 1
@@ -61,44 +72,47 @@ export function ExamReadingSection({ onComplete }: Props) {
       })
     }, 1000)
     return () => clearInterval(id)
-  }, [exercise])
+  }, [exercises])
 
   function handleComplete() {
-    onComplete({ exercise, answers, snapshotAnswers: snapshotRef.current, elapsedSeconds: elapsed })
+    onComplete({ exercises, answers, snapshotAnswers: snapshotRef.current, elapsedSeconds: elapsed })
   }
 
   function handleSkip() {
-    onComplete({ exercise: null, answers: {}, snapshotAnswers: null, elapsedSeconds: elapsed })
+    onComplete({ exercises: [], answers: {}, snapshotAnswers: null, elapsedSeconds: elapsed })
   }
 
   if (loadError) {
     return (
       <div className="flex flex-col items-center gap-4 p-8">
-        <p className="text-red text-sm">Errore nel caricamento dell'esercizio Reading.</p>
-        <button onClick={load}
-          className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1 transition-colors">
-          Riprova
-        </button>
-        <button onClick={handleSkip} className="text-subtext0 text-sm underline">
-          Salta sezione
-        </button>
+        <p className="text-red text-sm">Errore nel caricamento degli esercizi Reading.</p>
+        <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1 transition-colors">Riprova</button>
+        <button onClick={handleSkip} className="text-subtext0 text-sm underline">Salta sezione</button>
       </div>
     )
   }
 
-  if (!exercise) {
-    return <p className="p-8 text-subtext0 text-sm text-center">Caricamento esercizio…</p>
+  if (!exercises.length) {
+    return <p className="p-8 text-subtext0 text-sm text-center">Caricamento esercizi…</p>
   }
 
-  const paragraphLabels = exercise.passage
-    .split('\n\n')
-    .map((_, i) => String.fromCharCode(65 + i))
+  const totalQuestions = exercises.reduce((s, ex) => s + ex.questions.length, 0)
+
+  // Compute global question start index per exercise
+  let q = 0
+  const exercisesWithStart = exercises.map(ex => {
+    const start = q
+    q += ex.questions.length
+    return { ex, start }
+  })
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
       {/* Timer bar */}
       <div className={`px-6 py-2 border-b border-surface0 flex items-center justify-between shrink-0 transition-colors duration-500 ${snapshotFlash ? 'bg-yellow/20' : 'bg-surface0/50'}`}>
-        <span className="text-xs text-subtext0 truncate">{exercise.title}</span>
+        <span className="text-xs text-subtext0">
+          {exercises.length} bran{exercises.length === 1 ? 'o' : 'i'} · {totalQuestions} domande
+        </span>
         <div className="flex items-center gap-3 shrink-0">
           <span className="text-sm font-mono font-semibold text-text">{fmtSec(elapsed)}</span>
           {snapshotTaken
@@ -107,43 +121,68 @@ export function ExamReadingSection({ onComplete }: Props) {
         </div>
       </div>
 
-      {/* Split: passage left, questions right */}
+      {/* Split: passages left, questions right */}
       <div className="flex-1 flex overflow-hidden">
-        <div className="w-[55%] h-full border-r border-surface0 overflow-hidden flex flex-col">
-          <ReadingPassage exercise={exercise} />
+        {/* Passages */}
+        <div className="w-[55%] h-full border-r border-surface0 overflow-y-auto">
+          {exercisesWithStart.map(({ ex }, ei) => (
+            <div key={ex.id} className={ei > 0 ? 'border-t-2 border-surface1' : ''}>
+              <div className="px-4 py-2 bg-surface0/50 border-b border-surface0 sticky top-0 z-10">
+                <span className="text-xs font-semibold text-mauve">Brano {ei + 1}</span>
+                <span className="text-xs text-subtext0 ml-2">{ex.title}</span>
+              </div>
+              <div className="p-4 text-sm leading-7 text-text whitespace-pre-wrap">
+                {ex.passage}
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* Questions */}
         <div className="w-[45%] h-full flex flex-col overflow-hidden">
           <div className="flex-1 overflow-y-auto px-5 py-4">
-            <div className="flex flex-col gap-5">
-              {exercise.questions.map(q => (
-                <div key={q.index} className="flex flex-col gap-2">
-                  <label className="text-sm text-text font-medium leading-snug">
-                    {q.index + 1}.{' '}
-                    {exercise.question_type === 'matching_headings' && q.paragraph
-                      ? `Paragraph ${q.paragraph}: `
-                      : ''}
-                    {q.text}
-                  </label>
-                  <QuestionInput
-                    question={q}
-                    questionType={exercise.question_type}
-                    value={answers[q.index] ?? ''}
-                    onChange={v => setAnswers(a => ({ ...a, [q.index]: v }))}
-                    paragraphLabels={paragraphLabels}
-                  />
-                </div>
-              ))}
+            <div className="flex flex-col gap-6">
+              {exercisesWithStart.map(({ ex, start }, ei) => {
+                const paragraphLabels = ex.passage.split('\n\n').map((_, i) => String.fromCharCode(65 + i))
+                return (
+                  <div key={ex.id}>
+                    <p className="text-xs font-semibold text-mauve uppercase tracking-wide mb-3">
+                      Brano {ei + 1} — {ex.question_type.replace(/_/g, ' ')}
+                    </p>
+                    <div className="flex flex-col gap-4">
+                      {ex.questions.map((q, li) => {
+                        const key = `${ex.id}:${q.index}`
+                        return (
+                          <div key={q.index} className="flex flex-col gap-2">
+                            <label className="text-sm text-text font-medium leading-snug">
+                              {start + li + 1}.{' '}
+                              {ex.question_type === 'matching_headings' && q.paragraph
+                                ? `Paragraph ${q.paragraph}: `
+                                : ''}
+                              {q.text}
+                            </label>
+                            <QuestionInput
+                              question={q}
+                              questionType={ex.question_type}
+                              value={answers[key] ?? ''}
+                              onChange={v => setAnswers(a => ({ ...a, [key]: v }))}
+                              paragraphLabels={paragraphLabels}
+                            />
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="px-5 py-4 border-t border-surface0 flex justify-between shrink-0">
-            <button onClick={handleSkip}
-              className="px-4 py-2 bg-surface0 text-subtext0 rounded text-sm hover:text-text transition-colors">
+            <button onClick={handleSkip} className="px-4 py-2 bg-surface0 text-subtext0 rounded text-sm hover:text-text transition-colors">
               Salta sezione →
             </button>
-            <button onClick={handleComplete}
-              className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
+            <button onClick={handleComplete} className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
               Sezione successiva ▶
             </button>
           </div>

@@ -44,6 +44,21 @@ export function estimateBand(
   return 2.0
 }
 
+export function scoreMultiExercises<T extends { id: string; questions: Question[] }>(
+  exercises: T[],
+  answers: Record<string, string>
+): { correctCount: number; maxScore: number } {
+  let correctCount = 0
+  for (const ex of exercises) {
+    for (const q of ex.questions) {
+      if (normalizeAnswer(answers[`${ex.id}:${q.index}`] ?? '') === normalizeAnswer(q.answer)) {
+        correctCount++
+      }
+    }
+  }
+  return { correctCount, maxScore: exercises.reduce((s, ex) => s + ex.questions.length, 0) }
+}
+
 export function filterExercises<T extends { id: string; question_type: string }>(
   exercises: T[],
   completedIds: Set<string>,

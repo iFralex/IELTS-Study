@@ -6,7 +6,7 @@ import { ExamReadingSection } from '../components/exam/ExamReadingSection'
 import type { ReadingResult } from '../components/exam/ExamReadingSection'
 import { ExamWritingSection } from '../components/exam/ExamWritingSection'
 import type { WritingResult } from '../components/exam/ExamWritingSection'
-import { scoreAnswers } from '../components/practice/utils'
+import { scoreAnswers, scoreMultiExercises } from '../components/practice/utils'
 import { countWords } from '../components/practice/writingUtils'
 
 type SectionType = 'listening' | 'reading' | 'writing'
@@ -28,13 +28,13 @@ function fmtSec(s: number): string {
 }
 
 function scoreRow(result: ListeningResult | ReadingResult): { snap: string; total: string } {
-  if (!result.exercise) return { snap: '—', total: '—' }
+  if (!result.exercises.length) return { snap: '—', total: '—' }
   let snap = '—'
   if (result.snapshotAnswers) {
-    const { correctCount, maxScore } = scoreAnswers(result.exercise.questions, result.snapshotAnswers)
+    const { correctCount, maxScore } = scoreMultiExercises(result.exercises, result.snapshotAnswers)
     snap = `${correctCount}/${maxScore}`
   }
-  const { correctCount, maxScore } = scoreAnswers(result.exercise.questions, result.answers)
+  const { correctCount, maxScore } = scoreMultiExercises(result.exercises, result.answers)
   return { snap, total: `${correctCount}/${maxScore}` }
 }
 
@@ -137,30 +137,46 @@ export function ExamSimulator() {
     let readScore: number | undefined
     let writeScore: number | undefined
 
-    if (listening?.exercise) {
-      const { correctCount, maxScore } = scoreAnswers(listening.exercise.questions, listening.answers)
-      window.api.saveSession({
-        exercise_id: listening.exercise.id,
-        section: 'listening',
-        started_at: examStartRef.current,
-        completed_at: now,
-        score: correctCount,
-        max_score: maxScore,
-        time_spent_seconds: listening.elapsedSeconds,
-      }).catch(() => {})
+    if (listening?.exercises.length) {
+      const { correctCount, maxScore } = scoreMultiExercises(listening.exercises, listening.answers)
+      for (const ex of listening.exercises) {
+        const exAnswers: Record<number, string> = {}
+        for (const q of ex.questions) {
+          const v = listening.answers[`${ex.id}:${q.index}`]
+          if (v !== undefined) exAnswers[q.index] = v
+        }
+        const { correctCount: c, maxScore: m } = scoreAnswers(ex.questions, exAnswers)
+        window.api.saveSession({
+          exercise_id: ex.id,
+          section: 'listening',
+          started_at: examStartRef.current,
+          completed_at: now,
+          score: c,
+          max_score: m,
+          time_spent_seconds: listening.elapsedSeconds,
+        }).catch(() => {})
+      }
       listenScore = maxScore > 0 ? correctCount / maxScore : undefined
     }
-    if (reading?.exercise) {
-      const { correctCount, maxScore } = scoreAnswers(reading.exercise.questions, reading.answers)
-      window.api.saveSession({
-        exercise_id: reading.exercise.id,
-        section: 'reading',
-        started_at: examStartRef.current,
-        completed_at: now,
-        score: correctCount,
-        max_score: maxScore,
-        time_spent_seconds: reading.elapsedSeconds,
-      }).catch(() => {})
+    if (reading?.exercises.length) {
+      const { correctCount, maxScore } = scoreMultiExercises(reading.exercises, reading.answers)
+      for (const ex of reading.exercises) {
+        const exAnswers: Record<number, string> = {}
+        for (const q of ex.questions) {
+          const v = reading.answers[`${ex.id}:${q.index}`]
+          if (v !== undefined) exAnswers[q.index] = v
+        }
+        const { correctCount: c, maxScore: m } = scoreAnswers(ex.questions, exAnswers)
+        window.api.saveSession({
+          exercise_id: ex.id,
+          section: 'reading',
+          started_at: examStartRef.current,
+          completed_at: now,
+          score: c,
+          max_score: m,
+          time_spent_seconds: reading.elapsedSeconds,
+        }).catch(() => {})
+      }
       readScore = maxScore > 0 ? correctCount / maxScore : undefined
     }
     if (writing) {
@@ -291,7 +307,7 @@ export function ExamSimulator() {
                   <tr className="border-b border-surface0/50">
                     <td className="px-4 py-3 text-text">
                       🎧 Listening
-                      {!listening.exercise && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
+                      {!listening.exercises.length && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
                     </td>
                     <td className="px-4 py-3 text-right text-subtext0">{listenRow.snap}</td>
                     <td className="px-4 py-3 text-right font-medium text-green">{listenRow.total}</td>
@@ -302,7 +318,7 @@ export function ExamSimulator() {
                   <tr className="border-b border-surface0/50">
                     <td className="px-4 py-3 text-text">
                       📖 Reading
-                      {!reading.exercise && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
+                      {!reading.exercises.length && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
                     </td>
                     <td className="px-4 py-3 text-right text-subtext0">{readRow.snap}</td>
                     <td className="px-4 py-3 text-right font-medium text-green">{readRow.total}</td>
