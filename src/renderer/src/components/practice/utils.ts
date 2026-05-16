@@ -17,13 +17,31 @@ export function scoreAnswers(
   return { correctCount, maxScore: questions.length }
 }
 
-export function estimateBand(correctCount: number, maxScore: number): number {
+// Official IELTS raw-score-to-band tables (scaled to 40 questions)
+// Each entry: [minimum raw score, band]
+const LISTENING_BANDS: [number, number][] = [
+  [39, 9.0], [37, 8.5], [35, 8.0], [32, 7.5], [30, 7.0],
+  [26, 6.5], [23, 6.0], [18, 5.5], [16, 5.0], [13, 4.5],
+  [10, 4.0], [8, 3.5], [6, 3.0], [4, 2.5],
+]
+const READING_BANDS: [number, number][] = [
+  [39, 9.0], [37, 8.5], [35, 8.0], [33, 7.5], [30, 7.0],
+  [27, 6.5], [23, 6.0], [19, 5.5], [15, 5.0], [13, 4.5],
+  [10, 4.0], [8, 3.5], [6, 3.0], [4, 2.5],
+]
+
+export function estimateBand(
+  correctCount: number,
+  maxScore: number,
+  section: 'listening' | 'reading'
+): number {
   if (maxScore === 0) return 0
-  const pct = correctCount / maxScore
-  if (pct >= 0.85) return 8
-  if (pct >= 0.70) return 7
-  if (pct >= 0.55) return 6
-  return 5
+  const scaled = Math.round((correctCount / maxScore) * 40)
+  const table = section === 'listening' ? LISTENING_BANDS : READING_BANDS
+  for (const [min, band] of table) {
+    if (scaled >= min) return band
+  }
+  return 2.0
 }
 
 export function filterExercises<T extends { id: string; question_type: string }>(

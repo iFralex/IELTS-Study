@@ -33,7 +33,7 @@ export function ResultsPanel({
   const [transcriptOpen, setTranscriptOpen] = useState(false)
   const transcript = isListeningExercise(exercise) ? exercise.transcript : undefined
   const { correctCount, maxScore } = scoreAnswers(exercise.questions, answers)
-  const band = estimateBand(correctCount, maxScore)
+  const band = estimateBand(correctCount, maxScore, section)
   const pct = maxScore > 0 ? Math.round((correctCount / maxScore) * 100) : 0
 
   return (
@@ -46,7 +46,7 @@ export function ResultsPanel({
         </div>
         <div className="text-subtext0 text-sm mb-2">{pct}% corretto</div>
         <div className="inline-flex items-center gap-1.5 bg-mauve/20 text-mauve px-3 py-1 rounded-full text-sm font-medium">
-          Band stimata: {band === 8 ? '8–9' : band}
+          Band stimata: {band}
         </div>
       </div>
 
