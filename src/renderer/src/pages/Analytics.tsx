@@ -25,6 +25,16 @@ export function Analytics() {
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null)
   const [loading, setLoading]     = useState(true)
   const [error, setError]         = useState<string | null>(null)
+  const [confirmReset, setConfirmReset] = useState(false)
+  const [resetting, setResetting]       = useState(false)
+
+  async function handleReset() {
+    setResetting(true)
+    await window.api.resetAllData()
+    setConfirmReset(false)
+    setResetting(false)
+    load(days)
+  }
 
   function load(d: DaysFilter) {
     setError(null)
@@ -154,6 +164,36 @@ export function Analytics() {
             </div>
           </>
         )}
+        {/* Danger zone */}
+        <div className="border border-red/30 rounded-lg p-5">
+          <h2 className="text-xs font-semibold text-red/80 uppercase tracking-wide mb-1">Zona pericolosa</h2>
+          <p className="text-xs text-subtext0 mb-4">Elimina tutti i dati (sessioni, risposte, esami, flashcard). L'operazione è irreversibile.</p>
+          {!confirmReset ? (
+            <button
+              onClick={() => setConfirmReset(true)}
+              className="px-4 py-2 bg-red/10 text-red border border-red/30 rounded text-sm hover:bg-red/20 transition-colors"
+            >
+              Cancella tutti i dati
+            </button>
+          ) : (
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-text">Sei sicuro? Questa azione non può essere annullata.</span>
+              <button
+                onClick={handleReset}
+                disabled={resetting}
+                className="px-4 py-2 bg-red text-base rounded text-sm font-medium hover:bg-red/90 transition-colors disabled:opacity-50"
+              >
+                {resetting ? 'Eliminazione…' : 'Sì, elimina tutto'}
+              </button>
+              <button
+                onClick={() => setConfirmReset(false)}
+                className="px-4 py-2 bg-surface0 text-subtext0 rounded text-sm hover:text-text transition-colors"
+              >
+                Annulla
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

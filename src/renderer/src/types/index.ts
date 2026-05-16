@@ -188,6 +188,7 @@ export interface IElectronAPI {
   evaluateAudioAnswer: (word: string, userEnglish: string, userItalian: string) => Promise<AIAudioEvalResult>
   deleteFlashcard: (id: number) => Promise<void>
   evaluateWriting: (taskType: 'task1' | 'task2', userText: string, prompt: string, wordCount: number) => Promise<AIWritingFeedback>
+  resetAllData: () => Promise<void>
 }
 
 declare global {

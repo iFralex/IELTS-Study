@@ -29,4 +29,5 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.invoke('delete-flashcard', id),
   evaluateWriting: (taskType: string, userText: string, prompt: string, wordCount: number) =>
     ipcRenderer.invoke('evaluate-writing', taskType, userText, prompt, wordCount),
+  resetAllData: () => ipcRenderer.invoke('reset-all-data'),
 })

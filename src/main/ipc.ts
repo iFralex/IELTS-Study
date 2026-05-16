@@ -217,6 +217,11 @@ export function registerIpcHandlers(): void {
     })
     return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
+
+  ipcMain.handle('reset-all-data', () => {
+    const tables = ['flashcard_reviews', 'flashcards', 'writing_submissions', 'exam_runs', 'answers', 'sessions']
+    for (const t of tables) db.prepare(`DELETE FROM ${t}`).run()
+  })
 }
 
 function avg(arr: number[]): number {
