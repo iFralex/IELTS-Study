@@ -18,7 +18,8 @@ export default function App() {
   const [popoverPos, setPopoverPos] = useState<{ x: number; y: number } | null>(null)
 
   useEffect(() => {
-    function onMouseUp() {
+    function onMouseUp(e: MouseEvent) {
+      if ((e.target as HTMLElement).closest('[data-selection-popover]')) return
       const sel = window.getSelection()
       const text = sel?.toString().trim() ?? ''
       if (text && text.split(/\s+/).length <= 4 && !text.includes('\n')) {
