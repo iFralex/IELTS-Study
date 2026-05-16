@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Sidebar } from './components/Sidebar'
 import { FloatingFlashcardButton } from './components/FloatingFlashcardButton'
@@ -14,6 +14,41 @@ import { Flashcard } from './pages/Flashcard'
 
 export default function App() {
   const [flashModalOpen, setFlashModalOpen] = useState(false)
+  const [selectedWord, setSelectedWord] = useState<string | null>(null)
+  const [popoverPos, setPopoverPos] = useState<{ x: number; y: number } | null>(null)
+
+  useEffect(() => {
+    function onMouseUp() {
+      const sel = window.getSelection()
+      const text = sel?.toString().trim() ?? ''
+      if (text && text.split(/\s+/).length <= 4 && !text.includes('\n')) {
+        const rect = sel!.getRangeAt(0).getBoundingClientRect()
+        setPopoverPos({ x: rect.left + rect.width / 2, y: rect.top })
+        setSelectedWord(text)
+      } else {
+        setPopoverPos(null)
+        setSelectedWord(null)
+      }
+    }
+    function onMouseDown(e: MouseEvent) {
+      const target = e.target as HTMLElement
+      if (!target.closest('[data-selection-popover]')) {
+        setPopoverPos(null)
+        setSelectedWord(null)
+      }
+    }
+    document.addEventListener('mouseup', onMouseUp)
+    document.addEventListener('mousedown', onMouseDown)
+    return () => {
+      document.removeEventListener('mouseup', onMouseUp)
+      document.removeEventListener('mousedown', onMouseDown)
+    }
+  }, [])
+
+  function openModalFromSelection() {
+    setFlashModalOpen(true)
+    setPopoverPos(null)
+  }
 
   return (
     <HashRouter>
@@ -31,8 +66,36 @@ export default function App() {
             <Route path="/flashcard" element={<Flashcard />} />
           </Routes>
         </main>
-        <FloatingFlashcardButton onClick={() => setFlashModalOpen(true)} />
-        {flashModalOpen && <AddCardModal onClose={() => setFlashModalOpen(false)} />}
+
+        {/* Selection popover */}
+        {popoverPos && selectedWord && !flashModalOpen && (
+          <div
+            data-selection-popover
+            style={{
+              position: 'fixed',
+              left: popoverPos.x,
+              top: Math.max(8, popoverPos.y - 44),
+              transform: 'translateX(-50%)',
+            }}
+            className="z-40 bg-mantle border border-surface1 rounded-lg px-3 py-1.5 shadow-xl flex items-center gap-2"
+          >
+            <span className="text-xs text-subtext0 max-w-[140px] truncate">{selectedWord}</span>
+            <button
+              onClick={openModalFromSelection}
+              className="text-xs text-mauve hover:text-mauve/80 font-semibold whitespace-nowrap"
+            >
+              + Flashcard
+            </button>
+          </div>
+        )}
+
+        <FloatingFlashcardButton onClick={() => { setSelectedWord(null); setFlashModalOpen(true) }} />
+        {flashModalOpen && (
+          <AddCardModal
+            initialWord={selectedWord ?? undefined}
+            onClose={() => { setFlashModalOpen(false); setSelectedWord(null) }}
+          />
+        )}
       </div>
     </HashRouter>
   )

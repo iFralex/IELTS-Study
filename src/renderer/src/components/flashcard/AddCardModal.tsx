@@ -1,24 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { AIFlashcardData, FlashcardInput } from '../../types'
 
-interface Props { onClose: () => void }
+interface Props {
+  onClose: () => void
+  initialWord?: string
+}
 
 type Phase = 'input' | 'loading' | 'preview' | 'saving'
 
-export function AddCardModal({ onClose }: Props) {
-  const [phase, setPhase] = useState<Phase>('input')
-  const [word, setWord] = useState('')
+export function AddCardModal({ onClose, initialWord }: Props) {
+  const [phase, setPhase] = useState<Phase>(initialWord ? 'loading' : 'input')
+  const [word, setWord] = useState(initialWord ?? '')
   const [error, setError] = useState<string | null>(null)
   const [data, setData] = useState<AIFlashcardData>({
     english: '', italian: '', synonyms_en: '', synonyms_it: '', examples_en: '', examples_it: '',
   })
 
-  async function handleGenerate() {
-    if (!word.trim()) return
+  useEffect(() => {
+    if (initialWord) handleGenerate(initialWord)
+  }, [])
+
+  async function handleGenerate(w = word) {
+    if (!w.trim()) return
     setError(null)
     setPhase('loading')
     try {
-      const result = await window.api.generateFlashcard(word.trim())
+      const result = await window.api.generateFlashcard(w.trim())
       setData(result)
       setPhase('preview')
     } catch {
@@ -82,7 +89,7 @@ export function AddCardModal({ onClose }: Props) {
                 placeholder:text-subtext0 outline-none focus:border-mauve transition-colors"
             />
             <button
-              onClick={handleGenerate}
+              onClick={() => handleGenerate()}
               disabled={!word.trim()}
               className="px-4 py-2 bg-mauve text-base rounded-lg text-sm font-medium
                 hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
