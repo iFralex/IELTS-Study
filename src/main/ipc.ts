@@ -218,6 +218,35 @@ export function registerIpcHandlers(): void {
     return JSON.parse(text.replace(/```json|```/g, '').trim())
   })
 
+  // ── Chat ─────────────────────────────────────────────────────────────────────
+  ipcMain.handle('get-chats', () =>
+    db.prepare('SELECT * FROM chats ORDER BY updated_at DESC').all()
+  )
+
+  ipcMain.handle('create-chat', (_e, name: string) => {
+    const now = Date.now()
+    return db.prepare('INSERT INTO chats (name, created_at, updated_at) VALUES (?,?,?)').run(name, now, now).lastInsertRowid
+  })
+
+  ipcMain.handle('rename-chat', (_e, id: number, name: string) =>
+    db.prepare('UPDATE chats SET name=?, updated_at=? WHERE id=?').run(name, Date.now(), id)
+  )
+
+  ipcMain.handle('delete-chat', (_e, id: number) =>
+    db.prepare('DELETE FROM chats WHERE id=?').run(id)
+  )
+
+  ipcMain.handle('get-chat-messages', (_e, chatId: number) =>
+    db.prepare('SELECT * FROM chat_messages WHERE chat_id=? ORDER BY created_at ASC').all(chatId)
+  )
+
+  ipcMain.handle('append-chat-message', (_e, chatId: number, role: string, content: string) => {
+    const now = Date.now()
+    const id = db.prepare('INSERT INTO chat_messages (chat_id, role, content, created_at) VALUES (?,?,?,?)').run(chatId, role, content, now).lastInsertRowid
+    db.prepare('UPDATE chats SET updated_at=? WHERE id=?').run(now, chatId)
+    return id
+  })
+
   ipcMain.handle('chat-message', async (_e, messages: { role: 'user' | 'assistant'; content: string }[]) => {
     const { text } = await generateText({
       model: getModel(),

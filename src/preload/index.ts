@@ -29,6 +29,12 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.invoke('delete-flashcard', id),
   evaluateWriting: (taskType: string, userText: string, prompt: string, wordCount: number) =>
     ipcRenderer.invoke('evaluate-writing', taskType, userText, prompt, wordCount),
-  resetAllData: () => ipcRenderer.invoke('reset-all-data'),
-  chatMessage: (messages: { role: string; content: string }[]) => ipcRenderer.invoke('chat-message', messages),
+  resetAllData:       () => ipcRenderer.invoke('reset-all-data'),
+  chatMessage:        (messages: { role: string; content: string }[]) => ipcRenderer.invoke('chat-message', messages),
+  getChats:           () => ipcRenderer.invoke('get-chats'),
+  createChat:         (name: string) => ipcRenderer.invoke('create-chat', name),
+  renameChat:         (id: number, name: string) => ipcRenderer.invoke('rename-chat', id, name),
+  deleteChat:         (id: number) => ipcRenderer.invoke('delete-chat', id),
+  getChatMessages:    (chatId: number) => ipcRenderer.invoke('get-chat-messages', chatId),
+  appendChatMessage:  (chatId: number, role: string, content: string) => ipcRenderer.invoke('append-chat-message', chatId, role, content),
 })

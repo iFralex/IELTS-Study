@@ -174,6 +174,21 @@ export interface ChatMessage {
   content: string
 }
 
+export interface StoredChat {
+  id: number
+  name: string
+  created_at: number
+  updated_at: number
+}
+
+export interface StoredChatMessage {
+  id: number
+  chat_id: number
+  role: 'user' | 'assistant'
+  content: string
+  created_at: number
+}
+
 export interface IElectronAPI {
   getExercises: (section: string) => Promise<ListeningExercise[] | ReadingExercise[] | WritingTask1[] | WritingTask2[]>
   getExercise: (id: string) => Promise<ListeningExercise | ReadingExercise | WritingTask1 | WritingTask2 | null>
@@ -197,6 +212,12 @@ export interface IElectronAPI {
   evaluateWriting: (taskType: 'task1' | 'task2', userText: string, prompt: string, wordCount: number) => Promise<AIWritingFeedback>
   resetAllData: () => Promise<void>
   chatMessage: (messages: ChatMessage[]) => Promise<string>
+  getChats: () => Promise<StoredChat[]>
+  createChat: (name: string) => Promise<number>
+  renameChat: (id: number, name: string) => Promise<void>
+  deleteChat: (id: number) => Promise<void>
+  getChatMessages: (chatId: number) => Promise<StoredChatMessage[]>
+  appendChatMessage: (chatId: number, role: string, content: string) => Promise<number>
 }
 
 declare global {

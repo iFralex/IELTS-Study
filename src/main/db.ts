@@ -64,6 +64,21 @@ export function migrateDb(db: Database.Database): void {
       is_correct    INTEGER NOT NULL
     );
   `)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS chats (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      name       TEXT    NOT NULL,
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS chat_messages (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      chat_id    INTEGER NOT NULL REFERENCES chats(id) ON DELETE CASCADE,
+      role       TEXT    NOT NULL,
+      content    TEXT    NOT NULL,
+      created_at INTEGER NOT NULL
+    );
+  `)
   try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_en TEXT') } catch {}
   try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_it TEXT') } catch {}
 }
