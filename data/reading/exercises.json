@@ -7,14 +7,54 @@
     "question_type": "true_false_ng",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The Thames Tunnel was the first tunnel ever built under a river.", "answer": "TRUE"},
-      {"index": 1, "text": "The Thames Tunnel was the Eighth Wonder of the World.", "answer": "FALSE"},
-      {"index": 2, "text": "People were drawn from all over to see the Thames Tunnel.", "answer": "TRUE"},
-      {"index": 3, "text": "The tunnel was used more by the middle and upper classes.", "answer": "NOT GIVEN"},
-      {"index": 4, "text": "People were able to travel by sea or land in those days.", "answer": "TRUE"},
-      {"index": 5, "text": "The aim of the tunnel was to turn a profit as a tourist attraction.", "answer": "FALSE"},
-      {"index": 6, "text": "Statues of the tunnel could be bought as souvenirs.", "answer": "NOT GIVEN"},
-      {"index": 7, "text": "The tunnel is no longer used as a pedestrian walkway to cross the river.", "answer": "TRUE"}
+      {
+        "index": 0,
+        "text": "The Thames Tunnel was the first tunnel ever built under a river.",
+        "answer": "TRUE",
+        "explanation": "\"It was the first subaqueous tunnel ever built.\" The word \"subaqueous\" means under water, confirming this was the first tunnel built under a river."
+      },
+      {
+        "index": 1,
+        "text": "The Thames Tunnel was the Eighth Wonder of the World.",
+        "answer": "FALSE",
+        "explanation": "The passage says people \"exaggerated their description of it calling it the Eight Wonder of the World\" — this was a popular exaggeration, not an official designation."
+      },
+      {
+        "index": 2,
+        "text": "People were drawn from all over to see the Thames Tunnel.",
+        "answer": "TRUE",
+        "explanation": "The passage says people \"came from far and wide to see the marvel\", meaning visitors were drawn from many places."
+      },
+      {
+        "index": 3,
+        "text": "The tunnel was used more by the middle and upper classes.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage distinguishes how working class and upper/middle classes used the tunnel differently, but gives no information about which class used it more frequently."
+      },
+      {
+        "index": 4,
+        "text": "People were able to travel by sea or land in those days.",
+        "answer": "TRUE",
+        "explanation": "The phrase \"in the age of sail and horse-drawn coaches\" confirms both sea travel (sail) and land travel (horse-drawn coaches) existed at the time."
+      },
+      {
+        "index": 5,
+        "text": "The aim of the tunnel was to turn a profit as a tourist attraction.",
+        "answer": "FALSE",
+        "explanation": "The passage states the aim \"had been for the tunnel to be used by wheeled vehicles to transport cargo so that it could bring in a profit\" — the aim was cargo transport, not tourism."
+      },
+      {
+        "index": 6,
+        "text": "Statues of the tunnel could be bought as souvenirs.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage mentions souvenirs were sold, but gives no information about what type (e.g. statues) they were."
+      },
+      {
+        "index": 7,
+        "text": "The tunnel is no longer used as a pedestrian walkway to cross the river.",
+        "answer": "TRUE",
+        "explanation": "In 1865 the tunnel \"became part of the London Underground railway system\", so it no longer functions as a pedestrian walkway."
+      }
     ]
   },
   {
@@ -25,14 +65,54 @@
     "question_type": "true_false_ng",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The controversy over the method used in the construction of the pyramids has been solved by scientists.", "answer": "FALSE"},
-      {"index": 1, "text": "It is possible that Ancient Egyptians could have lubricated paths to aid transportation by sledge.", "answer": "TRUE"},
-      {"index": 2, "text": "Sleds were dragged by animals not humans.", "answer": "FALSE"},
-      {"index": 3, "text": "The Romans learned the techniques of moving huge stones from the Ancient Egyptians.", "answer": "NOT GIVEN"},
-      {"index": 4, "text": "The building work of the Ancient Egyptians is unrivalled.", "answer": "TRUE"},
-      {"index": 5, "text": "Many people believe that magic may have been used by the Ancient Egyptians to build the pyramids.", "answer": "TRUE"},
-      {"index": 6, "text": "The Great Pyramid was built using slave labour.", "answer": "FALSE"},
-      {"index": 7, "text": "It took more than one attempt to get the construction of the pyramids right.", "answer": "TRUE"}
+      {
+        "index": 0,
+        "text": "The controversy over the method used in the construction of the pyramids has been solved by scientists.",
+        "answer": "FALSE",
+        "explanation": "The passage says scientists are currently \"piecing together the puzzle\", indicating the mystery of construction methods is still being investigated, not already solved."
+      },
+      {
+        "index": 1,
+        "text": "It is possible that Ancient Egyptians could have lubricated paths to aid transportation by sledge.",
+        "answer": "TRUE",
+        "explanation": "The passage states \"it is believed that the sand in front of the sledge was wet with water in order to facilitate the movement\", confirming water lubrication was possibly used."
+      },
+      {
+        "index": 2,
+        "text": "Sleds were dragged by animals not humans.",
+        "answer": "FALSE",
+        "explanation": "The passage says sleds were \"pulled manually or sometimes by using beasts of burden\" — both humans and animals pulled them, so \"animals not humans\" is false."
+      },
+      {
+        "index": 3,
+        "text": "The Romans learned the techniques of moving huge stones from the Ancient Egyptians.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage mentions Romans used similar techniques at Baalbek, but provides no information about whether Romans learned these techniques from the Egyptians."
+      },
+      {
+        "index": 4,
+        "text": "The building work of the Ancient Egyptians is unrivalled.",
+        "answer": "TRUE",
+        "explanation": "The passage states \"The Ancient Egyptians achieved the most remarkable feats of building work which have still not been surpassed.\""
+      },
+      {
+        "index": 5,
+        "text": "Many people believe that magic may have been used by the Ancient Egyptians to build the pyramids.",
+        "answer": "TRUE",
+        "explanation": "The passage says \"There is nothing remotely mystical or magical about how the pyramids were built as is commonly thought\" — confirming many people believe magic was involved."
+      },
+      {
+        "index": 6,
+        "text": "The Great Pyramid was built using slave labour.",
+        "answer": "FALSE",
+        "explanation": "The passage explicitly states: \"While popular belief is that the Great Pyramid was built using slave labour, this theory has since been debunked.\""
+      },
+      {
+        "index": 7,
+        "text": "It took more than one attempt to get the construction of the pyramids right.",
+        "answer": "TRUE",
+        "explanation": "The passage says \"the pyramids were not an instant achievement, but the achievement of trial and error\", meaning multiple attempts were required."
+      }
     ]
   },
   {
@@ -43,12 +123,42 @@
     "question_type": "true_false_ng",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "It is not known exactly when Beethoven was born.", "answer": "TRUE"},
-      {"index": 1, "text": "Beethoven's father took a forbearing approach to teaching his son music.", "answer": "FALSE"},
-      {"index": 2, "text": "Beethoven's father was also a talented musician.", "answer": "NOT GIVEN"},
-      {"index": 3, "text": "Beethoven's Symphony No. 3 was inspired by a famous man.", "answer": "NOT GIVEN"},
-      {"index": 4, "text": "Beethoven's Symphony No. 3 premiered just before Napoleon became Emperor.", "answer": "FALSE"},
-      {"index": 5, "text": "In the early 1800s Beethoven struggled to follow a conversation.", "answer": "TRUE"}
+      {
+        "index": 0,
+        "text": "It is not known exactly when Beethoven was born.",
+        "answer": "TRUE",
+        "explanation": "The passage states he was born \"on or near December 16, 1770\", showing the exact date is uncertain."
+      },
+      {
+        "index": 1,
+        "text": "Beethoven's father took a forbearing approach to teaching his son music.",
+        "answer": "FALSE",
+        "explanation": "\"Forbearing\" means patient and tolerant, but the passage describes his father's teaching approach as involving \"rigour and brutality\" — the opposite of forbearing."
+      },
+      {
+        "index": 2,
+        "text": "Beethoven's father was also a talented musician.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage confirms his father taught him music but provides no information about whether his father was himself a talented musician."
+      },
+      {
+        "index": 3,
+        "text": "Beethoven's Symphony No. 3 was inspired by a famous man.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage says the symphony was dedicated to Napoleon, but provides no information about what originally inspired its creation."
+      },
+      {
+        "index": 4,
+        "text": "Beethoven's Symphony No. 3 premiered just before Napoleon became Emperor.",
+        "answer": "FALSE",
+        "explanation": "The symphony \"debuted in Vienna in 1805\", which was after Napoleon became Emperor in May 1804 — so it premiered just after, not before."
+      },
+      {
+        "index": 5,
+        "text": "In the early 1800s Beethoven struggled to follow a conversation.",
+        "answer": "TRUE",
+        "explanation": "The passage states \"At the turn of the century, Beethoven struggled to make out the words spoken to him in conversation\", confirming early communication difficulties."
+      }
     ]
   },
   {
@@ -59,12 +169,42 @@
     "question_type": "true_false_ng",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "In China, SPAM text messaging is a successful business.", "answer": "TRUE"},
-      {"index": 1, "text": "People's phone numbers are collected through the use of technology which cannot be readily bought.", "answer": "FALSE"},
-      {"index": 2, "text": "In no other country do people receive more spam texts than in China.", "answer": "TRUE"},
-      {"index": 3, "text": "In 2013, the number of SPAM texts increased considerably to reach at least 300 billion.", "answer": "NOT GIVEN"},
-      {"index": 4, "text": "The majority of all texts received in Shanghai and Beijing are SPAM.", "answer": "FALSE"},
-      {"index": 5, "text": "In 2011, Americans sent more texts than anywhere else in the world.", "answer": "NOT GIVEN"}
+      {
+        "index": 0,
+        "text": "In China, SPAM text messaging is a successful business.",
+        "answer": "TRUE",
+        "explanation": "The passage says SPAM is \"a roaring trade in China\" — \"roaring trade\" means a thriving, successful business."
+      },
+      {
+        "index": 1,
+        "text": "People's phone numbers are collected through the use of technology which cannot be readily bought.",
+        "answer": "FALSE",
+        "explanation": "The passage describes phone number collection through \"illegal but easy-to-buy gadgetry\", meaning the technology is accessible, contradicting \"difficult to obtain\"."
+      },
+      {
+        "index": 2,
+        "text": "In no other country do people receive more spam texts than in China.",
+        "answer": "TRUE",
+        "explanation": "The passage states \"Chinese mobile-users get more spam text messages than their counterparts anywhere else in the world.\""
+      },
+      {
+        "index": 3,
+        "text": "In 2013, the number of SPAM texts increased considerably to reach at least 300 billion.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage provides 2013 figures but no comparison to previous years, so we cannot determine whether numbers increased to reach that level."
+      },
+      {
+        "index": 4,
+        "text": "The majority of all texts received in Shanghai and Beijing are SPAM.",
+        "answer": "FALSE",
+        "explanation": "The passage says users receive \"perhaps one-fifth to one-third\" of all texts as spam — this is a minority, not a majority."
+      },
+      {
+        "index": 5,
+        "text": "In 2011, Americans sent more texts than anywhere else in the world.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage mentions American texting statistics but does not compare them to all other countries globally."
+      }
     ]
   },
   {
@@ -78,14 +218,24 @@
       {
         "index": 0,
         "text": "Where is rice grown?",
-        "options": ["everywhere", "almost everywhere", "mainly on flood lands and coastal plains"],
-        "answer": "B"
+        "options": [
+          "everywhere",
+          "almost everywhere",
+          "mainly on flood lands and coastal plains"
+        ],
+        "answer": "B",
+        "explanation": "The passage states rice is grown \"everywhere, except Antarctica\" — this one exception means it is not grown in literally every location on Earth."
       },
       {
         "index": 1,
         "text": "In 2002, rice fields covered about ______",
-        "options": ["1.5 million square miles of land", "1.3 million square km of land in China", "1.5 million square km of land in the world"],
-        "answer": "C"
+        "options": [
+          "1.5 million square miles of land",
+          "1.3 million square km of land in China",
+          "1.5 million square km of land in the world"
+        ],
+        "answer": "C",
+        "explanation": "The passage specifies \"1.5 million square km of land\" globally in 2002, matching option C."
       }
     ]
   },
@@ -100,32 +250,57 @@
       {
         "index": 0,
         "text": "The genetic makeup of GM foods has been ________",
-        "options": ["twisted", "altered", "cut"],
-        "answer": "B"
+        "options": [
+          "twisted",
+          "altered",
+          "cut"
+        ],
+        "answer": "B",
+        "explanation": "The passage uses \"tweaked\" to describe the modification process. \"Altered\" (B) best captures the meaning of genetic modification in standard English."
       },
       {
         "index": 1,
         "text": "By genetically engineering plants, they are __________",
-        "options": ["likely to increase in size", "able to produce more", "not able to exist in difficult conditions"],
-        "answer": "B"
+        "options": [
+          "likely to increase in size",
+          "able to produce more",
+          "not able to exist in difficult conditions"
+        ],
+        "answer": "B",
+        "explanation": "The passage references \"increase yield\", which means producing greater quantities of crops, matching option B."
       },
       {
         "index": 2,
         "text": "One issue with GM plants is the potential to ________",
-        "options": ["cause undetermined consequences by damaging the fauna", "infect wild plants with unknown results", "cross pollinate"],
-        "answer": "C"
+        "options": [
+          "cause undetermined consequences by damaging the fauna",
+          "infect wild plants with unknown results",
+          "cross pollinate"
+        ],
+        "answer": "C",
+        "explanation": "The passage states modified crops could \"escape\" and \"cross with wild plants\" — \"cross pollinate\" (C) accurately describes this reproductive interaction."
       },
       {
         "index": 3,
         "text": "It is thought by specialists in biotechnology that policies governing GM crops should be _______",
-        "options": ["tightened", "relaxed", "reviewed"],
-        "answer": "B"
+        "options": [
+          "tightened",
+          "relaxed",
+          "reviewed"
+        ],
+        "answer": "B",
+        "explanation": "The passage says experts argue to \"loosen Europe's draconian regulations\" — \"loosen\" means to relax restrictions, matching option B."
       },
       {
         "index": 4,
         "text": "GM foods ought to be ________",
-        "options": ["reclaimed for the use of multinational companies", "used safely", "no longer privatised"],
-        "answer": "C"
+        "options": [
+          "reclaimed for the use of multinational companies",
+          "used safely",
+          "no longer privatised"
+        ],
+        "answer": "C",
+        "explanation": "The passage states GM crops \"should be reclaimed from multinational companies and treated as a public good\" — this means removing private ownership, matching option C."
       }
     ]
   },
@@ -137,14 +312,54 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Body part at the end of the ant's body (diagram label 1)", "answer": "abdomen"},
-      {"index": 1, "text": "Middle section of the ant's body (diagram label 2)", "answer": "thorax"},
-      {"index": 2, "text": "Rear defensive feature used for attacking (diagram label 3)", "answer": "abdominal stinger"},
-      {"index": 3, "text": "Head feature used for vision (diagram label 4)", "answer": "compound eyes"},
-      {"index": 4, "text": "Powerful mouth parts used for grabbing and cutting (diagram label 5)", "answer": "mandibles"},
-      {"index": 5, "text": "The antennae of an ant cannot bend.", "answer": "FALSE"},
-      {"index": 6, "text": "Only queen ants have wings.", "answer": "NOT GIVEN"},
-      {"index": 7, "text": "Larva undergo metamorphosis in the pupal stage.", "answer": "TRUE"}
+      {
+        "index": 0,
+        "text": "Body part at the end of the ant's body (diagram label 1)",
+        "answer": "abdomen",
+        "explanation": "The passage describes the abdomen as \"the part of the body at the end of the ant but after the narrow waist\" — it is the final, rear section of the body."
+      },
+      {
+        "index": 1,
+        "text": "Middle section of the ant's body (diagram label 2)",
+        "answer": "thorax",
+        "explanation": "The passage identifies the thorax as the middle section of the ant's body, located between the head and the abdomen."
+      },
+      {
+        "index": 2,
+        "text": "Rear defensive feature used for attacking (diagram label 3)",
+        "answer": "abdominal stinger",
+        "explanation": "The passage refers to a rear abdominal stinger as the ant's offensive and defensive feature located at the back of the abdomen."
+      },
+      {
+        "index": 3,
+        "text": "Head feature used for vision (diagram label 4)",
+        "answer": "compound eyes",
+        "explanation": "The passage states \"Ants have large heads with compound eyes\" — compound eyes are the specialised visual organs found on the ant's head."
+      },
+      {
+        "index": 4,
+        "text": "Powerful mouth parts used for grabbing and cutting (diagram label 5)",
+        "answer": "mandibles",
+        "explanation": "The passage describes mandibles as \"powerful pincers\" used for grabbing and cutting, located near the mouth."
+      },
+      {
+        "index": 5,
+        "text": "The antennae of an ant cannot bend.",
+        "answer": "FALSE",
+        "explanation": "The passage states the antennae are \"elbowed\", meaning they contain a joint and can bend. Therefore the statement that \"antennae cannot bend\" is FALSE."
+      },
+      {
+        "index": 6,
+        "text": "Only queen ants have wings.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage states that queen ants have wings, but does not state whether they are the ONLY type of ant to have wings. Since we cannot determine this from the passage, the answer is NOT GIVEN — the key word is \"only\"."
+      },
+      {
+        "index": 7,
+        "text": "Larva undergo metamorphosis in the pupal stage.",
+        "answer": "TRUE",
+        "explanation": "The passage states that metamorphosis happens \"during the pupal stage when the larva change into adult ants\", confirming the statement is TRUE."
+      }
     ]
   },
   {
@@ -159,29 +374,73 @@
         "index": 0,
         "text": "Paragraph A",
         "paragraph": "A",
-        "options": ["I – Changing temperatures", "II – The greenhouse", "III – Global warming", "IV – Use of a greenhouse", "V – Werne's research", "VI – Earth's atmosphere", "VII – Our choices", "VIII – Effects of carbon dioxide", "IX – Climates around the world"],
-        "answer": "II – The greenhouse"
+        "options": [
+          "I – Changing temperatures",
+          "II – The greenhouse",
+          "III – Global warming",
+          "IV – Use of a greenhouse",
+          "V – Werne's research",
+          "VI – Earth's atmosphere",
+          "VII – Our choices",
+          "VIII – Effects of carbon dioxide",
+          "IX – Climates around the world"
+        ],
+        "answer": "II – The greenhouse",
+        "explanation": "The paragraph actually talked about what it was made of, what it was used for and how it works. The best title would be \"The greenhouse\" because the paragraph gives a clear overview of it."
       },
       {
         "index": 1,
         "text": "Paragraph B",
         "paragraph": "B",
-        "options": ["I – Changing temperatures", "II – The greenhouse", "III – Global warming", "IV – Use of a greenhouse", "V – Werne's research", "VI – Earth's atmosphere", "VII – Our choices", "VIII – Effects of carbon dioxide", "IX – Climates around the world"],
-        "answer": "VI – Earth's atmosphere"
+        "options": [
+          "I – Changing temperatures",
+          "II – The greenhouse",
+          "III – Global warming",
+          "IV – Use of a greenhouse",
+          "V – Werne's research",
+          "VI – Earth's atmosphere",
+          "VII – Our choices",
+          "VIII – Effects of carbon dioxide",
+          "IX – Climates around the world"
+        ],
+        "answer": "VI – Earth's atmosphere",
+        "explanation": "The answer isn't I because the paragraph actually explains that this natural effect keeps the temperature of Earth stable. The answer is VI which explains how Earth's atmosphere works to keep our planet at a stable temperature."
       },
       {
         "index": 2,
         "text": "Paragraph C",
         "paragraph": "C",
-        "options": ["I – Changing temperatures", "II – The greenhouse", "III – Global warming", "IV – Use of a greenhouse", "V – Werne's research", "VI – Earth's atmosphere", "VII – Our choices", "VIII – Effects of carbon dioxide", "IX – Climates around the world"],
-        "answer": "III – Global warming"
+        "options": [
+          "I – Changing temperatures",
+          "II – The greenhouse",
+          "III – Global warming",
+          "IV – Use of a greenhouse",
+          "V – Werne's research",
+          "VI – Earth's atmosphere",
+          "VII – Our choices",
+          "VIII – Effects of carbon dioxide",
+          "IX – Climates around the world"
+        ],
+        "answer": "III – Global warming",
+        "explanation": "The answer isn't VIII (Effects of carbon dioxide) because the paragraph isn't aimed at explaining carbon dioxide and in fact only mentions it alongside other greenhouse gases. The answer isn't IX (Climates around the world) because although climates are affected around the world, the whole paragraph aim isn't to discuss climates in different countries. The correct answer is III – Global warming."
       },
       {
         "index": 3,
         "text": "Paragraph D",
         "paragraph": "D",
-        "options": ["I – Changing temperatures", "II – The greenhouse", "III – Global warming", "IV – Use of a greenhouse", "V – Werne's research", "VI – Earth's atmosphere", "VII – Our choices", "VIII – Effects of carbon dioxide", "IX – Climates around the world"],
-        "answer": "VII – Our choices"
+        "options": [
+          "I – Changing temperatures",
+          "II – The greenhouse",
+          "III – Global warming",
+          "IV – Use of a greenhouse",
+          "V – Werne's research",
+          "VI – Earth's atmosphere",
+          "VII – Our choices",
+          "VIII – Effects of carbon dioxide",
+          "IX – Climates around the world"
+        ],
+        "answer": "VII – Our choices",
+        "explanation": "The answer isn't V because the paragraph doesn't actually discuss Werne's research (which means how he did his studies and the problems with his studies), but rather his opinion about what options we have to deal with our changing world climate. The correct answer is VII – Our choices."
       }
     ]
   },
@@ -197,29 +456,69 @@
         "index": 0,
         "text": "Paragraph A",
         "paragraph": "A",
-        "options": ["I – A theory dismissed", "II – Marco Polo in China", "III – Is pasta really a popular Italian dish?", "IV – China is the origin of pasta", "V – The real roots", "VI – An Arabian taste sensation", "VII – The common belief of the origins of pasta", "VIII – How about China?"],
-        "answer": "VII – The common belief of the origins of pasta"
+        "options": [
+          "I – A theory dismissed",
+          "II – Marco Polo in China",
+          "III – Is pasta really a popular Italian dish?",
+          "IV – China is the origin of pasta",
+          "V – The real roots",
+          "VI – An Arabian taste sensation",
+          "VII – The common belief of the origins of pasta",
+          "VIII – How about China?"
+        ],
+        "answer": "VII – The common belief of the origins of pasta",
+        "explanation": "This paragraph is all about what we think is the origins of pasta. It opens up the topic of where pasta really comes from. The correct heading is VII – The common belief of the origins of pasta."
       },
       {
         "index": 1,
         "text": "Paragraph B",
         "paragraph": "B",
-        "options": ["I – A theory dismissed", "II – Marco Polo in China", "III – Is pasta really a popular Italian dish?", "IV – China is the origin of pasta", "V – The real roots", "VI – An Arabian taste sensation", "VII – The common belief of the origins of pasta", "VIII – How about China?"],
-        "answer": "VIII – How about China?"
+        "options": [
+          "I – A theory dismissed",
+          "II – Marco Polo in China",
+          "III – Is pasta really a popular Italian dish?",
+          "IV – China is the origin of pasta",
+          "V – The real roots",
+          "VI – An Arabian taste sensation",
+          "VII – The common belief of the origins of pasta",
+          "VIII – How about China?"
+        ],
+        "answer": "VIII – How about China?",
+        "explanation": "This paragraph offers yet another common belief which is that pasta comes from China. \"How about China?\" — meaning: is China the real origin? — fits with the whole aim of the paragraph."
       },
       {
         "index": 2,
         "text": "Paragraph C",
         "paragraph": "C",
-        "options": ["I – A theory dismissed", "II – Marco Polo in China", "III – Is pasta really a popular Italian dish?", "IV – China is the origin of pasta", "V – The real roots", "VI – An Arabian taste sensation", "VII – The common belief of the origins of pasta", "VIII – How about China?"],
-        "answer": "I – A theory dismissed"
+        "options": [
+          "I – A theory dismissed",
+          "II – Marco Polo in China",
+          "III – Is pasta really a popular Italian dish?",
+          "IV – China is the origin of pasta",
+          "V – The real roots",
+          "VI – An Arabian taste sensation",
+          "VII – The common belief of the origins of pasta",
+          "VIII – How about China?"
+        ],
+        "answer": "I – A theory dismissed",
+        "explanation": "This paragraph is all about dismissing the theory that was introduced in the previous paragraph — that pasta was introduced to Italy by Marco Polo when he came from China. The correct heading is I – A theory dismissed."
       },
       {
         "index": 3,
         "text": "Paragraph D",
         "paragraph": "D",
-        "options": ["I – A theory dismissed", "II – Marco Polo in China", "III – Is pasta really a popular Italian dish?", "IV – China is the origin of pasta", "V – The real roots", "VI – An Arabian taste sensation", "VII – The common belief of the origins of pasta", "VIII – How about China?"],
-        "answer": "V – The real roots"
+        "options": [
+          "I – A theory dismissed",
+          "II – Marco Polo in China",
+          "III – Is pasta really a popular Italian dish?",
+          "IV – China is the origin of pasta",
+          "V – The real roots",
+          "VI – An Arabian taste sensation",
+          "VII – The common belief of the origins of pasta",
+          "VIII – How about China?"
+        ],
+        "answer": "V – The real roots",
+        "explanation": "This paragraph really does talk about the origin of pasta. It is about the real roots of pasta. The correct heading is V – The real roots."
       }
     ]
   },
@@ -231,14 +530,54 @@
     "question_type": "true_false_ng",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "King Richard idolised fame.", "answer": "NOT GIVEN"},
-      {"index": 1, "text": "While King, Richard never resided in England.", "answer": "NO"},
-      {"index": 2, "text": "King Richard looked down on the English culture.", "answer": "NOT GIVEN"},
-      {"index": 3, "text": "Many English people did not agree with being taxed so much.", "answer": "YES"},
-      {"index": 4, "text": "He was a fighter beyond compare.", "answer": "YES"},
-      {"index": 5, "text": "The people who followed him into battle were common people from England.", "answer": "NOT GIVEN"},
-      {"index": 6, "text": "King Richard did not place much consideration on the value of a human life.", "answer": "YES"},
-      {"index": 7, "text": "King Richard is considered by all English people as a courageous knight.", "answer": "NO"}
+      {
+        "index": 0,
+        "text": "King Richard idolised fame.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage shows that Richard probably didn't connect much with the English culture because he spent so much time abroad, but it doesn't give any information about whether he lacked respect or \"looked down on\" the English culture."
+      },
+      {
+        "index": 1,
+        "text": "While King, Richard never resided in England.",
+        "answer": "NO",
+        "explanation": "He spent much of his reign outside England, but not all his reign — so the statement that he \"never resided in England\" is NO."
+      },
+      {
+        "index": 2,
+        "text": "King Richard looked down on the English culture.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage does not provide any information about Richard's personal attitude toward English culture itself, so this is NOT GIVEN."
+      },
+      {
+        "index": 3,
+        "text": "Many English people did not agree with being taxed so much.",
+        "answer": "YES",
+        "explanation": "The passage shows the population of England showed \"widespread discontent\" with the heavy taxes. \"Widespread\" means many thought this, but not all — so YES, many did not agree with the heavy taxation."
+      },
+      {
+        "index": 4,
+        "text": "He was a fighter beyond compare.",
+        "answer": "YES",
+        "explanation": "\"Peerless\" in the passage means beyond compare — there were no peers who were his equal as a fighter, confirming the statement is YES."
+      },
+      {
+        "index": 5,
+        "text": "The people who followed him into battle were common people from England.",
+        "answer": "NOT GIVEN",
+        "explanation": "The passage shows King Richard did not care about the welfare of the common people, but we do not know precisely who his followers in battle were. NOT GIVEN."
+      },
+      {
+        "index": 6,
+        "text": "King Richard did not place much consideration on the value of a human life.",
+        "answer": "YES",
+        "explanation": "The passage states he was \"squandering the lives of so many of his followers\" — \"squandering\" means to waste, confirming he placed little value on human life. The answer is YES."
+      },
+      {
+        "index": 7,
+        "text": "King Richard is considered by all English people as a courageous knight.",
+        "answer": "NO",
+        "explanation": "The challenge with this question is the word \"all\" in the question versus \"many\" in the passage. Not all English people — only many — considered him a courageous knight, making the answer NO."
+      }
     ]
   },
   {
@@ -249,12 +588,42 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "While badgers are seen as a delight by some people, others see them as ________.", "answer": "unwelcome visitors"},
-      {"index": 1, "text": "A ________ is a sure way to know a badger has visited a garden.", "answer": "snuffle hole"},
-      {"index": 2, "text": "It is best not to ________ with badgers if they have made a home in your garden.", "answer": "interfere"},
-      {"index": 3, "text": "Badgers do not transmit ________ to humans.", "answer": "diseases"},
-      {"index": 4, "text": "Badgers are built for digging and some also have a protective ________.", "answer": "third eyelid"},
-      {"index": 5, "text": "The idiom \"to badger someone\" is unrelated to the ________ of badgers.", "answer": "character"}
+      {
+        "index": 0,
+        "text": "While badgers are seen as a delight by some people, others see them as ________.",
+        "answer": "unwelcome visitors",
+        "explanation": "The passage contrasts those who see badgers as \"a delight\" with those who see them as \"unwelcome visitors\". Both words are needed as they appear together in the passage."
+      },
+      {
+        "index": 1,
+        "text": "A ________ is a sure way to know a badger has visited a garden.",
+        "answer": "snuffle hole",
+        "explanation": "A \"snuffle hole\" is a specific type of hole made by badgers searching for food using their nose/mouth. The word \"snuffle\" cannot be omitted because it describes the particular nature of the hole, not just any hole — \"snuffle\" denotes both the hole's origin and its type."
+      },
+      {
+        "index": 2,
+        "text": "It is best not to ________ with badgers if they have made a home in your garden.",
+        "answer": "interfere",
+        "explanation": "The passage states directly: \"People should not try to interfere with them in this situation, as it is against the law.\""
+      },
+      {
+        "index": 3,
+        "text": "Badgers do not transmit ________ to humans.",
+        "answer": "diseases",
+        "explanation": "The passage reads: \"Badgers will not cause people any harm or pass on diseases so they should be left to live quietly.\" The answer is \"diseases\"."
+      },
+      {
+        "index": 4,
+        "text": "Badgers are built for digging and some also have a protective ________.",
+        "answer": "third eyelid",
+        "explanation": "The passage mentions \"American badgers even have a third eyelid that keeps out grains of sand and soil.\" The answer is \"third eyelid\" or just \"eyelid\"."
+      },
+      {
+        "index": 5,
+        "text": "The idiom \"to badger someone\" is unrelated to the ________ of badgers.",
+        "answer": "character",
+        "explanation": "The passage states the idiom is \"unrelated to their actual character.\" The answer is \"character\" — the word \"actual\" is an intensifier in the passage and cannot be included in the answer because it does not fit the grammar of the question sentence."
+      }
     ]
   },
   {
@@ -265,11 +634,36 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The keystone to any thriving society is to have ________ and ________ water.", "answer": "clean; plentiful"},
-      {"index": 1, "text": "With the increase in water pollution a ________ is imminent.", "answer": "water crisis"},
-      {"index": 2, "text": "One way to help keep water clean is by the construction of ________.", "answer": "green infrastructure"},
-      {"index": 3, "text": "Dirty water can be a ________ as chemicals and other pollutants enter the water supply.", "answer": "health risk"},
-      {"index": 4, "text": "Due to a lack of ________, some of our water resources are at risk of pollution.", "answer": "basic protection"}
+      {
+        "index": 0,
+        "text": "The keystone to any thriving society is to have ________ and ________ water.",
+        "answer": "clean; plentiful",
+        "explanation": "Both words must be included as they appear together in the passage's opening: \"Clean and plentiful water provides the foundation for prosperous communities.\" Do not include \"and\" as it would make the sentence grammatically incorrect."
+      },
+      {
+        "index": 1,
+        "text": "With the increase in water pollution a ________ is imminent.",
+        "answer": "water crisis",
+        "explanation": "Found in the second sentence of the passage: \"yet right now we are heading towards a water crisis.\" The word \"water\" is optional but recommended for specificity."
+      },
+      {
+        "index": 2,
+        "text": "One way to help keep water clean is by the construction of ________.",
+        "answer": "green infrastructure",
+        "explanation": "Located in the passage under NRDC's work: \"advocating for solutions like green infrastructure.\" No article should precede this answer."
+      },
+      {
+        "index": 3,
+        "text": "Dirty water can be a ________ as chemicals and other pollutants enter the water supply.",
+        "answer": "health risk",
+        "explanation": "Liz clarifies the answer cannot be \"biggest health risk\" because the grammar requires \"a health risk,\" not \"a biggest health risk,\" which is incorrect English. The word \"biggest\" from the passage cannot grammatically fit into the sentence."
+      },
+      {
+        "index": 4,
+        "text": "Due to a lack of ________, some of our water resources are at risk of pollution.",
+        "answer": "basic protection",
+        "explanation": "The passage states many water resources \"lack basic protection.\" Either \"basic protection\" or just \"protection\" is acceptable — \"basic\" is optional but not required."
+      }
     ]
   },
   {
@@ -280,12 +674,42 @@
     "question_type": "matching_paragraph_info",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The success of Roald Amundsen was celebrated worldwide, except in one country.", "answer": "C"},
-      {"index": 1, "text": "Amundsen only heard about the death of Scott after he had reached the South Pole.", "answer": "A"},
-      {"index": 2, "text": "The base at the South Pole bears both Amundsen's name and Scott's.", "answer": "C"},
-      {"index": 3, "text": "Amundsen had originally planned an expedition to the North Pole.", "answer": "B"},
-      {"index": 4, "text": "When Amundsen decided to aim for the South Pole he did not reveal his intentions.", "answer": "B"},
-      {"index": 5, "text": "The British did not celebrate Amundsen's success as did other countries due to the death of Scott.", "answer": "C"}
+      {
+        "index": 0,
+        "text": "The success of Roald Amundsen was celebrated worldwide, except in one country.",
+        "answer": "C",
+        "explanation": "Paragraph C states: \"The story of Scott's heroic failure overshadowed its achievement in the United Kingdom, unable to accept that a Norwegian had been the first person to set foot in the South Pole, but not in the rest of the world.\" This tells us the success was celebrated worldwide except in the UK."
+      },
+      {
+        "index": 1,
+        "text": "Amundsen only heard about the death of Scott after he had reached the South Pole.",
+        "answer": "A",
+        "explanation": "Paragraph A states that Amundsen and his team \"returned safely to their base, and later learned that Scott and his four companions had died on their return journey.\" The key word is \"later\" — he only heard about Scott's death after the expedition."
+      },
+      {
+        "index": 2,
+        "text": "The base at the South Pole bears both Amundsen's name and Scott's.",
+        "answer": "C",
+        "explanation": "Paragraph C states: \"the permanent scientific base at the pole bears his name, together with that of Scott.\" This confirms both names appear on the base."
+      },
+      {
+        "index": 3,
+        "text": "Amundsen had originally planned an expedition to the North Pole.",
+        "answer": "B",
+        "explanation": "Paragraph B states: \"Amundsen's plans had focused on the Arctic and the conquest of the North Pole\" — he had originally planned an Arctic expedition, not a South Pole one."
+      },
+      {
+        "index": 4,
+        "text": "When Amundsen decided to aim for the South Pole he did not reveal his intentions.",
+        "answer": "B",
+        "explanation": "Paragraph B states: \"uncertain of the extent to which the public and his backers would support him, he kept this revised objective secret. When he set out in June 1910, even most of his crew believed they were embarking on an Arctic drift.\" He did not reveal his true intention to head for the South Pole."
+      },
+      {
+        "index": 5,
+        "text": "The British did not celebrate Amundsen's success as did other countries due to the death of Scott.",
+        "answer": "C",
+        "explanation": "Paragraph C states: \"The story of Scott's heroic failure overshadowed its achievement in the United Kingdom.\" The British focus was on Scott's death rather than Amundsen's success, unlike the rest of the world."
+      }
     ]
   },
   {
@@ -299,26 +723,46 @@
       {
         "index": 0,
         "text": "Bedrooms did not seem spacious.",
-        "options": ["A – Ancient Egyptian", "B – Ancient Roman", "C – Ancient Greek"],
-        "answer": "B"
+        "options": [
+          "A – Ancient Egyptian",
+          "B – Ancient Roman",
+          "C – Ancient Greek"
+        ],
+        "answer": "B",
+        "explanation": "The passage about Roman bedrooms states: \"the ceilings were vaulted and lower above the bed, often making the room appear a cramped and stuffy place.\" Cramped means not spacious, so the answer is B (Ancient Roman)."
       },
       {
         "index": 1,
         "text": "The beds were not flat and horizontal but rather angled downwards.",
-        "options": ["A – Ancient Egyptian", "B – Ancient Roman", "C – Ancient Greek"],
-        "answer": "A"
+        "options": [
+          "A – Ancient Egyptian",
+          "B – Ancient Roman",
+          "C – Ancient Greek"
+        ],
+        "answer": "A",
+        "explanation": "The passage about Ancient Egypt states: \"Many were slanted down at an incline from the headboard.\" This means the beds were angled/inclined rather than flat and horizontal. The answer is A (Ancient Egyptian)."
       },
       {
         "index": 2,
         "text": "Pillows could be decorative.",
-        "options": ["A – Ancient Egyptian", "B – Ancient Roman", "C – Ancient Greek"],
-        "answer": "C"
+        "options": [
+          "A – Ancient Egyptian",
+          "B – Ancient Roman",
+          "C – Ancient Greek"
+        ],
+        "answer": "C",
+        "explanation": "The passage about Ancient Greece states that pillows \"are striped in several pictures on ancient vases\" — decorative striped pillows depicted on artwork indicates they could be decorative. The answer is C (Ancient Greek)."
       },
       {
         "index": 3,
         "text": "Mattresses were stuffed with wool.",
-        "options": ["A – Ancient Egyptian", "B – Ancient Roman", "C – Ancient Greek"],
-        "answer": "C"
+        "options": [
+          "A – Ancient Egyptian",
+          "B – Ancient Roman",
+          "C – Ancient Greek"
+        ],
+        "answer": "C",
+        "explanation": "The passage about Ancient Greece states the mattress \"was filled with either wool or some other material.\" This is distinct from the Roman beds where the mattress was stuffed with feathers or straw (not wool). The answer is C (Ancient Greek)."
       }
     ]
   },
@@ -330,12 +774,42 @@
     "question_type": "matching_paragraph_info",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "When calculating the results, slight mistakes in language were admitted but not if they changed the meaning.", "answer": "B"},
-      {"index": 1, "text": "It is believed that most information and help can be found on google.", "answer": "D"},
-      {"index": 2, "text": "The aim was to test whether Google Translate could be used reliably for medical communication.", "answer": "A"},
-      {"index": 3, "text": "Significant mistakes were found in the translations which were web based.", "answer": "C"},
-      {"index": 4, "text": "The research was conducted after a situation in which a patient's relatives did not speak English.", "answer": "A"},
-      {"index": 5, "text": "The translate function is not admissible to get people's permission for operations.", "answer": "D"}
+      {
+        "index": 0,
+        "text": "When calculating the results, slight mistakes in language were admitted but not if they changed the meaning.",
+        "answer": "B",
+        "explanation": "Paragraph B states: \"The returning English phrases were compared with the originals and assessed for meaning. Minor grammatical errors were accepted but not if the meaning was altered.\" This confirms that slight/minor language mistakes were admitted as long as they did not change the meaning."
+      },
+      {
+        "index": 1,
+        "text": "It is believed that most information and help can be found on google.",
+        "answer": "D",
+        "explanation": "Paragraph D concludes that \"in today's world 'just google it' is considered to be the answer to everything\" — meaning Google is widely believed to provide information and help for anything."
+      },
+      {
+        "index": 2,
+        "text": "The aim was to test whether Google Translate could be used reliably for medical communication.",
+        "answer": "A",
+        "explanation": "Paragraph A states: \"We aimed to evaluate the accuracy and usefulness of Google Translate in translating common English medical statements.\" This directly matches the question about testing reliability for medical communication."
+      },
+      {
+        "index": 3,
+        "text": "Significant mistakes were found in the translations which were web based.",
+        "answer": "C",
+        "explanation": "Paragraph C presents serious translation errors: Swahili rendered \"Your child is fitting\" as \"Your child is dead\"; Polish transformed \"your husband has the opportunity to donate his organs\" to \"your husband can donate his tools.\" These are significant mistakes in the web-based translations."
+      },
+      {
+        "index": 4,
+        "text": "The research was conducted after a situation in which a patient's relatives did not speak English.",
+        "answer": "A",
+        "explanation": "Paragraph A states: \"After treating a child whose parents did not speak English, we resorted to the use of a web based translation tool.\" This clinical situation — involving a patient whose relatives did not speak English — motivated the subsequent research."
+      },
+      {
+        "index": 5,
+        "text": "The translate function is not admissible to get people's permission for operations.",
+        "answer": "D",
+        "explanation": "Paragraph D states: \"Google Translate should not be used for taking consent for surgery, procedures, or research from patients or relatives unless all other avenues to find human translators have been exhausted and the procedure is clinically urgent.\" This means it is not admissible for getting consent for operations."
+      }
     ]
   },
   {
@@ -350,29 +824,65 @@
         "index": 0,
         "text": "Section A",
         "paragraph": "A",
-        "options": ["i – A fatal threat", "ii – A global concern", "iii – The evolution of resistance", "iv – MRSA in hospitals", "v – The present situation", "vi – What is antimicrobial resistance?", "vii – Protecting future generations"],
-        "answer": "vi – What is antimicrobial resistance?"
+        "options": [
+          "i – A fatal threat",
+          "ii – A global concern",
+          "iii – The evolution of resistance",
+          "iv – MRSA in hospitals",
+          "v – The present situation",
+          "vi – What is antimicrobial resistance?",
+          "vii – Protecting future generations"
+        ],
+        "answer": "vi – What is antimicrobial resistance?",
+        "explanation": "Section A defines what antimicrobial resistance is: \"Antimicrobial resistance (AMR) is resistance of a microorganism to an antimicrobial drug.\" The entire paragraph explains the concept and its causes. The correct heading is vi – What is antimicrobial resistance?"
       },
       {
         "index": 1,
         "text": "Section B",
         "paragraph": "B",
-        "options": ["i – A fatal threat", "ii – A global concern", "iii – The evolution of resistance", "iv – MRSA in hospitals", "v – The present situation", "vi – What is antimicrobial resistance?", "vii – Protecting future generations"],
-        "answer": "ii – A global concern"
+        "options": [
+          "i – A fatal threat",
+          "ii – A global concern",
+          "iii – The evolution of resistance",
+          "iv – MRSA in hospitals",
+          "v – The present situation",
+          "vi – What is antimicrobial resistance?",
+          "vii – Protecting future generations"
+        ],
+        "answer": "ii – A global concern",
+        "explanation": "Section B states that new resistance mechanisms \"spread worldwide\" and that \"the problem is likely to affect people in poorer nations most severely\" — the focus is on the worldwide/global spread and concern. The correct heading is ii – A global concern."
       },
       {
         "index": 2,
         "text": "Section C",
         "paragraph": "C",
-        "options": ["i – A fatal threat", "ii – A global concern", "iii – The evolution of resistance", "iv – MRSA in hospitals", "v – The present situation", "vi – What is antimicrobial resistance?", "vii – Protecting future generations"],
-        "answer": "i – A fatal threat"
+        "options": [
+          "i – A fatal threat",
+          "ii – A global concern",
+          "iii – The evolution of resistance",
+          "iv – MRSA in hospitals",
+          "v – The present situation",
+          "vi – What is antimicrobial resistance?",
+          "vii – Protecting future generations"
+        ],
+        "answer": "i – A fatal threat",
+        "explanation": "Section C discusses the death rate doubling for patients with resistant infections, extended illness, and intensive care treatment. The paragraph focuses on the fatal and severe consequences of AMR. The correct heading is i – A fatal threat."
       },
       {
         "index": 3,
         "text": "Section D",
         "paragraph": "D",
-        "options": ["i – A fatal threat", "ii – A global concern", "iii – The evolution of resistance", "iv – MRSA in hospitals", "v – The present situation", "vi – What is antimicrobial resistance?", "vii – Protecting future generations"],
-        "answer": "v – The present situation"
+        "options": [
+          "i – A fatal threat",
+          "ii – A global concern",
+          "iii – The evolution of resistance",
+          "iv – MRSA in hospitals",
+          "v – The present situation",
+          "vi – What is antimicrobial resistance?",
+          "vii – Protecting future generations"
+        ],
+        "answer": "v – The present situation",
+        "explanation": "Section D describes what is happening \"right now, across the world\" and warns that \"without urgent action, we are heading for a post-antibiotic era.\" The focus is on the current, present situation and its urgency. The correct heading is v – The present situation."
       }
     ]
   },
@@ -387,8 +897,14 @@
       {
         "index": 0,
         "text": "Which is the best title for the reading passage above?",
-        "options": ["A – The importance of vision in babies", "B – The role of vision to human development", "C – The development of perception in babies", "D – Research into visual cliffs"],
-        "answer": "C"
+        "options": [
+          "A – The importance of vision in babies",
+          "B – The role of vision to human development",
+          "C – The development of perception in babies",
+          "D – Research into visual cliffs"
+        ],
+        "answer": "C",
+        "explanation": "Option C – \"The development of perception in babies\" – is correct. The passage takes us through details of visual development in babies and then focuses on one type of perception (depth perception), with the main paragraph about testing this development. Option A about \"the importance of vision\" would require content about the dangers of not developing certain vision types and why they are critical. With choosing a title questions, it is essential to pay attention to the differences in each word — the critical distinction here is between \"the development of\" and \"the importance of\". It is common to get stuck comparing \"vision\" and \"perception\" and ignore these critical difference words."
       }
     ]
   },
@@ -403,20 +919,35 @@
       {
         "index": 0,
         "text": "The test can predict Alzheimer's…",
-        "options": ["A – two or three years before signs of the illness begin", "B – two or three years from the start of the symptoms", "C – a decade before"],
-        "answer": "A"
+        "options": [
+          "A – two or three years before signs of the illness begin",
+          "B – two or three years from the start of the symptoms",
+          "C – a decade before"
+        ],
+        "answer": "A",
+        "explanation": "The correct answer is A – \"before symptoms start\" (= before signs of the illness begin). The passage states the test \"identifies 10 chemicals... two to three years before symptoms start.\" It also says it \"might be able to predict Alzheimer's decades earlier\" — but this is only a possibility (\"might\"), not a confirmed capability. The question asks what the test \"can\" do with certainty."
       },
       {
         "index": 1,
         "text": "This test is the first blood test which can…",
-        "options": ["A – indicate possible treatments of Alzheimer's", "B – estimate the start of the disease", "C – offer insight into the disease"],
-        "answer": "B"
+        "options": [
+          "A – indicate possible treatments of Alzheimer's",
+          "B – estimate the start of the disease",
+          "C – offer insight into the disease"
+        ],
+        "answer": "B",
+        "explanation": "The correct answer is B – \"estimate the start\" (= predict its onset). The passage states: \"Several blood tests can diagnose the disease, but until now, none have had the sensitivity to predict its onset.\" The key phrase is \"until now\" — meaning: now this test can do it. This is the first blood test able to predict onset."
       },
       {
         "index": 2,
         "text": "Mapstone believes that…",
-        "options": ["A – this test will help people understand Alzheimer's", "B – people want to know about their health", "C – people want power"],
-        "answer": "B"
+        "options": [
+          "A – this test will help people understand Alzheimer's",
+          "B – people want to know about their health",
+          "C – people want power"
+        ],
+        "answer": "B",
+        "explanation": "The correct answer is B. Mapstone believes people are interested in knowing about their health. He is quoted as saying: \"In my experience, the majority of people are very interested to know whether they will get Alzheimer's. They believe that knowledge is power – particularly when it comes to your own health.\""
       }
     ]
   },
@@ -428,9 +959,24 @@
     "question_type": "summary_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Physical and mental health is at risk without sufficient ________ sleep.", "answer": "quality"},
-      {"index": 1, "text": "Furthermore, for adolescents, sleep promotes ________ and development.", "answer": "growth"},
-      {"index": 2, "text": "Lack of sleep can be the cause of ________ health problems which can also have an impact on important aspects of our lives.", "answer": "chronic"}
+      {
+        "index": 0,
+        "text": "Physical and mental health is at risk without sufficient ________ sleep.",
+        "answer": "quality",
+        "explanation": "The passage states: \"Getting enough quality sleep at the right times can help protect your mental health, physical health, quality of life, and safety.\" The word \"quality\" describes the type of sleep needed — the summary refers to sufficient quality sleep."
+      },
+      {
+        "index": 1,
+        "text": "Furthermore, for adolescents, sleep promotes ________ and development.",
+        "answer": "growth",
+        "explanation": "The passage states: \"In children and teens, sleep also helps support growth and development.\" \"Adolescents\" in the summary = \"children and teens\" in the passage. The answer \"growth\" comes directly from this sentence."
+      },
+      {
+        "index": 2,
+        "text": "Lack of sleep can be the cause of ________ health problems which can also have an impact on important aspects of our lives.",
+        "answer": "chronic",
+        "explanation": "The passage states: \"ongoing sleep deficiency can raise your risk for some chronic health problems.\" \"Chronic\" means long-term, continual, or unending. \"Lack of sleep\" in the summary = \"sleep deficiency\" in the passage."
+      }
     ]
   },
   {
@@ -441,12 +987,42 @@
     "question_type": "short_answer",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "What is another name for an Easter Egg?", "answer": "Paschal egg"},
-      {"index": 1, "text": "What type of egg was used for decoration in the ancient world?", "answer": "Ostrich"},
-      {"index": 2, "text": "What type of sweets were artificial eggs sometimes filled with?", "answer": "Jelly beans"},
-      {"index": 3, "text": "Where are egg hunts often conducted as part of a hide and seek game in some countries?", "answer": "Garden"},
-      {"index": 4, "text": "By and large, what two things did eggs represent?", "answer": "Fertility and rebirth"},
-      {"index": 5, "text": "What determined if children had been naughty or nice at the beginning of Spring?", "answer": "Easter Bunny"}
+      {
+        "index": 0,
+        "text": "What is another name for an Easter Egg?",
+        "answer": "Paschal egg",
+        "explanation": "The passage states: \"Easter eggs, also known as Paschal eggs in some parts of the world\" — \"Paschal egg\" is given directly as the alternative name. Note: brackets in the answer \"(egg)\" mean the word is optional."
+      },
+      {
+        "index": 1,
+        "text": "What type of egg was used for decoration in the ancient world?",
+        "answer": "Ostrich",
+        "explanation": "The passage states: \"Ostrich eggs with engraved decoration that are 60,000 years old have been found in Africa.\" Ostrich eggs were used for decoration in the ancient world."
+      },
+      {
+        "index": 2,
+        "text": "What type of sweets were artificial eggs sometimes filled with?",
+        "answer": "Jelly beans",
+        "explanation": "The passage states: \"a modern custom is to substitute chocolate eggs, or plastic eggs filled with confectionery such as jelly beans.\" Jelly beans are the specific type of sweet mentioned."
+      },
+      {
+        "index": 3,
+        "text": "Where are egg hunts often conducted as part of a hide and seek game in some countries?",
+        "answer": "Garden",
+        "explanation": "The passage states eggs \"are concealed in the garden for children to find.\" The answer \"garden\" comes directly from this sentence. Using brackets like \"(garden)\" in your answer key means both \"garden\" with or without brackets are acceptable."
+      },
+      {
+        "index": 4,
+        "text": "By and large, what two things did eggs represent?",
+        "answer": "Fertility and rebirth",
+        "explanation": "The passage states eggs \"symbolised Spring\" in general, and later notes eggs represent \"fertility and rebirth.\" Both words are required — do not use \"and\" between them, just write the two words. Using a comma would not be counted wrong."
+      },
+      {
+        "index": 5,
+        "text": "What determined if children had been naughty or nice at the beginning of Spring?",
+        "answer": "Easter Bunny",
+        "explanation": "The passage states: \"it was the Easter Bunny who would determine who had been naughty or nice at the beginning of Spring.\" The Easter Bunny made this determination."
+      }
     ]
   },
   {
@@ -460,26 +1036,62 @@
       {
         "index": 0,
         "text": "Since prisons were established, it has been considered whether or not …",
-        "options": ["a – because many under 18's are criminals", "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them", "c – in answer to the lack of success with the way criminals are currently dealt with", "d – provide equipment to prisoners", "e – the goal should be to provide warmer cells", "f – help offenders develop useful skills", "g – according to the current crime numbers"],
-        "answer": "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them"
+        "options": [
+          "a – because many under 18's are criminals",
+          "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them",
+          "c – in answer to the lack of success with the way criminals are currently dealt with",
+          "d – provide equipment to prisoners",
+          "e – the goal should be to provide warmer cells",
+          "f – help offenders develop useful skills",
+          "g – according to the current crime numbers"
+        ],
+        "answer": "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them",
+        "explanation": "The passage opens with exactly this debate: \"should the prison system leave inmates to fester in cold cells, with punishment and deterrence as the goal? Or should it… preach rehabilitation?\" This matches option b — the question of whether imprisonment should deter crime or rehabilitate criminals."
       },
       {
         "index": 1,
         "text": "Putting criminals behind bars to reduce the crime rate is clearly not working …",
-        "options": ["a – because many under 18's are criminals", "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them", "c – in answer to the lack of success with the way criminals are currently dealt with", "d – provide equipment to prisoners", "e – the goal should be to provide warmer cells", "f – help offenders develop useful skills", "g – according to the current crime numbers"],
-        "answer": "g – according to the current crime numbers"
+        "options": [
+          "a – because many under 18's are criminals",
+          "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them",
+          "c – in answer to the lack of success with the way criminals are currently dealt with",
+          "d – provide equipment to prisoners",
+          "e – the goal should be to provide warmer cells",
+          "f – help offenders develop useful skills",
+          "g – according to the current crime numbers"
+        ],
+        "answer": "g – according to the current crime numbers",
+        "explanation": "The passage states: \"If lowering the number of criminals is the reason behind imprisonment, recent figures point to a failing system: almost three quarters of under-18s are reconvicted within a year of release.\" The current crime numbers (figures) show the system is not working. This matches option g — \"according to the current crime numbers\"."
       },
       {
         "index": 2,
         "text": "The new approach to dealing with punishment is …",
-        "options": ["a – because many under 18's are criminals", "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them", "c – in answer to the lack of success with the way criminals are currently dealt with", "d – provide equipment to prisoners", "e – the goal should be to provide warmer cells", "f – help offenders develop useful skills", "g – according to the current crime numbers"],
-        "answer": "c – in answer to the lack of success with the way criminals are currently dealt with"
+        "options": [
+          "a – because many under 18's are criminals",
+          "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them",
+          "c – in answer to the lack of success with the way criminals are currently dealt with",
+          "d – provide equipment to prisoners",
+          "e – the goal should be to provide warmer cells",
+          "f – help offenders develop useful skills",
+          "g – according to the current crime numbers"
+        ],
+        "answer": "c – in answer to the lack of success with the way criminals are currently dealt with",
+        "explanation": "The passage states: \"In response to worldwide alarm over the ineffectiveness of how we manage criminals, a growing number of prisons are embracing a new style of incarceration.\" This matches option c — the new approach is a direct response to the lack of success with current methods."
       },
       {
         "index": 3,
         "text": "One of the most effective ways to reduce crime figures is to …",
-        "options": ["a – because many under 18's are criminals", "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them", "c – in answer to the lack of success with the way criminals are currently dealt with", "d – provide equipment to prisoners", "e – the goal should be to provide warmer cells", "f – help offenders develop useful skills", "g – according to the current crime numbers"],
-        "answer": "f – help offenders develop useful skills"
+        "options": [
+          "a – because many under 18's are criminals",
+          "b – the aim of imprisonment should be to put people off committing crime or to rehabilitate them",
+          "c – in answer to the lack of success with the way criminals are currently dealt with",
+          "d – provide equipment to prisoners",
+          "e – the goal should be to provide warmer cells",
+          "f – help offenders develop useful skills",
+          "g – according to the current crime numbers"
+        ],
+        "answer": "f – help offenders develop useful skills",
+        "explanation": "The passage quotes: \"Equipping prisoners with skills and confidence is crucial in bringing down re-offending rates.\" Note: \"equipping\" means giving skills, which matches option f (help offenders develop useful skills). Option d uses \"equipment\" — a noun meaning physical tools — which is different from the verb \"equip\" meaning to provide skills."
       }
     ]
   },
@@ -491,10 +1103,30 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "__________ is the most recent strategy to tackle the problem of smoking.", "answer": "Plain packaging"},
-      {"index": 1, "text": "The large number of new smokers, particularly under 16s, makes certain that cigarette companies will always have a __________.", "answer": "viable market"},
-      {"index": 2, "text": "In some countries, packaging is the only method that cigarette companies have for __________.", "answer": "promotion"},
-      {"index": 3, "text": "Packets are seen as being the __________ in the cigarette industry.", "answer": "silent salesman"}
+      {
+        "index": 0,
+        "text": "__________ is the most recent strategy to tackle the problem of smoking.",
+        "answer": "Plain packaging",
+        "explanation": "The passage states \"the move to introduce plain packaging is just the latest front in the war against smoking\" — \"latest\" = most recent strategy. The answer is \"plain packaging\"."
+      },
+      {
+        "index": 1,
+        "text": "The large number of new smokers, particularly under 16s, makes certain that cigarette companies will always have a __________.",
+        "answer": "viable market",
+        "explanation": "The passage refers to new smokers (particularly under 16s) as what makes cigarette companies a \"viable market.\" The word \"viable\" means workable/profitable — it adds value to the sentence. Either \"viable market\" or just \"market\" is acceptable."
+      },
+      {
+        "index": 2,
+        "text": "In some countries, packaging is the only method that cigarette companies have for __________.",
+        "answer": "promotion",
+        "explanation": "The passage clearly states: \"the pack remains the last major vehicle for promotion.\" The exact word from the passage is \"promotion\" — not \"advertising,\" which is a synonym but not the word used in the passage. In sentence completion, you must use the exact word from the text."
+      },
+      {
+        "index": 3,
+        "text": "Packets are seen as being the __________ in the cigarette industry.",
+        "answer": "silent salesman",
+        "explanation": "The passage refers to cigarette packets as both \"the silent salesman\" and \"mobile billboard.\" You should choose only one answer — writing both would be incorrect under IELTS rules."
+      }
     ]
   },
   {
@@ -505,12 +1137,42 @@
     "question_type": "summary_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "At the start of the 20th century, Dr. Metchnikoff put forward his belief that the ________ and good health of Bulgarians could be attributed to eating fermented food each day.", "answer": "longevity"},
-      {"index": 1, "text": "By ________ and preserving milk, they were able to convert it into yogurt and cheese.", "answer": "detoxifying"},
-      {"index": 2, "text": "They were able to convert milk into ________ and cheese.", "answer": "yogurt"},
-      {"index": 3, "text": "They were able to convert milk into yogurt and ________.", "answer": "cheese"},
-      {"index": 4, "text": "In other parts of Europe, fermented ________ was consumed as a replacement for clean water.", "answer": "wine"},
-      {"index": 5, "text": "People used to ferment ________ which gave them a longer lifespan but nowadays mass production favours pickling.", "answer": "vegetables"}
+      {
+        "index": 0,
+        "text": "At the start of the 20th century, Dr. Metchnikoff put forward his belief that the ________ and good health of Bulgarians could be attributed to eating fermented food each day.",
+        "answer": "longevity",
+        "explanation": "The passage states Dr. Metchnikoff \"believed the daily ingestion of yogurt was a major contribution to the superior health and longevity of Bulgarians.\" \"Longevity\" = long life/lifespan, and it is the answer from the word list (option C)."
+      },
+      {
+        "index": 1,
+        "text": "By ________ and preserving milk, they were able to convert it into yogurt and cheese.",
+        "answer": "detoxifying",
+        "explanation": "The passage states \"Bulgarians developed techniques for detoxifying and preserving milk, converting it into yogurt and cheese.\" \"Detoxifying\" (option I) fills the blank — the process of removing harmful substances from milk before preserving it."
+      },
+      {
+        "index": 2,
+        "text": "They were able to convert milk into ________ and cheese.",
+        "answer": "yogurt",
+        "explanation": "The passage states Bulgarians converted milk \"into yogurt and cheese.\" \"Yogurt\" (option B) is the first product mentioned."
+      },
+      {
+        "index": 3,
+        "text": "They were able to convert milk into yogurt and ________.",
+        "answer": "cheese",
+        "explanation": "The passage states Bulgarians converted milk \"into yogurt and cheese.\" \"Cheese\" (option H) is the second product mentioned."
+      },
+      {
+        "index": 4,
+        "text": "In other parts of Europe, fermented ________ was consumed as a replacement for clean water.",
+        "answer": "wine",
+        "explanation": "The passage states \"In Europe, wine was consumed as clean water.\" Wine (option E) was the fermented drink used as a replacement for clean water."
+      },
+      {
+        "index": 5,
+        "text": "People used to ferment ________ which gave them a longer lifespan but nowadays mass production favours pickling.",
+        "answer": "vegetables",
+        "explanation": "The passage states \"Various vegetables were fermented for preservation in different countries.\" The answer is \"vegetables\" (option J). The sentence cannot use \"pickled products\" because no one ferments a food that is already pickled — the two are different preservation methods."
+      }
     ]
   },
   {
@@ -521,12 +1183,42 @@
     "question_type": "matching_paragraph_info",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Offering new methods of communication.", "answer": "C"},
-      {"index": 1, "text": "It's good to bring the past to life.", "answer": "E"},
-      {"index": 2, "text": "Keeping mentally astute helps elderly people.", "answer": "D"},
-      {"index": 3, "text": "Tapping into one's inventiveness through various forms.", "answer": "B"},
-      {"index": 4, "text": "It might be possible to find a life partner.", "answer": "E"},
-      {"index": 5, "text": "Individualised ways to tell someone you are thinking of them.", "answer": "A"}
+      {
+        "index": 0,
+        "text": "Offering new methods of communication.",
+        "answer": "C",
+        "explanation": "Paragraph C states the internet lets elderly people \"keep in touch easily with children and grandchildren via email, apps, groups and many more exciting options.\" This refers to new methods of communication."
+      },
+      {
+        "index": 1,
+        "text": "It's good to bring the past to life.",
+        "answer": "E",
+        "explanation": "Paragraph E states: \"This is a chance for them to experience dances from their youth\" — bringing the past back to life. The answer is E (Dance)."
+      },
+      {
+        "index": 2,
+        "text": "Keeping mentally astute helps elderly people.",
+        "answer": "D",
+        "explanation": "Paragraph D states: \"Playing cards helps keep your brain sharp by remembering strategies and keeping up the cards already played.\" Keeping mentally sharp = keeping mentally astute."
+      },
+      {
+        "index": 3,
+        "text": "Tapping into one's inventiveness through various forms.",
+        "answer": "B",
+        "explanation": "Paragraph B states art \"can be painting, drawing, sculpture, or pottery\" — various forms of creative art. \"Tapping into one's inventiveness through various forms\" matches this description of the creative process across multiple art forms."
+      },
+      {
+        "index": 4,
+        "text": "It might be possible to find a life partner.",
+        "answer": "E",
+        "explanation": "Paragraph E states \"it's never too late to bring a bit of spice and romance into someone's life.\" This implies the possibility of finding a life partner or romantic relationship. Note: Paragraph D mentions \"lasting bonds\" but these are friendships, not romantic relationships. Only Paragraph E explicitly refers to romance."
+      },
+      {
+        "index": 5,
+        "text": "Individualised ways to tell someone you are thinking of them.",
+        "answer": "A",
+        "explanation": "Paragraph A describes card making as \"a beautiful form of communication with an added personal touch\" and states \"All family members will relish receiving these personalised cards.\" Individualised/personalised cards are a way to tell someone you are thinking of them."
+      }
     ]
   },
   {
@@ -540,32 +1232,77 @@
       {
         "index": 0,
         "text": "The first ever flight of Orion is aimed to …",
-        "options": ["a – send Orion twice around the world", "b – has state of the art technology", "c – test the critical heat shield", "d – check Orion's performance", "e – test the most important technology", "f – first voyage is within sight", "g – help humans get to Mars"],
-        "answer": "e – test the most important technology"
+        "options": [
+          "a – send Orion twice around the world",
+          "b – has state of the art technology",
+          "c – test the critical heat shield",
+          "d – check Orion's performance",
+          "e – test the most important technology",
+          "f – first voyage is within sight",
+          "g – help humans get to Mars"
+        ],
+        "answer": "e – test the most important technology",
+        "explanation": "The passage states Orion will go on \"a short journey above the Earth to test key technologies.\" Key technologies = the most important technology, matching ending e."
       },
       {
         "index": 1,
         "text": "Although the shape of Orion is similar to previous ships, it …",
-        "options": ["a – send Orion twice around the world", "b – has state of the art technology", "c – test the critical heat shield", "d – check Orion's performance", "e – test the most important technology", "f – first voyage is within sight", "g – help humans get to Mars"],
-        "answer": "b – has state of the art technology"
+        "options": [
+          "a – send Orion twice around the world",
+          "b – has state of the art technology",
+          "c – test the critical heat shield",
+          "d – check Orion's performance",
+          "e – test the most important technology",
+          "f – first voyage is within sight",
+          "g – help humans get to Mars"
+        ],
+        "answer": "b – has state of the art technology",
+        "explanation": "The passage states the vessel \"is reminiscent of the Apollo command ships... but bigger and with cutting-edge systems.\" Cutting-edge systems = state of the art technology, matching ending b."
       },
       {
         "index": 2,
         "text": "A new rocket is also being developed whose …",
-        "options": ["a – send Orion twice around the world", "b – has state of the art technology", "c – test the critical heat shield", "d – check Orion's performance", "e – test the most important technology", "f – first voyage is within sight", "g – help humans get to Mars"],
-        "answer": "f – first voyage is within sight"
+        "options": [
+          "a – send Orion twice around the world",
+          "b – has state of the art technology",
+          "c – test the critical heat shield",
+          "d – check Orion's performance",
+          "e – test the most important technology",
+          "f – first voyage is within sight",
+          "g – help humans get to Mars"
+        ],
+        "answer": "f – first voyage is within sight",
+        "explanation": "The passage states: \"Orion is being developed alongside a powerful new rocket that will have its own debut in the near future.\" \"Debut in the near future\" = first voyage is within sight, matching ending f."
       },
       {
         "index": 3,
         "text": "The rocket which will be used as a replacement will …",
-        "options": ["a – send Orion twice around the world", "b – has state of the art technology", "c – test the critical heat shield", "d – check Orion's performance", "e – test the most important technology", "f – first voyage is within sight", "g – help humans get to Mars"],
-        "answer": "a – send Orion twice around the world"
+        "options": [
+          "a – send Orion twice around the world",
+          "b – has state of the art technology",
+          "c – test the critical heat shield",
+          "d – check Orion's performance",
+          "e – test the most important technology",
+          "f – first voyage is within sight",
+          "g – help humans get to Mars"
+        ],
+        "answer": "a – send Orion twice around the world",
+        "explanation": "The passage states: \"the Delta IV-Heavy rocket... is being used as a stand-in. It will send Orion twice around the globe.\" Twice around the globe = twice around the world, matching ending a."
       },
       {
         "index": 4,
         "text": "As temperatures reach extreme levels on re-entry, this maiden flight will …",
-        "options": ["a – send Orion twice around the world", "b – has state of the art technology", "c – test the critical heat shield", "d – check Orion's performance", "e – test the most important technology", "f – first voyage is within sight", "g – help humans get to Mars"],
-        "answer": "c – test the critical heat shield"
+        "options": [
+          "a – send Orion twice around the world",
+          "b – has state of the art technology",
+          "c – test the critical heat shield",
+          "d – check Orion's performance",
+          "e – test the most important technology",
+          "f – first voyage is within sight",
+          "g – help humans get to Mars"
+        ],
+        "answer": "c – test the critical heat shield",
+        "explanation": "The passage states: \"It should give engineers the opportunity to check the performance of Orion's critical heat shield, which is likely to experience temperatures in excess of 2,000°C.\" This is specifically about testing the heat shield performance during re-entry temperatures, matching ending c."
       }
     ]
   },
@@ -581,50 +1318,141 @@
         "index": 0,
         "text": "Paragraph A",
         "paragraph": "A",
-        "options": ["i – The Asian pangolin", "ii – Distribution and habitat", "iii – Pangolin behaviour", "iv – Taxonomy", "v – Pangolin burrows", "vi – The pangolin trade", "vii – Comparison of pangolin species", "viii – What is a pangolin?", "ix – Description of a pangolin", "x – Why pangolins are endangered", "xi – The pangolin diet"],
-        "answer": "viii – What is a pangolin?"
+        "options": [
+          "i – The Asian pangolin",
+          "ii – Distribution and habitat",
+          "iii – Pangolin behaviour",
+          "iv – Taxonomy",
+          "v – Pangolin burrows",
+          "vi – The pangolin trade",
+          "vii – Comparison of pangolin species",
+          "viii – What is a pangolin?",
+          "ix – Description of a pangolin",
+          "x – Why pangolins are endangered",
+          "xi – The pangolin diet"
+        ],
+        "answer": "viii – What is a pangolin?",
+        "explanation": "Paragraph A introduces pangolins for the first time, describing what they are: scaly anteaters covered in tough overlapping scales that eat ants. This introductory overview matches heading viii – What is a pangolin?"
       },
       {
         "index": 1,
         "text": "Paragraph B",
         "paragraph": "B",
-        "options": ["i – The Asian pangolin", "ii – Distribution and habitat", "iii – Pangolin behaviour", "iv – Taxonomy", "v – Pangolin burrows", "vi – The pangolin trade", "vii – Comparison of pangolin species", "viii – What is a pangolin?", "ix – Description of a pangolin", "x – Why pangolins are endangered", "xi – The pangolin diet"],
-        "answer": "ix – Description of a pangolin"
+        "options": [
+          "i – The Asian pangolin",
+          "ii – Distribution and habitat",
+          "iii – Pangolin behaviour",
+          "iv – Taxonomy",
+          "v – Pangolin burrows",
+          "vi – The pangolin trade",
+          "vii – Comparison of pangolin species",
+          "viii – What is a pangolin?",
+          "ix – Description of a pangolin",
+          "x – Why pangolins are endangered",
+          "xi – The pangolin diet"
+        ],
+        "answer": "ix – Description of a pangolin",
+        "explanation": "Paragraph B provides detailed physical descriptions: size variations, coloration, scale composition, tongue characteristics, and sensory adaptations. This is a description of the animal's physical features, matching heading ix – Description of a pangolin."
       },
       {
         "index": 2,
         "text": "Paragraph C",
         "paragraph": "C",
-        "options": ["i – The Asian pangolin", "ii – Distribution and habitat", "iii – Pangolin behaviour", "iv – Taxonomy", "v – Pangolin burrows", "vi – The pangolin trade", "vii – Comparison of pangolin species", "viii – What is a pangolin?", "ix – Description of a pangolin", "x – Why pangolins are endangered", "xi – The pangolin diet"],
-        "answer": "iv – Taxonomy"
+        "options": [
+          "i – The Asian pangolin",
+          "ii – Distribution and habitat",
+          "iii – Pangolin behaviour",
+          "iv – Taxonomy",
+          "v – Pangolin burrows",
+          "vi – The pangolin trade",
+          "vii – Comparison of pangolin species",
+          "viii – What is a pangolin?",
+          "ix – Description of a pangolin",
+          "x – Why pangolins are endangered",
+          "xi – The pangolin diet"
+        ],
+        "answer": "iv – Taxonomy",
+        "explanation": "Paragraph C discusses the 8 species, the genus Manis, the family Manidae, the order Pholidota, and pangolins' closest living relatives. This is about scientific classification — taxonomy. There are only two possible headings: IV Taxonomy or VII Comparison of pangolin species. The paragraph does not compare the 8 species (no sizes, diets or habitats are contrasted) — its aim is purely classification. Therefore heading iv – Taxonomy is correct."
       },
       {
         "index": 3,
         "text": "Paragraph D",
         "paragraph": "D",
-        "options": ["i – The Asian pangolin", "ii – Distribution and habitat", "iii – Pangolin behaviour", "iv – Taxonomy", "v – Pangolin burrows", "vi – The pangolin trade", "vii – Comparison of pangolin species", "viii – What is a pangolin?", "ix – Description of a pangolin", "x – Why pangolins are endangered", "xi – The pangolin diet"],
-        "answer": "ii – Distribution and habitat"
+        "options": [
+          "i – The Asian pangolin",
+          "ii – Distribution and habitat",
+          "iii – Pangolin behaviour",
+          "iv – Taxonomy",
+          "v – Pangolin burrows",
+          "vi – The pangolin trade",
+          "vii – Comparison of pangolin species",
+          "viii – What is a pangolin?",
+          "ix – Description of a pangolin",
+          "x – Why pangolins are endangered",
+          "xi – The pangolin diet"
+        ],
+        "answer": "ii – Distribution and habitat",
+        "explanation": "Paragraph D describes where pangolins are found: across Africa and Asia, in tropical forests to dry woodlands, using burrows for shelter. This matches heading ii – Distribution and habitat."
       },
       {
         "index": 4,
         "text": "Paragraph E",
         "paragraph": "E",
-        "options": ["i – The Asian pangolin", "ii – Distribution and habitat", "iii – Pangolin behaviour", "iv – Taxonomy", "v – Pangolin burrows", "vi – The pangolin trade", "vii – Comparison of pangolin species", "viii – What is a pangolin?", "ix – Description of a pangolin", "x – Why pangolins are endangered", "xi – The pangolin diet"],
-        "answer": "iii – Pangolin behaviour"
+        "options": [
+          "i – The Asian pangolin",
+          "ii – Distribution and habitat",
+          "iii – Pangolin behaviour",
+          "iv – Taxonomy",
+          "v – Pangolin burrows",
+          "vi – The pangolin trade",
+          "vii – Comparison of pangolin species",
+          "viii – What is a pangolin?",
+          "ix – Description of a pangolin",
+          "x – Why pangolins are endangered",
+          "xi – The pangolin diet"
+        ],
+        "answer": "iii – Pangolin behaviour",
+        "explanation": "Paragraph E describes pangolin behaviour: nocturnal habits, sleeping curled up, defensive response when threatened. This matches heading iii – Pangolin behaviour."
       },
       {
         "index": 5,
         "text": "Paragraph F",
         "paragraph": "F",
-        "options": ["i – The Asian pangolin", "ii – Distribution and habitat", "iii – Pangolin behaviour", "iv – Taxonomy", "v – Pangolin burrows", "vi – The pangolin trade", "vii – Comparison of pangolin species", "viii – What is a pangolin?", "ix – Description of a pangolin", "x – Why pangolins are endangered", "xi – The pangolin diet"],
-        "answer": "xi – The pangolin diet"
+        "options": [
+          "i – The Asian pangolin",
+          "ii – Distribution and habitat",
+          "iii – Pangolin behaviour",
+          "iv – Taxonomy",
+          "v – Pangolin burrows",
+          "vi – The pangolin trade",
+          "vii – Comparison of pangolin species",
+          "viii – What is a pangolin?",
+          "ix – Description of a pangolin",
+          "x – Why pangolins are endangered",
+          "xi – The pangolin diet"
+        ],
+        "answer": "xi – The pangolin diet",
+        "explanation": "Paragraph F is entirely about what pangolins eat: almost exclusively ants and termites, using their long sticky tongues. This matches heading xi – The pangolin diet."
       },
       {
         "index": 6,
         "text": "Paragraph G",
         "paragraph": "G",
-        "options": ["i – The Asian pangolin", "ii – Distribution and habitat", "iii – Pangolin behaviour", "iv – Taxonomy", "v – Pangolin burrows", "vi – The pangolin trade", "vii – Comparison of pangolin species", "viii – What is a pangolin?", "ix – Description of a pangolin", "x – Why pangolins are endangered", "xi – The pangolin diet"],
-        "answer": "x – Why pangolins are endangered"
+        "options": [
+          "i – The Asian pangolin",
+          "ii – Distribution and habitat",
+          "iii – Pangolin behaviour",
+          "iv – Taxonomy",
+          "v – Pangolin burrows",
+          "vi – The pangolin trade",
+          "vii – Comparison of pangolin species",
+          "viii – What is a pangolin?",
+          "ix – Description of a pangolin",
+          "x – Why pangolins are endangered",
+          "xi – The pangolin diet"
+        ],
+        "answer": "x – Why pangolins are endangered",
+        "explanation": "Paragraph G explains that pangolins are among the most trafficked mammals: hunted for scales used in traditional medicine and for their meat, despite an international trade ban. This explains why they are endangered, matching heading x – Why pangolins are endangered."
       }
     ]
   },
@@ -640,57 +1468,137 @@
         "index": 0,
         "text": "Paragraph A",
         "paragraph": "A",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "VII – Deforestation"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "VII – Deforestation",
+        "explanation": "Key words in Paragraph A: \"Trees are being cut down.\" Cutting down trees = deforestation. The correct heading is VII – Deforestation."
       },
       {
         "index": 1,
         "text": "Paragraph B",
         "paragraph": "B",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "III – Overpopulation"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "III – Overpopulation",
+        "explanation": "Key words in Paragraph B: \"A rapid increase in the number of people.\" A rapid increase in population = overpopulation. The correct heading is III – Overpopulation."
       },
       {
         "index": 2,
         "text": "Paragraph C",
         "paragraph": "C",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "IX – Unsustainable agriculture techniques"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "IX – Unsustainable agriculture techniques",
+        "explanation": "Key words in Paragraph C: \"Improper irrigation methods / inconsiderate farming methods.\" These are unsustainable agriculture techniques. The correct heading is IX – Unsustainable agriculture techniques."
       },
       {
         "index": 3,
         "text": "Paragraph D",
         "paragraph": "D",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "I – Overgrazing"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "I – Overgrazing",
+        "explanation": "Key words in Paragraph D: \"Feed for cattle without sustainable control.\" Allowing cattle to eat land without sustainable management = overgrazing. The correct heading is I – Overgrazing."
       },
       {
         "index": 4,
         "text": "Paragraph E",
         "paragraph": "E",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "X – Soil infertility"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "X – Soil infertility",
+        "explanation": "Key words in Paragraph E: \"Valuable soil nutrients are lost / soil dries out / lifeless pile of dust.\" Loss of soil nutrients and drying out = soil infertility. The correct heading is X – Soil infertility."
       },
       {
         "index": 5,
         "text": "Paragraph F",
         "paragraph": "F",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "V – Famine"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "V – Famine",
+        "explanation": "Key words in Paragraph F: \"People find themselves and their livestock experiencing starvation.\" Starvation = famine. The correct heading is V – Famine."
       },
       {
         "index": 6,
         "text": "Paragraph G",
         "paragraph": "G",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "II – Mass migration"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "II – Mass migration",
+        "explanation": "Key words in Paragraph G: \"Movement of large human populations.\" Large-scale movement of people = mass migration. The correct heading is II – Mass migration."
       },
       {
         "index": 7,
         "text": "Paragraph H",
         "paragraph": "H",
-        "options": ["I – Overgrazing", "II – Mass migration", "III – Overpopulation", "V – Famine", "VI – Extinction of species", "VII – Deforestation", "IX – Unsustainable agriculture techniques", "X – Soil infertility"],
-        "answer": "VI – Extinction of species"
+        "options": [
+          "I – Overgrazing",
+          "II – Mass migration",
+          "III – Overpopulation",
+          "V – Famine",
+          "VI – Extinction of species",
+          "VII – Deforestation",
+          "IX – Unsustainable agriculture techniques",
+          "X – Soil infertility"
+        ],
+        "answer": "VI – Extinction of species",
+        "explanation": "Key words in Paragraph H: \"Species … may not survive.\" Species that may not survive = species facing extinction. The correct heading is VI – Extinction of species."
       }
     ]
   },
@@ -705,8 +1613,13 @@
       {
         "index": 0,
         "text": "Which is the best title for the passage above?",
-        "options": ["A – Coffee: a popular hot drink", "B – Coffee: the main consumers", "C – Coffee: the main producers"],
-        "answer": "A"
+        "options": [
+          "A – Coffee: a popular hot drink",
+          "B – Coffee: the main consumers",
+          "C – Coffee: the main producers"
+        ],
+        "answer": "A",
+        "explanation": "The correct answer is A – \"Coffee – a popular hot drink.\" The opening paragraph and closing line both stress the same point: the popularity of coffee. When both the opening and closing of a passage stress the same point with so much detail, that is the main aim. There are no fixed rules, but you must ask yourself: Why did the author write this passage? What was the key message? In this case, information about producers and consumers is extra detail given for interest — but the main aim was to explain the popularity of coffee."
       }
     ]
   },
@@ -718,10 +1631,30 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The world has been developed and changed by ________ for over 3.8 billion years.", "answer": "natural selection"},
-      {"index": 1, "text": "The past history of the species that used to exist on earth can be found through the ________ record.", "answer": "fossil and phylogenetic"},
-      {"index": 2, "text": "The coming and going of specific groups and species can illustrate to us that life is forever ________.", "answer": "evolving"},
-      {"index": 3, "text": "Without ________, life forms would not be able to replicate.", "answer": "DNA"}
+      {
+        "index": 0,
+        "text": "The world has been developed and changed by ________ for over 3.8 billion years.",
+        "answer": "natural selection",
+        "explanation": "\"Developed and changed\" = evolved and diversified. The answer is \"natural selection.\" Note: it is not possible to say \"the natural selection\" (no article) or \"natural selection process\" (adds a word not in the passage)."
+      },
+      {
+        "index": 1,
+        "text": "The past history of the species that used to exist on earth can be found through the ________ record.",
+        "answer": "fossil and phylogenetic",
+        "explanation": "\"Past history of species\" = looking back through time using the fossil and phylogenetic record. Both words are required and spelling must be correct."
+      },
+      {
+        "index": 2,
+        "text": "The coming and going of specific groups and species can illustrate to us that life is forever ________.",
+        "answer": "evolving",
+        "explanation": "\"Coming and going\" = waxing and waning. \"Forever\" = constantly. The answer is \"evolving\" — life is constantly/forever in a state of evolving."
+      },
+      {
+        "index": 3,
+        "text": "Without ________, life forms would not be able to replicate.",
+        "answer": "DNA",
+        "explanation": "\"Life forms\" = living organisms. DNA is what allows living organisms to replicate. Without DNA, life forms would not be able to replicate."
+      }
     ]
   },
   {
@@ -732,11 +1665,36 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "The pigment ________ Egyptian blue, which was formulated about 5,250 years ago, can now be used to identify fingerprints on complicated surfaces.", "answer": "known as"},
-      {"index": 1, "text": "...which was formulated ________ 5,250 years ago...", "answer": "about"},
-      {"index": 2, "text": "...can now be used to ________ fingerprints on complicated surfaces.", "answer": "identify"},
-      {"index": 3, "text": "...it has now been ________ that, when it is exposed to a particular light, it emits near-infrared radiation.", "answer": "revealed"},
-      {"index": 4, "text": "...when it is exposed to a ________ light, it emits near-infrared radiation.", "answer": "particular"}
+      {
+        "index": 0,
+        "text": "The pigment ________ Egyptian blue, which was formulated about 5,250 years ago, can now be used to identify fingerprints on complicated surfaces.",
+        "answer": "known as",
+        "explanation": "\"Known as\" is the correct paraphrase for \"called.\" You cannot choose \"names\" because it is grammatically wrong in this context."
+      },
+      {
+        "index": 1,
+        "text": "...which was formulated ________ 5,250 years ago...",
+        "answer": "about",
+        "explanation": "\"About\" is the correct paraphrase for \"some\" (as in approximately). You cannot use \"over\" because we do not know if the figure is over or under 5,250 years — \"about\" is the accurate neutral paraphrase meaning approximately."
+      },
+      {
+        "index": 2,
+        "text": "...can now be used to ________ fingerprints on complicated surfaces.",
+        "answer": "identify",
+        "explanation": "\"Identify\" is the correct paraphrase for \"detect.\" The passage says the pigment \"can be used as dusting powder to detect fingerprints\" — detect = identify in this context."
+      },
+      {
+        "index": 3,
+        "text": "...it has now been ________ that, when it is exposed to a particular light, it emits near-infrared radiation.",
+        "answer": "revealed",
+        "explanation": "\"Revealed\" or \"found\" are both acceptable paraphrases for \"discovered.\" Both words mean the same thing in this context and are grammatically correct."
+      },
+      {
+        "index": 4,
+        "text": "...when it is exposed to a ________ light, it emits near-infrared radiation.",
+        "answer": "particular",
+        "explanation": "\"Particular\" is the correct paraphrase for \"certain\" (as in a certain/particular kind of light). Spelling must be correct — a wrong spelling will be marked wrong."
+      }
     ]
   },
   {
@@ -747,14 +1705,54 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Find a word in the passage that means: preferred", "answer": "favoured"},
-      {"index": 1, "text": "Find a phrase in the passage that means: gradually stop using", "answer": "phased out"},
-      {"index": 2, "text": "Find a word in the passage that means: substitute", "answer": "replace"},
-      {"index": 3, "text": "Find a phrase in the passage that means: employed since way back", "answer": "long-serving"},
-      {"index": 4, "text": "Find a word in the passage that means: existence", "answer": "presence"},
-      {"index": 5, "text": "Find a word in the passage that means: portable", "answer": "hand-held"},
-      {"index": 6, "text": "Find a phrase in the passage that refers to the canary bird", "answer": "yellow feathered friend"},
-      {"index": 7, "text": "Find a phrase in the passage that means: ultimately / in the end", "answer": "in the long run"}
+      {
+        "index": 0,
+        "text": "Find a word in the passage that means: preferred",
+        "answer": "favoured",
+        "explanation": "The passage uses \"favoured\" as the paraphrase for \"preferred\": \"Modern technology is being favoured over the long-serving yellow feathered friend.\" Favoured = preferred."
+      },
+      {
+        "index": 1,
+        "text": "Find a phrase in the passage that means: gradually stop using",
+        "answer": "phased out",
+        "explanation": "The passage uses \"phased out\" as the paraphrase for \"gradually stop using\": \"More than 200 canary birds are being phased out of Britain's mining pits.\" Phased out = gradually stop using."
+      },
+      {
+        "index": 2,
+        "text": "Find a word in the passage that means: substitute",
+        "answer": "replace",
+        "explanation": "The passage uses \"replace\" as the paraphrase for \"substitute\": \"New electronic detectors will replace the bird.\" Replace = substitute."
+      },
+      {
+        "index": 3,
+        "text": "Find a phrase in the passage that means: employed since way back",
+        "answer": "long-serving",
+        "explanation": "The passage uses \"long-serving\" as the paraphrase for \"employed since way back\": \"the long-serving yellow feathered friend of the miner.\" Long-serving = has been employed/used for a long time."
+      },
+      {
+        "index": 4,
+        "text": "Find a word in the passage that means: existence",
+        "answer": "presence",
+        "explanation": "The passage uses \"presence\" as the paraphrase for \"existence\": \"indicating the presence of pollutants in the air.\" Presence = existence."
+      },
+      {
+        "index": 5,
+        "text": "Find a word in the passage that means: portable",
+        "answer": "hand-held",
+        "explanation": "The passage uses \"hand-held\" as the paraphrase for \"portable\": \"The gas detectors will be hand-held.\" Hand-held = portable (can be carried and used by hand)."
+      },
+      {
+        "index": 6,
+        "text": "Find a phrase in the passage that refers to the canary bird",
+        "answer": "yellow feathered friend",
+        "explanation": "The passage uses \"yellow feathered friend\" as a descriptive phrase referring to the canary bird: \"the long-serving yellow feathered friend of the miner.\" This is a paraphrase/description that avoids repeating the word \"canary.\""
+      },
+      {
+        "index": 7,
+        "text": "Find a phrase in the passage that means: ultimately / in the end",
+        "answer": "in the long run",
+        "explanation": "The passage uses \"in the long run\" as the paraphrase for \"ultimately / in the end\": \"they are said to be cheaper in the long run.\" In the long run = ultimately."
+      }
     ]
   },
   {
@@ -765,14 +1763,54 @@
     "question_type": "sentence_completion",
     "difficulty": "medium",
     "questions": [
-      {"index": 0, "text": "Find a word in the passage that means: meat-eating", "answer": "carnivorous"},
-      {"index": 1, "text": "Find a word in the passage that means: a group or set", "answer": "suite"},
-      {"index": 2, "text": "Find a word in the passage that means: stance or position", "answer": "pose"},
-      {"index": 3, "text": "Find a word in the passage that means: resemblance", "answer": "similarity"},
-      {"index": 4, "text": "Find a word in the passage that means: persuasive / most convincing", "answer": "compelling"},
-      {"index": 5, "text": "Find a word in the passage that means: feathers", "answer": "plumage"},
-      {"index": 6, "text": "Find a word in the passage that means: ancestor", "answer": "forebears"},
-      {"index": 7, "text": "Find a word in the passage that means: characteristic or quality", "answer": "attribute"}
+      {
+        "index": 0,
+        "text": "Find a word in the passage that means: meat-eating",
+        "answer": "carnivorous",
+        "explanation": "The passage uses \"carnivorous\" as the synonym for meat-eating: \"the carnivorous predators that ruled the Mesozoic ecosystems.\" Carnivorous = meat-eating."
+      },
+      {
+        "index": 1,
+        "text": "Find a word in the passage that means: a group or set",
+        "answer": "suite",
+        "explanation": "The passage uses \"suite\" as the synonym for a group or set: \"a suite of features from the eggs of these dinosaurs.\" Suite = a group/set of related things."
+      },
+      {
+        "index": 2,
+        "text": "Find a word in the passage that means: stance or position",
+        "answer": "pose",
+        "explanation": "The passage uses \"pose\" as the synonym for stance or position: referring to the posture/stance of the dinosaurs. Pose = stance or position."
+      },
+      {
+        "index": 3,
+        "text": "Find a word in the passage that means: resemblance",
+        "answer": "similarity",
+        "explanation": "The passage uses \"similarity\" as the synonym for resemblance: describing how dinosaurs and birds share similar features. Similarity = resemblance."
+      },
+      {
+        "index": 4,
+        "text": "Find a word in the passage that means: persuasive / most convincing",
+        "answer": "compelling",
+        "explanation": "The passage uses \"compelling\" as the synonym for persuasive or convincing: referring to the most persuasive/convincing evidence. Compelling = persuasive."
+      },
+      {
+        "index": 5,
+        "text": "Find a word in the passage that means: feathers",
+        "answer": "plumage",
+        "explanation": "The passage uses \"plumage\" as the synonym for feathers. This was the most difficult word — if you are aiming for band 7 or above, you should have known this vocabulary. Plumage = feathers."
+      },
+      {
+        "index": 6,
+        "text": "Find a word in the passage that means: ancestor",
+        "answer": "forebears",
+        "explanation": "The passage uses \"forebears\" as the synonym for ancestor. Note: \"predecessor\" is another possible answer in terms of meaning but it appears at a different point in the passage than \"forebears.\""
+      },
+      {
+        "index": 7,
+        "text": "Find a word in the passage that means: characteristic or quality",
+        "answer": "attribute",
+        "explanation": "The passage uses \"attribute\" as the synonym for characteristic or quality. Note: \"features\" is another possible answer in terms of meaning but it appears before \"forebears/predecessor\" in the passage."
+      }
     ]
   }
 ]
