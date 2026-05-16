@@ -9,7 +9,8 @@ type Phase = 'selecting' | 'active' | 'results'
 type TaskType = 'task1' | 'task2'
 
 interface ActiveSession {
-  exercise: WritingTask1 | WritingTask2
+  exercises: (WritingTask1 | WritingTask2)[]
+  currentIndex: number
   taskType: TaskType
   startedAt: number
   text: string
@@ -53,7 +54,25 @@ export function Writing() {
   }
 
   function handleStart(exercise: WritingTask1 | WritingTask2) {
-    setSession({ exercise, taskType, startedAt: Date.now(), text: '' })
+    setSession({ exercises: [exercise], currentIndex: 0, taskType, startedAt: Date.now(), text: '' })
+    setFeedback(null)
+    setEvalError(false)
+    setSaveError(false)
+    setPhase('active')
+  }
+
+  function handleStartSeries(exs: (WritingTask1 | WritingTask2)[]) {
+    const shuffled = [...exs].sort(() => Math.random() - 0.5)
+    setSession({ exercises: shuffled, currentIndex: 0, taskType, startedAt: Date.now(), text: '' })
+    setFeedback(null)
+    setEvalError(false)
+    setSaveError(false)
+    setPhase('active')
+  }
+
+  function handleNext() {
+    if (!session) return
+    setSession({ ...session, currentIndex: session.currentIndex + 1, startedAt: Date.now(), text: '' })
     setFeedback(null)
     setEvalError(false)
     setSaveError(false)
@@ -66,7 +85,8 @@ export function Writing() {
 
   async function handleSubmit() {
     if (!session) return
-    const { exercise, taskType: tt, text, startedAt } = session
+    const exercise = session.exercises[session.currentIndex]
+    const { taskType: tt, text, startedAt } = session
     const wordCount = countWords(text)
     const prompt = isTask1(exercise) ? exercise.prompt : exercise.question
     setIsEvaluating(true)
@@ -128,17 +148,24 @@ export function Writing() {
           {loadError ? (
             <div className="flex flex-col items-center gap-4 pt-10">
               <p className="text-red text-sm">{loadError}</p>
-              <button
-                onClick={load}
-                className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1"
-              >
+              <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1">
                 Riprova
               </button>
             </div>
           ) : exercises.length === 0 ? (
             <p className="text-subtext0 text-sm text-center pt-10">Nessun esercizio disponibile.</p>
           ) : (
-            <div className="max-w-3xl mx-auto flex flex-col gap-2">
+            <div className="max-w-3xl mx-auto flex flex-col gap-4">
+              <div className="flex justify-end">
+                <button
+                  onClick={() => handleStartSeries(exercises)}
+                  className="px-4 py-1.5 bg-mauve text-base rounded text-sm font-medium
+                    hover:bg-mauve/90 transition-colors"
+                >
+                  ▶ Serie ({exercises.length})
+                </button>
+              </div>
+              <div className="flex flex-col gap-2">
               {exercises.map(exercise => {
                 const t1 = isTask1(exercise)
                 return (
@@ -153,9 +180,7 @@ export function Writing() {
                     </p>
                     <div className="flex gap-2 mt-2 flex-wrap">
                       <span className="text-xs bg-surface1 text-subtext0 px-2 py-0.5 rounded">
-                        {t1
-                          ? exercise.chart_type
-                          : exercise.essay_type.replace(/_/g, ' ')}
+                        {t1 ? exercise.chart_type : exercise.essay_type.replace(/_/g, ' ')}
                       </span>
                       <span className="text-xs bg-blue/20 text-blue px-2 py-0.5 rounded">
                         Band target: {exercise.band_target}
@@ -164,6 +189,7 @@ export function Writing() {
                   </div>
                 )
               })}
+              </div>
             </div>
           )}
         </div>
@@ -175,19 +201,22 @@ export function Writing() {
 
   // ── Active phase ─────────────────────────────────────────────────────────────
   if (phase === 'active') {
-    const t1 = isTask1(session.exercise)
-    const imageUrl = t1 ? (session.exercise as WritingTask1).image_url : undefined
-    const prompt = t1 ? (session.exercise as WritingTask1).prompt : (session.exercise as WritingTask2).question
+    const exercise = session.exercises[session.currentIndex]
+    const t1 = isTask1(exercise)
+    const imageUrl = t1 ? (exercise as WritingTask1).image_url : undefined
+    const prompt = t1 ? (exercise as WritingTask1).prompt : (exercise as WritingTask2).question
+    const isSeries = session.exercises.length > 1
 
     const header = (
       <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
-            {t1
-              ? (session.exercise as WritingTask1).chart_type
-              : (session.exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
+            {t1 ? (exercise as WritingTask1).chart_type : (exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
           </span>
           <span className="text-xs text-subtext0">{taskType === 'task1' ? 'Task 1' : 'Task 2'}</span>
+          {isSeries && (
+            <span className="text-xs text-subtext0">· {session.currentIndex + 1} / {session.exercises.length}</span>
+          )}
         </div>
         <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
           ← Abbandona
@@ -279,15 +308,23 @@ export function Writing() {
       )}
       <WritingFeedback
         feedback={feedback}
-        exercise={session.exercise}
+        exercise={session.exercises[session.currentIndex]}
       />
-      <div className="px-6 pb-6">
+      <div className="px-6 pb-6 flex items-center gap-3">
         <button
           onClick={handleBack}
           className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
         >
           ← Torna alla lista
         </button>
+        {session.currentIndex < session.exercises.length - 1 && (
+          <button
+            onClick={handleNext}
+            className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
+          >
+            Prossimo ({session.currentIndex + 2} / {session.exercises.length}) →
+          </button>
+        )}
       </div>
     </div>
   )
