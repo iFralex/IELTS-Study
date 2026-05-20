@@ -1,6 +1,6 @@
 # IELTS Study
 
-A personal IELTS preparation app that runs entirely on your Mac. Practice Listening, Reading, and Writing; run full exam simulations with timed sections; build vocabulary with AI-powered flashcards; and track every session through an analytics dashboard.
+A personal IELTS preparation desktop app. Practice Listening, Reading, and Writing; run full exam simulations with timed sections; build vocabulary with AI-powered flashcards; and track every session through an analytics dashboard.
 
 All data stays local. AI features (writing feedback and flashcard generation) are powered by a configurable AI model — swap provider and model via a single `.env` change, no code edits required.
 
@@ -246,7 +246,13 @@ src/
 
 ## Local Database
 
-SQLite file stored in the OS user data directory (`~/Library/Application Support/IELTS Study/ielts.db` on macOS). All writes use WAL mode for reliability.
+SQLite file stored in the OS user data directory (resolved via Electron's `app.getPath('userData')`). All writes use WAL mode for reliability.
+
+| OS | Path |
+|----|------|
+| macOS | `~/Library/Application Support/IELTS Study/` |
+| Windows | `%APPDATA%\IELTS Study\` |
+| Linux | `~/.config/IELTS Study/` |
 
 | Table | What it records |
 |-------|----------------|
@@ -311,7 +317,7 @@ npm run build:win
 npm run build:linux
 ```
 
-The macOS build script encrypts the `.env` file before calling `electron-builder`, so the final `.dmg` contains the encrypted key but not the raw `.env`.
+The build script encrypts the `.env` file before calling `electron-builder`, so the final binary contains the encrypted key but not the raw `.env`.
 
 ---
 
