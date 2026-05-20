@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import type { ReadingExercise } from '../../types'
 import { QuestionInput } from '../practice/QuestionInput'
 
+function stripInlineOptions(text: string): string {
+  return text.replace(/\s*\([^)]*[A-G]=[^)]+\)/, '').replace(/\s*[A-G]=.+$/, '').trim()
+}
+
 export interface ReadingResult {
   exercises: ReadingExercise[]
   answers: Record<string, string>
@@ -159,7 +163,7 @@ export function ExamReadingSection({ onComplete }: Props) {
                               {ex.question_type === 'matching_headings' && q.paragraph
                                 ? `Paragraph ${q.paragraph}: `
                                 : ''}
-                              {q.text}
+                              {stripInlineOptions(q.text)}
                             </label>
                             <QuestionInput
                               question={q}

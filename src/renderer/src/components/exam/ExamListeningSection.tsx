@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import type { ListeningExercise } from '../../types'
 import { AudioPlayer } from '../practice/AudioPlayer'
 import { QuestionInput } from '../practice/QuestionInput'
+import { Lightbox } from '../Lightbox'
 
 export interface ListeningResult {
   exercises: ListeningExercise[]
@@ -35,6 +36,10 @@ function pickExercises(all: ListeningExercise[]): ListeningExercise[] {
   return picked
 }
 
+function stripInlineOptions(text: string): string {
+  return text.replace(/\s*\([^)]*[A-G]=[^)]+\)/, '').replace(/\s*[A-G]=.+$/, '').trim()
+}
+
 export function ExamListeningSection({ onComplete }: Props) {
   const [exercises, setExercises] = useState<ListeningExercise[]>([])
   const [loadError, setLoadError] = useState(false)
@@ -42,6 +47,7 @@ export function ExamListeningSection({ onComplete }: Props) {
   const [elapsed, setElapsed] = useState(0)
   const [snapshotTaken, setSnapshotTaken] = useState(false)
   const [snapshotFlash, setSnapshotFlash] = useState(false)
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const snapshotRef = useRef<Record<string, string> | null>(null)
   const answersRef = useRef<Record<string, string>>({})
 
@@ -107,60 +113,109 @@ export function ExamListeningSection({ onComplete }: Props) {
   })
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
-      {/* Timer bar */}
-      <div className={`px-6 py-2 border-b border-surface0 flex items-center justify-between shrink-0 transition-colors duration-500 ${snapshotFlash ? 'bg-yellow/20' : 'bg-surface0/50'}`}>
-        <span className="text-xs text-subtext0">
-          {exercises.length} eserciz{exercises.length === 1 ? 'io' : 'i'} · {totalQuestions} domande
-        </span>
-        <div className="flex items-center gap-3 shrink-0">
-          <span className="text-sm font-mono font-semibold text-text">{fmtSec(elapsed)}</span>
-          {snapshotTaken
-            ? <span className={`text-xs text-yellow px-2 py-0.5 rounded-full transition-colors ${snapshotFlash ? 'bg-yellow/30' : 'bg-yellow/10'}`}>📸 snapshot a 40:00</span>
-            : <span className="text-xs text-subtext0">/ 40:00 target</span>}
+    <>
+      <div className="h-full flex flex-col overflow-hidden">
+        {/* Timer bar */}
+        <div className={`px-6 py-2 border-b border-surface0 flex items-center justify-between shrink-0 transition-colors duration-500 ${snapshotFlash ? 'bg-yellow/20' : 'bg-surface0/50'}`}>
+          <span className="text-xs text-subtext0">
+            {exercises.length} eserciz{exercises.length === 1 ? 'io' : 'i'} · {totalQuestions} domande
+          </span>
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="text-sm font-mono font-semibold text-text">{fmtSec(elapsed)}</span>
+            {snapshotTaken
+              ? <span className={`text-xs text-yellow px-2 py-0.5 rounded-full transition-colors ${snapshotFlash ? 'bg-yellow/30' : 'bg-yellow/10'}`}>📸 snapshot a 40:00</span>
+              : <span className="text-xs text-subtext0">/ 40:00 target</span>}
+          </div>
+        </div>
+
+        {/* Scrollable list of exercises */}
+        <div className="flex-1 overflow-y-auto">
+          {exercisesWithStart.map(({ ex, start }, ei) => (
+            <div key={ex.id} className={`${ei > 0 ? 'border-t-2 border-surface1' : ''}`}>
+              {/* Section header */}
+              <div className="px-6 py-2 bg-surface0/40 border-b border-surface0 flex items-center gap-2">
+                <span className="text-xs font-semibold text-mauve">Sezione {ei + 1}</span>
+                <span className="text-xs text-subtext0">{ex.title}</span>
+                <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded ml-auto">
+                  {ex.question_type.replace(/_/g, ' ')}
+                </span>
+              </div>
+
+              {ex.image_url ? (
+                /* Two-column: image left, audio+questions right */
+                <div className="flex h-[500px]">
+                  <div className="w-1/2 border-r border-surface0 overflow-y-auto p-4">
+                    <img
+                      src={ex.image_url}
+                      alt={ex.title}
+                      onClick={() => setLightboxUrl(ex.image_url!)}
+                      className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
+                    />
+                  </div>
+                  <div className="w-1/2 flex flex-col overflow-hidden">
+                    <div className="flex-1 overflow-y-auto">
+                      <div className="px-4 pt-4 pb-2">
+                        <AudioPlayer audioUrl={ex.audio_url} sourceUrl={ex.source_url} />
+                      </div>
+                      <div className="flex flex-col gap-3 px-4 pb-4">
+                        {ex.questions.map((q, li) => {
+                          const key = `${ex.id}:${q.index}`
+                          return (
+                            <div key={q.index} className="bg-surface0/30 border border-surface0 rounded-lg p-3">
+                              <p className="text-sm text-text mb-2">{start + li + 1}. {stripInlineOptions(q.text)}</p>
+                              <QuestionInput
+                                question={q}
+                                questionType={ex.question_type}
+                                value={answers[key] ?? ''}
+                                onChange={v => setAnswers(a => ({ ...a, [key]: v }))}
+                              />
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* Single column: audio then questions */
+                <div className="p-4 max-w-2xl mx-auto">
+                  <div className="mb-3">
+                    <AudioPlayer audioUrl={ex.audio_url} sourceUrl={ex.source_url} />
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {ex.questions.map((q, li) => {
+                      const key = `${ex.id}:${q.index}`
+                      return (
+                        <div key={q.index} className="bg-surface0/30 border border-surface0 rounded-lg p-3">
+                          <p className="text-sm text-text mb-2">{start + li + 1}. {stripInlineOptions(q.text)}</p>
+                          <QuestionInput
+                            question={q}
+                            questionType={ex.question_type}
+                            value={answers[key] ?? ''}
+                            onChange={v => setAnswers(a => ({ ...a, [key]: v }))}
+                          />
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation */}
+        <div className="px-6 py-4 border-t border-surface0 flex justify-between shrink-0">
+          <button onClick={handleSkip} className="px-4 py-2 bg-surface0 text-subtext0 rounded text-sm hover:text-text transition-colors">
+            Salta sezione →
+          </button>
+          <button onClick={handleComplete} className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
+            Sezione successiva ▶
+          </button>
         </div>
       </div>
 
-      {/* Scrollable list of exercises */}
-      <div className="flex-1 overflow-y-auto">
-        {exercisesWithStart.map(({ ex, start }, ei) => (
-          <div key={ex.id} className={`${ei > 0 ? 'border-t-2 border-surface1' : ''}`}>
-            <div className="px-6 py-2 bg-surface0/40 border-b border-surface0">
-              <span className="text-xs font-semibold text-mauve">Sezione {ei + 1}</span>
-              <span className="text-xs text-subtext0 ml-2">{ex.title}</span>
-            </div>
-            <AudioPlayer audioUrl={ex.audio_url} title={ex.title} sourceUrl={ex.source_url} />
-            <div className="p-4">
-              <div className="flex flex-col gap-3 max-w-2xl mx-auto">
-                {ex.questions.map((q, li) => {
-                  const key = `${ex.id}:${q.index}`
-                  return (
-                    <div key={q.index} className="bg-surface0/30 border border-surface0 rounded-lg p-3">
-                      <p className="text-sm text-text mb-2">{start + li + 1}. {q.text}</p>
-                      <QuestionInput
-                        question={q}
-                        questionType={ex.question_type}
-                        value={answers[key] ?? ''}
-                        onChange={v => setAnswers(a => ({ ...a, [key]: v }))}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Navigation */}
-      <div className="px-6 py-4 border-t border-surface0 flex justify-between shrink-0">
-        <button onClick={handleSkip} className="px-4 py-2 bg-surface0 text-subtext0 rounded text-sm hover:text-text transition-colors">
-          Salta sezione →
-        </button>
-        <button onClick={handleComplete} className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
-          Sezione successiva ▶
-        </button>
-      </div>
-    </div>
+      {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
+    </>
   )
 }

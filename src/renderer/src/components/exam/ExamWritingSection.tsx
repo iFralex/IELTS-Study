@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import type { WritingTask1, WritingTask2 } from '../../types'
 import { WritingEditor } from '../practice/WritingEditor'
+import { Lightbox } from '../Lightbox'
 
 export interface WritingSubResult {
   exercise: WritingTask1 | WritingTask2
@@ -37,6 +38,7 @@ export function ExamWritingSection({ onComplete }: Props) {
   const [t2Text, setT2Text] = useState('')
   const [elapsed, setElapsed] = useState(0)
   const [snapshotTaken, setSnapshotTaken] = useState(false)
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
 
   const t1SnapshotRef = useRef<string | null>(null)
   const t2SnapshotRef = useRef<string | null>(null)
@@ -144,6 +146,7 @@ export function ExamWritingSection({ onComplete }: Props) {
     : (t2Exercise as WritingTask2).question
 
   return (
+    <>
     <div className="h-full flex flex-col overflow-hidden">
       {/* Timer bar */}
       <div className="px-6 py-2 bg-surface0/50 border-b border-surface0 flex items-center justify-between shrink-0">
@@ -156,19 +159,42 @@ export function ExamWritingSection({ onComplete }: Props) {
         </div>
       </div>
 
-      {/* Prompt */}
-      <div className="px-6 py-3 bg-mantle/40 border-b border-surface0 max-h-40 overflow-y-auto shrink-0">
-        <p className="text-sm text-text leading-relaxed">{prompt}</p>
-      </div>
-
-      {/* Editor */}
-      <div className="flex-1 overflow-hidden flex flex-col">
-        {innerPhase === 't1' ? (
-          <WritingEditor taskType="task1" value={t1Text} onChange={setT1Text} />
-        ) : (
-          <WritingEditor taskType="task2" value={t2Text} onChange={setT2Text} />
-        )}
-      </div>
+      {/* Body: two-column for T1 with image, otherwise prompt + editor stacked */}
+      {innerPhase === 't1' && t1Exercise?.image_url ? (
+        <div className="flex-1 flex overflow-hidden">
+          {/* Image column */}
+          <div className="w-[45%] border-r border-surface0 overflow-y-auto p-4 flex flex-col gap-3">
+            <div className="px-3 py-2 bg-mantle/40 rounded border border-surface0">
+              <p className="text-sm text-text leading-relaxed">{prompt}</p>
+            </div>
+            <img
+              src={t1Exercise.image_url}
+              alt="Task 1 chart"
+              onClick={() => setLightboxUrl(t1Exercise!.image_url!)}
+              className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
+            />
+          </div>
+          {/* Editor column */}
+          <div className="flex-1 overflow-hidden flex flex-col">
+            <WritingEditor taskType="task1" value={t1Text} onChange={setT1Text} />
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Prompt */}
+          <div className="px-6 py-3 bg-mantle/40 border-b border-surface0 max-h-40 overflow-y-auto shrink-0">
+            <p className="text-sm text-text leading-relaxed">{prompt}</p>
+          </div>
+          {/* Editor */}
+          <div className="flex-1 overflow-hidden flex flex-col">
+            {innerPhase === 't1' ? (
+              <WritingEditor taskType="task1" value={t1Text} onChange={setT1Text} />
+            ) : (
+              <WritingEditor taskType="task2" value={t2Text} onChange={setT2Text} />
+            )}
+          </div>
+        </>
+      )}
 
       {/* Navigation */}
       <div className="px-6 py-4 border-t border-surface0 flex justify-end shrink-0">
@@ -185,5 +211,8 @@ export function ExamWritingSection({ onComplete }: Props) {
         )}
       </div>
     </div>
+
+    {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
+  </>
   )
 }

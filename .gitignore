@@ -5,3 +5,6 @@ out
 .eslintcache
 *.log*
 .env
+resources/env.enc
+.superpowers/
+tsconfig.web.tsbuildinfo

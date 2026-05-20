@@ -154,6 +154,7 @@ export function ExamSimulator() {
           score: c,
           max_score: m,
           time_spent_seconds: listening.elapsedSeconds,
+          question_type: ex.question_type,
         }).catch(() => {})
       }
       listenScore = maxScore > 0 ? correctCount / maxScore : undefined
@@ -175,6 +176,7 @@ export function ExamSimulator() {
           score: c,
           max_score: m,
           time_spent_seconds: reading.elapsedSeconds,
+          question_type: ex.question_type,
         }).catch(() => {})
       }
       readScore = maxScore > 0 ? correctCount / maxScore : undefined
