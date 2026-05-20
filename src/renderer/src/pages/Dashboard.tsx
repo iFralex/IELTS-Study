@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import type { AnalyticsData, Session, ExamRun } from '../types'
 import { StatCard } from '../components/StatCard'
 import { formatDuration, formatAccuracy } from '../components/analyticsUtils'
@@ -20,6 +21,7 @@ const SECTION_LABEL: Record<string, string> = {
 
 export function Dashboard() {
   const navigate = useNavigate()
+  const { t, i18n } = useTranslation()
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null)
   const [sessions, setSessions]   = useState<Session[]>([])
   const [examRuns, setExamRuns]   = useState<ExamRun[]>([])
@@ -42,7 +44,7 @@ export function Dashboard() {
         setSessions(s)
         setExamRuns((runs as ExamRun[]).slice(0, 3))
       })
-      .catch(() => setError('Errore nel caricamento dei dati.'))
+      .catch(() => setError(t('dashboard.loadError')))
       .finally(() => setLoading(false))
   }
 
@@ -51,10 +53,10 @@ export function Dashboard() {
   return (
     <div className="h-full overflow-y-auto">
       <div className="max-w-3xl mx-auto p-6 flex flex-col gap-6">
-        <h1 className="text-xl font-bold text-text">Dashboard</h1>
+        <h1 className="text-xl font-bold text-text">{t('dashboard.title')}</h1>
 
         {loading && (
-          <p className="text-subtext0 text-sm text-center py-10">Caricamento…</p>
+          <p className="text-subtext0 text-sm text-center py-10">{t('common.loading')}</p>
         )}
 
         {error && (
@@ -64,7 +66,7 @@ export function Dashboard() {
               onClick={load}
               className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1 transition-colors"
             >
-              Riprova
+              {t('common.retry')}
             </button>
           </div>
         )}
@@ -73,16 +75,16 @@ export function Dashboard() {
           <>
             {/* Stat cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <StatCard value={String(analytics.total_sessions)}               label="Sessioni totali" />
-              <StatCard value={formatAccuracy(analytics.average_accuracy)}     label="Accuratezza media" color="text-green" />
-              <StatCard value={formatDuration(analytics.total_time_seconds)}   label="Tempo studio"     color="text-blue" />
-              <StatCard value={String(analytics.exam_count)}                   label="Esami simulati"   color="text-yellow" />
+              <StatCard value={String(analytics.total_sessions)}               label={t('dashboard.totalSessions')} />
+              <StatCard value={formatAccuracy(analytics.average_accuracy)}     label={t('dashboard.avgAccuracy')} color="text-green" />
+              <StatCard value={formatDuration(analytics.total_time_seconds)}   label={t('dashboard.studyTime')}   color="text-blue" />
+              <StatCard value={String(analytics.exam_count)}                   label={t('dashboard.examsSimulated')} color="text-yellow" />
             </div>
 
             {/* Shortcuts */}
             <div>
               <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
-                Inizia ad esercitarti
+                {t('dashboard.startPractice')}
               </h2>
               <div className="grid grid-cols-3 gap-3">
                 {SHORTCUTS.map(s => (
@@ -102,10 +104,10 @@ export function Dashboard() {
             {/* Recent sessions */}
             <div>
               <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
-                Sessioni recenti
+                {t('dashboard.recentSessions')}
               </h2>
               {sessions.length === 0 ? (
-                <p className="text-subtext0 text-sm">Nessuna sessione ancora.</p>
+                <p className="text-subtext0 text-sm">{t('dashboard.noSessions')}</p>
               ) : (
                 <div className="flex flex-col gap-2">
                   {sessions.map(s => (
@@ -124,7 +126,7 @@ export function Dashboard() {
                             : '—'}
                         </span>
                         <span className="text-xs text-subtext0">
-                          {new Date(s.started_at).toLocaleDateString('it-IT')}
+                          {new Date(s.started_at).toLocaleDateString(i18n.language)}
                         </span>
                       </div>
                     </div>
@@ -133,13 +135,13 @@ export function Dashboard() {
               )}
             </div>
 
-            {/* Ultime simulazioni */}
+            {/* Recent exam runs */}
             <div>
               <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
-                Ultime simulazioni
+                {t('dashboard.recentExams')}
               </h2>
               {examRuns.length === 0 ? (
-                <p className="text-subtext0 text-sm">Nessuna simulazione ancora.</p>
+                <p className="text-subtext0 text-sm">{t('dashboard.noExams')}</p>
               ) : (
                 <div className="flex flex-col gap-2">
                   {examRuns.map(r => (
@@ -151,7 +153,7 @@ export function Dashboard() {
                         hover:border-mauve/40 hover:bg-surface0/60 transition-colors"
                     >
                       <span className="text-sm text-text">
-                        {new Date(r.started_at).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' })}
+                        {new Date(r.started_at).toLocaleDateString(i18n.language, { day: '2-digit', month: 'short', year: 'numeric' })}
                       </span>
                       <div className="flex items-center gap-4 text-sm">
                         {r.listening_score != null && (
