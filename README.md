@@ -16,8 +16,7 @@ All data stays local. AI features (writing feedback and flashcard generation) ar
 | ✍️ Writing | 20 tasks (Task 1 + Task 2) with AI band scoring and model answers |
 | 📝 Exam Simulator | Full timed simulation across all three sections |
 | 🃏 Flashcard | Spaced-repetition vocabulary trainer with AI card generation |
-| 🗂 Library | Browsable catalogue of all exercises |
-| 📊 Analytics | Weekly progress chart and accuracy breakdown |
+| 📊 Analytics | Deep progress dashboard with band estimates, trends, and coverage |
 
 ---
 
@@ -71,16 +70,18 @@ The dashboard is a snapshot, not a deep report — go to Analytics for charts an
    - **Series by type** — queue every incomplete exercise of the selected type.
    - **Random** — a shuffled queue of up to 10 incomplete exercises.
 3. The exercise opens with a **sticky audio player** at the top. Play/pause and seek freely — there's no enforced single-play rule in practice mode.
-4. Answer each question in the appropriate input. Gap-fill and form-completion questions use a text field; multiple-choice questions show radio buttons.
-5. Submit with "Controlla". Results appear immediately: each question shows correct/incorrect, your answer, and the correct answer. A **band estimate** (5, 6, 7, or 8–9) is calculated from the percentage correct.
+4. Answer each question in the appropriate input. Gap-fill and form-completion questions use a text field; multiple-choice questions show radio buttons; "Choose THREE" questions (options embedded in the question text) render as checkboxes parsed automatically from the `A=Label` inline format.
+5. Submit with "Controlla". Results appear immediately: each question shows correct/incorrect, your answer, and the correct answer. A **band estimate** (5, 6, 7, or 8–9) is calculated from the percentage correct. The results panel includes the **audio player** so you can replay the recording while reviewing.
 
-Each completed session — score, time spent, and per-question answers — is saved to the local database.
+**Answer matching** is flexible: a multiple-choice answer stored as "B – Columbian mammoth" matches the answer key "B"; True/False/Not Given and Yes/No/Not Given answers match regardless of spacing or casing; multi-select answers ("A, C, E") match any ordering of the same set.
+
+Each completed session — score, time spent, question type, and per-question answers — is saved to the local database.
 
 ---
 
 ### Reading Practice
 
-**Content:** 32 exercises covering all seven IELTS Reading question types: True/False/Not Given, matching headings, matching paragraph information, multiple choice, sentence completion, summary completion, and short answer.
+**Content:** 32 exercises covering all seven IELTS Reading question types: True/False/Not Given, Yes/No/Not Given, matching headings, matching paragraph information, multiple choice, sentence completion, summary completion, and short answer.
 
 **The interface** uses a permanent **split-pane layout**: the passage fills the left 55% of the screen; questions and answers occupy the right 45%. Both halves scroll independently, so you can read and answer without losing your place.
 
@@ -120,14 +121,14 @@ If the AI call fails (network issue, quota), a warning is shown and your text is
 
 The full simulation mode. It chains Listening, Reading, and Writing in sequence, mimicking exam conditions with timers.
 
-**Setup:** Choose which sections to include. You can run all three, or any subset (e.g. just Listening + Reading to skip the AI evaluation wait). One exercise is picked at random from the library for each section.
+**Setup:** Choose which sections to include. You can run all three, or any subset (e.g. just Listening + Reading to skip the AI evaluation wait). Exercises are picked at random from the library for each section.
 
 **During the exam:**
 
 - A header bar shows the current section and position in the sequence (e.g. "Section 2 of 3 · Reading").
-- **Listening** — a 40-minute countdown runs from the moment the exercise loads. At exactly 40:00, the app takes a **silent answer snapshot** (a yellow flash and a 📸 badge confirm it). You can keep editing answers after the snapshot. The results table later shows both the "within time" score and the final score, so you can see how much time pressure affects you.
-- **Reading** — same 60-minute timer and snapshot mechanic.
-- **Writing** — Task 1 and Task 2 are presented back to back, each with its own editor and word counter. A snapshot of each essay is taken at the standard IELTS time limits (20 min for Task 1, 40 min for Task 2).
+- **Listening** — a 40-minute countdown runs from the moment the exercise loads. At exactly 40:00, the app takes a **silent answer snapshot** (a yellow flash and a 📸 badge confirm it). You can keep editing answers after the snapshot. Exercises with a diagram or image show a **two-column layout** (image left, audio player + questions right); clicking the image opens a full-screen **lightbox**. Inline option labels (`A=Label`) in question text are stripped automatically.
+- **Reading** — same 60-minute timer and snapshot mechanic. Inline option labels are stripped from question text as in practice mode.
+- **Writing** — Task 1 and Task 2 are presented back to back, each with its own editor and word counter. A snapshot of each essay is taken at the standard IELTS time limits (20 min for Task 1, 40 min for Task 2). When Task 1 has a chart image, the layout splits into two columns: the prompt and image (clickable for lightbox) on the left, the writing editor on the right.
 
 **After the last section**, the app evaluates both writing tasks in parallel via the configured AI model. A spinner shows "AI evaluation in progress" with a "skip evaluation" escape hatch if you don't want to wait.
 
@@ -135,7 +136,7 @@ The full simulation mode. It chains Listening, Reading, and Writing in sequence,
 
 A summary table lists every section with three columns: score within the time limit, final score, and time spent. Writing rows show the AI band score. Below the table, expandable **AI feedback panels** show per-task analysis (the same strengths/improvements format as Writing Practice).
 
-The entire run is saved as an exam record, and individual sessions/submissions are also saved for Analytics.
+The entire run is saved as an exam record. Individual Listening and Reading sessions are saved with their question type, and Writing submissions are saved with their AI band score — all feeding into the Analytics dashboard.
 
 ---
 
@@ -146,6 +147,11 @@ A vocabulary trainer built on the **SM-2 spaced-repetition algorithm** — the s
 #### Adding a card
 
 A **floating 🃏 button** in the bottom-right corner is always visible, on every page. Click it to open the Add modal without navigating away.
+
+You can also **select any text** anywhere in the app (up to 4 words). A small popover appears near the selection with:
+- An editable text field pre-filled with your selection
+- A 🔊 **pronunciation button** — speaks the text aloud in British English
+- A **+ Flashcard** button — opens the Add modal with the word pre-filled
 
 Type any English word and press **Generate**. The AI produces a complete card in a few seconds:
 
@@ -165,7 +171,7 @@ For each card, the mode is randomly selected:
 - **Italian → English** (33% chance) — the Italian translation is shown; type the English word.
 - **Audio** (33% chance) — the word is spoken aloud via text-to-speech (British English accent, slightly slowed). You hear it, you type both the English spelling and the Italian translation. Click the audio area to replay the word at any time.
 
-Pressing Enter submits (in text modes). The answer is evaluated by Claude Haiku, which accepts spelling variants and synonyms — you don't have to match the exact translation stored on the card.
+Pressing **Enter** submits in all modes (including the two audio input fields). The answer is evaluated by the configured AI, which accepts spelling variants and synonyms — you don't have to match the exact translation stored on the card.
 
 **After evaluation**, the result screen shows:
 - Correct/incorrect status and a brief explanation from the AI
@@ -182,23 +188,31 @@ A scrollable list of every card in your deck. Each entry shows the English word,
 
 ---
 
-### Library
-
-A static catalogue of all exercise content, organised into four tabs: Listening, Reading, Writing Task 1, Writing Task 2. Each card shows the title (or prompt), question type, and difficulty. Listening and Reading exercises also show a green "✓ done" badge if you've completed them at least once. Clicking any entry navigates to the corresponding practice section.
-
-Useful for planning: scan Writing Task 2 essays by type (discussion, opinion, etc.) and pick the format you want to focus on before heading to the practice section.
-
----
-
 ### Analytics
 
-Progress tracking with a selectable time window (7 days, 30 days, or all time).
+Deep progress tracking with a selectable time window (7 days, 30 days, or all time).
 
-**The four stat cards** at the top mirror the Dashboard but respect the selected window — so you can compare a focused 7-day sprint against your all-time baseline.
+**Stat cards (6):** sessions completed, average accuracy, total study time, exam simulations run, days active, and current daily streak.
 
-**Weekly score chart** — a grouped bar chart (Recharts) showing estimated IELTS band scores per calendar week, one bar per section. The Y axis runs from 0 to 9. Hovering shows exact values. This makes it easy to spot a plateau or a dip after a break.
+**Estimated band — current:** a prominent card showing your current estimated IELTS band for Listening, Reading, Writing, and Overall. Bands are derived from your recent accuracy and writing AI scores using standard IELTS conversion tables. A highlight card below it calls out your weakest area.
 
-**Accuracy by question type** — a grid of stat cards, one per question type that has at least one answer recorded. Each shows the accuracy percentage, colour-coded: green (≥ 80%), yellow (≥ 60%), red (< 60%), and the total number of attempts. If you see "true_false_ng" sitting at 55%, that's the type to drill next.
+**Band trend over time:** a line chart showing how your estimated Listening and Reading bands have evolved week by week. Useful for spotting a plateau or confirming that practice is paying off.
+
+**Accuracy trend:** a second line chart showing raw accuracy (%) per week for Listening and Reading, making it easy to separate "I'm getting better" from "I'm just doing easier exercises".
+
+**Weekly sessions chart:** a grouped bar chart showing session count per calendar week by section (Listening, Reading, Writing).
+
+**Per-section cards:** one card each for Listening, Reading, and Writing, showing accuracy, number of sessions, and total time invested.
+
+**Accuracy by question type:** a table of every question type that has recorded answers, with accuracy percentage (colour-coded: green ≥ 80%, yellow ≥ 60%, red < 60%), total attempts, average time per question, and a speed trend column showing whether you're answering faster or slower in recent sessions vs. older ones. This is the most actionable view — if `matching_headings` sits at 52% and is getting slower, that's your next drill target.
+
+**Writing bands:** average AI band score for Task 1 and Task 2 separately, with attempt counts.
+
+**Exercise coverage:** progress bars showing how many exercises you've completed at least once out of the total available, per section. Useful for ensuring you're not repeatedly doing the same exercises.
+
+**Flashcard stats:** total cards in your deck, mastered cards (interval ≥ 21 days), cards due today, and overall retention rate (percentage of reviews answered correctly).
+
+All charts use dark-theme styling consistent with the Catppuccin Mocha colour palette.
 
 ---
 
@@ -214,18 +228,17 @@ src/
 ├── preload/
 │   └── index.ts         # Exposes window.api to the renderer
 └── renderer/src/
-    ├── App.tsx           # Router, sidebar, floating flashcard button
+    ├── App.tsx           # Router, sidebar, floating flashcard/chat buttons, text-selection popover
     ├── pages/            # One file per route
     │   ├── Dashboard.tsx
     │   ├── Analytics.tsx
     │   ├── ExamSimulator.tsx
     │   ├── Flashcard.tsx
-    │   ├── Library.tsx
     │   └── practice/     # Listening, Reading, Writing
     ├── components/
     │   ├── exam/         # ExamListeningSection, ExamReadingSection, ExamWritingSection
     │   ├── flashcard/    # ReviewSession, CardLibrary, AddCardModal
-    │   └── practice/     # AudioPlayer, QuestionInput, ReadingPassage, ResultsPanel, WritingEditor, WritingFeedback
+    │   └── practice/     # AudioPlayer, QuestionInput, ReadingPassage, ResultsPanel, WritingEditor, WritingFeedback, utils
     └── types/index.ts    # All shared TypeScript interfaces and the IElectronAPI contract
 ```
 
@@ -237,12 +250,14 @@ SQLite file stored in the OS user data directory (`~/Library/Application Support
 
 | Table | What it records |
 |-------|----------------|
-| `sessions` | Every completed Listening/Reading exercise: exercise ID, section, start/end timestamps, score, max score, time spent |
+| `sessions` | Every completed Listening/Reading exercise: exercise ID, section, start/end timestamps, score, max score, time spent, question type |
 | `answers` | Each question's user answer, correct answer, and correctness flag, linked to its session |
-| `writing_submissions` | Full essay text, word count, task ID and type, submission timestamp |
+| `writing_submissions` | Full essay text, word count, task ID and type, submission timestamp, AI band score |
 | `exam_runs` | Per-simulation record with timestamps and Listening/Reading/Writing scores |
 | `flashcards` | Vocabulary cards with SM-2 scheduling fields (interval, ease_factor, repetitions, next_review) |
 | `flashcard_reviews` | Every individual review with direction, user answer, quality score, and correctness |
+
+Schema migrations run automatically on startup using `ALTER TABLE … ADD COLUMN` wrapped in try/catch, so existing databases are upgraded without data loss.
 
 ---
 
@@ -266,6 +281,8 @@ AI_PROVIDER=openai     AI_MODEL=gpt-4o-mini
 | `evaluateAudioAnswer` | Flashcard audio-mode review submission | Separately judges English spelling and Italian translation |
 | `evaluateWriting` | Writing practice or exam submission | Acts as an IELTS examiner, returns band, summary, strengths, improvements, vocab |
 
+AI responses are parsed with a character-level JSON fixer that handles literal newlines and other formatting quirks common in streamed model output — all four handlers share the same `parseAiJson<T>()` utility.
+
 The API key is stored encrypted (`resources/env.enc`, AES-256) and decrypted at runtime. The build script (`scripts/encrypt-env.js`) encrypts the `.env` before packaging so the key is never shipped in plaintext.
 
 ---
@@ -275,7 +292,7 @@ The API key is stored encrypted (`resources/env.enc`, AES-256) and decrypted at 
 | Section | Exercises | Question types / formats |
 |---------|-----------|--------------------------|
 | Listening | 41 | gap fill, form completion, multiple choice, map/diagram, table |
-| Reading | 32 | T/F/NG, matching headings, matching paragraph info, multiple choice, sentence completion, summary completion, short answer |
+| Reading | 32 | T/F/NG, Y/N/NG, matching headings, matching paragraph info, multiple choice, sentence completion, summary completion, short answer |
 | Writing Task 1 | 7 | bar, line, pie, table, map, process |
 | Writing Task 2 | 13 | opinion, discussion, problem/solution, direct question, advantages/disadvantages |
 
