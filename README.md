@@ -4,6 +4,8 @@ A personal IELTS preparation desktop app. Practice Listening, Reading, and Writi
 
 All data stays local. AI features (writing feedback and flashcard generation) are powered by a configurable AI model — swap provider and model via a single `.env` change, no code edits required.
 
+The interface is fully multilingual: **English, Italian, French, and Spanish** are all built in. Switch language at any time from the sidebar — the choice is remembered across app restarts.
+
 ---
 
 ## What's inside
@@ -17,6 +19,7 @@ All data stays local. AI features (writing feedback and flashcard generation) ar
 | 📝 Exam Simulator | Full timed simulation across all three sections |
 | 🃏 Flashcard | Spaced-repetition vocabulary trainer with AI card generation |
 | 📊 Analytics | Deep progress dashboard with band estimates, trends, and coverage |
+| 💬 Chat | Persistent AI tutor chat with conversation history |
 
 ---
 
@@ -229,9 +232,13 @@ src/
 │   └── index.ts         # Exposes window.api to the renderer
 └── renderer/src/
     ├── App.tsx           # Router, sidebar, floating flashcard/chat buttons, text-selection popover
+    ├── i18n/             # Internationalisation setup
+    │   ├── index.ts      # i18next init, LANGUAGES list, setLanguage() helper
+    │   └── locales/      # it.ts, en.ts, fr.ts, es.ts — all UI strings
     ├── pages/            # One file per route
     │   ├── Dashboard.tsx
     │   ├── Analytics.tsx
+    │   ├── Chat.tsx
     │   ├── ExamSimulator.tsx
     │   ├── Flashcard.tsx
     │   └── practice/     # Listening, Reading, Writing
@@ -262,8 +269,21 @@ SQLite file stored in the OS user data directory (resolved via Electron's `app.g
 | `exam_runs` | Per-simulation record with timestamps and Listening/Reading/Writing scores |
 | `flashcards` | Vocabulary cards with SM-2 scheduling fields (interval, ease_factor, repetitions, next_review) |
 | `flashcard_reviews` | Every individual review with direction, user answer, quality score, and correctness |
+| `chats` | Named AI tutor conversations with creation and last-update timestamps |
+| `chat_messages` | Each message in a chat, with role (user/assistant), content, and timestamp |
+| `settings` | Key/value store for app preferences — currently used to persist the selected interface language |
 
 Schema migrations run automatically on startup using `ALTER TABLE … ADD COLUMN` wrapped in try/catch, so existing databases are upgraded without data loss.
+
+---
+
+## Internationalisation
+
+The entire UI is translated into four languages: **Italian (it), English (en), French (fr), Spanish (es)**.
+
+A language switcher in the sidebar lets you change language at any time. The selection is written to the `settings` table in SQLite and restored automatically on the next launch. English is the default on a fresh install.
+
+All translations live in `src/renderer/src/i18n/locales/`. Each file is a typed TypeScript `export default` object — no JSON, no missing-key surprises at compile time. i18next pluralisation (`_one` / `_other`) and interpolation (`{{variable}}`) are used where needed.
 
 ---
 
@@ -331,6 +351,7 @@ The build script encrypts the `.env` file before calling `electron-builder`, so 
 | Routing | React Router | 7 |
 | Charts | Recharts | 3 |
 | Database | better-sqlite3 | 12 |
+| Internationalisation | i18next + react-i18next | 25 / 15 |
 | AI | Vercel AI SDK (Anthropic / Google / OpenAI) | 6 |
 | Build tooling | electron-vite + electron-builder | 5 / 26 |
 | Testing | Vitest | 4 |
