@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ListeningExercise, ReadingExercise } from '../../types'
 import { filterExercises, buildInterleavedSeries } from './utils'
 
@@ -22,6 +23,7 @@ export function ExerciseList({
   error,
   onRetry,
 }: ExerciseListProps) {
+  const { t } = useTranslation()
   const [typeFilter, setTypeFilter] = useState('all')
   const [showCompleted, setShowCompleted] = useState(true)
   const [varyTypes, setVaryTypes] = useState(true)
@@ -44,7 +46,7 @@ export function ExerciseList({
       <div className="p-8 flex flex-col items-center gap-4">
         <p className="text-red">{error}</p>
         <button onClick={onRetry} className="px-4 py-2 bg-surface0 text-text rounded hover:bg-surface1 text-sm">
-          Riprova
+          {t('common.retry')}
         </button>
       </div>
     )
@@ -55,15 +57,15 @@ export function ExerciseList({
       {/* Filters row */}
       <div className="flex items-center gap-2 flex-wrap">
         <div className="flex flex-wrap gap-2 flex-1">
-          {allTypes.map(t => (
+          {allTypes.map(type => (
             <button
-              key={t}
-              onClick={() => setTypeFilter(t)}
+              key={type}
+              onClick={() => setTypeFilter(type)}
               className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                typeFilter === t ? 'bg-mauve text-base' : 'bg-surface0 text-subtext0 hover:text-text'
+                typeFilter === type ? 'bg-mauve text-base' : 'bg-surface0 text-subtext0 hover:text-text'
               }`}
             >
-              {t === 'all' ? 'Tutti' : t.replace(/_/g, ' ')}
+              {type === 'all' ? t('exerciseList.all') : type.replace(/_/g, ' ')}
             </button>
           ))}
         </div>
@@ -74,7 +76,7 @@ export function ExerciseList({
           className="px-4 py-1.5 bg-mauve text-base rounded text-sm font-medium shrink-0
             hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
-          ▶ Serie ({seriesPool.length})
+          {t('exerciseList.series')}{seriesPool.length})
         </button>
       </div>
 
@@ -82,12 +84,12 @@ export function ExerciseList({
       <div className="flex items-center gap-4">
         <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
           <input type="checkbox" checked={showCompleted} onChange={e => setShowCompleted(e.target.checked)} className="accent-mauve" />
-          Mostra già fatti
+          {t('exerciseList.showDone')}
         </label>
         {multipleTypes && (
           <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
             <input type="checkbox" checked={varyTypes} onChange={e => setVaryTypes(e.target.checked)} className="accent-mauve" />
-            Varia i tipi
+            {t('exerciseList.varyTypes')}
           </label>
         )}
       </div>
@@ -95,9 +97,9 @@ export function ExerciseList({
       {/* Exercise list */}
       {visible.length === 0 ? (
         <div className="text-center py-10 text-subtext0">
-          <p>Tutti gli esercizi completati 🎉</p>
+          <p>{t('exerciseList.allDone')}</p>
           <button onClick={() => setShowCompleted(true)} className="mt-3 text-sm text-mauve hover:underline">
-            Mostra esercizi già fatti
+            {t('exerciseList.showCompleted')}
           </button>
         </div>
       ) : (
@@ -126,7 +128,7 @@ export function ExerciseList({
                     </div>
                   </div>
                   {done && (
-                    <span className="text-xs bg-green/20 text-green px-2 py-0.5 rounded shrink-0">✓ Fatto</span>
+                    <span className="text-xs bg-green/20 text-green px-2 py-0.5 rounded shrink-0">✓ {t('exerciseList.done')}</span>
                   )}
                 </div>
               </div>

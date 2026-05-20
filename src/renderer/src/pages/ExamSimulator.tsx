@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ExamRun, AIWritingFeedback, WritingTask1, WritingTask2 } from '../types'
 import { ExamListeningSection } from '../components/exam/ExamListeningSection'
 import type { ListeningResult } from '../components/exam/ExamListeningSection'
@@ -17,8 +18,8 @@ interface AIWritingPair {
   t2: AIWritingFeedback | null
 }
 
-function fmtDate(ts: number): string {
-  return new Date(ts).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' })
+function fmtDate(ts: number, locale: string): string {
+  return new Date(ts).toLocaleDateString(locale, { day: '2-digit', month: 'short', year: 'numeric' })
 }
 
 function fmtSec(s: number): string {
@@ -39,6 +40,7 @@ function scoreRow(result: ListeningResult | ReadingResult): { snap: string; tota
 }
 
 export function ExamSimulator() {
+  const { t, i18n } = useTranslation()
   const [phase, setPhase] = useState<ExamPhase>('loading')
   const [sections, setSections] = useState({ listening: true, reading: true, writing: true })
   const [examRuns, setExamRuns] = useState<ExamRun[]>([])
@@ -218,19 +220,19 @@ export function ExamSimulator() {
   }
 
   if (phase === 'loading') {
-    return <p className="p-8 text-subtext0 text-sm text-center">Caricamento…</p>
+    return <p className="p-8 text-subtext0 text-sm text-center">{t('common.loading')}</p>
   }
 
   if (phase === 'evaluating') {
     return (
       <div className="h-full flex flex-col items-center justify-center gap-4">
         <div className="w-8 h-8 border-2 border-mauve border-t-transparent rounded-full animate-spin" />
-        <p className="text-subtext0 text-sm">Valutazione AI in corso…</p>
+        <p className="text-subtext0 text-sm">{t('exam.aiEvaluating')}</p>
         <button
           onClick={() => void saveAndShowResults(null)}
           className="text-xs text-subtext0 hover:text-text underline transition-colors mt-2"
         >
-          Salta valutazione
+          {t('exam.skipEvaluation')}
         </button>
       </div>
     )
@@ -247,10 +249,10 @@ export function ExamSimulator() {
     return (
       <div className="h-full flex flex-col overflow-hidden">
         <div className="px-6 py-2 bg-mantle border-b border-surface0 shrink-0 flex items-center gap-3">
-          <span className="text-xs font-semibold text-mauve uppercase tracking-wide">Simulazione Esame</span>
+          <span className="text-xs font-semibold text-mauve uppercase tracking-wide">{t('exam.title')}</span>
           <span className="text-xs text-subtext0">·</span>
           <span className="text-xs text-subtext0">
-            Sezione {currentIndex + 1} di {total} · {sectionLabel[section]}
+            {t('common.section')} {currentIndex + 1} {t('exam.of')} {total} · {sectionLabel[section]}
           </span>
         </div>
         <div className="flex-1 overflow-hidden">
@@ -278,18 +280,18 @@ export function ExamSimulator() {
       <div className="h-full overflow-y-auto">
         <div className="max-w-3xl mx-auto p-6 flex flex-col gap-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-text">Risultati Esame</h1>
-            <span className="text-xs text-subtext0">{fmtDate(examStartRef.current)}</span>
+            <h1 className="text-xl font-bold text-text">{t('exam.results')}</h1>
+            <span className="text-xs text-subtext0">{fmtDate(examStartRef.current, i18n.language)}</span>
           </div>
 
           {saveError && (
             <div className="bg-yellow/10 border border-yellow/30 rounded-lg px-4 py-3 text-sm text-yellow">
-              Errore nel salvataggio dei risultati.{' '}
+              {t('exam.saveError')}{' '}
               <button
                 onClick={() => { setSaveError(false); void saveAndShowResults(aiWriting) }}
                 className="underline hover:no-underline"
               >
-                Riprova salvataggio
+                {t('exam.retrySave')}
               </button>
             </div>
           )}
@@ -298,10 +300,10 @@ export function ExamSimulator() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-surface0 text-xs text-subtext0 uppercase tracking-wide">
-                  <th className="text-left px-4 py-3">Sezione</th>
-                  <th className="text-right px-4 py-3">Entro il tempo</th>
-                  <th className="text-right px-4 py-3">Totale</th>
-                  <th className="text-right px-4 py-3">Tempo</th>
+                  <th className="text-left px-4 py-3">{t('common.section')}</th>
+                  <th className="text-right px-4 py-3">{t('exam.withinTime')}</th>
+                  <th className="text-right px-4 py-3">{t('exam.total')}</th>
+                  <th className="text-right px-4 py-3">{t('exam.time')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -309,7 +311,7 @@ export function ExamSimulator() {
                   <tr className="border-b border-surface0/50">
                     <td className="px-4 py-3 text-text">
                       🎧 Listening
-                      {!listening.exercises.length && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
+                      {!listening.exercises.length && <span className="text-xs text-subtext0 ml-1">{t('exam.skipped')}</span>}
                     </td>
                     <td className="px-4 py-3 text-right text-subtext0">{listenRow.snap}</td>
                     <td className="px-4 py-3 text-right font-medium text-green">{listenRow.total}</td>
@@ -320,7 +322,7 @@ export function ExamSimulator() {
                   <tr className="border-b border-surface0/50">
                     <td className="px-4 py-3 text-text">
                       📖 Reading
-                      {!reading.exercises.length && <span className="text-xs text-subtext0 ml-1">(saltata)</span>}
+                      {!reading.exercises.length && <span className="text-xs text-subtext0 ml-1">{t('exam.skipped')}</span>}
                     </td>
                     <td className="px-4 py-3 text-right text-subtext0">{readRow.snap}</td>
                     <td className="px-4 py-3 text-right font-medium text-green">{readRow.total}</td>
@@ -332,20 +334,20 @@ export function ExamSimulator() {
                     <tr className="border-b border-surface0/50">
                       <td className="px-4 py-3 text-text">✍️ Writing T1</td>
                       <td className="px-4 py-3 text-right text-subtext0">
-                        {writing.t1.snapshotText ? `${countWords(writing.t1.snapshotText)} parole` : '—'}
+                        {writing.t1.snapshotText ? `${countWords(writing.t1.snapshotText)} ${t('exam.words')}` : '—'}
                       </td>
                       <td className="px-4 py-3 text-right font-medium text-blue">
-                        {aiWriting?.t1 ? `Band ${aiWriting.t1.band}` : 'N/D'}
+                        {aiWriting?.t1 ? `${t('common.band')} ${aiWriting.t1.band}` : t('exam.na')}
                       </td>
                       <td className="px-4 py-3 text-right text-subtext0">{fmtSec(writing.t1.elapsedSeconds)}</td>
                     </tr>
                     <tr>
                       <td className="px-4 py-3 text-text">✍️ Writing T2</td>
                       <td className="px-4 py-3 text-right text-subtext0">
-                        {writing.t2.snapshotText ? `${countWords(writing.t2.snapshotText)} parole` : '—'}
+                        {writing.t2.snapshotText ? `${countWords(writing.t2.snapshotText)} ${t('exam.words')}` : '—'}
                       </td>
                       <td className="px-4 py-3 text-right font-medium text-blue">
-                        {aiWriting?.t2 ? `Band ${aiWriting.t2.band}` : 'N/D'}
+                        {aiWriting?.t2 ? `${t('common.band')} ${aiWriting.t2.band}` : t('exam.na')}
                       </td>
                       <td className="px-4 py-3 text-right text-subtext0">{fmtSec(writing.t2.elapsedSeconds)}</td>
                     </tr>
@@ -363,13 +365,13 @@ export function ExamSimulator() {
               ] as { label: string; fb: AIWritingFeedback | null }[]).map(({ label, fb }) => fb && (
                 <details key={label} className="bg-surface0/20 border border-surface0 rounded-xl">
                   <summary className="px-4 py-3 cursor-pointer text-sm font-medium text-text select-none">
-                    Feedback AI — {label} · Band {fb.band}
+                    {t('exam.aiFeedback')} {label} · {t('common.band')} {fb.band}
                   </summary>
                   <div className="px-4 pb-4 flex flex-col gap-3 text-sm">
                     <p className="text-subtext0">{fb.overall}</p>
                     {fb.strengths.length > 0 && (
                       <div>
-                        <p className="text-green text-xs font-semibold uppercase tracking-wide mb-1">Punti di forza</p>
+                        <p className="text-green text-xs font-semibold uppercase tracking-wide mb-1">{t('exam.strengths')}</p>
                         <ul className="flex flex-col gap-1">
                           {fb.strengths.map((s, i) => <li key={i} className="text-text">• {s}</li>)}
                         </ul>
@@ -377,7 +379,7 @@ export function ExamSimulator() {
                     )}
                     {fb.improvements.length > 0 && (
                       <div>
-                        <p className="text-yellow text-xs font-semibold uppercase tracking-wide mb-1">Miglioramenti</p>
+                        <p className="text-yellow text-xs font-semibold uppercase tracking-wide mb-1">{t('exam.improvements')}</p>
                         <ul className="flex flex-col gap-1">
                           {fb.improvements.map((s, i) => <li key={i} className="text-text">• {s}</li>)}
                         </ul>
@@ -394,7 +396,7 @@ export function ExamSimulator() {
               onClick={() => { load(); setPhase('loading') }}
               className="px-5 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
             >
-              Nuovo esame ▶
+              {t('exam.newExam')}
             </button>
           </div>
         </div>
@@ -405,9 +407,9 @@ export function ExamSimulator() {
   // SETUP phase
   const anySelected = sections.listening || sections.reading || sections.writing
   const SECTION_META: Record<SectionType, string> = {
-    listening: '~40 min · esercizio random',
-    reading: '~60 min · esercizio random',
-    writing: 'Task 1 + Task 2 · valutazione AI',
+    listening: t('exam.listening40min'),
+    reading: t('exam.reading60min'),
+    writing: t('exam.writingBothTasks'),
   }
   const SECTION_LABELS: Record<SectionType, string> = {
     listening: '🎧 Listening',
@@ -419,10 +421,8 @@ export function ExamSimulator() {
     <div className="h-full overflow-y-auto">
       <div className="max-w-2xl mx-auto p-6 flex flex-col gap-6">
         <div>
-          <h1 className="text-xl font-bold text-text">Simulazione Esame</h1>
-          <p className="text-sm text-subtext0 mt-1">
-            Seleziona le sezioni da includere. Un esercizio verrà scelto automaticamente per ciascuna.
-          </p>
+          <h1 className="text-xl font-bold text-text">{t('exam.title')}</h1>
+          <p className="text-sm text-subtext0 mt-1">{t('exam.setupDesc')}</p>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -454,21 +454,21 @@ export function ExamSimulator() {
             className="px-5 py-2 bg-mauve text-base rounded text-sm font-medium
               hover:bg-mauve/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            Inizia esame ▶
+            {t('exam.startExam')}
           </button>
         </div>
 
         {examRuns.length > 0 && (
           <div>
             <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
-              Ultime simulazioni
+              {t('exam.recentSimulations')}
             </h2>
             <div className="flex flex-col gap-2">
               {examRuns.map(r => (
                 <div key={r.id}
                   className="flex items-center justify-between px-4 py-3
                     bg-surface0/30 border border-surface0 rounded-lg">
-                  <span className="text-sm text-text">{fmtDate(r.started_at)}</span>
+                  <span className="text-sm text-text">{fmtDate(r.started_at, i18n.language)}</span>
                   <div className="flex items-center gap-4 text-sm">
                     {r.listening_score != null && (
                       <span className="text-green">🎧 {Math.round(r.listening_score * 100)}%</span>

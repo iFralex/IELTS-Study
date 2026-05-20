@@ -30,6 +30,8 @@ contextBridge.exposeInMainWorld('api', {
   evaluateWriting: (taskType: string, userText: string, prompt: string, wordCount: number) =>
     ipcRenderer.invoke('evaluate-writing', taskType, userText, prompt, wordCount),
   resetAllData:       () => ipcRenderer.invoke('reset-all-data'),
+  getSetting:         (key: string) => ipcRenderer.invoke('get-setting', key),
+  setSetting:         (key: string, value: string) => ipcRenderer.invoke('set-setting', key, value),
   chatMessage:        (messages: { role: string; content: string }[]) => ipcRenderer.invoke('chat-message', messages),
   getChats:           () => ipcRenderer.invoke('get-chats'),
   createChat:         (name: string) => ipcRenderer.invoke('create-chat', name),

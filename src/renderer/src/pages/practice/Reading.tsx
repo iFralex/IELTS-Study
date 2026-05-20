@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ReadingExercise } from '../../types'
 import { ExerciseList } from '../../components/practice/ExerciseList'
 import { ReadingPassage } from '../../components/practice/ReadingPassage'
@@ -16,6 +17,7 @@ interface Queue {
 }
 
 export function Reading() {
+  const { t } = useTranslation()
   const [phase, setPhase] = useState<Phase>('selecting')
   const [exercises, setExercises] = useState<ReadingExercise[]>([])
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
@@ -34,7 +36,7 @@ export function Reading() {
         setExercises(exs)
         setCompletedIds(new Set(ids))
       })
-      .catch(() => setLoadError('Errore nel caricamento degli esercizi.'))
+      .catch(() => setLoadError(t('practice.loadError')))
   }
 
   useEffect(() => { load() }, [])
@@ -109,8 +111,8 @@ export function Reading() {
     return (
       <div className="h-full flex flex-col">
         <div className="px-6 py-4 border-b border-surface0 shrink-0">
-          <h1 className="text-xl font-bold text-text">Reading Practice</h1>
-          <p className="text-sm text-subtext0 mt-0.5">{exercises.length} esercizi disponibili</p>
+          <h1 className="text-xl font-bold text-text">{t('practice.readingTitle')}</h1>
+          <p className="text-sm text-subtext0 mt-0.5">{exercises.length} {t('practice.availableExercises')}</p>
         </div>
         <div className="flex-1 overflow-y-auto">
           <ExerciseList
@@ -147,7 +149,7 @@ export function Reading() {
                   <label className="text-sm text-text font-medium leading-snug">
                     {q.index + 1}.{' '}
                     {currentExercise.question_type === 'matching_headings' && q.paragraph
-                      ? `Paragraph ${q.paragraph}: `
+                      ? `${t('common.paragraph')} ${q.paragraph}: `
                       : ''}
                     {q.text}
                   </label>
@@ -167,13 +169,13 @@ export function Reading() {
               onClick={handleBack}
               className="text-sm text-subtext0 hover:text-text transition-colors"
             >
-              ← Abbandona
+              ← {t('practice.abandon')}
             </button>
             <button
               onClick={handleSubmit}
               className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm hover:bg-mauve/90 transition-colors"
             >
-              Controlla
+              {t('practice.check')}
             </button>
           </div>
         </div>
@@ -194,7 +196,7 @@ export function Reading() {
       <div className="w-[45%] h-full overflow-y-auto">
         {saveError && (
           <div className="mx-4 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-            ⚠ Sessione non salvata — nessuna connessione al database.
+            ⚠ {t('practice.saveError')}
           </div>
         )}
         <ResultsPanel

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ListeningExercise } from '../../types'
 import { AudioPlayer } from '../practice/AudioPlayer'
 import { QuestionInput } from '../practice/QuestionInput'
@@ -41,6 +42,7 @@ function stripInlineOptions(text: string): string {
 }
 
 export function ExamListeningSection({ onComplete }: Props) {
+  const { t } = useTranslation()
   const [exercises, setExercises] = useState<ListeningExercise[]>([])
   const [loadError, setLoadError] = useState(false)
   const [answers, setAnswers] = useState<Record<string, string>>({})
@@ -92,15 +94,15 @@ export function ExamListeningSection({ onComplete }: Props) {
   if (loadError) {
     return (
       <div className="flex flex-col items-center gap-4 p-8">
-        <p className="text-red text-sm">Errore nel caricamento degli esercizi Listening.</p>
-        <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1 transition-colors">Riprova</button>
-        <button onClick={handleSkip} className="text-subtext0 text-sm underline">Salta sezione</button>
+        <p className="text-red text-sm">{t('examListening.loadError')}</p>
+        <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1 transition-colors">{t('common.retry')}</button>
+        <button onClick={handleSkip} className="text-subtext0 text-sm underline">{t('examListening.skipLink')}</button>
       </div>
     )
   }
 
   if (!exercises.length) {
-    return <p className="p-8 text-subtext0 text-sm text-center">Caricamento esercizi…</p>
+    return <p className="p-8 text-subtext0 text-sm text-center">{t('examListening.loading')}</p>
   }
 
   const totalQuestions = exercises.reduce((s, ex) => s + ex.questions.length, 0)
@@ -118,13 +120,13 @@ export function ExamListeningSection({ onComplete }: Props) {
         {/* Timer bar */}
         <div className={`px-6 py-2 border-b border-surface0 flex items-center justify-between shrink-0 transition-colors duration-500 ${snapshotFlash ? 'bg-yellow/20' : 'bg-surface0/50'}`}>
           <span className="text-xs text-subtext0">
-            {exercises.length} eserciz{exercises.length === 1 ? 'io' : 'i'} · {totalQuestions} domande
+            {exercises.length} {t(exercises.length === 1 ? 'examListening.exercise_one' : 'examListening.exercise_other')} · {totalQuestions} {t(totalQuestions === 1 ? 'examListening.question_one' : 'examListening.question_other')}
           </span>
           <div className="flex items-center gap-3 shrink-0">
             <span className="text-sm font-mono font-semibold text-text">{fmtSec(elapsed)}</span>
             {snapshotTaken
-              ? <span className={`text-xs text-yellow px-2 py-0.5 rounded-full transition-colors ${snapshotFlash ? 'bg-yellow/30' : 'bg-yellow/10'}`}>📸 snapshot a 40:00</span>
-              : <span className="text-xs text-subtext0">/ 40:00 target</span>}
+              ? <span className={`text-xs text-yellow px-2 py-0.5 rounded-full transition-colors ${snapshotFlash ? 'bg-yellow/30' : 'bg-yellow/10'}`}>{t('examListening.snapshot')}</span>
+              : <span className="text-xs text-subtext0">{t('examListening.targetTime')}</span>}
           </div>
         </div>
 
@@ -134,7 +136,7 @@ export function ExamListeningSection({ onComplete }: Props) {
             <div key={ex.id} className={`${ei > 0 ? 'border-t-2 border-surface1' : ''}`}>
               {/* Section header */}
               <div className="px-6 py-2 bg-surface0/40 border-b border-surface0 flex items-center gap-2">
-                <span className="text-xs font-semibold text-mauve">Sezione {ei + 1}</span>
+                <span className="text-xs font-semibold text-mauve">{t('common.section')} {ei + 1}</span>
                 <span className="text-xs text-subtext0">{ex.title}</span>
                 <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded ml-auto">
                   {ex.question_type.replace(/_/g, ' ')}
@@ -207,10 +209,10 @@ export function ExamListeningSection({ onComplete }: Props) {
         {/* Navigation */}
         <div className="px-6 py-4 border-t border-surface0 flex justify-between shrink-0">
           <button onClick={handleSkip} className="px-4 py-2 bg-surface0 text-subtext0 rounded text-sm hover:text-text transition-colors">
-            Salta sezione →
+            {t('examListening.skipSection')}
           </button>
           <button onClick={handleComplete} className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
-            Sezione successiva ▶
+            {t('examListening.nextSection')}
           </button>
         </div>
       </div>

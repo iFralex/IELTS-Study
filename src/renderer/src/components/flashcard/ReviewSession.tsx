@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { Flashcard, AIEvalResult, AIAudioEvalResult, ReviewInput } from '../../types'
 import { pickMode, computeQualityFromDual } from './flashcardUtils'
 import type { ReviewMode } from './flashcardUtils'
@@ -20,6 +21,7 @@ function speak(word: string) {
 }
 
 export function ReviewSession() {
+  const { t } = useTranslation()
   const [phase, setPhase] = useState<Phase>('loading')
   const [cards, setCards] = useState<Flashcard[]>([])
   const [index, setIndex] = useState(0)
@@ -130,7 +132,7 @@ export function ReviewSession() {
   if (phase === 'loading') {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-subtext0 text-sm animate-pulse">Caricamento…</p>
+        <p className="text-subtext0 text-sm animate-pulse">{t('common.loading')}</p>
       </div>
     )
   }
@@ -138,9 +140,9 @@ export function ReviewSession() {
   if (phase === 'error') {
     return (
       <div className="flex flex-col items-center gap-4 pt-10">
-        <p className="text-red text-sm">Errore nel caricamento delle card.</p>
+        <p className="text-red text-sm">{t('reviewSession.loadError')}</p>
         <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1">
-          Riprova
+          {t('common.retry')}
         </button>
       </div>
     )
@@ -149,7 +151,7 @@ export function ReviewSession() {
   if (phase === 'idle') {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-subtext0 text-sm">Nessuna card da ripassare oggi 🎉</p>
+        <p className="text-subtext0 text-sm">{t('reviewSession.noDueCards')}</p>
       </div>
     )
   }
@@ -158,12 +160,12 @@ export function ReviewSession() {
     return (
       <div className="flex flex-col items-center justify-center h-full gap-3">
         <p className="text-3xl">🎉</p>
-        <p className="text-text font-medium">{cards.length} card ripassate!</p>
+        <p className="text-text font-medium">{t('reviewSession.cardsReviewed', { count: cards.length })}</p>
         <button
           onClick={load}
           className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
         >
-          Ricarica
+          {t('reviewSession.reload')}
         </button>
       </div>
     )
@@ -196,26 +198,26 @@ export function ReviewSession() {
               border border-blue/30 rounded-xl cursor-pointer hover:border-blue/60 transition-colors mb-4"
           >
             <span className="text-4xl">🔊</span>
-            <span className="text-sm text-blue font-medium">Clicca per risentire</span>
-            <span className="text-xs text-subtext0">Scrivi la parola che senti</span>
+            <span className="text-sm text-blue font-medium">{t('reviewSession.clickToHear')}</span>
+            <span className="text-xs text-subtext0">{t('reviewSession.writeWhatYouHear')}</span>
           </div>
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 bg-surface0/30 border border-surface0 rounded-xl mb-4">
             <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
-              {mode === 'text-en-it' ? '🔤 en → it' : '🔤 it → en'}
+              {mode === 'text-en-it' ? t('reviewSession.enToIt') : t('reviewSession.itToEn')}
             </span>
             <span className="text-3xl font-bold text-text">
               {mode === 'text-en-it' ? card.english : card.italian}
             </span>
             <span className="text-xs text-subtext0">
-              {mode === 'text-en-it' ? 'Scrivi la traduzione italiana' : 'Scrivi la traduzione inglese'}
+              {mode === 'text-en-it' ? t('reviewSession.writeItalianTranslation') : t('reviewSession.writeEnglishTranslation')}
             </span>
             <button
               onClick={() => speak(card.english)}
               className="flex items-center gap-1.5 text-xs text-blue bg-surface0 px-3 py-1
                 rounded-full hover:bg-surface1 transition-colors"
             >
-              🔊 Ascolta pronuncia
+              {t('reviewSession.listenPronunciation')}
             </button>
           </div>
         )}
@@ -223,27 +225,27 @@ export function ReviewSession() {
         {mode === 'audio' ? (
           <div className="flex gap-3 mb-3 shrink-0">
             <div className="flex-1">
-              <label className="text-xs text-subtext0 mb-1 block">Parola inglese</label>
+              <label className="text-xs text-subtext0 mb-1 block">{t('reviewSession.englishWord')}</label>
               <input
                 type="text"
                 value={audioEnInput}
                 onChange={e => setAudioEnInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter' && canSubmit && phase === 'reviewing') handleSubmit() }}
                 disabled={phase === 'evaluating'}
-                placeholder="Spelling..."
+                placeholder={t('reviewSession.spellingPlaceholder')}
                 className="w-full bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text
                   placeholder:text-subtext0 outline-none focus:border-mauve transition-colors disabled:opacity-50"
               />
             </div>
             <div className="flex-1">
-              <label className="text-xs text-subtext0 mb-1 block">Traduzione italiana</label>
+              <label className="text-xs text-subtext0 mb-1 block">{t('reviewSession.italianLabel')}</label>
               <input
                 type="text"
                 value={audioItInput}
                 onChange={e => setAudioItInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter' && canSubmit && phase === 'reviewing') handleSubmit() }}
                 disabled={phase === 'evaluating'}
-                placeholder="Traduzione..."
+                placeholder={t('reviewSession.italianPlaceholder')}
                 className="w-full bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text
                   placeholder:text-subtext0 outline-none focus:border-mauve transition-colors disabled:opacity-50"
               />
@@ -257,7 +259,7 @@ export function ReviewSession() {
               onChange={e => setTextInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter' && canSubmit && phase === 'reviewing') handleSubmit() }}
               disabled={phase === 'evaluating'}
-              placeholder={mode === 'text-en-it' ? 'Traduzione italiana...' : 'English translation...'}
+              placeholder={mode === 'text-en-it' ? t('reviewSession.italianPlaceholder') : t('reviewSession.englishPlaceholder')}
               autoFocus
               className="w-full bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text
                 placeholder:text-subtext0 outline-none focus:border-mauve transition-colors disabled:opacity-50"
@@ -267,7 +269,7 @@ export function ReviewSession() {
 
         <div className="flex justify-end shrink-0">
           {phase === 'evaluating' ? (
-            <span className="text-sm text-subtext0 animate-pulse">Valutazione in corso…</span>
+            <span className="text-sm text-subtext0 animate-pulse">{t('reviewSession.evaluating')}</span>
           ) : (
             <button
               onClick={handleSubmit}
@@ -275,7 +277,7 @@ export function ReviewSession() {
               className="px-5 py-2 bg-mauve text-base rounded-lg text-sm font-medium
                 hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
-              Valuta ▶
+              {t('reviewSession.evaluate')}
             </button>
           )}
         </div>
@@ -300,12 +302,12 @@ export function ReviewSession() {
 
       {evalState.aiError && (
         <div className="mb-3 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-xs shrink-0">
-          ⚠ Valutazione AI non disponibile
+          {t('reviewSession.aiUnavailable')}
         </div>
       )}
       {saveError && (
         <div className="mb-3 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-xs shrink-0">
-          ⚠ Salvataggio non riuscito
+          {t('reviewSession.saveError')}
         </div>
       )}
 
@@ -321,7 +323,7 @@ export function ReviewSession() {
               <span className={`text-xs px-2 py-0.5 rounded ${
                 evalState.textResult.is_correct ? 'bg-green/20 text-green' : 'bg-red/20 text-red'
               }`}>
-                {evalState.textResult.is_correct ? '✓ Corretto' : '✗ Sbagliato'}
+                {evalState.textResult.is_correct ? t('reviewSession.correct') : t('reviewSession.wrong')}
               </span>
             </div>
             <p className="text-xs text-subtext0 mb-3">{evalState.textResult.explanation}</p>
@@ -331,7 +333,7 @@ export function ReviewSession() {
         {evalState.audioResult && (
           <>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs text-subtext0 w-20 shrink-0">Spelling:</span>
+              <span className="text-xs text-subtext0 w-20 shrink-0">{t('reviewSession.spellingLabel')}</span>
               <span className="text-sm font-medium text-text">{card.english}</span>
               <span className={`text-xs px-2 py-0.5 rounded ${
                 evalState.audioResult.english_correct ? 'bg-green/20 text-green' : 'bg-red/20 text-red'
@@ -341,7 +343,7 @@ export function ReviewSession() {
             </div>
             <p className="text-xs text-subtext0 mb-2">{evalState.audioResult.english_explanation}</p>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs text-subtext0 w-20 shrink-0">Traduzione:</span>
+              <span className="text-xs text-subtext0 w-20 shrink-0">{t('reviewSession.translationLabel')}</span>
               <span className="text-sm font-medium text-text">{card.italian}</span>
               <span className={`text-xs px-2 py-0.5 rounded ${
                 evalState.audioResult.italian_correct ? 'bg-green/20 text-green' : 'bg-red/20 text-red'
@@ -361,7 +363,7 @@ export function ReviewSession() {
 
         {synonymsEn.length > 0 && (
           <>
-            <p className="text-xs text-subtext0 uppercase tracking-wider mb-1.5">Sinonimi EN</p>
+            <p className="text-xs text-subtext0 uppercase tracking-wider mb-1.5">{t('reviewSession.synonymsEn')}</p>
             <div className="flex flex-wrap gap-1.5 mb-3">
               {synonymsEn.map(s => (
                 <span key={s} className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded-full">{s}</span>
@@ -371,7 +373,7 @@ export function ReviewSession() {
         )}
         {synonymsIt.length > 0 && (
           <>
-            <p className="text-xs text-subtext0 uppercase tracking-wider mb-1.5">Sinonimi IT</p>
+            <p className="text-xs text-subtext0 uppercase tracking-wider mb-1.5">{t('reviewSession.synonymsIt')}</p>
             <div className="flex flex-wrap gap-1.5 mb-3">
               {synonymsIt.map(s => (
                 <span key={s} className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded-full">{s}</span>
@@ -383,7 +385,7 @@ export function ReviewSession() {
         {examplesEn.length > 0 && (
           <>
             <div className="h-px bg-surface0 mb-3" />
-            <p className="text-xs text-subtext0 uppercase tracking-wider mb-2">Esempi</p>
+            <p className="text-xs text-subtext0 uppercase tracking-wider mb-2">{t('reviewSession.examples')}</p>
             {examplesEn.map((ex, i) => (
               <div key={i} className="mb-2">
                 <p className="text-xs text-text">{ex}</p>
@@ -399,7 +401,7 @@ export function ReviewSession() {
           onClick={handleNext}
           className="px-5 py-2 bg-surface0 text-text rounded-lg text-sm hover:bg-surface1 transition-colors"
         >
-          {index + 1 < cards.length ? 'Avanti →' : 'Fine ✓'}
+          {index + 1 < cards.length ? t('common.next') : t('common.finish')}
         </button>
       </div>
     </div>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { Flashcard } from '../../types'
 
 interface Props { onStartReview: () => void }
 
 export function CardLibrary({ onStartReview }: Props) {
+  const { t } = useTranslation()
   const [cards, setCards] = useState<Flashcard[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -15,7 +17,7 @@ export function CardLibrary({ onStartReview }: Props) {
     setLoading(true)
     window.api.getFlashcards()
       .then(setCards)
-      .catch(() => setError('Errore nel caricamento delle card.'))
+      .catch(() => setError(t('reviewSession.loadError')))
       .finally(() => setLoading(false))
   }
 
@@ -29,7 +31,7 @@ export function CardLibrary({ onStartReview }: Props) {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-subtext0 text-sm animate-pulse">Caricamento…</p>
+        <p className="text-subtext0 text-sm animate-pulse">{t('common.loading')}</p>
       </div>
     )
   }
@@ -39,7 +41,7 @@ export function CardLibrary({ onStartReview }: Props) {
       <div className="flex flex-col items-center gap-4 pt-10">
         <p className="text-red text-sm">{error}</p>
         <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1">
-          Riprova
+          {t('common.retry')}
         </button>
       </div>
     )
@@ -52,8 +54,8 @@ export function CardLibrary({ onStartReview }: Props) {
     <div className="h-full flex flex-col p-6">
       <div className="flex items-center justify-between mb-4 shrink-0">
         <span className="text-sm text-subtext0">
-          {cards.length} card
-          {dueCount > 0 && <span className="text-yellow"> · {dueCount} in scadenza</span>}
+          {cards.length} {t('cardLibrary.card', { count: cards.length })}
+          {dueCount > 0 && <span className="text-yellow"> · {dueCount} {t('cardLibrary.due')}</span>}
         </span>
         <button
           onClick={onStartReview}
@@ -61,13 +63,13 @@ export function CardLibrary({ onStartReview }: Props) {
           className="px-4 py-1.5 bg-mauve text-base rounded text-sm font-medium
             hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
-          Inizia ripasso ▶
+          {t('cardLibrary.startReview')}
         </button>
       </div>
 
       {cards.length === 0 ? (
         <p className="text-subtext0 text-sm text-center pt-10">
-          Aggiungi la tua prima parola con il bottone 🃏
+          {t('cardLibrary.addFirst')}
         </p>
       ) : (
         <div className="flex-1 overflow-y-auto flex flex-col gap-2">
@@ -88,8 +90,8 @@ export function CardLibrary({ onStartReview }: Props) {
                 </div>
                 <div className="flex items-center gap-2 shrink-0 ml-3">
                   {due
-                    ? <span className="text-xs bg-yellow/20 text-yellow px-2 py-0.5 rounded">oggi</span>
-                    : <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">inter. {card.interval}</span>
+                    ? <span className="text-xs bg-yellow/20 text-yellow px-2 py-0.5 rounded">{t('cardLibrary.today')}</span>
+                    : <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">{t('cardLibrary.interval')} {card.interval}</span>
                   }
                   {confirmDeleteId === card.id ? (
                     <div className="flex items-center gap-1">
@@ -97,20 +99,20 @@ export function CardLibrary({ onStartReview }: Props) {
                         onClick={() => { void handleDelete(card.id); setConfirmDeleteId(null) }}
                         className="text-xs text-red hover:text-red/80 transition-colors px-1"
                       >
-                        Elimina
+                        {t('common.delete')}
                       </button>
                       <button
                         onClick={() => setConfirmDeleteId(null)}
                         className="text-xs text-subtext0 hover:text-text transition-colors px-1"
                       >
-                        Annulla
+                        {t('common.cancel')}
                       </button>
                     </div>
                   ) : (
                     <button
                       onClick={() => setConfirmDeleteId(card.id)}
                       className="text-subtext0 hover:text-red transition-colors text-sm px-1"
-                      title="Elimina"
+                      title={t('common.delete')}
                     >
                       🗑
                     </button>

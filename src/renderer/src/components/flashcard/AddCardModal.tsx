@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { AIFlashcardData, FlashcardInput } from '../../types'
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 type Phase = 'input' | 'loading' | 'preview' | 'saving'
 
 export function AddCardModal({ onClose, initialWord, initialData }: Props) {
+  const { t } = useTranslation()
   const [phase, setPhase] = useState<Phase>(
     initialData ? 'preview' : initialWord ? 'loading' : 'input'
   )
@@ -36,7 +38,7 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
       setData(result)
       setPhase('preview')
     } catch {
-      setError('Errore nella generazione. Riprova.')
+      setError(t('addCardModal.generateError'))
       setPhase('input')
     }
   }
@@ -55,25 +57,25 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
       await window.api.saveFlashcard(card)
       onClose()
     } catch {
-      setError('Errore nel salvataggio.')
+      setError(t('addCardModal.saveError'))
       setPhase('preview')
     }
   }
 
   const fields: { label: string; key: keyof AIFlashcardData; multiline?: boolean }[] = [
-    { label: 'Inglese', key: 'english' },
-    { label: 'Italiano', key: 'italian' },
-    { label: 'Sinonimi EN', key: 'synonyms_en' },
-    { label: 'Sinonimi IT', key: 'synonyms_it' },
-    { label: 'Esempi EN', key: 'examples_en', multiline: true },
-    { label: 'Esempi IT', key: 'examples_it', multiline: true },
+    { label: t('addCardModal.english'), key: 'english' },
+    { label: t('addCardModal.italian'), key: 'italian' },
+    { label: t('addCardModal.synonymsEn'), key: 'synonyms_en' },
+    { label: t('addCardModal.synonymsIt'), key: 'synonyms_it' },
+    { label: t('addCardModal.examplesEn'), key: 'examples_en', multiline: true },
+    { label: t('addCardModal.examplesIt'), key: 'examples_it', multiline: true },
   ]
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-base/80 backdrop-blur-sm">
       <div className="bg-mantle border border-surface0 rounded-xl p-6 w-full max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-text">Aggiungi flashcard</h2>
+          <h2 className="text-lg font-bold text-text">{t('addCardModal.title')}</h2>
           <button
             onClick={onClose}
             className="text-subtext0 hover:text-text transition-colors text-xl leading-none"
@@ -90,7 +92,7 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
               value={word}
               onChange={e => setWord(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleGenerate()}
-              placeholder="Parola inglese..."
+              placeholder={t('addCardModal.englishPlaceholder')}
               autoFocus
               className="bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text
                 placeholder:text-subtext0 outline-none focus:border-mauve transition-colors"
@@ -101,13 +103,13 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
               className="px-4 py-2 bg-mauve text-base rounded-lg text-sm font-medium
                 hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
-              Genera ✨
+              {t('addCardModal.generate')}
             </button>
           </div>
         )}
 
         {phase === 'loading' && (
-          <p className="text-sm text-subtext0 animate-pulse text-center py-6">Generazione in corso…</p>
+          <p className="text-sm text-subtext0 animate-pulse text-center py-6">{t('addCardModal.generating')}</p>
         )}
 
         {(phase === 'preview' || phase === 'saving') && (
@@ -140,7 +142,7 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
                 onClick={onClose}
                 className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded-lg text-sm transition-colors"
               >
-                Annulla
+                {t('common.cancel')}
               </button>
               <button
                 onClick={handleSave}
@@ -148,7 +150,7 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
                 className="px-4 py-2 bg-mauve text-base rounded-lg text-sm font-medium
                   hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
-                {phase === 'saving' ? 'Salvataggio…' : 'Salva'}
+                {phase === 'saving' ? t('common.saving') : t('common.save')}
               </button>
             </div>
           </div>

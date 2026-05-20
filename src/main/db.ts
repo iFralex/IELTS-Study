@@ -79,6 +79,12 @@ export function migrateDb(db: Database.Database): void {
       created_at INTEGER NOT NULL
     );
   `)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS settings (
+      key   TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    );
+  `)
   try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_en TEXT') } catch {}
   try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_it TEXT') } catch {}
   try { db.exec('ALTER TABLE sessions ADD COLUMN question_type TEXT') } catch {}

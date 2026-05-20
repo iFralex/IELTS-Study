@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import type { Question } from '../../types'
 
 interface QuestionInputProps {
@@ -17,6 +18,7 @@ export function QuestionInput({
   disabled = false,
   paragraphLabels = [],
 }: QuestionInputProps) {
+  const { t } = useTranslation()
   const inputClass = `bg-surface0 text-text border border-surface1 rounded px-2 py-1 text-sm
     focus:outline-none focus:border-mauve disabled:opacity-60`
 
@@ -36,7 +38,7 @@ export function QuestionInput({
         value={value}
         onChange={e => onChange(e.target.value)}
         disabled={disabled}
-        placeholder="Your answer…"
+        placeholder={t('questionInput.yourAnswer')}
       />
     )
   }
@@ -150,7 +152,7 @@ export function QuestionInput({
         onChange={e => onChange(e.target.value)}
         disabled={disabled}
       >
-        <option value="">— Select heading —</option>
+        <option value="">{t('questionInput.selectHeading')}</option>
         {options.map(opt => (
           <option key={opt} value={opt}>{opt}</option>
         ))}
@@ -166,7 +168,7 @@ export function QuestionInput({
         onChange={e => onChange(e.target.value)}
         disabled={disabled}
       >
-        <option value="">— Paragraph —</option>
+        <option value="">{t('questionInput.selectParagraph')}</option>
         {paragraphLabels.map(label => (
           <option key={label} value={label}>{label}</option>
         ))}

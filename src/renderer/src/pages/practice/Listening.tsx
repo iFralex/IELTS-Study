@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ListeningExercise } from '../../types'
 import { ExerciseList } from '../../components/practice/ExerciseList'
 import { AudioPlayer } from '../../components/practice/AudioPlayer'
@@ -17,6 +18,7 @@ interface Queue {
 }
 
 export function Listening() {
+  const { t } = useTranslation()
   const [phase, setPhase] = useState<Phase>('selecting')
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const [exercises, setExercises] = useState<ListeningExercise[]>([])
@@ -35,7 +37,7 @@ export function Listening() {
         setExercises(exs)
         setCompletedIds(new Set(ids))
       })
-      .catch(() => setLoadError('Errore nel caricamento degli esercizi.'))
+      .catch(() => setLoadError(t('practice.loadError')))
   }
 
   useEffect(() => { load() }, [])
@@ -105,8 +107,8 @@ export function Listening() {
     return (
       <div className="h-full flex flex-col">
         <div className="px-6 py-4 border-b border-surface0 shrink-0">
-          <h1 className="text-xl font-bold text-text">Listening Practice</h1>
-          <p className="text-sm text-subtext0 mt-0.5">{exercises.length} esercizi disponibili</p>
+          <h1 className="text-xl font-bold text-text">{t('practice.listeningTitle')}</h1>
+          <p className="text-sm text-subtext0 mt-0.5">{exercises.length} {t('practice.availableExercises')}</p>
         </div>
         <div className="flex-1 overflow-y-auto">
           <ExerciseList
@@ -147,13 +149,13 @@ export function Listening() {
     const footer = (
       <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-between">
         <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
-          ← Abbandona
+          ← {t('practice.abandon')}
         </button>
         <button
           onClick={handleSubmit}
           className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm hover:bg-mauve/90 transition-colors"
         >
-          Controlla
+          {t('practice.check')}
         </button>
       </div>
     )
@@ -226,7 +228,7 @@ export function Listening() {
     <div className="h-full overflow-y-auto">
       {saveError && (
         <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-          ⚠ Sessione non salvata — nessuna connessione al database.
+          ⚠ {t('practice.saveError')}
         </div>
       )}
       <ResultsPanel

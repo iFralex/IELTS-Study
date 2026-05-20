@@ -230,6 +230,8 @@ export interface IElectronAPI {
   deleteChat: (id: number) => Promise<void>
   getChatMessages: (chatId: number) => Promise<StoredChatMessage[]>
   appendChatMessage: (chatId: number, role: string, content: string) => Promise<number>
+  getSetting: (key: string) => Promise<string | null>
+  setSetting: (key: string, value: string) => Promise<void>
 }
 
 declare global {

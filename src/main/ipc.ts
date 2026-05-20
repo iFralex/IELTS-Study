@@ -439,6 +439,16 @@ export function registerIpcHandlers(): void {
     const tables = ['flashcard_reviews', 'flashcards', 'writing_submissions', 'exam_runs', 'answers', 'sessions']
     for (const t of tables) db.prepare(`DELETE FROM ${t}`).run()
   })
+
+  // ── Settings ─────────────────────────────────────────────────────────────────
+  ipcMain.handle('get-setting', (_e, key: string) => {
+    const row = db.prepare('SELECT value FROM settings WHERE key = ?').get(key) as { value: string } | undefined
+    return row?.value ?? null
+  })
+
+  ipcMain.handle('set-setting', (_e, key: string, value: string) => {
+    db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run(key, value)
+  })
 }
 
 function parseAiJson<T>(text: string): T {

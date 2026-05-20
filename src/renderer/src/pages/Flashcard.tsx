@@ -1,23 +1,25 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ReviewSession } from '../components/flashcard/ReviewSession'
 import { CardLibrary } from '../components/flashcard/CardLibrary'
 
 type Tab = 'review' | 'library'
 
 export function Flashcard() {
+  const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<Tab>('review')
 
   return (
     <div className="h-full flex flex-col">
       <div className="px-6 py-4 border-b border-surface0 shrink-0">
-        <h1 className="text-xl font-bold text-text">Flashcard</h1>
+        <h1 className="text-xl font-bold text-text">{t('flashcard.title')}</h1>
         <div className="flex gap-2 mt-3">
-          {(['review', 'library'] as Tab[]).map(t => (
-            <button key={t} onClick={() => setActiveTab(t)}
+          {(['review', 'library'] as Tab[]).map(tab => (
+            <button key={tab} onClick={() => setActiveTab(tab)}
               className={`px-4 py-1.5 rounded text-sm transition-colors ${
-                activeTab === t ? 'bg-mauve text-base font-medium' : 'bg-surface0 text-subtext0 hover:text-text'
+                activeTab === tab ? 'bg-mauve text-base font-medium' : 'bg-surface0 text-subtext0 hover:text-text'
               }`}>
-              {t === 'review' ? 'Ripasso' : 'Libreria'}
+              {tab === 'review' ? t('flashcard.review') : t('flashcard.library')}
             </button>
           ))}
         </div>

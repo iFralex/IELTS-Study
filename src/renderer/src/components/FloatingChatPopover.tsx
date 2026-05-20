@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ChatMessage, StoredChat, StoredChatMessage } from '../types'
 
 interface Props {
@@ -6,6 +7,7 @@ interface Props {
 }
 
 export function FloatingChatPopover({ onClose }: Props) {
+  const { t } = useTranslation()
   const [chats, setChats] = useState<StoredChat[]>([])
   const [activeChatId, setActiveChatId] = useState<number | null>(null)
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -85,7 +87,7 @@ export function FloatingChatPopover({ onClose }: Props) {
             <span className="truncate">{activeChat?.name ?? 'Chat'}</span>
           </button>
         ) : (
-          <span className="text-sm font-semibold text-text">💬 AI Tutor</span>
+          <span className="text-sm font-semibold text-text">{t('floatingChat.title')}</span>
         )}
         <button onClick={onClose} className="text-subtext0 hover:text-text transition-colors text-base leading-none shrink-0 ml-2">✕</button>
       </div>
@@ -96,7 +98,7 @@ export function FloatingChatPopover({ onClose }: Props) {
           /* Messages */
           <div className="px-3 py-3 flex flex-col gap-3 min-h-full">
             {messages.length === 0 && !loading && (
-              <p className="text-xs text-subtext0 text-center py-4">Inizia la conversazione</p>
+              <p className="text-xs text-subtext0 text-center py-4">{t('floatingChat.startConversation')}</p>
             )}
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -127,7 +129,7 @@ export function FloatingChatPopover({ onClose }: Props) {
           <>
             {chats.length === 0 ? (
               <p className="text-xs text-subtext0 text-center p-6">
-                Scrivi un messaggio per iniziare una nuova chat
+                {t('floatingChat.placeholderNewChat')}
               </p>
             ) : (
               chats.map(chat => (
@@ -153,7 +155,7 @@ export function FloatingChatPopover({ onClose }: Props) {
           onKeyDown={e => {
             if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); void send() }
           }}
-          placeholder={activeChatId ? 'Scrivi…' : 'Scrivi per iniziare una nuova chat…'}
+          placeholder={activeChatId ? t('floatingChat.placeholderActive') : t('floatingChat.placeholderNoChat')}
           rows={1}
           disabled={loading}
           autoFocus

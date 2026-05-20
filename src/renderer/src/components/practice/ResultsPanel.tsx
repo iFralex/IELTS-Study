@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ListeningExercise, ReadingExercise } from '../../types'
 import { scoreAnswers, estimateBand, findPassageExcerpt, answersMatch } from './utils'
 import { AudioPlayer } from './AudioPlayer'
@@ -30,6 +31,7 @@ export function ResultsPanel({
   onBack,
   seriesProgress,
 }: ResultsPanelProps) {
+  const { t } = useTranslation()
   const [expandedHighlight, setExpandedHighlight] = useState<number | null>(null)
   const [transcriptOpen, setTranscriptOpen] = useState(false)
   const transcript = isListeningExercise(exercise) ? exercise.transcript : undefined
@@ -45,9 +47,9 @@ export function ResultsPanel({
           {correctCount}
           <span className="text-2xl text-subtext0 font-normal"> / {maxScore}</span>
         </div>
-        <div className="text-subtext0 text-sm mb-2">{pct}% corretto</div>
+        <div className="text-subtext0 text-sm mb-2">{pct}{t('results.correctPct')}</div>
         <div className="inline-flex items-center gap-1.5 bg-mauve/20 text-mauve px-3 py-1 rounded-full text-sm font-medium">
-          Band stimata: {band}
+          {t('results.estimatedBand')} {band}
         </div>
       </div>
 
@@ -81,11 +83,11 @@ export function ResultsPanel({
                   </p>
                   <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
                     <span className={correct ? 'text-green' : 'text-red'}>
-                      La tua risposta: <strong>{userAnswer || '(vuota)'}</strong>
+                      {t('results.yourAnswer')} <strong>{userAnswer || t('results.empty')}</strong>
                     </span>
                     {!correct && (
                       <span className="text-green">
-                        Risposta corretta: <strong>{q.answer}</strong>
+                        {t('results.correctAnswer')} <strong>{q.answer}</strong>
                       </span>
                     )}
                   </div>
@@ -103,7 +105,7 @@ export function ResultsPanel({
                       onClick={() => setExpandedHighlight(isHighlightOpen ? null : q.index)}
                       className="mt-2 text-xs text-blue hover:underline"
                     >
-                      {isHighlightOpen ? '▲ Nascondi' : '▼ Trova nel brano'}
+                      {isHighlightOpen ? `▲ ${t('common.hide')}` : `▼ ${t('results.findInPassage')}`}
                     </button>
                   )}
 
@@ -111,7 +113,7 @@ export function ResultsPanel({
                     const result = findPassageExcerpt(passage, q.text, q.answer, (exercise as ReadingExercise).question_type)
                     if (!result) return (
                       <p className="mt-2 text-xs text-subtext0 italic">
-                        Testo non trovato nel brano.
+                        {t('results.notFound')}
                       </p>
                     )
                     const { excerpt, term } = result
@@ -140,7 +142,7 @@ export function ResultsPanel({
             onClick={() => setTranscriptOpen(o => !o)}
             className="w-full flex items-center justify-between px-4 py-3 text-sm text-subtext0 hover:text-text hover:bg-surface0/50 transition-colors"
           >
-            <span className="font-medium">Trascrizione audio</span>
+            <span className="font-medium">{t('results.audioTranscript')}</span>
             <span>{transcriptOpen ? '▲' : '▼'}</span>
           </button>
           {transcriptOpen && (
@@ -157,7 +159,7 @@ export function ResultsPanel({
           onClick={onBack}
           className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
         >
-          ← Torna alla lista
+          {t('common.back')}
         </button>
         <div className="flex items-center gap-3">
           {seriesProgress && (
@@ -170,7 +172,7 @@ export function ResultsPanel({
               onClick={onNext}
               className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
             >
-              Prossimo →
+              {t('results.nextExercise')}
             </button>
           )}
         </div>

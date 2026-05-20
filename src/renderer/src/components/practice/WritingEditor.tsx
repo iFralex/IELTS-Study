@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { countWords, isUnderMinimum, WORD_MINIMUMS } from './writingUtils'
 
 interface WritingEditorProps {
@@ -8,6 +9,7 @@ interface WritingEditorProps {
 }
 
 export function WritingEditor({ taskType, value, onChange, disabled = false }: WritingEditorProps) {
+  const { t } = useTranslation()
   const count = countWords(value)
   const under = isUnderMinimum(count, taskType)
   const minimum = WORD_MINIMUMS[taskType]
@@ -17,7 +19,7 @@ export function WritingEditor({ taskType, value, onChange, disabled = false }: W
       <textarea
         className="flex-1 resize-none bg-surface0 text-text font-mono text-sm p-4
           focus:outline-none focus:ring-1 focus:ring-mauve/50 disabled:opacity-60"
-        placeholder={`Scrivi qui la tua risposta… (minimo ${minimum} parole)`}
+        placeholder={t('writingEditor.placeholder', { min: minimum, words: t('common.words') })}
         value={value}
         onChange={e => onChange(e.target.value)}
         disabled={disabled}
@@ -25,7 +27,7 @@ export function WritingEditor({ taskType, value, onChange, disabled = false }: W
       />
       <div className="px-4 py-2 bg-mantle border-t border-surface0 text-xs shrink-0">
         <span className={under ? 'text-yellow' : 'text-green'}>
-          {count} / {minimum} parole
+          {count} / {minimum} {t('writingEditor.wordCount')}
         </span>
       </div>
     </div>

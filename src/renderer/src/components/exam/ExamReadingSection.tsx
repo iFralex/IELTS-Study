@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ReadingExercise } from '../../types'
 import { QuestionInput } from '../practice/QuestionInput'
 
@@ -39,6 +40,7 @@ function pickExercises(all: ReadingExercise[]): ReadingExercise[] {
 }
 
 export function ExamReadingSection({ onComplete }: Props) {
+  const { t } = useTranslation()
   const [exercises, setExercises] = useState<ReadingExercise[]>([])
   const [loadError, setLoadError] = useState(false)
   const [answers, setAnswers] = useState<Record<string, string>>({})
@@ -89,15 +91,15 @@ export function ExamReadingSection({ onComplete }: Props) {
   if (loadError) {
     return (
       <div className="flex flex-col items-center gap-4 p-8">
-        <p className="text-red text-sm">Errore nel caricamento degli esercizi Reading.</p>
-        <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1 transition-colors">Riprova</button>
-        <button onClick={handleSkip} className="text-subtext0 text-sm underline">Salta sezione</button>
+        <p className="text-red text-sm">{t('examReading.loadError')}</p>
+        <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1 transition-colors">{t('common.retry')}</button>
+        <button onClick={handleSkip} className="text-subtext0 text-sm underline">{t('examReading.skipLink')}</button>
       </div>
     )
   }
 
   if (!exercises.length) {
-    return <p className="p-8 text-subtext0 text-sm text-center">Caricamento esercizi…</p>
+    return <p className="p-8 text-subtext0 text-sm text-center">{t('examReading.loading')}</p>
   }
 
   const totalQuestions = exercises.reduce((s, ex) => s + ex.questions.length, 0)
@@ -115,13 +117,13 @@ export function ExamReadingSection({ onComplete }: Props) {
       {/* Timer bar */}
       <div className={`px-6 py-2 border-b border-surface0 flex items-center justify-between shrink-0 transition-colors duration-500 ${snapshotFlash ? 'bg-yellow/20' : 'bg-surface0/50'}`}>
         <span className="text-xs text-subtext0">
-          {exercises.length} bran{exercises.length === 1 ? 'o' : 'i'} · {totalQuestions} domande
+          {exercises.length} {t(exercises.length === 1 ? 'examReading.passage_one' : 'examReading.passage_other')} · {totalQuestions} {t(totalQuestions === 1 ? 'examReading.question_one' : 'examReading.question_other')}
         </span>
         <div className="flex items-center gap-3 shrink-0">
           <span className="text-sm font-mono font-semibold text-text">{fmtSec(elapsed)}</span>
           {snapshotTaken
-            ? <span className={`text-xs text-yellow px-2 py-0.5 rounded-full transition-colors ${snapshotFlash ? 'bg-yellow/30' : 'bg-yellow/10'}`}>📸 snapshot a 1:00:00</span>
-            : <span className="text-xs text-subtext0">/ 1:00:00 target</span>}
+            ? <span className={`text-xs text-yellow px-2 py-0.5 rounded-full transition-colors ${snapshotFlash ? 'bg-yellow/30' : 'bg-yellow/10'}`}>{t('examReading.snapshot')}</span>
+            : <span className="text-xs text-subtext0">{t('examReading.targetTime')}</span>}
         </div>
       </div>
 
@@ -132,7 +134,7 @@ export function ExamReadingSection({ onComplete }: Props) {
           {exercisesWithStart.map(({ ex }, ei) => (
             <div key={ex.id} className={ei > 0 ? 'border-t-2 border-surface1' : ''}>
               <div className="px-4 py-2 bg-surface0/50 border-b border-surface0 sticky top-0 z-10">
-                <span className="text-xs font-semibold text-mauve">Brano {ei + 1}</span>
+                <span className="text-xs font-semibold text-mauve">{t('examReading.passageLabel')} {ei + 1}</span>
                 <span className="text-xs text-subtext0 ml-2">{ex.title}</span>
               </div>
               <div className="p-4 text-sm leading-7 text-text whitespace-pre-wrap">
@@ -151,7 +153,7 @@ export function ExamReadingSection({ onComplete }: Props) {
                 return (
                   <div key={ex.id}>
                     <p className="text-xs font-semibold text-mauve uppercase tracking-wide mb-3">
-                      Brano {ei + 1} — {ex.question_type.replace(/_/g, ' ')}
+                      {t('examReading.passageLabel')} {ei + 1} — {ex.question_type.replace(/_/g, ' ')}
                     </p>
                     <div className="flex flex-col gap-4">
                       {ex.questions.map((q, li) => {
@@ -161,7 +163,7 @@ export function ExamReadingSection({ onComplete }: Props) {
                             <label className="text-sm text-text font-medium leading-snug">
                               {start + li + 1}.{' '}
                               {ex.question_type === 'matching_headings' && q.paragraph
-                                ? `Paragraph ${q.paragraph}: `
+                                ? `${t('common.paragraph')} ${q.paragraph}: `
                                 : ''}
                               {stripInlineOptions(q.text)}
                             </label>
@@ -184,10 +186,10 @@ export function ExamReadingSection({ onComplete }: Props) {
 
           <div className="px-5 py-4 border-t border-surface0 flex justify-between shrink-0">
             <button onClick={handleSkip} className="px-4 py-2 bg-surface0 text-subtext0 rounded text-sm hover:text-text transition-colors">
-              Salta sezione →
+              {t('examReading.skipSection')}
             </button>
             <button onClick={handleComplete} className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
-              Sezione successiva ▶
+              {t('examReading.nextSection')}
             </button>
           </div>
         </div>

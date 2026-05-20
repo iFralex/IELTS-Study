@@ -14,8 +14,6 @@ export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'es', label: 'Español', flag: '🇪🇸' },
 ]
 
-const savedLang = (localStorage.getItem('lang') as Language) || 'it'
-
 i18n
   .use(initReactI18next)
   .init({
@@ -25,14 +23,14 @@ i18n
       fr: { translation: fr },
       es: { translation: es },
     },
-    lng: savedLang,
-    fallbackLng: 'it',
+    lng: 'en',
+    fallbackLng: 'en',
     interpolation: { escapeValue: false },
   })
 
 export function setLanguage(lang: Language) {
   i18n.changeLanguage(lang)
-  localStorage.setItem('lang', lang)
+  window.api.setSetting('lang', lang)
 }
 
 export default i18n

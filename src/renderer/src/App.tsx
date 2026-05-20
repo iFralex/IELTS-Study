@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { HashRouter, Routes, Route } from 'react-router-dom'
+import type { Language } from './i18n'
 import { Sidebar } from './components/Sidebar'
 import { FloatingFlashcardButton } from './components/FloatingFlashcardButton'
 import { FloatingChatPopover } from './components/FloatingChatPopover'
@@ -14,7 +16,14 @@ import { Flashcard } from './pages/Flashcard'
 import { Chat } from './pages/Chat'
 
 export default function App() {
+  const { t, i18n } = useTranslation()
   const [flashModalOpen, setFlashModalOpen] = useState(false)
+
+  useEffect(() => {
+    window.api.getSetting('lang').then((lang: string | null) => {
+      if (lang) i18n.changeLanguage(lang as Language)
+    })
+  }, [])
   const [chatPopoverOpen, setChatPopoverOpen] = useState(false)
   const [selectedWord, setSelectedWord] = useState<string | null>(null)
   const [popoverPos, setPopoverPos] = useState<{ x: number; y: number } | null>(null)
@@ -101,7 +110,7 @@ export default function App() {
                 speechSynthesis.speak(u)
               }}
               disabled={!selectedWord.trim()}
-              title="Pronuncia"
+              title={t('selectionPopover.pronunciation')}
               className="text-subtext0 hover:text-text disabled:opacity-40 transition-colors"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -113,7 +122,7 @@ export default function App() {
               disabled={!selectedWord.trim()}
               className="text-xs text-mauve hover:text-mauve/80 font-semibold whitespace-nowrap disabled:opacity-40"
             >
-              + Flashcard
+              {t('selectionPopover.addFlashcard')}
             </button>
           </div>
         )}

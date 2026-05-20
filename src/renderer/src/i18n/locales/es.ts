@@ -178,6 +178,7 @@ export default {
     send: 'Enviar',
     rename: 'Renombrar',
     delete: 'Eliminar',
+    aiError: 'Error en la respuesta IA. Inténtalo de nuevo.',
   },
   practice: {
     listeningTitle: 'Práctica de Listening',
@@ -256,6 +257,7 @@ export default {
     writeEnglishTranslation: 'Escribe la traducción inglesa',
     listenPronunciation: '🔊 Escuchar pronunciación',
     englishWord: 'Palabra inglesa',
+    italianLabel: 'Traducción italiana',
     spellingPlaceholder: 'Ortografía...',
     italianPlaceholder: 'Traducción italiana...',
     englishPlaceholder: 'Traducción inglesa...',

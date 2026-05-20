@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { ChatMessage, StoredChat, StoredChatMessage } from '../types'
 
 const SUGGESTIONS = [
@@ -10,6 +11,7 @@ const SUGGESTIONS = [
 ]
 
 export function Chat() {
+  const { t, i18n } = useTranslation()
   const [chats, setChats] = useState<StoredChat[]>([])
   const [activeChatId, setActiveChatId] = useState<number | null>(null)
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -40,7 +42,7 @@ export function Chat() {
   }
 
   async function createChat() {
-    const name = `Chat ${new Date().toLocaleDateString('it-IT', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}`
+    const name = `Chat ${new Date().toLocaleDateString(i18n.language, { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}`
     const id = await window.api.createChat(name)
     await loadChats()
     await selectChat(id as number)
@@ -87,7 +89,7 @@ export function Chat() {
       await window.api.appendChatMessage(activeChatId, 'assistant', reply)
       await loadChats()
     } catch {
-      setError('Errore nella risposta AI. Riprova.')
+      setError(t('chat.aiError'))
       setMessages(newMessages)
     } finally {
       setLoading(false)
@@ -110,13 +112,13 @@ export function Chat() {
             onClick={() => void createChat()}
             className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-mauve text-base rounded-lg text-sm font-medium hover:bg-mauve/90 transition-colors"
           >
-            <span>+</span> Nuova chat
+            <span>+</span> {t('chat.newChat')}
           </button>
         </div>
 
         <div className="flex-1 overflow-y-auto py-1">
           {chats.length === 0 && (
-            <p className="text-xs text-subtext0 text-center px-4 py-6">Nessuna chat ancora</p>
+            <p className="text-xs text-subtext0 text-center px-4 py-6">{t('chat.noChats')}</p>
           )}
           {chats.map(chat => (
             <div
@@ -149,12 +151,12 @@ export function Chat() {
                 <button
                   onClick={e => startRename(chat, e)}
                   className="p-0.5 hover:text-mauve transition-colors text-xs"
-                  title="Rinomina"
+                  title={t('chat.rename')}
                 >✎</button>
                 <button
                   onClick={e => void deleteChat(chat.id, e)}
                   className="p-0.5 hover:text-red transition-colors text-xs"
-                  title="Elimina"
+                  title={t('chat.delete')}
                 >✕</button>
               </div>
             </div>
@@ -166,12 +168,12 @@ export function Chat() {
       <div className="flex-1 flex flex-col overflow-hidden">
         {!activeChatId ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-4 p-6">
-            <p className="text-subtext0 text-sm">Seleziona una chat o creane una nuova</p>
+            <p className="text-subtext0 text-sm">{t('chat.selectChat')}</p>
             <button
               onClick={() => void createChat()}
               className="px-4 py-2 bg-mauve text-base rounded-lg text-sm font-medium hover:bg-mauve/90 transition-colors"
             >
-              + Nuova chat
+              {t('chat.newChatBtn')}
             </button>
           </div>
         ) : (
@@ -185,7 +187,7 @@ export function Chat() {
             <div className="flex-1 overflow-y-auto px-4 py-4">
               {messages.length === 0 && !loading && (
                 <div className="max-w-2xl mx-auto">
-                  <p className="text-sm text-subtext0 text-center mb-5">Inizia la conversazione o scegli un suggerimento</p>
+                  <p className="text-sm text-subtext0 text-center mb-5">{t('chat.startConversation')}</p>
                   <div className="flex flex-col gap-2">
                     {SUGGESTIONS.map((s, i) => (
                       <button
@@ -244,7 +246,7 @@ export function Chat() {
                   value={input}
                   onChange={e => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Scrivi un messaggio… (Invio per inviare, Shift+Invio per andare a capo)"
+                  placeholder={t('chat.placeholder')}
                   rows={1}
                   disabled={loading}
                   className="flex-1 bg-surface0 border border-surface1 rounded-xl px-4 py-2.5 text-sm text-text
@@ -262,7 +264,7 @@ export function Chat() {
                   className="px-4 py-2.5 bg-mauve text-base rounded-xl text-sm font-medium
                     hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shrink-0"
                 >
-                  Invia
+                  {t('chat.send')}
                 </button>
               </div>
             </div>

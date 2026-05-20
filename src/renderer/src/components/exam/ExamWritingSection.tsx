@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { WritingTask1, WritingTask2 } from '../../types'
 import { WritingEditor } from '../practice/WritingEditor'
 import { Lightbox } from '../Lightbox'
@@ -31,6 +32,7 @@ function fmtSec(s: number): string {
 }
 
 export function ExamWritingSection({ onComplete }: Props) {
+  const { t } = useTranslation()
   const [innerPhase, setInnerPhase] = useState<InnerPhase>('loading')
   const [t1Exercise, setT1Exercise] = useState<WritingTask1 | null>(null)
   const [t2Exercise, setT2Exercise] = useState<WritingTask2 | null>(null)
@@ -124,23 +126,22 @@ export function ExamWritingSection({ onComplete }: Props) {
   }
 
   if (innerPhase === 'loading') {
-    return <p className="p-8 text-subtext0 text-sm text-center">Caricamento esercizi writing…</p>
+    return <p className="p-8 text-subtext0 text-sm text-center">{t('examWriting.loading')}</p>
   }
 
   if (innerPhase === 'error') {
     return (
       <div className="flex flex-col items-center gap-4 p-8">
-        <p className="text-red text-sm">Errore nel caricamento degli esercizi Writing.</p>
+        <p className="text-red text-sm">{t('examWriting.loadError')}</p>
         <button onClick={load}
           className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface0/90 transition-colors">
-          Riprova
+          {t('common.retry')}
         </button>
       </div>
     )
   }
 
-  const targetLabel = innerPhase === 't1' ? '20:00' : '40:00'
-  const taskLabel = innerPhase === 't1' ? 'Task 1 — Grafico' : 'Task 2 — Essay'
+  const taskLabel = innerPhase === 't1' ? t('examWriting.task1Label') : t('examWriting.task2Label')
   const prompt = innerPhase === 't1'
     ? (t1Exercise as WritingTask1).prompt
     : (t2Exercise as WritingTask2).question
@@ -154,8 +155,8 @@ export function ExamWritingSection({ onComplete }: Props) {
         <div className="flex items-center gap-3 shrink-0">
           <span className="text-sm font-mono font-semibold text-text">{fmtSec(elapsed)}</span>
           {snapshotTaken
-            ? <span className="text-xs text-yellow bg-yellow/10 px-2 py-0.5 rounded-full">📸 snapshot a {targetLabel}</span>
-            : <span className="text-xs text-subtext0">/ {targetLabel} target</span>}
+            ? <span className="text-xs text-yellow bg-yellow/10 px-2 py-0.5 rounded-full">{t(innerPhase === 't1' ? 'examWriting.snapshot20' : 'examWriting.snapshot40')}</span>
+            : <span className="text-xs text-subtext0">{t(innerPhase === 't1' ? 'examWriting.target20' : 'examWriting.target40')}</span>}
         </div>
       </div>
 
@@ -201,12 +202,12 @@ export function ExamWritingSection({ onComplete }: Props) {
         {innerPhase === 't1' ? (
           <button onClick={handleT1Next}
             className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
-            Passa a Task 2 ▶
+            {t('examWriting.goToTask2')}
           </button>
         ) : (
           <button onClick={handleT2Finish}
             className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors">
-            Termina Writing ✓
+            {t('examWriting.finishWriting')}
           </button>
         )}
       </div>

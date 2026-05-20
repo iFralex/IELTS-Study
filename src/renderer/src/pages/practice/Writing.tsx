@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { WritingTask1, WritingTask2, AIWritingFeedback } from '../../types'
 import { WritingEditor } from '../../components/practice/WritingEditor'
 import { WritingFeedback } from '../../components/practice/WritingFeedback'
@@ -18,6 +19,7 @@ interface ActiveSession {
 }
 
 export function Writing() {
+  const { t } = useTranslation()
   const [taskType, setTaskType] = useState<TaskType>('task1')
   const [phase, setPhase] = useState<Phase>('selecting')
   const [task1Exercises, setTask1Exercises] = useState<WritingTask1[]>([])
@@ -41,7 +43,7 @@ export function Writing() {
         setTask1Exercises(t1)
         setTask2Exercises(t2)
       })
-      .catch(() => setLoadError('Errore nel caricamento degli esercizi.'))
+      .catch(() => setLoadError(t('practice.loadError')))
   }
 
   useEffect(() => { load() }, [])
@@ -135,19 +137,19 @@ export function Writing() {
     return (
       <div className="h-full flex flex-col">
         <div className="px-6 py-4 border-b border-surface0 shrink-0">
-          <h1 className="text-xl font-bold text-text">Writing Practice</h1>
+          <h1 className="text-xl font-bold text-text">{t('practice.writingTitle')}</h1>
           <div className="flex gap-2 mt-3">
-            {(['task1', 'task2'] as TaskType[]).map(t => (
+            {(['task1', 'task2'] as TaskType[]).map(tab => (
               <button
-                key={t}
-                onClick={() => handleTabChange(t)}
+                key={tab}
+                onClick={() => handleTabChange(tab)}
                 className={`px-4 py-1.5 rounded text-sm transition-colors ${
-                  taskType === t
+                  taskType === tab
                     ? 'bg-mauve text-base font-medium'
                     : 'bg-surface0 text-subtext0 hover:text-text'
                 }`}
               >
-                {t === 'task1' ? 'Task 1 — Grafico' : 'Task 2 — Essay'}
+                {tab === 'task1' ? t('practice.task1Tab') : t('practice.task2Tab')}
               </button>
             ))}
           </div>
@@ -157,11 +159,11 @@ export function Writing() {
             <div className="flex flex-col items-center gap-4 pt-10">
               <p className="text-red text-sm">{loadError}</p>
               <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1">
-                Riprova
+                {t('common.retry')}
               </button>
             </div>
           ) : exercises.length === 0 ? (
-            <p className="text-subtext0 text-sm text-center pt-10">Nessun esercizio disponibile.</p>
+            <p className="text-subtext0 text-sm text-center pt-10">{t('practice.noExercises')}</p>
           ) : (
             <div className="max-w-3xl mx-auto flex flex-col gap-4">
               <div className="flex items-center justify-between">
@@ -172,7 +174,7 @@ export function Writing() {
                   return multipleTypes ? (
                     <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
                       <input type="checkbox" checked={varyTypes} onChange={e => setVaryTypes(e.target.checked)} className="accent-mauve" />
-                      Varia i tipi
+                      {t('practice.varyTypes')}
                     </label>
                   ) : <span />
                 })()}
@@ -201,7 +203,7 @@ export function Writing() {
                         {t1 ? exercise.chart_type : exercise.essay_type.replace(/_/g, ' ')}
                       </span>
                       <span className="text-xs bg-blue/20 text-blue px-2 py-0.5 rounded">
-                        Band target: {exercise.band_target}
+                        {t('practice.bandTarget')} {exercise.band_target}
                       </span>
                     </div>
                   </div>
@@ -240,17 +242,17 @@ export function Writing() {
     const footer = (
       <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-between gap-3">
         <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
-          ← Abbandona
+          ← {t('practice.abandon')}
         </button>
         <div className="flex items-center gap-3">
           {(() => {
             const wc = countWords(session.text)
             const min = taskType === 'task1' ? 150 : 250
             const color = wc === 0 ? 'text-subtext0' : wc >= min ? 'text-green' : 'text-yellow'
-            return <span className={`text-xs font-mono ${color}`}>{wc} / {min} parole</span>
+            return <span className={`text-xs font-mono ${color}`}>{wc} / {min} {t('common.words')}</span>
           })()}
           {isEvaluating ? (
-            <span className="text-sm text-subtext0 animate-pulse">Valutazione in corso…</span>
+            <span className="text-sm text-subtext0 animate-pulse">{t('reviewSession.evaluating')}</span>
           ) : (
             <button
               onClick={handleSubmit}
@@ -258,7 +260,7 @@ export function Writing() {
               className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm
                 hover:bg-mauve/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
-              Invia ▶
+              {t('chat.send')} ▶
             </button>
           )}
         </div>
@@ -294,7 +296,7 @@ export function Writing() {
               <div className="px-5 py-4 border-b border-surface0 shrink-0 max-h-[30%] overflow-y-auto">
                 {t1 && (
                   <div className="flex items-center justify-center h-12 bg-surface0/30 rounded mb-3 text-sm text-subtext0">
-                    Immagine non disponibile
+                    {t('practice.imageUnavailable')}
                   </div>
                 )}
                 <p className="text-sm text-text leading-relaxed">{prompt}</p>
@@ -317,12 +319,12 @@ export function Writing() {
       <div className="flex-1 overflow-y-auto">
         {evalError && (
           <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-            ⚠ Valutazione AI non disponibile — il testo è stato salvato.
+            ⚠ {t('practice.aiUnavailable')}
           </div>
         )}
         {saveError && (
           <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-            ⚠ Invio non salvato — nessuna connessione al database.
+            ⚠ {t('practice.sendError')}
           </div>
         )}
         <WritingFeedback
@@ -335,14 +337,14 @@ export function Writing() {
           onClick={handleBack}
           className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
         >
-          ← Torna alla lista
+          {t('common.back')}
         </button>
         {session.currentIndex < session.exercises.length - 1 && (
           <button
             onClick={handleNext}
             className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
           >
-            Prossimo ({session.currentIndex + 2} / {session.exercises.length}) →
+            {t('practice.next')} ({session.currentIndex + 2} / {session.exercises.length}) →
           </button>
         )}
       </div>

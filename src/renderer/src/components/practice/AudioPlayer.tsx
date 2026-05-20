@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface AudioPlayerProps {
   audioUrl: string
@@ -13,6 +14,7 @@ function formatTime(s: number): string {
 }
 
 export function AudioPlayer({ audioUrl, sourceUrl }: AudioPlayerProps) {
+  const { t } = useTranslation()
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
@@ -56,7 +58,7 @@ export function AudioPlayer({ audioUrl, sourceUrl }: AudioPlayerProps) {
   if (!audioUrl) {
     return (
       <div className="flex items-center gap-2 text-sm text-subtext0">
-        <span className="text-red">Audio non disponibile.</span>
+        <span className="text-red">{t('audioPlayer.unavailable')}</span>
         {sourceUrl && (
           <a href={sourceUrl} target="_blank" rel="noreferrer" className="text-blue hover:underline text-xs">
             Sorgente →
@@ -73,7 +75,7 @@ export function AudioPlayer({ audioUrl, sourceUrl }: AudioPlayerProps) {
         onClick={togglePlay}
         className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-mauve text-base
           hover:bg-mauve/90 transition-colors"
-        aria-label={isPlaying ? 'Pausa' : 'Play'}
+        aria-label={isPlaying ? t('audioPlayer.pause') : t('audioPlayer.play')}
       >
         {isPlaying ? (
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
