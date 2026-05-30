@@ -125,20 +125,23 @@ export function QuestionInput({
 
     return (
       <div className="flex flex-col gap-1.5">
-        {options.map(opt => (
-          <label key={opt} className="flex items-start gap-2 cursor-pointer text-sm">
-            <input
-              type="radio"
-              name={`q-${question.index}`}
-              value={opt}
-              checked={value === opt}
-              onChange={e => onChange(e.target.value)}
-              disabled={disabled}
-              className="accent-mauve mt-0.5 shrink-0"
-            />
-            <span className="text-text">{opt}</span>
-          </label>
-        ))}
+        {options.map((opt, idx) => {
+          const letter = String.fromCharCode(65 + idx)
+          return (
+            <label key={opt} className="flex items-start gap-2 cursor-pointer text-sm">
+              <input
+                type="radio"
+                name={`q-${question.index}`}
+                value={letter}
+                checked={value === letter}
+                onChange={e => onChange(e.target.value)}
+                disabled={disabled}
+                className="accent-mauve mt-0.5 shrink-0"
+              />
+              <span className="text-text">{opt}</span>
+            </label>
+          )
+        })}
       </div>
     )
   }

@@ -35,10 +35,17 @@ export function ExerciseList({
 
   function handleStartSeries() {
     if (seriesPool.length === 0) return
-    const ordered = varyTypes && multipleTypes
-      ? buildInterleavedSeries(seriesPool, e => e.question_type)
-      : [...seriesPool].sort(() => Math.random() - 0.5)
-    onStartSeries(ordered)
+    if (varyTypes && multipleTypes) {
+      const typeCoverage = new Map<string, number>()
+      for (const type of new Set(exercises.map(e => e.question_type))) {
+        const total = exercises.filter(e => e.question_type === type).length
+        const done = exercises.filter(e => e.question_type === type && completedIds.has(e.id)).length
+        typeCoverage.set(type, total > 0 ? done / total : 0)
+      }
+      onStartSeries(buildInterleavedSeries(seriesPool, e => e.question_type, typeCoverage))
+    } else {
+      onStartSeries([...seriesPool].sort(() => Math.random() - 0.5))
+    }
   }
 
   if (error) {

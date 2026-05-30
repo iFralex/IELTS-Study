@@ -86,7 +86,11 @@ export function filterExercises<T extends { id: string; question_type: string }>
   })
 }
 
-export function buildInterleavedSeries<T>(exercises: T[], getType: (e: T) => string): T[] {
+export function buildInterleavedSeries<T>(
+  exercises: T[],
+  getType: (e: T) => string,
+  typeCoverage?: Map<string, number>
+): T[] {
   const groups = new Map<string, T[]>()
   for (const ex of exercises) {
     const t = getType(ex)
@@ -95,7 +99,11 @@ export function buildInterleavedSeries<T>(exercises: T[], getType: (e: T) => str
     groups.set(t, g)
   }
   for (const g of groups.values()) g.sort(() => Math.random() - 0.5)
-  const types = [...groups.keys()].sort(() => Math.random() - 0.5)
+  const types = [...groups.keys()].sort(
+    typeCoverage
+      ? (a, b) => (typeCoverage.get(a) ?? 0) - (typeCoverage.get(b) ?? 0) || Math.random() - 0.5
+      : () => Math.random() - 0.5
+  )
   const result: T[] = []
   let round = 0
   while (true) {
