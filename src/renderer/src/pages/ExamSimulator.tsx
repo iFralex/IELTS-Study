@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { ExamRun, AIWritingFeedback, WritingTask1, WritingTask2 } from '../types'
+import type { ExamRun, AIWritingFeedback, WritingTask1, WritingTask2, ListeningExercise, ReadingExercise } from '../types'
 import { ExamListeningSection } from '../components/exam/ExamListeningSection'
 import type { ListeningResult } from '../components/exam/ExamListeningSection'
 import { ExamReadingSection } from '../components/exam/ExamReadingSection'
@@ -32,10 +32,10 @@ function scoreRow(result: ListeningResult | ReadingResult): { snap: string; tota
   if (!result.exercises.length) return { snap: '—', total: '—' }
   let snap = '—'
   if (result.snapshotAnswers) {
-    const { correctCount, maxScore } = scoreMultiExercises(result.exercises, result.snapshotAnswers)
+    const { correctCount, maxScore } = scoreMultiExercises(result.exercises as (ListeningExercise | ReadingExercise)[], result.snapshotAnswers)
     snap = `${correctCount}/${maxScore}`
   }
-  const { correctCount, maxScore } = scoreMultiExercises(result.exercises, result.answers)
+  const { correctCount, maxScore } = scoreMultiExercises(result.exercises as (ListeningExercise | ReadingExercise)[], result.answers)
   return { snap, total: `${correctCount}/${maxScore}` }
 }
 

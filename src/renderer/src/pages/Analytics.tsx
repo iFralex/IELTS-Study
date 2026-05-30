@@ -195,7 +195,7 @@ export function Analytics() {
                       <CartesianGrid strokeDasharray="3 3" stroke="#313244" />
                       <XAxis dataKey="date" tickFormatter={d => (d as string).slice(5)} tick={{ fill: '#6c7086', fontSize: 11 }} />
                       <YAxis domain={[0, 100]} tickFormatter={v => `${v}%`} tick={{ fill: '#6c7086', fontSize: 11 }} />
-                      <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`${v}%`]} />
+                      <Tooltip contentStyle={tooltipStyle} formatter={(v) => [`${v}%`]} />
                       <Legend wrapperStyle={{ fontSize: 11 }} />
                       <Line type="monotone" dataKey="listening" name={SECTION_LABEL.listening} stroke="#89b4fa" strokeWidth={2} dot={false} connectNulls />
                       <Line type="monotone" dataKey="reading"   name={SECTION_LABEL.reading}   stroke="#a6e3a1" strokeWidth={2} dot={false} connectNulls />

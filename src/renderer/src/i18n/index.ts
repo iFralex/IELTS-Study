@@ -8,8 +8,8 @@ import es from './locales/es'
 export type Language = 'it' | 'en' | 'fr' | 'es'
 
 export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
-  { code: 'it', label: 'Italiano', flag: '🇮🇹' },
   { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'it', label: 'Italiano', flag: '🇮🇹' },
   { code: 'fr', label: 'Français', flag: '🇫🇷' },
   { code: 'es', label: 'Español', flag: '🇪🇸' },
 ]
