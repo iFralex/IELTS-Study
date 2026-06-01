@@ -86,33 +86,13 @@ export function ReviewSession() {
     setPhase('result')
   }
 
-  async function handleDontKnow() {
-    if (!card) return
-    setSaveError(false)
-    const direction: ReviewInput['direction'] =
-      mode === 'audio' ? 'audio' : mode === 'text-en-it' ? 'en-it' : 'it-en'
-    try {
-      await window.api.updateFlashcardSM2(card.id, 0)
-      await window.api.saveFlashcardReview({
-        flashcard_id: card.id,
-        reviewed_at: Date.now(),
-        direction,
-        user_answer: '',
-        quality: 0,
-        is_correct: false,
-      })
-    } catch {
-      setSaveError(true)
+  function handleDontKnow() {
+    if (mode === 'audio') {
+      setEvalState({ textResult: null, audioResult: { english_correct: false, italian_correct: false, quality: 0, english_explanation: '', italian_explanation: '' }, aiError: false })
+    } else {
+      setEvalState({ textResult: { is_correct: false, quality: 0, explanation: '', alternatives: [] }, audioResult: null, aiError: false })
     }
-    const nextIndex = index + 1
-    if (nextIndex >= cards.length) { setPhase('done'); return }
-    setIndex(nextIndex)
-    setMode(pickMode())
-    setTextInput('')
-    setAudioEnInput('')
-    setAudioItInput('')
-    setEvalState({ textResult: null, audioResult: null, aiError: false, rawOutput: undefined })
-    setPhase('reviewing')
+    setPhase('result')
   }
 
   async function handleNext() {
