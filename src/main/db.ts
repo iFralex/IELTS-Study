@@ -18,7 +18,8 @@ export function migrateDb(db: Database.Database): void {
       word_count          INTEGER,
       band_score          REAL,
       self_score          REAL,
-      notes               TEXT
+      notes               TEXT,
+      feedback_json       TEXT
     );
     CREATE TABLE IF NOT EXISTS answers (
       id              INTEGER PRIMARY KEY AUTOINCREMENT,

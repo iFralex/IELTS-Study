@@ -117,6 +117,7 @@ export function Writing() {
         text,
         word_count: wordCount,
         band_score: fb?.band,
+        feedback_json: fb ? JSON.stringify(fb) : undefined,
       })
       setCompletedIds(prev => new Set([...prev, exercise.id]))
     } catch {

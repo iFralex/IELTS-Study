@@ -17,6 +17,7 @@ interface Queue {
   currentIndex: number
   startedAt: number
   answers: Record<number, string>
+  timeSpentSeconds?: number
 }
 
 export function Listening() {
@@ -66,6 +67,8 @@ export function Listening() {
     if (!queue || !currentExercise) return
     const { correctCount, maxScore } = scoreAnswers(currentExercise.questions, queue.answers)
     const now = Date.now()
+    const timeSpent = Math.round((now - queue.startedAt) / 1000)
+    setQueue({ ...queue, timeSpentSeconds: timeSpent })
     try {
       const sessionId = await window.api.saveSession({
         exercise_id: currentExercise.id,
@@ -75,7 +78,7 @@ export function Listening() {
         completed_at: now,
         score: correctCount,
         max_score: maxScore,
-        time_spent_seconds: Math.round((now - queue.startedAt) / 1000),
+        time_spent_seconds: timeSpent,
       })
       await window.api.saveAnswers(
         currentExercise.questions.map(q => ({
@@ -249,6 +252,7 @@ export function Listening() {
         onNext={!isLastInSeries ? handleNext : undefined}
         onBack={handleBack}
         seriesProgress={seriesProgress}
+        timeSpentSeconds={queue.timeSpentSeconds}
       />
     </div>
   )

@@ -51,6 +51,8 @@ export default {
     startPractice: 'Commencer à pratiquer',
     recentSessions: 'Séances récentes',
     noSessions: 'Pas encore de séance.',
+    showAll: 'Voir tout',
+    showLess: 'Voir moins',
     recentExams: 'Dernières simulations',
     noExams: 'Pas encore de simulation.',
   },
@@ -228,6 +230,7 @@ export default {
     notFound: 'Texte non trouvé dans le passage.',
     audioTranscript: 'Transcription audio',
     nextExercise: 'Suivant →',
+    perQuestion: 'par question',
   },
   writingEditor: {
     placeholder: 'Écris ta réponse ici… (minimum {{min}} {{words}})',

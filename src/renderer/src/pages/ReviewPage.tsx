@@ -61,13 +61,13 @@ export function ReviewPage() {
 
   // ── Writing review ───────────────────────────────────────────────────────────
   if (section === 'writing') {
-    const feedback = sessionFromState.band_score != null ? {
-      band: sessionFromState.band_score,
-      overall: '',
-      strengths: [],
-      improvements: [],
-      vocab_suggestions: [],
-    } : null
+    let feedback = null
+    if (sessionFromState.feedback_json) {
+      try { feedback = JSON.parse(sessionFromState.feedback_json) } catch {}
+    }
+    if (!feedback && sessionFromState.band_score != null) {
+      feedback = { band: sessionFromState.band_score, overall: '', strengths: [], improvements: [], vocab_suggestions: [] }
+    }
     return (
       <div className="h-full flex flex-col overflow-hidden">
         <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center gap-3">
@@ -83,6 +83,7 @@ export function ReviewPage() {
             feedback={feedback}
             exercise={exercise as WritingTask1 | WritingTask2}
             userText={sessionFromState.text ?? undefined}
+            timeSpentSeconds={sessionFromState.time_spent_seconds ?? undefined}
           />
         </div>
       </div>
@@ -102,6 +103,7 @@ export function ReviewPage() {
             answers={answers}
             section="reading"
             onBack={back}
+            timeSpentSeconds={sessionFromState.time_spent_seconds ?? undefined}
           />
         </div>
       </div>
@@ -116,6 +118,7 @@ export function ReviewPage() {
         answers={answers}
         section="listening"
         onBack={back}
+        timeSpentSeconds={sessionFromState.time_spent_seconds ?? undefined}
       />
     </div>
   )

@@ -60,7 +60,7 @@ export function registerIpcHandlers(): void {
   })
 
   ipcMain.handle('get-recent-sessions', (_e, limit: number) =>
-    db.prepare('SELECT * FROM sessions ORDER BY started_at DESC LIMIT ?').all(limit)
+    db.prepare('SELECT * FROM sessions ORDER BY started_at DESC LIMIT ?').all(limit > 0 ? limit : -1)
   )
 
   ipcMain.handle('get-session-answers', (_e, sessionId: number) =>
@@ -81,12 +81,12 @@ export function registerIpcHandlers(): void {
     return db.prepare(
       `INSERT INTO sessions
        (exercise_id, section, question_type, started_at, completed_at, time_spent_seconds,
-        band_score, text, word_count, self_score, notes)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?)`
+        band_score, text, word_count, self_score, notes, feedback_json)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`
     ).run(
       s.task_id, 'writing', s.task_type, s.submitted_at, completedAt, timeSpent,
       s.band_score ?? null, s.text, s.word_count ?? null,
-      s.self_score ?? null, s.notes ?? null
+      s.self_score ?? null, s.notes ?? null, s.feedback_json ?? null
     )
   })
 

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import type { ListeningExercise, ReadingExercise } from '../../types'
 import { scoreAnswers, estimateBand, findPassageExcerpt, answersMatch } from './utils'
 import { AudioPlayer } from './AudioPlayer'
+import { formatTime } from '../analyticsUtils'
 
 type AnyExercise = ListeningExercise | ReadingExercise
 
@@ -13,6 +14,7 @@ interface ResultsPanelProps {
   onNext?: () => void
   onBack: () => void
   seriesProgress?: { current: number; total: number }
+  timeSpentSeconds?: number
 }
 
 function isReadingExercise(e: AnyExercise): e is ReadingExercise {
@@ -30,6 +32,7 @@ export function ResultsPanel({
   onNext,
   onBack,
   seriesProgress,
+  timeSpentSeconds,
 }: ResultsPanelProps) {
   const { t } = useTranslation()
   const [expandedHighlight, setExpandedHighlight] = useState<number | null>(null)
@@ -51,6 +54,14 @@ export function ResultsPanel({
         <div className="inline-flex items-center gap-1.5 bg-mauve/20 text-mauve px-3 py-1 rounded-full text-sm font-medium">
           {t('results.estimatedBand')} {band}
         </div>
+        {timeSpentSeconds != null && (
+          <div className="flex items-center justify-center gap-4 mt-3 text-xs text-subtext0">
+            <span>⏱ {formatTime(timeSpentSeconds)}</span>
+            {maxScore > 0 && (
+              <span>· {formatTime(Math.round(timeSpentSeconds / maxScore))} {t('results.perQuestion')}</span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Audio player — listening only */}

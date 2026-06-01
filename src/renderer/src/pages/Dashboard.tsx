@@ -28,6 +28,8 @@ export function Dashboard() {
   const [examRuns, setExamRuns]   = useState<ExamRun[]>([])
   const [loading, setLoading]     = useState(true)
   const [error, setError]         = useState<string | null>(null)
+  const [showAllSessions, setShowAllSessions] = useState(false)
+  const SESSIONS_PREVIEW = 5
 
   function load() {
     setError(null)
@@ -37,7 +39,7 @@ export function Dashboard() {
     setLoading(true)
     Promise.all([
       window.api.getAnalytics(30),
-      window.api.getRecentSessions(5),
+      window.api.getRecentSessions(SESSIONS_PREVIEW),
       window.api.getExamRuns(),
     ])
       .then(([a, s, runs]) => {
@@ -111,7 +113,7 @@ export function Dashboard() {
                 <p className="text-subtext0 text-sm">{t('dashboard.noSessions')}</p>
               ) : (
                 <div className="flex flex-col gap-2">
-                  {sessions.map(s => (
+                  {(showAllSessions ? sessions : sessions.slice(0, SESSIONS_PREVIEW)).map(s => (
                     <div
                       key={s.id}
                       onClick={() => navigate(`/review/${s.id}`, { state: { session: s } })}
@@ -126,7 +128,9 @@ export function Dashboard() {
                         <span className="text-sm font-medium text-green">
                           {s.score != null && s.max_score != null
                             ? `${s.score} / ${s.max_score}`
-                            : '—'}
+                            : s.band_score != null
+                              ? `${s.band_score}`
+                              : '—'}
                         </span>
                         <span className="text-xs text-subtext0">
                           {new Date(s.started_at).toLocaleDateString(i18n.language)}
@@ -134,6 +138,27 @@ export function Dashboard() {
                       </div>
                     </div>
                   ))}
+                  {!showAllSessions && sessions.length >= SESSIONS_PREVIEW && (
+                    <button
+                      onClick={() => {
+                        window.api.getRecentSessions(0).then(all => {
+                          setSessions(all)
+                          setShowAllSessions(true)
+                        })
+                      }}
+                      className="text-sm text-mauve hover:text-mauve/80 transition-colors text-center py-1"
+                    >
+                      {t('dashboard.showAll')}
+                    </button>
+                  )}
+                  {showAllSessions && (
+                    <button
+                      onClick={() => setShowAllSessions(false)}
+                      className="text-sm text-mauve hover:text-mauve/80 transition-colors text-center py-1"
+                    >
+                      {t('dashboard.showLess')}
+                    </button>
+                  )}
                 </div>
               )}
             </div>

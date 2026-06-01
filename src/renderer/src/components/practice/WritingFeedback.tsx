@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { WritingTask1, WritingTask2, AIWritingFeedback } from '../../types'
 import { bandColor, isTask1 } from './writingUtils'
+import { formatTime } from '../analyticsUtils'
 import { SectionTitle } from '../SectionTitle'
 import { AnnotatedText } from './AnnotatedText'
 
@@ -9,9 +10,10 @@ interface WritingFeedbackProps {
   feedback: AIWritingFeedback | null
   exercise: WritingTask1 | WritingTask2
   userText?: string
+  timeSpentSeconds?: number
 }
 
-export function WritingFeedback({ feedback, exercise, userText }: WritingFeedbackProps) {
+export function WritingFeedback({ feedback, exercise, userText, timeSpentSeconds }: WritingFeedbackProps) {
   const { t } = useTranslation()
   const [modelOpen, setModelOpen] = useState(false)
   const t1 = isTask1(exercise)
@@ -27,6 +29,9 @@ export function WritingFeedback({ feedback, exercise, userText }: WritingFeedbac
               {feedback.band}
             </div>
             <div className="text-subtext0 text-sm">{t('writingFeedback.estimatedBand')}</div>
+            {timeSpentSeconds != null && (
+              <div className="text-xs text-subtext0 mt-2">⏱ {formatTime(timeSpentSeconds)}</div>
+            )}
           </>
         ) : (
           <div className="text-subtext0 text-lg py-2">{t('writingFeedback.unavailable')}</div>

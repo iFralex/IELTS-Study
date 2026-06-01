@@ -65,6 +65,7 @@ export interface Session extends SessionInput {
   text?: string | null
   band_score?: number | null
   word_count?: number | null
+  feedback_json?: string | null
 }
 
 export interface AnswerInput {
@@ -85,6 +86,7 @@ export interface WritingInput {
   band_score?: number
   self_score?: number
   notes?: string
+  feedback_json?: string
 }
 
 export interface ExamRunInput {
