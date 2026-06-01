@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import type { ListeningExercise, ReadingExercise } from '../../types'
 import { scoreAnswers, estimateBand, findPassageExcerpt, answersMatch } from './utils'
 import { AudioPlayer } from './AudioPlayer'
+import { Lightbox } from '../Lightbox'
 import { formatTime } from '../analyticsUtils'
 
 type AnyExercise = ListeningExercise | ReadingExercise
@@ -37,12 +38,14 @@ export function ResultsPanel({
   const { t } = useTranslation()
   const [expandedHighlight, setExpandedHighlight] = useState<number | null>(null)
   const [transcriptOpen, setTranscriptOpen] = useState(false)
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const transcript = isListeningExercise(exercise) ? exercise.transcript : undefined
   const { correctCount, maxScore } = scoreAnswers(exercise.questions, answers)
   const band = estimateBand(correctCount, maxScore, section)
   const pct = maxScore > 0 ? Math.round((correctCount / maxScore) * 100) : 0
 
   return (
+    <>
     <div className="max-w-2xl mx-auto p-6 flex flex-col gap-6">
       {/* Score header */}
       <div className="bg-surface0/50 rounded-xl p-5 text-center">
@@ -63,6 +66,16 @@ export function ResultsPanel({
           </div>
         )}
       </div>
+
+      {/* Image — listening only */}
+      {isListeningExercise(exercise) && exercise.image_url && (
+        <img
+          src={exercise.image_url}
+          alt={exercise.title}
+          onClick={() => setLightboxUrl(exercise.image_url!)}
+          className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
+        />
+      )}
 
       {/* Audio player — listening only */}
       {isListeningExercise(exercise) && exercise.audio_url && (
@@ -189,5 +202,7 @@ export function ResultsPanel({
         </div>
       </div>
     </div>
+    {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
+    </>
   )
 }

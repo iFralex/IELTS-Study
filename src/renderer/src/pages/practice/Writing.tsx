@@ -293,6 +293,26 @@ export function Writing() {
   // ── Results phase ────────────────────────────────────────────────────────────
   return (
     <div className="h-full flex flex-col overflow-hidden">
+      {/* Prompt + image header (collapsible) */}
+      {imageUrl ? (
+        <div className="flex shrink-0 border-b border-surface0 max-h-[35%] overflow-hidden">
+          <div className="w-1/2 border-r border-surface0 overflow-y-auto p-4">
+            <img
+              src={imageUrl}
+              alt="Chart"
+              onClick={() => setLightboxUrl(imageUrl)}
+              className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
+            />
+          </div>
+          <div className="w-1/2 overflow-y-auto px-5 py-4">
+            <p className="text-sm text-text leading-relaxed">{prompt}</p>
+          </div>
+        </div>
+      ) : (
+        <div className="px-5 py-3 border-b border-surface0 shrink-0 max-h-[25%] overflow-y-auto">
+          <p className="text-sm text-text leading-relaxed">{prompt}</p>
+        </div>
+      )}
       <div className="flex-1 overflow-y-auto">
         {evalError && <ErrorBanner message={t('practice.aiUnavailable')} className="mx-6 mt-4" />}
         {saveError && <ErrorBanner message={t('practice.sendError')} className="mx-6 mt-4" />}
