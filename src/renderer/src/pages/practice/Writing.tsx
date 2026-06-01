@@ -27,7 +27,7 @@ function toWritingExercise(e: WritingTask1 | WritingTask2): WritingExercise {
 
 export function Writing() {
   const { t } = useTranslation()
-  const [tab, setTab] = useState<TabType>('task1')
+  const [tab, setTab] = useState<TabType>('all')
   const [phase, setPhase] = useState<Phase>('selecting')
   const [task1Exercises, setTask1Exercises] = useState<WritingTask1[]>([])
   const [task2Exercises, setTask2Exercises] = useState<WritingTask2[]>([])
@@ -141,7 +141,7 @@ export function Writing() {
         <div className="px-6 py-4 border-b border-surface0 shrink-0">
           <h1 className="text-xl font-bold text-text mb-3">{t('practice.writingTitle')}</h1>
           <div className="flex flex-wrap gap-2">
-            {(['task1', 'task2', 'all'] as TabType[]).map(tabKey => (
+            {(['all', 'task1', 'task2'] as TabType[]).map(tabKey => (
               <button
                 key={tabKey}
                 onClick={() => handleTabChange(tabKey)}
