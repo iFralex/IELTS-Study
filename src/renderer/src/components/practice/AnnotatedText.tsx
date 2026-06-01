@@ -57,10 +57,11 @@ export function AnnotatedText({ text, annotations }: AnnotatedTextProps) {
                   }`}>
                     {seg.text}
                   </span>
-                  <span className="pointer-events-none hidden group-hover:flex flex-col gap-0.5
+                  <span className="hidden group-hover:flex flex-col gap-0.5
                     absolute bottom-full left-0 mb-1.5 z-50
                     bg-mantle border border-surface1 rounded-lg px-3 py-2 shadow-xl
                     min-w-max max-w-xs text-xs">
+                    <span className="absolute top-full left-0 w-full h-2" />
                     <span className="font-semibold text-text">{seg.annotation.correction}</span>
                     <span className="text-subtext0">{seg.annotation.explanation}</span>
                   </span>
