@@ -6,7 +6,7 @@ import { WritingEditor } from '../../components/practice/WritingEditor'
 import { WritingFeedback } from '../../components/practice/WritingFeedback'
 import { ExerciseList } from '../../components/practice/ExerciseList'
 import { countWords, isTask1 } from '../../components/practice/writingUtils'
-import { Lightbox } from '../../components/Lightbox'
+import { ExerciseImage } from '../../components/ExerciseImage'
 import { PracticeFooter } from '../../components/practice/PracticeFooter'
 
 type TabType = 'task1' | 'task2' | 'all'
@@ -35,7 +35,6 @@ export function Writing() {
   const [session, setSession] = useState<ActiveSession | null>(null)
   const [feedback, setFeedback] = useState<AIWritingFeedback | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
-  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const [isEvaluating, setIsEvaluating] = useState(false)
   const [evalError, setEvalError] = useState(false)
   const [saveError, setSaveError] = useState(false)
@@ -245,18 +244,12 @@ export function Writing() {
     )
 
     return (
-      <>
-        <div className="h-full flex flex-col overflow-hidden">
+      <div className="h-full flex flex-col overflow-hidden">
           {header}
           {imageUrl ? (
             <div className="flex-1 flex overflow-hidden">
               <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4">
-                <img
-                  src={imageUrl}
-                  alt="Chart"
-                  onClick={() => setLightboxUrl(imageUrl)}
-                  className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
-                />
+                <ExerciseImage src={imageUrl!} alt="Chart" />
               </div>
               <div className="w-1/2 h-full flex flex-col overflow-hidden">
                 <div className="px-5 py-3 border-b border-surface0 shrink-0 max-h-[30%] overflow-y-auto">
@@ -284,9 +277,7 @@ export function Writing() {
               {footer}
             </>
           )}
-        </div>
-        {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
-      </>
+      </div>
     )
   }
 
@@ -297,12 +288,7 @@ export function Writing() {
       {imageUrl ? (
         <div className="flex shrink-0 border-b border-surface0 max-h-[35%] overflow-hidden">
           <div className="w-1/2 border-r border-surface0 overflow-y-auto p-4">
-            <img
-              src={imageUrl}
-              alt="Chart"
-              onClick={() => setLightboxUrl(imageUrl)}
-              className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
-            />
+            <ExerciseImage src={imageUrl!} alt="Chart" />
           </div>
           <div className="w-1/2 overflow-y-auto px-5 py-4">
             <p className="text-sm text-text leading-relaxed">{prompt}</p>

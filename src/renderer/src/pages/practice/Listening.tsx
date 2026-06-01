@@ -7,7 +7,7 @@ import { AudioPlayer } from '../../components/practice/AudioPlayer'
 import { QuestionInput } from '../../components/practice/QuestionInput'
 import { ResultsPanel } from '../../components/practice/ResultsPanel'
 import { scoreAnswers, answersMatch } from '../../components/practice/utils'
-import { Lightbox } from '../../components/Lightbox'
+import { ExerciseImage } from '../../components/ExerciseImage'
 import { PracticeFooter } from '../../components/practice/PracticeFooter'
 
 type Phase = 'selecting' | 'active' | 'results'
@@ -23,7 +23,6 @@ interface Queue {
 export function Listening() {
   const { t } = useTranslation()
   const [phase, setPhase] = useState<Phase>('selecting')
-  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const [exercises, setExercises] = useState<ListeningExercise[]>([])
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
   const [queue, setQueue] = useState<Queue | null>(null)
@@ -197,18 +196,12 @@ export function Listening() {
     )
 
     return (
-      <>
-        <div className="h-full flex flex-col overflow-hidden">
+      <div className="h-full flex flex-col overflow-hidden">
           {header}
           {currentExercise.image_url ? (
             <div className="flex-1 flex overflow-hidden">
               <div className="w-1/2 h-full border-r border-surface0 overflow-y-auto p-4">
-                <img
-                  src={currentExercise.image_url}
-                  alt={currentExercise.title}
-                  onClick={() => setLightboxUrl(currentExercise.image_url!)}
-                  className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
-                />
+                <ExerciseImage src={currentExercise.image_url!} alt={currentExercise.title} />
               </div>
               <div className="w-1/2 h-full flex flex-col overflow-hidden">
                 <div className="flex-1 overflow-y-auto">
@@ -229,9 +222,7 @@ export function Listening() {
               {footer}
             </div>
           )}
-        </div>
-        {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
-      </>
+      </div>
     )
   }
 

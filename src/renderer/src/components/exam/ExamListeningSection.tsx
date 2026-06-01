@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import type { ListeningExercise } from '../../types'
 import { AudioPlayer } from '../practice/AudioPlayer'
 import { QuestionInput } from '../practice/QuestionInput'
-import { Lightbox } from '../Lightbox'
+import { ExerciseImage } from '../ExerciseImage'
 
 export interface ListeningResult {
   exercises: ListeningExercise[]
@@ -49,7 +49,6 @@ export function ExamListeningSection({ onComplete }: Props) {
   const [elapsed, setElapsed] = useState(0)
   const [snapshotTaken, setSnapshotTaken] = useState(false)
   const [snapshotFlash, setSnapshotFlash] = useState(false)
-  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
   const snapshotRef = useRef<Record<string, string> | null>(null)
   const answersRef = useRef<Record<string, string>>({})
 
@@ -147,12 +146,7 @@ export function ExamListeningSection({ onComplete }: Props) {
                 /* Two-column: image left, audio+questions right */
                 <div className="flex h-[500px]">
                   <div className="w-1/2 border-r border-surface0 overflow-y-auto p-4">
-                    <img
-                      src={ex.image_url}
-                      alt={ex.title}
-                      onClick={() => setLightboxUrl(ex.image_url!)}
-                      className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
-                    />
+                    <ExerciseImage src={ex.image_url} alt={ex.title} />
                   </div>
                   <div className="w-1/2 flex flex-col overflow-hidden">
                     <div className="flex-1 overflow-y-auto">
@@ -217,7 +211,6 @@ export function ExamListeningSection({ onComplete }: Props) {
         </div>
       </div>
 
-      {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
     </>
   )
 }

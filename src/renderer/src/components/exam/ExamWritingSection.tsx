@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import type { WritingTask1, WritingTask2 } from '../../types'
 import { LoadingErrorState } from '../LoadingErrorState'
 import { WritingEditor } from '../practice/WritingEditor'
-import { Lightbox } from '../Lightbox'
+import { ExerciseImage } from '../ExerciseImage'
 
 export interface WritingSubResult {
   exercise: WritingTask1 | WritingTask2
@@ -41,8 +41,6 @@ export function ExamWritingSection({ onComplete }: Props) {
   const [t2Text, setT2Text] = useState('')
   const [elapsed, setElapsed] = useState(0)
   const [snapshotTaken, setSnapshotTaken] = useState(false)
-  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
-
   const t1SnapshotRef = useRef<string | null>(null)
   const t2SnapshotRef = useRef<string | null>(null)
   const t1TextRef = useRef('')
@@ -159,12 +157,7 @@ export function ExamWritingSection({ onComplete }: Props) {
             <div className="px-3 py-2 bg-mantle/40 rounded border border-surface0">
               <p className="text-sm text-text leading-relaxed">{prompt}</p>
             </div>
-            <img
-              src={t1Exercise.image_url}
-              alt="Task 1 chart"
-              onClick={() => setLightboxUrl(t1Exercise!.image_url!)}
-              className="w-full rounded-lg border border-surface1 object-contain cursor-zoom-in"
-            />
+            <ExerciseImage src={t1Exercise.image_url} alt="Task 1 chart" />
           </div>
           {/* Editor column */}
           <div className="flex-1 overflow-hidden flex flex-col">
@@ -204,7 +197,6 @@ export function ExamWritingSection({ onComplete }: Props) {
       </div>
     </div>
 
-    {lightboxUrl && <Lightbox src={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
   </>
   )
 }
