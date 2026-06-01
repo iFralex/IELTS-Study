@@ -1,6 +1,6 @@
 import { ErrorBanner } from '../ErrorBanner'
 import { LoadingErrorState } from '../LoadingErrorState'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { Flashcard, AIEvalResult, AIAudioEvalResult, ReviewInput } from '../../types'
 import { pickMode, computeQualityFromDual } from './flashcardUtils'
@@ -34,6 +34,7 @@ export function ReviewSession() {
   const [audioItInput, setAudioItInput] = useState('')
   const [evalState, setEvalState] = useState<EvalState>({ textResult: null, audioResult: null, aiError: false })
   const [saveError, setSaveError] = useState(false)
+  const audioEnRef = useRef<HTMLInputElement>(null)
 
   function load() {
     setPhase('loading')
@@ -58,6 +59,7 @@ export function ReviewSession() {
   useEffect(() => {
     if (phase === 'reviewing' && mode === 'audio' && card) {
       speak(card.english)
+      audioEnRef.current?.focus()
     }
   }, [phase, mode, index])
 
@@ -221,6 +223,7 @@ export function ReviewSession() {
             <div className="flex-1">
               <label className="text-xs text-subtext0 mb-1 block">{t('reviewSession.englishWord')}</label>
               <input
+                ref={audioEnRef}
                 type="text"
                 value={audioEnInput}
                 onChange={e => setAudioEnInput(e.target.value)}
