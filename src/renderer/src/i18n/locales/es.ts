@@ -242,6 +242,10 @@ export default {
     modelAnswer: 'Respuesta modelo (Banda',
     keyVocab: 'Vocabulario clave',
     keyPhrases: 'Frases clave',
+    yourText: 'Tu texto',
+    grammarError: 'Error gramatical',
+    contextError: 'Mejor palabra disponible',
+    sentenceRewrites: 'Reformulación de frases',
   },
   reviewSession: {
     loadError: 'Error al cargar las tarjetas.',

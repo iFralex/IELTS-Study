@@ -29,6 +29,18 @@ export function AddCardModal({ onClose, initialWord, initialData }: Props) {
     }
   }, [])
 
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') { onClose(); return }
+      if (e.key === 'Enter' && phase === 'preview' && !(e.target instanceof HTMLTextAreaElement)) {
+        e.preventDefault()
+        void handleSave()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [phase])
+
   async function handleGenerate(w = word) {
     if (!w.trim()) return
     setError(null)

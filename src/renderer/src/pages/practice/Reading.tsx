@@ -1,3 +1,4 @@
+import { ErrorBanner } from '../../components/ErrorBanner'
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { ReadingExercise } from '../../types'
@@ -6,6 +7,7 @@ import { ReadingPassage } from '../../components/practice/ReadingPassage'
 import { QuestionInput } from '../../components/practice/QuestionInput'
 import { ResultsPanel } from '../../components/practice/ResultsPanel'
 import { scoreAnswers, answersMatch } from '../../components/practice/utils'
+import { PracticeFooter } from '../../components/practice/PracticeFooter'
 
 type Phase = 'selecting' | 'active' | 'results'
 
@@ -116,13 +118,30 @@ export function Reading() {
         </div>
         <div className="flex-1 overflow-y-auto">
           <ExerciseList
-            section="reading"
             exercises={exercises}
             completedIds={completedIds}
             onStartSingle={ex => handleStartSingle(ex as ReadingExercise)}
             onStartSeries={exs => handleStartSeries(exs as ReadingExercise[])}
             error={loadError}
             onRetry={load}
+            renderCard={(exercise, done) => (
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-text truncate">{exercise.title}</p>
+                  <div className="flex gap-2 mt-1.5 flex-wrap">
+                    <span className="text-xs bg-surface1 text-subtext0 px-2 py-0.5 rounded">
+                      {exercise.question_type.replace(/_/g, ' ')}
+                    </span>
+                    <span className={`text-xs px-2 py-0.5 rounded ${
+                      exercise.difficulty === 'hard' ? 'bg-red/20 text-red' : 'bg-yellow/20 text-yellow'
+                    }`}>
+                      {exercise.difficulty}
+                    </span>
+                  </div>
+                </div>
+                {done && <span className="text-xs bg-green/20 text-green px-2 py-0.5 rounded shrink-0">✓ {t('exerciseList.done')}</span>}
+              </div>
+            )}
           />
         </div>
       </div>
@@ -164,20 +183,11 @@ export function Reading() {
               ))}
             </div>
           </div>
-          <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-between">
-            <button
-              onClick={handleBack}
-              className="text-sm text-subtext0 hover:text-text transition-colors"
-            >
-              ← {t('practice.abandon')}
-            </button>
-            <button
-              onClick={handleSubmit}
-              className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm hover:bg-mauve/90 transition-colors"
-            >
+          <PracticeFooter onBack={handleBack}>
+            <button onClick={handleSubmit} className="px-5 py-2 bg-mauve text-base rounded font-medium text-sm hover:bg-mauve/90 transition-colors">
               {t('practice.check')}
             </button>
-          </div>
+          </PracticeFooter>
         </div>
       </div>
     )
@@ -195,9 +205,7 @@ export function Reading() {
       </div>
       <div className="w-[45%] h-full overflow-y-auto">
         {saveError && (
-          <div className="mx-4 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-            ⚠ {t('practice.saveError')}
-          </div>
+          <ErrorBanner message={t('practice.saveError')} className="mx-4 mt-4" />
         )}
         <ResultsPanel
           exercise={currentExercise}

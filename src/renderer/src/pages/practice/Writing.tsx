@@ -1,34 +1,41 @@
+import { ErrorBanner } from '../../components/ErrorBanner'
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { WritingTask1, WritingTask2, AIWritingFeedback } from '../../types'
 import { WritingEditor } from '../../components/practice/WritingEditor'
 import { WritingFeedback } from '../../components/practice/WritingFeedback'
+import { ExerciseList } from '../../components/practice/ExerciseList'
 import { countWords, isTask1 } from '../../components/practice/writingUtils'
-import { buildInterleavedSeries } from '../../components/practice/utils'
 import { Lightbox } from '../../components/Lightbox'
+import { PracticeFooter } from '../../components/practice/PracticeFooter'
 
+type TabType = 'task1' | 'task2' | 'all'
 type Phase = 'selecting' | 'active' | 'results'
-type TaskType = 'task1' | 'task2'
+
+type WritingExercise = (WritingTask1 | WritingTask2) & { question_type: string }
 
 interface ActiveSession {
-  exercises: (WritingTask1 | WritingTask2)[]
+  exercises: WritingExercise[]
   currentIndex: number
-  taskType: TaskType
   startedAt: number
   text: string
 }
 
+function toWritingExercise(e: WritingTask1 | WritingTask2): WritingExercise {
+  return { ...e, question_type: isTask1(e) ? (e as WritingTask1).chart_type : (e as WritingTask2).essay_type }
+}
+
 export function Writing() {
   const { t } = useTranslation()
-  const [taskType, setTaskType] = useState<TaskType>('task1')
+  const [tab, setTab] = useState<TabType>('task1')
   const [phase, setPhase] = useState<Phase>('selecting')
   const [task1Exercises, setTask1Exercises] = useState<WritingTask1[]>([])
   const [task2Exercises, setTask2Exercises] = useState<WritingTask2[]>([])
+  const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
   const [session, setSession] = useState<ActiveSession | null>(null)
   const [feedback, setFeedback] = useState<AIWritingFeedback | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null)
-  const [varyTypes, setVaryTypes] = useState(true)
   const [isEvaluating, setIsEvaluating] = useState(false)
   const [evalError, setEvalError] = useState(false)
   const [saveError, setSaveError] = useState(false)
@@ -38,45 +45,38 @@ export function Writing() {
     Promise.all([
       window.api.getExercises('writing/task1') as Promise<WritingTask1[]>,
       window.api.getExercises('writing/task2') as Promise<WritingTask2[]>,
+      window.api.getCompletedExerciseIds('writing'),
     ])
-      .then(([t1, t2]) => {
+      .then(([t1, t2, ids]) => {
         setTask1Exercises(t1)
         setTask2Exercises(t2)
+        setCompletedIds(new Set(ids))
       })
       .catch(() => setLoadError(t('practice.loadError')))
   }
 
   useEffect(() => { load() }, [])
 
-  function handleTabChange(t: TaskType) {
-    setTaskType(t)
+  const exercises: WritingExercise[] = (
+    tab === 'all' ? [...task1Exercises, ...task2Exercises] :
+    tab === 'task1' ? task1Exercises : task2Exercises
+  ).map(toWritingExercise)
+
+  function startSession(exs: WritingExercise[]) {
+    setSession({ exercises: exs, currentIndex: 0, startedAt: Date.now(), text: '' })
+    setFeedback(null)
+    setEvalError(false)
+    setSaveError(false)
+    setPhase('active')
+  }
+
+  function handleTabChange(next: TabType) {
+    setTab(next)
     setPhase('selecting')
     setSession(null)
     setFeedback(null)
     setEvalError(false)
     setSaveError(false)
-  }
-
-  function handleStart(exercise: WritingTask1 | WritingTask2) {
-    setSession({ exercises: [exercise], currentIndex: 0, taskType, startedAt: Date.now(), text: '' })
-    setFeedback(null)
-    setEvalError(false)
-    setSaveError(false)
-    setPhase('active')
-  }
-
-  function handleStartSeries(exs: (WritingTask1 | WritingTask2)[]) {
-    const getType = (e: WritingTask1 | WritingTask2) =>
-      isTask1(e) ? (e as WritingTask1).chart_type : (e as WritingTask2).essay_type
-    const multipleTypes = new Set(exs.map(getType)).size > 1
-    const ordered = varyTypes && multipleTypes
-      ? buildInterleavedSeries(exs, getType)
-      : [...exs].sort(() => Math.random() - 0.5)
-    setSession({ exercises: ordered, currentIndex: 0, taskType, startedAt: Date.now(), text: '' })
-    setFeedback(null)
-    setEvalError(false)
-    setSaveError(false)
-    setPhase('active')
   }
 
   function handleNext() {
@@ -95,13 +95,15 @@ export function Writing() {
   async function handleSubmit() {
     if (!session) return
     const exercise = session.exercises[session.currentIndex]
-    const { taskType: tt, text, startedAt } = session
+    const taskType = isTask1(exercise) ? 'task1' : 'task2'
+    const completedAt = Date.now()
+    const { text, startedAt } = session
     const wordCount = countWords(text)
-    const prompt = isTask1(exercise) ? exercise.prompt : exercise.question
+    const prompt = isTask1(exercise) ? (exercise as WritingTask1).prompt : (exercise as WritingTask2).question
     setIsEvaluating(true)
     let fb: AIWritingFeedback | null = null
     try {
-      fb = await window.api.evaluateWriting(tt, text, prompt, wordCount)
+      fb = await window.api.evaluateWriting(taskType, text, prompt, wordCount)
     } catch {
       setEvalError(true)
     }
@@ -109,12 +111,14 @@ export function Writing() {
     try {
       await window.api.saveWritingSubmission({
         task_id: exercise.id,
-        task_type: tt,
+        task_type: taskType,
         submitted_at: startedAt,
+        completed_at: completedAt,
         text,
         word_count: wordCount,
         band_score: fb?.band,
       })
+      setCompletedIds(prev => new Set([...prev, exercise.id]))
     } catch {
       setSaveError(true)
     }
@@ -130,88 +134,62 @@ export function Writing() {
     setPhase('selecting')
   }
 
-  const exercises = taskType === 'task1' ? task1Exercises : task2Exercises
-
   // ── Selecting phase ──────────────────────────────────────────────────────────
   if (phase === 'selecting') {
     return (
       <div className="h-full flex flex-col">
         <div className="px-6 py-4 border-b border-surface0 shrink-0">
-          <h1 className="text-xl font-bold text-text">{t('practice.writingTitle')}</h1>
-          <div className="flex gap-2 mt-3">
-            {(['task1', 'task2'] as TaskType[]).map(tab => (
+          <h1 className="text-xl font-bold text-text mb-3">{t('practice.writingTitle')}</h1>
+          <div className="flex flex-wrap gap-2">
+            {(['task1', 'task2', 'all'] as TabType[]).map(tabKey => (
               <button
-                key={tab}
-                onClick={() => handleTabChange(tab)}
-                className={`px-4 py-1.5 rounded text-sm transition-colors ${
-                  taskType === tab
-                    ? 'bg-mauve text-base font-medium'
-                    : 'bg-surface0 text-subtext0 hover:text-text'
+                key={tabKey}
+                onClick={() => handleTabChange(tabKey)}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  tab === tabKey ? 'bg-mauve text-base' : 'bg-surface0 text-subtext0 hover:text-text'
                 }`}
               >
-                {tab === 'task1' ? t('practice.task1Tab') : t('practice.task2Tab')}
+                {tabKey === 'task1' ? t('practice.task1Tab') : tabKey === 'task2' ? t('practice.task2Tab') : t('exerciseList.all')}
               </button>
             ))}
           </div>
         </div>
-        <div className="flex-1 overflow-y-auto p-6">
-          {loadError ? (
-            <div className="flex flex-col items-center gap-4 pt-10">
-              <p className="text-red text-sm">{loadError}</p>
-              <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1">
-                {t('common.retry')}
-              </button>
-            </div>
-          ) : exercises.length === 0 ? (
-            <p className="text-subtext0 text-sm text-center pt-10">{t('practice.noExercises')}</p>
-          ) : (
-            <div className="max-w-3xl mx-auto flex flex-col gap-4">
-              <div className="flex items-center justify-between">
-                {(() => {
-                  const getType = (e: WritingTask1 | WritingTask2) =>
-                    isTask1(e) ? (e as WritingTask1).chart_type : (e as WritingTask2).essay_type
-                  const multipleTypes = new Set(exercises.map(getType)).size > 1
-                  return multipleTypes ? (
-                    <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
-                      <input type="checkbox" checked={varyTypes} onChange={e => setVaryTypes(e.target.checked)} className="accent-mauve" />
-                      {t('practice.varyTypes')}
-                    </label>
-                  ) : <span />
-                })()}
-                <button
-                  onClick={() => handleStartSeries(exercises)}
-                  className="px-4 py-1.5 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
-                >
-                  ▶ Serie ({exercises.length})
-                </button>
-              </div>
-              <div className="flex flex-col gap-2">
-              {exercises.map(exercise => {
-                const t1 = isTask1(exercise)
-                return (
-                  <div
-                    key={exercise.id}
-                    onClick={() => handleStart(exercise)}
-                    className="p-4 rounded-lg border border-surface0 bg-surface0/30 cursor-pointer
-                      hover:border-mauve/60 hover:bg-surface0/60 transition-colors"
-                  >
+        <div className="flex-1 overflow-y-auto">
+          <ExerciseList
+            key={tab}
+            exercises={exercises}
+            completedIds={completedIds}
+            onStartSingle={ex => startSession([ex])}
+            onStartSeries={exs => startSession(exs)}
+            error={loadError}
+            onRetry={load}
+            renderCard={(exercise, done) => {
+              const t1 = isTask1(exercise)
+              return (
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-text line-clamp-2">
-                      {t1 ? exercise.prompt : exercise.topic}
+                      {t1 ? (exercise as WritingTask1).prompt : (exercise as WritingTask2).topic}
                     </p>
-                    <div className="flex gap-2 mt-2 flex-wrap">
+                    <div className="flex gap-2 mt-1.5 flex-wrap">
+                      {tab === 'all' && (
+                        <span className="text-xs bg-mauve/20 text-mauve px-2 py-0.5 rounded">
+                          {t1 ? 'Task 1' : 'Task 2'}
+                        </span>
+                      )}
                       <span className="text-xs bg-surface1 text-subtext0 px-2 py-0.5 rounded">
-                        {t1 ? exercise.chart_type : exercise.essay_type.replace(/_/g, ' ')}
+                        {exercise.question_type.replace(/_/g, ' ')}
                       </span>
                       <span className="text-xs bg-blue/20 text-blue px-2 py-0.5 rounded">
                         {t('practice.bandTarget')} {exercise.band_target}
                       </span>
                     </div>
                   </div>
-                )
-              })}
-              </div>
-            </div>
-          )}
+                  {done && <span className="text-xs bg-green/20 text-green px-2 py-0.5 rounded shrink-0">✓ {t('exerciseList.done')}</span>}
+                </div>
+              )
+            }}
+          />
         </div>
       </div>
     )
@@ -219,18 +197,20 @@ export function Writing() {
 
   if (!session) return null
 
+  const exercise = session.exercises[session.currentIndex]
+  const t1 = isTask1(exercise)
+  const taskType = t1 ? 'task1' : 'task2'
+  const imageUrl = t1 ? (exercise as WritingTask1).image_url : undefined
+  const prompt = t1 ? (exercise as WritingTask1).prompt : (exercise as WritingTask2).question
+  const isSeries = session.exercises.length > 1
+  const minWords = t1 ? 150 : 250
+
   // ── Active phase ─────────────────────────────────────────────────────────────
   if (phase === 'active') {
-    const exercise = session.exercises[session.currentIndex]
-    const t1 = isTask1(exercise)
-    const imageUrl = t1 ? (exercise as WritingTask1).image_url : undefined
-    const prompt = t1 ? (exercise as WritingTask1).prompt : (exercise as WritingTask2).question
-    const isSeries = session.exercises.length > 1
-
     const header = (
       <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center gap-2">
         <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
-          {t1 ? (exercise as WritingTask1).chart_type : (exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
+          {exercise.question_type.replace(/_/g, ' ')}
         </span>
         <span className="text-xs text-subtext0">{taskType === 'task1' ? 'Task 1' : 'Task 2'}</span>
         {isSeries && (
@@ -240,16 +220,12 @@ export function Writing() {
     )
 
     const footer = (
-      <div className="px-5 py-3 border-t border-surface0 shrink-0 flex items-center justify-between gap-3">
-        <button onClick={handleBack} className="text-sm text-subtext0 hover:text-text transition-colors">
-          ← {t('practice.abandon')}
-        </button>
+      <PracticeFooter onBack={handleBack}>
         <div className="flex items-center gap-3">
           {(() => {
             const wc = countWords(session.text)
-            const min = taskType === 'task1' ? 150 : 250
-            const color = wc === 0 ? 'text-subtext0' : wc >= min ? 'text-green' : 'text-yellow'
-            return <span className={`text-xs font-mono ${color}`}>{wc} / {min} {t('common.words')}</span>
+            const color = wc === 0 ? 'text-subtext0' : wc >= minWords ? 'text-green' : 'text-yellow'
+            return <span className={`text-xs font-mono ${color}`}>{wc} / {minWords} {t('common.words')}</span>
           })()}
           {isEvaluating ? (
             <span className="text-sm text-subtext0 animate-pulse">{t('reviewSession.evaluating')}</span>
@@ -264,7 +240,7 @@ export function Writing() {
             </button>
           )}
         </div>
-      </div>
+      </PracticeFooter>
     )
 
     return (
@@ -317,36 +293,32 @@ export function Writing() {
   return (
     <div className="h-full flex flex-col overflow-hidden">
       <div className="flex-1 overflow-y-auto">
-        {evalError && (
-          <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-            ⚠ {t('practice.aiUnavailable')}
-          </div>
-        )}
-        {saveError && (
-          <div className="mx-6 mt-4 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-sm">
-            ⚠ {t('practice.sendError')}
-          </div>
-        )}
-        <WritingFeedback
-          feedback={feedback}
-          exercise={session.exercises[session.currentIndex]}
-        />
+        {evalError && <ErrorBanner message={t('practice.aiUnavailable')} className="mx-6 mt-4" />}
+        {saveError && <ErrorBanner message={t('practice.sendError')} className="mx-6 mt-4" />}
+        <WritingFeedback feedback={feedback} exercise={exercise} userText={session.text} />
       </div>
-      <div className="px-6 py-3 border-t border-surface0 shrink-0 flex items-center gap-3">
+      <div className="px-6 py-3 border-t border-surface0 shrink-0 flex items-center justify-between">
         <button
           onClick={handleBack}
           className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
         >
           {t('common.back')}
         </button>
-        {session.currentIndex < session.exercises.length - 1 && (
-          <button
-            onClick={handleNext}
-            className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
-          >
-            {t('practice.next')} ({session.currentIndex + 2} / {session.exercises.length}) →
-          </button>
-        )}
+        <div className="flex items-center gap-3">
+          {session.exercises.length > 1 && (
+            <span className="text-xs text-subtext0">
+              {session.currentIndex + 1} / {session.exercises.length}
+            </span>
+          )}
+          {session.currentIndex < session.exercises.length - 1 && (
+            <button
+              onClick={handleNext}
+              className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
+            >
+              {t('results.nextExercise')}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

@@ -1,28 +1,26 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { ListeningExercise, ReadingExercise } from '../../types'
 import { filterExercises, buildInterleavedSeries } from './utils'
 
-type AnyExercise = ListeningExercise | ReadingExercise
-
-interface ExerciseListProps {
-  section: 'listening' | 'reading'
-  exercises: AnyExercise[]
+interface ExerciseListProps<T extends { id: string; question_type: string }> {
+  exercises: T[]
   completedIds: Set<string>
-  onStartSingle: (exercise: AnyExercise) => void
-  onStartSeries: (exercises: AnyExercise[]) => void
+  onStartSingle: (exercise: T) => void
+  onStartSeries: (exercises: T[]) => void
   error: string | null
   onRetry: () => void
+  renderCard: (exercise: T, done: boolean) => ReactNode
 }
 
-export function ExerciseList({
+export function ExerciseList<T extends { id: string; question_type: string }>({
   exercises,
   completedIds,
   onStartSingle,
   onStartSeries,
   error,
   onRetry,
-}: ExerciseListProps) {
+  renderCard,
+}: ExerciseListProps<T>) {
   const { t } = useTranslation()
   const [typeFilter, setTypeFilter] = useState('all')
   const [showCompleted, setShowCompleted] = useState(true)
@@ -76,7 +74,6 @@ export function ExerciseList({
             </button>
           ))}
         </div>
-
         <button
           onClick={handleStartSeries}
           disabled={seriesPool.length === 0}
@@ -87,7 +84,7 @@ export function ExerciseList({
         </button>
       </div>
 
-      {/* Show completed toggle */}
+      {/* Toggles row */}
       <div className="flex items-center gap-4">
         <label className="flex items-center gap-2 text-sm text-subtext0 cursor-pointer">
           <input type="checkbox" checked={showCompleted} onChange={e => setShowCompleted(e.target.checked)} className="accent-mauve" />
@@ -120,24 +117,7 @@ export function ExerciseList({
                 className={`p-4 rounded-lg border border-surface0 bg-surface0/30 cursor-pointer
                   hover:border-mauve/60 hover:bg-surface0/60 transition-colors ${done ? 'opacity-50' : ''}`}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-text truncate">{exercise.title}</p>
-                    <div className="flex gap-2 mt-1.5 flex-wrap">
-                      <span className="text-xs bg-surface1 text-subtext0 px-2 py-0.5 rounded">
-                        {exercise.question_type.replace(/_/g, ' ')}
-                      </span>
-                      <span className={`text-xs px-2 py-0.5 rounded ${
-                        exercise.difficulty === 'hard' ? 'bg-red/20 text-red' : 'bg-yellow/20 text-yellow'
-                      }`}>
-                        {exercise.difficulty}
-                      </span>
-                    </div>
-                  </div>
-                  {done && (
-                    <span className="text-xs bg-green/20 text-green px-2 py-0.5 rounded shrink-0">✓ {t('exerciseList.done')}</span>
-                  )}
-                </div>
+                {renderCard(exercise, done)}
               </div>
             )
           })}

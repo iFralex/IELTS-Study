@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ChatBubble } from '../components/ChatBubble'
 import type { ChatMessage, StoredChat, StoredChatMessage } from '../types'
 
 const SUGGESTIONS = [
@@ -186,7 +187,7 @@ export function Chat() {
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-4">
               {messages.length === 0 && !loading && (
-                <div className="max-w-2xl mx-auto">
+                <div className="max-w-4xl mx-auto">
                   <p className="text-sm text-subtext0 text-center mb-5">{t('chat.startConversation')}</p>
                   <div className="flex flex-col gap-2">
                     {SUGGESTIONS.map((s, i) => (
@@ -202,22 +203,9 @@ export function Chat() {
                 </div>
               )}
 
-              <div className="max-w-2xl mx-auto flex flex-col gap-4">
+              <div className="max-w-4xl mx-auto flex flex-col gap-4">
                 {messages.map((msg, i) => (
-                  <div key={i} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                    <div className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center text-xs font-bold ${
-                      msg.role === 'user' ? 'bg-mauve/20 text-mauve' : 'bg-surface1 text-subtext0'
-                    }`}>
-                      {msg.role === 'user' ? 'T' : 'AI'}
-                    </div>
-                    <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
-                      msg.role === 'user'
-                        ? 'bg-mauve/20 text-text rounded-tr-sm'
-                        : 'bg-surface0 text-text rounded-tl-sm'
-                    }`}>
-                      {msg.content}
-                    </div>
-                  </div>
+                  <ChatBubble key={i} role={msg.role} content={msg.content} showAvatar />
                 ))}
 
                 {loading && (
@@ -240,7 +228,7 @@ export function Chat() {
 
             {/* Input */}
             <div className="px-4 py-3 border-t border-surface0 shrink-0">
-              <div className="max-w-2xl mx-auto flex gap-2 items-end">
+              <div className="max-w-4xl mx-auto flex gap-2 items-end">
                 <textarea
                   ref={inputRef}
                   value={input}

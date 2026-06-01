@@ -14,6 +14,7 @@ import { ExamSimulator } from './pages/ExamSimulator'
 import { Analytics } from './pages/Analytics'
 import { Flashcard } from './pages/Flashcard'
 import { Chat } from './pages/Chat'
+import { ReviewPage } from './pages/ReviewPage'
 
 export default function App() {
   const { t, i18n } = useTranslation()
@@ -79,6 +80,7 @@ export default function App() {
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/flashcard" element={<Flashcard />} />
             <Route path="/chat"      element={<Chat />} />
+            <Route path="/review/:sessionId" element={<ReviewPage />} />
           </Routes>
         </main>
 

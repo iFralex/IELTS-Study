@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { Flashcard } from '../../types'
+import { LoadingErrorState } from '../LoadingErrorState'
 
 interface Props { onStartReview: () => void }
 
@@ -28,24 +29,7 @@ export function CardLibrary({ onStartReview }: Props) {
     setCards(cs => cs.filter(c => c.id !== id))
   }
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <p className="text-subtext0 text-sm animate-pulse">{t('common.loading')}</p>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="flex flex-col items-center gap-4 pt-10">
-        <p className="text-red text-sm">{error}</p>
-        <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1">
-          {t('common.retry')}
-        </button>
-      </div>
-    )
-  }
+  if (loading || error) return <LoadingErrorState loading={loading} error={error} onRetry={load} />
 
   const now = Date.now()
   const dueCount = cards.filter(c => c.next_review <= now).length

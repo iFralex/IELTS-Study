@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('api', {
   saveAnswers:           (a: AnswerInput[])  => ipcRenderer.invoke('save-answers', a),
   getAnalytics:          (days: number)      => ipcRenderer.invoke('get-analytics', days),
   getRecentSessions:     (limit: number)     => ipcRenderer.invoke('get-recent-sessions', limit),
+  getSessionAnswers:     (sessionId: number) => ipcRenderer.invoke('get-session-answers', sessionId),
   getCompletedExerciseIds: (section: string) => ipcRenderer.invoke('get-completed-exercise-ids', section),
   saveWritingSubmission: (s: WritingInput)   => ipcRenderer.invoke('save-writing-submission', s),
   saveExamRun:           (r: ExamRunInput)   => ipcRenderer.invoke('save-exam-run', r),

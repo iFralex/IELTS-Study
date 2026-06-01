@@ -242,6 +242,10 @@ export default {
     modelAnswer: 'Model answer (Band',
     keyVocab: 'Key vocabulary',
     keyPhrases: 'Key phrases',
+    yourText: 'Your text',
+    grammarError: 'Grammar error',
+    contextError: 'Better word available',
+    sentenceRewrites: 'Sentence rewrites',
   },
   reviewSession: {
     loadError: 'Error loading cards.',

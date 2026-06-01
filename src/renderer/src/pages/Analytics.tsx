@@ -6,6 +6,7 @@ import {
 } from 'recharts'
 import type { AnalyticsData } from '../types'
 import { StatCard } from '../components/StatCard'
+import { SectionTitle } from '../components/SectionTitle'
 import { formatDuration, formatAccuracy } from '../components/analyticsUtils'
 
 type DaysFilter = 7 | 30 | 0
@@ -28,13 +29,6 @@ function BandBadge({ band }: { band: number }) {
   return <span className={`text-3xl font-bold ${color}`}>{band.toFixed(1)}</span>
 }
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
-      {children}
-    </h2>
-  )
-}
 
 const tooltipStyle = { background: '#1e1e2e', border: '1px solid #313244', borderRadius: 6, fontSize: 12 }
 const cursorStyle  = { fill: 'rgba(255,255,255,0.04)' }

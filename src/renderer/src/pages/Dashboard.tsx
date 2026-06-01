@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { AnalyticsData, Session, ExamRun } from '../types'
 import { StatCard } from '../components/StatCard'
+import { SectionTitle } from '../components/SectionTitle'
 import { formatDuration, formatAccuracy } from '../components/analyticsUtils'
 
 const SHORTCUTS = [
@@ -83,9 +84,9 @@ export function Dashboard() {
 
             {/* Shortcuts */}
             <div>
-              <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
+              <SectionTitle>
                 {t('dashboard.startPractice')}
-              </h2>
+              </SectionTitle>
               <div className="grid grid-cols-3 gap-3">
                 {SHORTCUTS.map(s => (
                   <button
@@ -103,9 +104,9 @@ export function Dashboard() {
 
             {/* Recent sessions */}
             <div>
-              <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
+              <SectionTitle>
                 {t('dashboard.recentSessions')}
-              </h2>
+              </SectionTitle>
               {sessions.length === 0 ? (
                 <p className="text-subtext0 text-sm">{t('dashboard.noSessions')}</p>
               ) : (
@@ -113,8 +114,10 @@ export function Dashboard() {
                   {sessions.map(s => (
                     <div
                       key={s.id}
+                      onClick={() => navigate(`/review/${s.id}`, { state: { session: s } })}
                       className="flex items-center justify-between px-4 py-3
-                        bg-surface0/30 border border-surface0 rounded-lg"
+                        bg-surface0/30 border border-surface0 rounded-lg cursor-pointer
+                        hover:border-mauve/40 hover:bg-surface0/60 transition-colors"
                     >
                       <span className="text-sm text-text">
                         {SECTION_LABEL[s.section] ?? s.section}
@@ -137,9 +140,9 @@ export function Dashboard() {
 
             {/* Recent exam runs */}
             <div>
-              <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
+              <SectionTitle>
                 {t('dashboard.recentExams')}
-              </h2>
+              </SectionTitle>
               {examRuns.length === 0 ? (
                 <p className="text-subtext0 text-sm">{t('dashboard.noExams')}</p>
               ) : (

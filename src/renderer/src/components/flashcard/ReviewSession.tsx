@@ -1,3 +1,5 @@
+import { ErrorBanner } from '../ErrorBanner'
+import { LoadingErrorState } from '../LoadingErrorState'
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { Flashcard, AIEvalResult, AIAudioEvalResult, ReviewInput } from '../../types'
@@ -10,6 +12,7 @@ interface EvalState {
   textResult: AIEvalResult | null
   audioResult: AIAudioEvalResult | null
   aiError: boolean
+  rawOutput?: string
 }
 
 function speak(word: string) {
@@ -64,11 +67,15 @@ export function ReviewSession() {
     const newEval: EvalState = { textResult: null, audioResult: null, aiError: false }
     try {
       if (mode === 'audio') {
-        newEval.audioResult = await window.api.evaluateAudioAnswer(card.english, audioEnInput, audioItInput)
+        const res = await window.api.evaluateAudioAnswer(card.english, audioEnInput, audioItInput)
+        if (res.rawOutput) { newEval.aiError = true; newEval.rawOutput = res.rawOutput }
+        else newEval.audioResult = res as AIAudioEvalResult
       } else {
         const correct = mode === 'text-en-it' ? card.italian : card.english
         const direction = mode === 'text-en-it' ? 'en-it' : 'it-en'
-        newEval.textResult = await window.api.evaluateAnswer(card.english, correct, textInput, direction)
+        const res = await window.api.evaluateAnswer(card.english, correct, textInput, direction)
+        if (res.rawOutput) { newEval.aiError = true; newEval.rawOutput = res.rawOutput }
+        else newEval.textResult = res
       }
     } catch {
       newEval.aiError = true
@@ -125,27 +132,12 @@ export function ReviewSession() {
     setTextInput('')
     setAudioEnInput('')
     setAudioItInput('')
-    setEvalState({ textResult: null, audioResult: null, aiError: false })
+    setEvalState({ textResult: null, audioResult: null, aiError: false, rawOutput: undefined })
     setPhase('reviewing')
   }
 
-  if (phase === 'loading') {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <p className="text-subtext0 text-sm animate-pulse">{t('common.loading')}</p>
-      </div>
-    )
-  }
-
-  if (phase === 'error') {
-    return (
-      <div className="flex flex-col items-center gap-4 pt-10">
-        <p className="text-red text-sm">{t('reviewSession.loadError')}</p>
-        <button onClick={load} className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface1">
-          {t('common.retry')}
-        </button>
-      </div>
-    )
+  if (phase === 'loading' || phase === 'error') {
+    return <LoadingErrorState loading={phase === 'loading'} error={phase === 'error' ? t('reviewSession.loadError') : null} onRetry={load} />
   }
 
   if (phase === 'idle') {
@@ -212,13 +204,15 @@ export function ReviewSession() {
             <span className="text-xs text-subtext0">
               {mode === 'text-en-it' ? t('reviewSession.writeItalianTranslation') : t('reviewSession.writeEnglishTranslation')}
             </span>
-            <button
-              onClick={() => speak(card.english)}
-              className="flex items-center gap-1.5 text-xs text-blue bg-surface0 px-3 py-1
-                rounded-full hover:bg-surface1 transition-colors"
-            >
-              {t('reviewSession.listenPronunciation')}
-            </button>
+            {mode === 'text-en-it' && (
+              <button
+                onClick={() => speak(card.english)}
+                className="flex items-center gap-1.5 text-xs text-blue bg-surface0 px-3 py-1
+                  rounded-full hover:bg-surface1 transition-colors"
+              >
+                {t('reviewSession.listenPronunciation')}
+              </button>
+            )}
           </div>
         )}
 
@@ -300,26 +294,30 @@ export function ReviewSession() {
         </div>
       </div>
 
-      {evalState.aiError && (
-        <div className="mb-3 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-xs shrink-0">
-          {t('reviewSession.aiUnavailable')}
-        </div>
-      )}
-      {saveError && (
-        <div className="mb-3 p-3 bg-yellow/10 border border-yellow/30 rounded text-yellow text-xs shrink-0">
-          {t('reviewSession.saveError')}
-        </div>
-      )}
+      {evalState.aiError && <ErrorBanner message={t('reviewSession.aiUnavailable')} className="mb-3 shrink-0" />}
+      {saveError && <ErrorBanner message={t('reviewSession.saveError')} className="mb-3 shrink-0" />}
 
       <div className="flex-1 overflow-y-auto bg-surface0/30 border border-surface0 rounded-xl p-4 mb-4 min-h-0">
         {evalState.textResult && (
           <>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-sm font-bold text-text">
-                {mode === 'text-en-it'
-                  ? `${card.english} → ${card.italian}`
-                  : `${card.italian} → ${card.english}`}
-              </span>
+              {mode === 'text-en-it' ? (
+                <>
+                  <span className="text-sm font-bold text-text">{card.english}</span>
+                  <button onClick={() => speak(card.english)} className="text-subtext0 hover:text-text transition-colors">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                  </button>
+                  <span className="text-sm font-bold text-text">→ {card.italian}</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-sm font-bold text-text">{card.italian} →</span>
+                  <span className="text-sm font-bold text-text">{card.english}</span>
+                  <button onClick={() => speak(card.english)} className="text-subtext0 hover:text-text transition-colors">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                  </button>
+                </>
+              )}
               <span className={`text-xs px-2 py-0.5 rounded ${
                 evalState.textResult.is_correct ? 'bg-green/20 text-green' : 'bg-red/20 text-red'
               }`}>
@@ -335,6 +333,9 @@ export function ReviewSession() {
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs text-subtext0 w-20 shrink-0">{t('reviewSession.spellingLabel')}</span>
               <span className="text-sm font-medium text-text">{card.english}</span>
+              <button onClick={() => speak(card.english)} className="text-subtext0 hover:text-text transition-colors">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              </button>
               <span className={`text-xs px-2 py-0.5 rounded ${
                 evalState.audioResult.english_correct ? 'bg-green/20 text-green' : 'bg-red/20 text-red'
               }`}>
@@ -356,8 +357,17 @@ export function ReviewSession() {
         )}
 
         {evalState.aiError && (
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-sm font-bold text-text">{card.english} → {card.italian}</span>
+          <div className="flex flex-col gap-2 mb-3">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold text-text">{card.english}</span>
+              <button onClick={() => speak(card.english)} className="text-subtext0 hover:text-text transition-colors">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              </button>
+              <span className="text-sm font-bold text-text">→ {card.italian}</span>
+            </div>
+            {evalState.rawOutput && (
+              <p className="text-xs text-subtext0 whitespace-pre-wrap">{evalState.rawOutput}</p>
+            )}
           </div>
         )}
 

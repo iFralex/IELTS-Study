@@ -63,6 +63,11 @@ export function registerIpcHandlers(): void {
     db.prepare('SELECT * FROM sessions ORDER BY started_at DESC LIMIT ?').all(limit)
   )
 
+  ipcMain.handle('get-session-answers', (_e, sessionId: number) =>
+    db.prepare('SELECT question_index, user_answer FROM answers WHERE session_id = ? ORDER BY question_index')
+      .all(sessionId) as { question_index: number; user_answer: string }[]
+  )
+
   ipcMain.handle('get-completed-exercise-ids', (_e, section: string) =>
     (db.prepare(
       'SELECT DISTINCT exercise_id FROM sessions WHERE section = ? AND completed_at IS NOT NULL'
@@ -70,11 +75,20 @@ export function registerIpcHandlers(): void {
   )
 
   // ── Writing ──────────────────────────────────────────────────────────────────
-  ipcMain.handle('save-writing-submission', (_e, s: WritingInput) =>
-    db.prepare(
-      'INSERT INTO writing_submissions (task_id, task_type, submitted_at, text, word_count, band_score, self_score, notes) VALUES (?,?,?,?,?,?,?,?)'
-    ).run(s.task_id, s.task_type, s.submitted_at, s.text, s.word_count, s.band_score ?? null, s.self_score ?? null, s.notes ?? null)
-  )
+  ipcMain.handle('save-writing-submission', (_e, s: WritingInput) => {
+    const completedAt = s.completed_at ?? s.submitted_at
+    const timeSpent = Math.round((completedAt - s.submitted_at) / 1000)
+    return db.prepare(
+      `INSERT INTO sessions
+       (exercise_id, section, question_type, started_at, completed_at, time_spent_seconds,
+        band_score, text, word_count, self_score, notes)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?)`
+    ).run(
+      s.task_id, 'writing', s.task_type, s.submitted_at, completedAt, timeSpent,
+      s.band_score ?? null, s.text, s.word_count ?? null,
+      s.self_score ?? null, s.notes ?? null
+    )
+  })
 
   // ── Exam ─────────────────────────────────────────────────────────────────────
   ipcMain.handle('save-exam-run', (_e, r: ExamRunInput) =>
@@ -107,7 +121,9 @@ export function registerIpcHandlers(): void {
     for (const s of sessions) {
       const week = new Date(s.started_at).toISOString().slice(0, 10)
       if (!weekMap.has(week)) weekMap.set(week, { l: [], r: [], w: [] })
-      const pct = s.max_score ? (s.score ?? 0) / s.max_score : 0
+      const pct = s.section === 'writing'
+        ? (s.band_score ?? 0) / 9
+        : s.max_score ? (s.score ?? 0) / s.max_score : 0
       const key = s.section.startsWith('listening') ? 'l' : s.section.startsWith('reading') ? 'r' : 'w'
       weekMap.get(week)![key].push(pct)
     }
@@ -120,7 +136,7 @@ export function registerIpcHandlers(): void {
         writing:   v.w.length ? +(avg(v.w) * 9).toFixed(1) : 0,
       }))
 
-    // Accuracy + avg time per question type
+    // Accuracy + avg time per question type (reading/listening)
     const typeMap = new Map<string, { correct: number; total: number }>()
     for (const a of answers) {
       if (!a.question_type) continue
@@ -131,19 +147,40 @@ export function registerIpcHandlers(): void {
     }
     const timeByType = new Map<string, number[]>()
     for (const s of sessions) {
-      if (!s.question_type || !s.max_score || !s.time_spent_seconds) continue
+      if (!s.question_type || !s.time_spent_seconds) continue
       const arr = timeByType.get(s.question_type) ?? []
-      arr.push(s.time_spent_seconds / s.max_score)
+      arr.push(s.section === 'writing'
+        ? s.time_spent_seconds
+        : s.max_score ? s.time_spent_seconds / s.max_score : 0)
       timeByType.set(s.question_type, arr)
     }
-    const accuracy_by_type = [...typeMap.entries()]
-      .sort(([, a], [, b]) => b.total - a.total)
-      .map(([qt, { correct, total }]) => ({
-        question_type: qt,
-        accuracy: total ? correct / total : 0,
-        attempts: total,
-        avg_time_per_question: avg(timeByType.get(qt) ?? []),
-      }))
+    // Writing: band_score as accuracy proxy, time per exercise
+    const writingTypeMap = new Map<string, { bandSum: number; total: number }>()
+    for (const s of sessions) {
+      if (s.section !== 'writing' || !s.question_type) continue
+      const e = writingTypeMap.get(s.question_type) ?? { bandSum: 0, total: 0 }
+      e.total++
+      e.bandSum += s.band_score ?? 0
+      writingTypeMap.set(s.question_type, e)
+    }
+    const accuracy_by_type = [
+      ...[...typeMap.entries()]
+        .sort(([, a], [, b]) => b.total - a.total)
+        .map(([qt, { correct, total }]) => ({
+          question_type: qt,
+          accuracy: total ? correct / total : 0,
+          attempts: total,
+          avg_time_per_question: avg(timeByType.get(qt) ?? []),
+        })),
+      ...[...writingTypeMap.entries()]
+        .sort(([, a], [, b]) => b.total - a.total)
+        .map(([qt, { bandSum, total }]) => ({
+          question_type: qt,
+          accuracy: total ? (bandSum / total) / 9 : 0,
+          attempts: total,
+          avg_time_per_question: avg(timeByType.get(qt) ?? []),
+        })),
+    ]
 
     // Per-section breakdown
     const sectionMap = new Map<string, { correct: number; total: number; sessions: number; time: number }>()
@@ -210,9 +247,9 @@ export function registerIpcHandlers(): void {
       else if (s.section.startsWith('reading')) bandBySection.r.push(pct)
     }
     const writingBandsRaw = db.prepare(
-      `SELECT task_type, AVG(band_score) as avg_band, COUNT(*) as cnt
-       FROM writing_submissions WHERE band_score IS NOT NULL AND submitted_at >= ?
-       GROUP BY task_type`
+      `SELECT question_type as task_type, AVG(band_score) as avg_band, COUNT(*) as cnt
+       FROM sessions WHERE section = 'writing' AND band_score IS NOT NULL AND started_at >= ?
+       GROUP BY question_type`
     ).all(since) as { task_type: string; avg_band: number; cnt: number }[]
     const wBand = writingBandsRaw.reduce((acc, r) => acc + r.avg_band * r.cnt, 0) /
       (writingBandsRaw.reduce((acc, r) => acc + r.cnt, 0) || 1)
@@ -241,9 +278,9 @@ export function registerIpcHandlers(): void {
 
     // Writing bands by task type
     const wBandRows = db.prepare(
-      `SELECT task_type, AVG(band_score) as avg_band, COUNT(*) as cnt
-       FROM writing_submissions WHERE band_score IS NOT NULL AND submitted_at >= ?
-       GROUP BY task_type`
+      `SELECT question_type as task_type, AVG(band_score) as avg_band, COUNT(*) as cnt
+       FROM sessions WHERE section = 'writing' AND band_score IS NOT NULL AND started_at >= ?
+       GROUP BY question_type`
     ).all(since) as { task_type: string; avg_band: number; cnt: number }[]
     const wMap = Object.fromEntries(wBandRows.map(r => [r.task_type, r]))
     const writing_bands = {
@@ -260,7 +297,7 @@ export function registerIpcHandlers(): void {
     const allSessionsAll = db.prepare('SELECT exercise_id, section FROM sessions WHERE completed_at IS NOT NULL').all() as { exercise_id: string; section: string }[]
     const doneL = new Set(allSessionsAll.filter(s => s.section === 'listening').map(s => s.exercise_id)).size
     const doneR = new Set(allSessionsAll.filter(s => s.section === 'reading').map(s => s.exercise_id)).size
-    const doneW = (db.prepare('SELECT COUNT(DISTINCT task_id) as c FROM writing_submissions').get() as { c: number }).c
+    const doneW = new Set(allSessionsAll.filter(s => s.section === 'writing').map(s => s.exercise_id)).size
     const exercise_coverage = [
       { section: 'listening', done: doneL, total: listeningTotal },
       { section: 'reading',   done: doneR, total: readingTotal   },
@@ -270,9 +307,13 @@ export function registerIpcHandlers(): void {
     // Speed trend: compare first-half vs second-half sessions per type
     const speedMap = new Map<string, { time: number; date: number }[]>()
     for (const s of sessions) {
-      if (!s.question_type || !s.max_score || !s.time_spent_seconds) continue
+      if (!s.question_type || !s.time_spent_seconds) continue
+      const time = s.section === 'writing'
+        ? s.time_spent_seconds
+        : s.max_score ? s.time_spent_seconds / s.max_score : 0
+      if (!time) continue
       const arr = speedMap.get(s.question_type) ?? []
-      arr.push({ time: s.time_spent_seconds / s.max_score, date: s.started_at })
+      arr.push({ time, date: s.started_at })
       speedMap.set(s.question_type, arr)
     }
     const speed_trend = [...speedMap.entries()]
@@ -316,7 +357,7 @@ export function registerIpcHandlers(): void {
   )
 
   ipcMain.handle('get-due-flashcards', () =>
-    db.prepare('SELECT * FROM flashcards WHERE next_review <= ? ORDER BY next_review ASC').all(Date.now())
+    db.prepare('SELECT * FROM flashcards WHERE next_review <= ? ORDER BY next_review ASC, RANDOM()').all(Date.now())
   )
 
   ipcMain.handle('save-flashcard', (_e, c: FlashcardInput) =>
@@ -358,7 +399,6 @@ export function registerIpcHandlers(): void {
   ipcMain.handle('generate-flashcard', async (_e, word: string) => {
     const { text } = await generateText({
       model: getModel(),
-      maxOutputTokens: 2000,
       prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\nKeep each example sentence SHORT (max 12 words).\n\nReturn ONLY valid JSON, no markdown, no explanation:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Short sentence 1.\\n\\nShort sentence 2.\\n\\nShort sentence 3.","examples_it":"Frase breve 1.\\n\\nFrase breve 2.\\n\\nFrase breve 3."}`,
     })
     return parseAiJson(text)
@@ -367,19 +407,25 @@ export function registerIpcHandlers(): void {
   ipcMain.handle('evaluate-answer', async (_e, word: string, correct: string, userAnswer: string, direction: string) => {
     const { text } = await generateText({
       model: getModel(),
-      maxOutputTokens: 500,
       prompt: `Evaluate this translation answer:\nWord: ${word}\nDirection: ${direction}\nUser answer: "${userAnswer}"\nCorrect: "${correct}"\n\nAccept variants and synonyms. Return ONLY valid JSON:\n{"is_correct":true,"quality":5,"explanation":"brief","alternatives":["alt1"]}`,
     })
-    return parseAiJson(text)
+    try {
+      return parseAiJson(text)
+    } catch {
+      return { rawOutput: text }
+    }
   })
 
   ipcMain.handle('evaluate-audio-answer', async (_e, word: string, userEnglish: string, userItalian: string) => {
     const { text } = await generateText({
       model: getModel(),
-      maxOutputTokens: 600,
       prompt: `Evaluate these two answers for the word "${word}":\nSpelling: "${userEnglish}" (correct: "${word}")\nTranslation: "${userItalian}"\n\nAccept minor spelling variants for the translation. Return ONLY valid JSON:\n{"english_correct":true,"italian_correct":true,"quality":5,"english_explanation":"brief","italian_explanation":"brief"}`,
     })
-    return parseAiJson(text)
+    try {
+      return parseAiJson(text)
+    } catch {
+      return { rawOutput: text }
+    }
   })
 
   ipcMain.handle('delete-flashcard', (_e, id: number) =>
@@ -390,8 +436,7 @@ export function registerIpcHandlers(): void {
     const taskLabel = taskType === 'task1' ? 'Task 1 (graph/chart/map description)' : 'Task 2 (essay)'
     const { text } = await generateText({
       model: getModel(),
-      maxOutputTokens: 1000,
-      prompt: `You are an IELTS examiner. Evaluate this IELTS Writing ${taskLabel} response.\n\nPrompt: ${prompt}\n\nWord count: ${wordCount}\n\nResponse:\n${userText}\n\nReturn ONLY valid JSON, no markdown:\n{"band":6.5,"overall":"2-3 sentence summary","strengths":["point 1","point 2"],"improvements":["point 1","point 2"],"vocab_suggestions":["word 1","word 2","word 3"]}`,
+      prompt: `You are an IELTS examiner. Evaluate this IELTS Writing ${taskLabel} response.\n\nPrompt: ${prompt}\n\nWord count: ${wordCount}\n\nResponse:\n${userText}\n\nReturn ONLY valid JSON, no markdown:\n{"band":6.5,"overall":"2-3 sentence summary","strengths":["point 1","point 2"],"improvements":["point 1","point 2"],"vocab_suggestions":["word 1","word 2","word 3"],"word_annotations":[{"word":"exact word as written in text","type":"grammar","correction":"corrected word","explanation":"brief reason under 12 words"},{"word":"another word","type":"context","correction":"better word","explanation":"brief reason under 12 words"}],"sentence_rewrites":[{"original":"exact sentence as written","rewritten":"improved version","explanation":"brief structural reason under 15 words"}]}\n\nRules:\n- word_annotations: annotate individual words only (not phrases). type "grammar" = grammatical error; type "context" = grammatically correct but not the best word choice for academic IELTS writing. Only annotate words that actually appear verbatim in the response.\n- sentence_rewrites: only sentences with structural, syntactic or coherence issues. Max 5. Include only sentences actually present in the response.`,
     })
     return parseAiJson(text)
   })
@@ -430,13 +475,12 @@ export function registerIpcHandlers(): void {
       model: getModel(),
       system: `You are an expert IELTS tutor and English language teacher. Help students with English grammar, vocabulary, pronunciation, IELTS strategies, writing, reading, and listening skills. Be concise and clear. When the student writes in Italian, respond in Italian.`,
       messages,
-      maxOutputTokens: 1500,
     })
     return text
   })
 
   ipcMain.handle('reset-all-data', () => {
-    const tables = ['flashcard_reviews', 'flashcards', 'writing_submissions', 'exam_runs', 'answers', 'sessions']
+    const tables = ['flashcard_reviews', 'flashcards', 'exam_runs', 'answers', 'sessions', 'chat_messages', 'chats']
     for (const t of tables) db.prepare(`DELETE FROM ${t}`).run()
   })
 

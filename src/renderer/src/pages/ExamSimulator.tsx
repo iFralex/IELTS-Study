@@ -9,6 +9,7 @@ import { ExamWritingSection } from '../components/exam/ExamWritingSection'
 import type { WritingResult } from '../components/exam/ExamWritingSection'
 import { scoreAnswers, scoreMultiExercises } from '../components/practice/utils'
 import { countWords } from '../components/practice/writingUtils'
+import { SectionTitle } from '../components/SectionTitle'
 
 type SectionType = 'listening' | 'reading' | 'writing'
 type ExamPhase = 'loading' | 'setup' | 'running' | 'evaluating' | 'results'
@@ -184,10 +185,12 @@ export function ExamSimulator() {
       readScore = maxScore > 0 ? correctCount / maxScore : undefined
     }
     if (writing) {
+      const examCompletedAt = Date.now()
       window.api.saveWritingSubmission({
         task_id: writing.t1.exercise.id,
         task_type: 'task1',
         submitted_at: examStartRef.current,
+        completed_at: examCompletedAt,
         text: writing.t1.text,
         word_count: countWords(writing.t1.text),
       }).catch(() => {})
@@ -195,6 +198,7 @@ export function ExamSimulator() {
         task_id: writing.t2.exercise.id,
         task_type: 'task2',
         submitted_at: examStartRef.current,
+        completed_at: examCompletedAt,
         text: writing.t2.text,
         word_count: countWords(writing.t2.text),
       }).catch(() => {})
@@ -460,9 +464,9 @@ export function ExamSimulator() {
 
         {examRuns.length > 0 && (
           <div>
-            <h2 className="text-xs font-semibold text-subtext0 uppercase tracking-wide mb-3">
+            <SectionTitle>
               {t('exam.recentSimulations')}
-            </h2>
+            </SectionTitle>
             <div className="flex flex-col gap-2">
               {examRuns.map(r => (
                 <div key={r.id}

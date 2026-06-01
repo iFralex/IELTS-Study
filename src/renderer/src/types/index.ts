@@ -62,6 +62,9 @@ export interface SessionInput {
 
 export interface Session extends SessionInput {
   id: number
+  text?: string | null
+  band_score?: number | null
+  word_count?: number | null
 }
 
 export interface AnswerInput {
@@ -76,6 +79,7 @@ export interface WritingInput {
   task_id: string
   task_type: 'task1' | 'task2'
   submitted_at: number
+  completed_at?: number
   text: string
   word_count: number
   band_score?: number
@@ -145,6 +149,7 @@ export interface AIEvalResult {
   quality: number
   explanation: string
   alternatives: string[]
+  rawOutput?: string
 }
 
 export interface AIAudioEvalResult {
@@ -155,12 +160,27 @@ export interface AIAudioEvalResult {
   italian_explanation: string
 }
 
+export interface WordAnnotation {
+  word: string
+  type: 'grammar' | 'context'
+  correction: string
+  explanation: string
+}
+
+export interface SentenceRewrite {
+  original: string
+  rewritten: string
+  explanation: string
+}
+
 export interface AIWritingFeedback {
   band: number
   overall: string
   strengths: string[]
   improvements: string[]
   vocab_suggestions: string[]
+  word_annotations?: WordAnnotation[]
+  sentence_rewrites?: SentenceRewrite[]
 }
 
 export interface AnalyticsData {
@@ -208,6 +228,7 @@ export interface IElectronAPI {
   saveAnswers: (answers: AnswerInput[]) => Promise<void>
   getAnalytics: (days: number) => Promise<AnalyticsData>
   getRecentSessions: (limit: number) => Promise<Session[]>
+  getSessionAnswers: (sessionId: number) => Promise<{ question_index: number; user_answer: string }[]>
   getCompletedExerciseIds: (section: string) => Promise<string[]>
   saveWritingSubmission: (sub: WritingInput) => Promise<void>
   saveExamRun: (run: ExamRunInput) => Promise<void>

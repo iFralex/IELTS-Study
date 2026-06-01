@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { WritingTask1, WritingTask2 } from '../../types'
+import { LoadingErrorState } from '../LoadingErrorState'
 import { WritingEditor } from '../practice/WritingEditor'
 import { Lightbox } from '../Lightbox'
 
@@ -129,17 +130,7 @@ export function ExamWritingSection({ onComplete }: Props) {
     return <p className="p-8 text-subtext0 text-sm text-center">{t('examWriting.loading')}</p>
   }
 
-  if (innerPhase === 'error') {
-    return (
-      <div className="flex flex-col items-center gap-4 p-8">
-        <p className="text-red text-sm">{t('examWriting.loadError')}</p>
-        <button onClick={load}
-          className="px-4 py-2 bg-surface0 text-text rounded text-sm hover:bg-surface0/90 transition-colors">
-          {t('common.retry')}
-        </button>
-      </div>
-    )
-  }
+  if (innerPhase === 'error') return <LoadingErrorState loading={false} error={t('examWriting.loadError')} onRetry={load} />
 
   const taskLabel = innerPhase === 't1' ? t('examWriting.task1Label') : t('examWriting.task2Label')
   const prompt = innerPhase === 't1'

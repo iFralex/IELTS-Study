@@ -8,11 +8,17 @@ export function migrateDb(db: Database.Database): void {
       id                  INTEGER PRIMARY KEY AUTOINCREMENT,
       exercise_id         TEXT    NOT NULL,
       section             TEXT    NOT NULL,
+      question_type       TEXT,
       started_at          INTEGER NOT NULL,
       completed_at        INTEGER,
-      score               INTEGER,
-      max_score           INTEGER,
-      time_spent_seconds  INTEGER
+      score               REAL,
+      max_score           REAL,
+      time_spent_seconds  INTEGER,
+      text                TEXT,
+      word_count          INTEGER,
+      band_score          REAL,
+      self_score          REAL,
+      notes               TEXT
     );
     CREATE TABLE IF NOT EXISTS answers (
       id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,16 +36,6 @@ export function migrateDb(db: Database.Database): void {
       reading_score    REAL,
       writing_score    REAL,
       notes            TEXT
-    );
-    CREATE TABLE IF NOT EXISTS writing_submissions (
-      id            INTEGER PRIMARY KEY AUTOINCREMENT,
-      task_id       TEXT    NOT NULL,
-      task_type     TEXT    NOT NULL,
-      submitted_at  INTEGER NOT NULL,
-      text          TEXT    NOT NULL,
-      word_count    INTEGER,
-      self_score    REAL,
-      notes         TEXT
     );
     CREATE TABLE IF NOT EXISTS flashcards (
       id           INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -85,10 +81,8 @@ export function migrateDb(db: Database.Database): void {
       value TEXT NOT NULL
     );
   `)
-  try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_en TEXT') } catch {}
-  try { db.exec('ALTER TABLE flashcards ADD COLUMN synonyms_it TEXT') } catch {}
-  try { db.exec('ALTER TABLE sessions ADD COLUMN question_type TEXT') } catch {}
-  try { db.exec('ALTER TABLE writing_submissions ADD COLUMN band_score REAL') } catch {}
+
+  // Column migrations
 }
 
 let _db: Database.Database | null = null

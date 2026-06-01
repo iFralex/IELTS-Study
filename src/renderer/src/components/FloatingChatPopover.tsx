@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { ChatMessage, StoredChat, StoredChatMessage } from '../types'
+import { ChatBubble } from './ChatBubble'
 
 interface Props {
   onClose: () => void
@@ -101,15 +102,7 @@ export function FloatingChatPopover({ onClose }: Props) {
               <p className="text-xs text-subtext0 text-center py-4">{t('floatingChat.startConversation')}</p>
             )}
             {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] px-3 py-2 rounded-xl text-xs leading-relaxed whitespace-pre-wrap ${
-                  msg.role === 'user'
-                    ? 'bg-mauve/20 text-text rounded-tr-sm'
-                    : 'bg-surface0 text-text rounded-tl-sm'
-                }`}>
-                  {msg.content}
-                </div>
-              </div>
+              <ChatBubble key={i} role={msg.role} content={msg.content} />
             ))}
             {loading && (
               <div className="flex justify-start">

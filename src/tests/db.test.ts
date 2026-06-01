@@ -22,7 +22,7 @@ describe('migrateDb', () => {
     expect(names).toContain('sessions')
     expect(names).toContain('answers')
     expect(names).toContain('exam_runs')
-    expect(names).toContain('writing_submissions')
+    expect(names).not.toContain('writing_submissions')
     expect(names).toContain('flashcards')
     expect(names).toContain('flashcard_reviews')
   })

@@ -242,6 +242,10 @@ export default {
     modelAnswer: 'Model answer (Band',
     keyVocab: 'Key vocabulary',
     keyPhrases: 'Key phrases',
+    yourText: 'Il tuo testo',
+    grammarError: 'Errore grammaticale',
+    contextError: 'Parola non ottimale',
+    sentenceRewrites: 'Frasi da riscrivere',
   },
   reviewSession: {
     loadError: 'Errore nel caricamento delle card.',

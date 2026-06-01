@@ -242,6 +242,10 @@ export default {
     modelAnswer: 'Réponse modèle (Bande',
     keyVocab: 'Vocabulaire clé',
     keyPhrases: 'Expressions clés',
+    yourText: 'Votre texte',
+    grammarError: 'Erreur grammaticale',
+    contextError: 'Meilleur mot disponible',
+    sentenceRewrites: 'Reformulation de phrases',
   },
   reviewSession: {
     loadError: 'Erreur lors du chargement des cartes.',
