@@ -36,6 +36,9 @@ export function WritingResultsPanel({
         {/* Left column: image + prompt */}
         <div className="w-[45%] border-r border-surface0 overflow-y-auto p-4 flex flex-col gap-4 shrink-0">
           <p className="text-sm text-text leading-relaxed">{prompt}</p>
+          {userText && (
+            <p className="text-sm text-subtext0 leading-relaxed whitespace-pre-wrap border-t border-surface0 pt-4">{userText}</p>
+          )}
           {imageUrl && <ExerciseImage src={imageUrl} alt="Chart" />}
         </div>
         {/* Right column: feedback */}
