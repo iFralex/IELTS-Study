@@ -39,11 +39,12 @@ export function ResultsPanel({
   const [expandedHighlight, setExpandedHighlight] = useState<number | null>(null)
   const [transcriptOpen, setTranscriptOpen] = useState(false)
   const transcript = isListeningExercise(exercise) ? exercise.transcript : undefined
+  const imageUrl = isListeningExercise(exercise) ? exercise.image_url : undefined
   const { correctCount, maxScore } = scoreAnswers(exercise.questions, answers)
   const band = estimateBand(correctCount, maxScore, section)
   const pct = maxScore > 0 ? Math.round((correctCount / maxScore) * 100) : 0
 
-  return (
+  const content = (
     <div className="max-w-2xl mx-auto p-6 flex flex-col gap-6">
       {/* Score header */}
       <div className="bg-surface0/50 rounded-xl p-5 text-center">
@@ -64,11 +65,6 @@ export function ResultsPanel({
           </div>
         )}
       </div>
-
-      {/* Image — listening only */}
-      {isListeningExercise(exercise) && exercise.image_url && (
-        <ExerciseImage src={exercise.image_url} alt={exercise.title} />
-      )}
 
       {/* Audio player — listening only */}
       {isListeningExercise(exercise) && exercise.audio_url && (
@@ -109,14 +105,12 @@ export function ResultsPanel({
                     )}
                   </div>
 
-                  {/* Explanation — always show if present */}
                   {q.explanation && (
                     <p className="mt-2 text-xs text-subtext0 leading-relaxed border-l-2 border-surface1 pl-2">
                       {q.explanation}
                     </p>
                   )}
 
-                  {/* "Trova nel brano" — Reading only, wrong answers only */}
                   {!correct && section === 'reading' && passage && (
                     <button
                       onClick={() => setExpandedHighlight(isHighlightOpen ? null : q.index)}
@@ -169,30 +163,47 @@ export function ResultsPanel({
           )}
         </div>
       )}
+    </div>
+  )
 
-      {/* Footer */}
-      <div className="flex items-center justify-between pt-2 border-t border-surface0">
-        <button
-          onClick={onBack}
-          className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
-        >
-          {t('common.back')}
-        </button>
-        <div className="flex items-center gap-3">
-          {seriesProgress && (
-            <span className="text-xs text-subtext0">
-              {seriesProgress.current} / {seriesProgress.total}
-            </span>
-          )}
-          {onNext && (
-            <button
-              onClick={onNext}
-              className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
-            >
-              {t('results.nextExercise')}
-            </button>
-          )}
+  const footer = (
+    <div className="px-6 py-3 border-t border-surface0 shrink-0 flex items-center justify-between">
+      <button
+        onClick={onBack}
+        className="px-4 py-2 bg-surface0 text-subtext0 hover:text-text rounded text-sm transition-colors"
+      >
+        {t('common.back')}
+      </button>
+      <div className="flex items-center gap-3">
+        {seriesProgress && (
+          <span className="text-xs text-subtext0">
+            {seriesProgress.current} / {seriesProgress.total}
+          </span>
+        )}
+        {onNext && (
+          <button
+            onClick={onNext}
+            className="px-4 py-2 bg-mauve text-base rounded text-sm font-medium hover:bg-mauve/90 transition-colors"
+          >
+            {t('results.nextExercise')}
+          </button>
+        )}
+      </div>
+    </div>
+  )
+
+  return (
+    <div className="h-full flex overflow-hidden">
+      {imageUrl && (
+        <div className="w-[40%] border-r border-surface0 overflow-y-auto p-4 shrink-0">
+          <ExerciseImage src={imageUrl} alt={(exercise as ListeningExercise).title} />
         </div>
+      )}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 overflow-y-auto">
+          {content}
+        </div>
+        {footer}
       </div>
     </div>
   )

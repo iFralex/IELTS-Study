@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import type { Session, ListeningExercise, ReadingExercise, WritingTask1, WritingTask2 } from '../types'
+import type { Session, ListeningExercise, ReadingExercise, WritingTask1, WritingTask2, AIWritingFeedback } from '../types'
 import { ResultsPanel } from '../components/practice/ResultsPanel'
 import { ReadingPassage } from '../components/practice/ReadingPassage'
 import { WritingResultsPanel } from '../components/practice/WritingResultsPanel'
@@ -60,7 +60,7 @@ export function ReviewPage() {
 
   // ── Writing review ───────────────────────────────────────────────────────────
   if (section === 'writing') {
-    let feedback = null
+    let feedback: AIWritingFeedback | null = null
     if (sessionFromState.feedback_json) {
       try { feedback = JSON.parse(sessionFromState.feedback_json) } catch {}
     }
@@ -85,7 +85,7 @@ export function ReviewPage() {
         <div className="w-[55%] h-full border-r border-surface0 overflow-hidden flex flex-col">
           <ReadingPassage exercise={exercise as ReadingExercise} />
         </div>
-        <div className="w-[45%] h-full overflow-y-auto">
+        <div className="w-[45%] h-full overflow-hidden">
           <ResultsPanel
             exercise={exercise as ReadingExercise}
             answers={answers}
@@ -100,7 +100,7 @@ export function ReviewPage() {
 
   // ── Listening review ─────────────────────────────────────────────────────────
   return (
-    <div className="h-full overflow-y-auto">
+    <div className="h-full overflow-hidden">
       <ResultsPanel
         exercise={exercise as ListeningExercise}
         answers={answers}

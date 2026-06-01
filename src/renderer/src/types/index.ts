@@ -160,6 +160,7 @@ export interface AIAudioEvalResult {
   quality: number
   english_explanation: string
   italian_explanation: string
+  rawOutput?: string
 }
 
 export interface WordAnnotation {

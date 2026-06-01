@@ -232,19 +232,21 @@ export function Listening() {
     : undefined
 
   return (
-    <div className="h-full overflow-y-auto">
+    <div className="h-full flex flex-col overflow-hidden">
       {saveError && (
         <ErrorBanner message={t('practice.saveError')} className="mx-6 mt-4" />
       )}
-      <ResultsPanel
-        exercise={currentExercise}
-        answers={queue.answers}
-        section="listening"
-        onNext={!isLastInSeries ? handleNext : undefined}
-        onBack={handleBack}
-        seriesProgress={seriesProgress}
-        timeSpentSeconds={queue.timeSpentSeconds}
-      />
+      <div className="flex-1 overflow-hidden">
+        <ResultsPanel
+          exercise={currentExercise}
+          answers={queue.answers}
+          section="listening"
+          onNext={!isLastInSeries ? handleNext : undefined}
+          onBack={handleBack}
+          seriesProgress={seriesProgress}
+          timeSpentSeconds={queue.timeSpentSeconds}
+        />
+      </div>
     </div>
   )
 }

@@ -32,23 +32,17 @@ export function WritingResultsPanel({
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
-      {imageUrl ? (
-        <div className="flex shrink-0 border-b border-surface0 max-h-[35%] overflow-hidden">
-          <div className="w-1/2 border-r border-surface0 overflow-y-auto p-4">
-            <ExerciseImage src={imageUrl} alt="Chart" />
-          </div>
-          <div className="w-1/2 overflow-y-auto px-5 py-4">
-            <p className="text-sm text-text leading-relaxed">{prompt}</p>
-          </div>
-        </div>
-      ) : (
-        <div className="px-5 py-3 border-b border-surface0 shrink-0 max-h-[25%] overflow-y-auto">
+      <div className="flex-1 flex overflow-hidden">
+        {/* Left column: image + prompt */}
+        <div className="w-[45%] border-r border-surface0 overflow-y-auto p-4 flex flex-col gap-4 shrink-0">
           <p className="text-sm text-text leading-relaxed">{prompt}</p>
+          {imageUrl && <ExerciseImage src={imageUrl} alt="Chart" />}
         </div>
-      )}
-      <div className="flex-1 overflow-y-auto">
-        {errors}
-        <WritingFeedback feedback={feedback} exercise={exercise} userText={userText} timeSpentSeconds={timeSpentSeconds} />
+        {/* Right column: feedback */}
+        <div className="flex-1 overflow-y-auto">
+          {errors}
+          <WritingFeedback feedback={feedback} exercise={exercise} userText={userText} timeSpentSeconds={timeSpentSeconds} />
+        </div>
       </div>
       <div className="px-6 py-3 border-t border-surface0 shrink-0 flex items-center justify-between">
         <button
