@@ -18,6 +18,7 @@ interface ActiveSession {
   exercises: WritingExercise[]
   currentIndex: number
   startedAt: number
+  timeSpentSeconds?: number
   text: string
 }
 
@@ -122,6 +123,7 @@ export function Writing() {
     } catch {
       setSaveError(true)
     }
+    setSession(s => s ? { ...s, timeSpentSeconds: Math.round((completedAt - startedAt) / 1000) } : s)
     setFeedback(fb)
     setPhase('results')
   }
@@ -287,6 +289,7 @@ export function Writing() {
       exercise={exercise}
       feedback={feedback}
       userText={session.text}
+      timeSpentSeconds={session.timeSpentSeconds}
       onBack={handleBack}
       onNext={session.currentIndex < session.exercises.length - 1 ? handleNext : undefined}
       seriesProgress={isSeries ? { current: session.currentIndex + 1, total: session.exercises.length } : undefined}
