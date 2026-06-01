@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next'
 import type { Session, ListeningExercise, ReadingExercise, WritingTask1, WritingTask2 } from '../types'
 import { ResultsPanel } from '../components/practice/ResultsPanel'
 import { ReadingPassage } from '../components/practice/ReadingPassage'
-import { WritingFeedback } from '../components/practice/WritingFeedback'
-import { isTask1 } from '../components/practice/writingUtils'
+import { WritingResultsPanel } from '../components/practice/WritingResultsPanel'
 
 export function ReviewPage() {
   const { sessionId } = useParams<{ sessionId: string }>()
@@ -69,24 +68,13 @@ export function ReviewPage() {
       feedback = { band: sessionFromState.band_score, overall: '', strengths: [], improvements: [], vocab_suggestions: [] }
     }
     return (
-      <div className="h-full flex flex-col overflow-hidden">
-        <div className="px-5 py-3 border-b border-surface0 shrink-0 flex items-center gap-3">
-          <button onClick={back} className="text-sm text-subtext0 hover:text-text transition-colors">← {t('common.back')}</button>
-          <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
-            {isTask1(exercise as WritingTask1 | WritingTask2)
-              ? (exercise as WritingTask1).chart_type
-              : (exercise as WritingTask2).essay_type.replace(/_/g, ' ')}
-          </span>
-        </div>
-        <div className="flex-1 overflow-y-auto">
-          <WritingFeedback
-            feedback={feedback}
-            exercise={exercise as WritingTask1 | WritingTask2}
-            userText={sessionFromState.text ?? undefined}
-            timeSpentSeconds={sessionFromState.time_spent_seconds ?? undefined}
-          />
-        </div>
-      </div>
+      <WritingResultsPanel
+        exercise={exercise as WritingTask1 | WritingTask2}
+        feedback={feedback}
+        userText={sessionFromState.text ?? undefined}
+        timeSpentSeconds={sessionFromState.time_spent_seconds ?? undefined}
+        onBack={back}
+      />
     )
   }
 
