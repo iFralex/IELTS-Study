@@ -270,6 +270,7 @@ export default {
     englishPlaceholder: 'Traducción inglesa...',
     evaluating: 'Evaluando…',
     evaluate: 'Evaluar ▶',
+    dontKnow: 'No lo sé',
     aiUnavailable: '⚠ Evaluación IA no disponible',
     saveError: '⚠ Error al guardar',
     correct: '✓ Correcto',

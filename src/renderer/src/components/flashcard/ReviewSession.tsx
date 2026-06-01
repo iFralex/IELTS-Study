@@ -86,6 +86,35 @@ export function ReviewSession() {
     setPhase('result')
   }
 
+  async function handleDontKnow() {
+    if (!card) return
+    setSaveError(false)
+    const direction: ReviewInput['direction'] =
+      mode === 'audio' ? 'audio' : mode === 'text-en-it' ? 'en-it' : 'it-en'
+    try {
+      await window.api.updateFlashcardSM2(card.id, 0)
+      await window.api.saveFlashcardReview({
+        flashcard_id: card.id,
+        reviewed_at: Date.now(),
+        direction,
+        user_answer: '',
+        quality: 0,
+        is_correct: false,
+      })
+    } catch {
+      setSaveError(true)
+    }
+    const nextIndex = index + 1
+    if (nextIndex >= cards.length) { setPhase('done'); return }
+    setIndex(nextIndex)
+    setMode(pickMode())
+    setTextInput('')
+    setAudioEnInput('')
+    setAudioItInput('')
+    setEvalState({ textResult: null, audioResult: null, aiError: false, rawOutput: undefined })
+    setPhase('reviewing')
+  }
+
   async function handleNext() {
     if (!card) return
     setSaveError(false)
@@ -264,7 +293,15 @@ export function ReviewSession() {
           </div>
         )}
 
-        <div className="flex justify-end shrink-0">
+        <div className="flex justify-between shrink-0">
+          <button
+            onClick={handleDontKnow}
+            disabled={phase === 'evaluating'}
+            className="px-4 py-2 bg-red/10 text-red rounded-lg text-sm font-medium
+              hover:bg-red/20 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          >
+            {t('reviewSession.dontKnow')}
+          </button>
           {phase === 'evaluating' ? (
             <span className="text-sm text-subtext0 animate-pulse">{t('reviewSession.evaluating')}</span>
           ) : (
