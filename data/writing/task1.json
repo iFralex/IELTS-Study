@@ -12,7 +12,7 @@
     "id": "bar_chart_wind_energy_countries",
     "chart_type": "bar",
     "prompt": "The bar chart below shows the amount of energy produced by wind in four countries (India, Denmark, Germany, and the United States) in four years (1985, 1990, 1995, and 2000), measured in megawatts.",
-    "image_url": "",
+    "image_url": "https://ieltsliz.com/wp-content/uploads/2099/10/IELTS-Bar-Chart-Model-Answer-2023.png",
     "model_answer": "The bar chart illustrates how much energy was produced by wind in four countries (India, Denmark, Germany and the United States) in four years (1985, 1990, 1995 and 2000). Units are measured in megawatts.\n\nOverall, the US produced the most wind energy over the period given except in the final year when Denmark produced the most. India, Denmark and Germany witnessed a steady climb over the years in the amount of energy they generated, whereas the US showed an initial increase followed by a slight decline.\n\nIn terms of the US, energy production stood at 1200 megawatts in 1985. It peaked in 1990 at just over 1600 before falling by around 100 to 1500 in the final year.\n\nOn the other hand, the energy generated in Denmark was just over 200 megawatts in 1985 and then rose almost eight-fold over the years to peak at just over 1600 in 2000. India also saw a significant rise in energy generation, starting at 200 and ending at 1200. Lastly, Germany saw a much lower growth rate, only doubling over the period to reach just over 800.",
     "band_target": 7,
     "key_vocab": ["steady climb", "initial increase", "peaked", "rose almost eight-fold", "significant rise", "lower growth rate"]
@@ -48,7 +48,7 @@
     "id": "process_cement_concrete",
     "chart_type": "process",
     "prompt": "The diagram below shows the stages and equipment used in the cement-making process, and how cement is used to produce concrete for building purposes.",
-    "image_url": "",
+    "image_url": "https://ieltsliz.com/wp-content/uploads/2014/11/cement-and-concrete.jpg",
     "model_answer": "The diagrams illustrate the steps and equipment involved in the production of cement and the way in which cement is then used to make concrete.\n\nOverall, limestone and clay pass through four stages before being bagged ready for use as cement. Cement is then combined with three other materials to create concrete. While the process of making cement uses a number of tools, the production of concrete is simpler and requires only a concrete mixer.\n\nIn the first stage of making cement, limestone and clay are crushed together to form a powder using a crusher. This powder is then combined in a mixer before passing into a rotating heater which has constant heat applied at one end of the tube. The resulting mixture is ground in order to produce cement. The final product is afterwards put into bags ready to be used.\n\nRegarding the second diagram, concrete consists of mainly gravel, which is small stones, and this makes up 50% of the ingredients. The other materials used are sand (25%), cement (15%) and water (10%). These are all poured into a concrete mixer which continually rotates to combine the materials and ultimately produces concrete.",
     "band_target": 7,
     "key_vocab": ["limestone", "clay", "crusher", "rotating heater", "gravel", "concrete mixer", "stages", "ingredients"]
@@ -57,7 +57,7 @@
     "id": "pie_table_history_graduates",
     "chart_type": "pie",
     "prompt": "The pie chart below shows where history graduates from a British university went after completing their undergraduate degree. The table shows their areas of employment and typical income within six years of graduation.",
-    "image_url": "",
+    "image_url": "https://ieltsliz.com/wp-content/uploads/2099/07/IELTS-Chart-and-Table-Model-Answer.png",
     "model_answer": "The pie chart illustrates the destination of history graduates from a British university after they finished their undergraduate degree, while the table gives information about the areas of employment they chose and their typical incomes within six years of their graduation.\n\nOverall, the overwhelming majority of history graduates were employed in full-time work, while the lowest percentage entered part-time postgrad courses. Most graduates were employed as history teachers and the least as archaeologists, with the lowest income. The highest income was earned by those working as solicitors.\n\nWell over half of all history graduates were either employed in full-time or part-time work (56% and 15% respectively) as opposed to only 12% who became unemployed. For those on postgrad courses, 7% were on full-time courses and 4% on part-time courses. 6% of graduates had unknown destinations.\n\nRegarding employment, 30% became history teachers with an income of £32,000, whereas only 9% were employed as historians, earning £49,000. Only 6% worked as archaeologists with an income of £29,000. The highest paid were solicitors, who accounted for 18% of graduates, earning around £57,000. 37% of those graduating had unknown employment with a salary of about £30,000.",
     "band_target": 7,
     "key_vocab": ["destination", "employment", "full-time work", "postgrad courses", "income", "solicitor", "archaeologist"]
