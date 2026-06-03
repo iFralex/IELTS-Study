@@ -100,7 +100,10 @@ export default function App() {
               data-selection-popover
               value={selectedWord}
               onChange={e => setSelectedWord(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && selectedWord.trim() && openModalFromSelection()}
+              onKeyDown={e => {
+                if (e.key === 'Enter' && selectedWord.trim()) openModalFromSelection()
+                if (e.key === 'Escape') { setPopoverPos(null); setSelectedWord(null) }
+              }}
               className="text-xs text-text bg-surface0 border border-surface1 rounded px-2 py-1 w-36 outline-none focus:border-mauve"
               autoFocus
             />
