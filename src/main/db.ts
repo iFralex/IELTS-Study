@@ -41,9 +41,12 @@ export function migrateDb(db: Database.Database): void {
     CREATE TABLE IF NOT EXISTS flashcards (
       id           INTEGER PRIMARY KEY AUTOINCREMENT,
       english      TEXT    NOT NULL,
-      italian      TEXT    NOT NULL,
+      translation  TEXT    NOT NULL,
+      native_language TEXT NOT NULL DEFAULT 'it',
+      synonyms_en  TEXT,
+      synonyms_native TEXT,
       examples_en  TEXT,
-      examples_it  TEXT,
+      examples_native TEXT,
       interval     INTEGER NOT NULL DEFAULT 1,
       ease_factor  REAL    NOT NULL DEFAULT 2.5,
       repetitions  INTEGER NOT NULL DEFAULT 0,
@@ -84,6 +87,32 @@ export function migrateDb(db: Database.Database): void {
   `)
 
   // Column migrations
+  const flashcardColumns = new Set(
+    (db.prepare('PRAGMA table_info(flashcards)').all() as { name: string }[]).map(column => column.name)
+  )
+  const addFlashcardColumn = (name: string, definition: string) => {
+    if (!flashcardColumns.has(name)) {
+      db.exec(`ALTER TABLE flashcards ADD COLUMN ${name} ${definition}`)
+      flashcardColumns.add(name)
+    }
+  }
+
+  addFlashcardColumn('native_language', "TEXT NOT NULL DEFAULT 'it'")
+  addFlashcardColumn('translation', 'TEXT')
+  addFlashcardColumn('synonyms_en', 'TEXT')
+  addFlashcardColumn('synonyms_native', 'TEXT')
+  addFlashcardColumn('examples_native', 'TEXT')
+
+  // Existing installations stored every native-language value in Italian columns.
+  if (flashcardColumns.has('italian')) {
+    db.exec("UPDATE flashcards SET translation = italian WHERE translation IS NULL OR translation = ''")
+  }
+  if (flashcardColumns.has('synonyms_it')) {
+    db.exec("UPDATE flashcards SET synonyms_native = synonyms_it WHERE synonyms_native IS NULL")
+  }
+  if (flashcardColumns.has('examples_it')) {
+    db.exec("UPDATE flashcards SET examples_native = examples_it WHERE examples_native IS NULL")
+  }
 }
 
 let _db: Database.Database | null = null

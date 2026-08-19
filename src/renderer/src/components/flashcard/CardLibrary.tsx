@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { Flashcard } from '../../types'
+import type { Flashcard, FlashcardLanguageCode } from '../../types'
 import { LoadingErrorState } from '../LoadingErrorState'
 
-interface Props { onStartReview: () => void }
+interface Props {
+  language: FlashcardLanguageCode
+  onStartReview: () => void
+}
 
-export function CardLibrary({ onStartReview }: Props) {
+export function CardLibrary({ language, onStartReview }: Props) {
   const { t } = useTranslation()
   const [cards, setCards] = useState<Flashcard[]>([])
   const [loading, setLoading] = useState(true)
@@ -16,13 +19,13 @@ export function CardLibrary({ onStartReview }: Props) {
     setError(null)
     setCards([])
     setLoading(true)
-    window.api.getFlashcards()
+    window.api.getFlashcards(language)
       .then(setCards)
       .catch(() => setError(t('reviewSession.loadError')))
       .finally(() => setLoading(false))
   }
 
-  useEffect(() => { load() }, [])
+  useEffect(() => { load() }, [language])
 
   async function handleDelete(id: number) {
     await window.api.deleteFlashcard(id)
@@ -59,7 +62,7 @@ export function CardLibrary({ onStartReview }: Props) {
         <div className="flex-1 overflow-y-auto flex flex-col gap-2">
           {cards.map(card => {
             const due = card.next_review <= now
-            const firstSynonymIt = card.synonyms_it?.split(', ')[0] ?? null
+            const firstNativeSynonym = card.synonyms_native?.split(', ')[0] ?? null
             return (
               <div
                 key={card.id}
@@ -69,7 +72,7 @@ export function CardLibrary({ onStartReview }: Props) {
                 <div className="min-w-0">
                   <span className="text-sm font-medium text-text">{card.english}</span>
                   <span className="text-xs text-subtext0 ml-2 truncate">
-                    {card.italian}{firstSynonymIt ? ` · ${firstSynonymIt}` : ''}
+                    {card.translation}{firstNativeSynonym ? ` · ${firstNativeSynonym}` : ''}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 shrink-0 ml-3">

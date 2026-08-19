@@ -2,7 +2,14 @@ import { ErrorBanner } from '../ErrorBanner'
 import { LoadingErrorState } from '../LoadingErrorState'
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { Flashcard, AIEvalResult, AIAudioEvalResult, ReviewInput } from '../../types'
+import {
+  getFlashcardLanguageName,
+  type Flashcard,
+  type AIEvalResult,
+  type AIAudioEvalResult,
+  type FlashcardLanguageCode,
+  type ReviewInput,
+} from '../../types'
 import { pickMode, computeQualityFromDual } from './flashcardUtils'
 import type { ReviewMode } from './flashcardUtils'
 
@@ -23,22 +30,34 @@ function speak(word: string) {
   window.speechSynthesis.speak(u)
 }
 
-export function ReviewSession() {
+interface Props {
+  language: FlashcardLanguageCode
+}
+
+export function ReviewSession({ language }: Props) {
   const { t } = useTranslation()
+  const languageName = getFlashcardLanguageName(language)
+  const languageCode = language.toUpperCase()
   const [phase, setPhase] = useState<Phase>('loading')
   const [cards, setCards] = useState<Flashcard[]>([])
   const [index, setIndex] = useState(0)
-  const [mode, setMode] = useState<ReviewMode>('text-en-it')
+  const [mode, setMode] = useState<ReviewMode>('text-en-native')
   const [textInput, setTextInput] = useState('')
   const [audioEnInput, setAudioEnInput] = useState('')
-  const [audioItInput, setAudioItInput] = useState('')
+  const [audioTranslationInput, setAudioTranslationInput] = useState('')
   const [evalState, setEvalState] = useState<EvalState>({ textResult: null, audioResult: null, aiError: false })
   const [saveError, setSaveError] = useState(false)
   const audioEnRef = useRef<HTMLInputElement>(null)
 
   function load() {
     setPhase('loading')
-    window.api.getDueFlashcards()
+    setIndex(0)
+    setTextInput('')
+    setAudioEnInput('')
+    setAudioTranslationInput('')
+    setEvalState({ textResult: null, audioResult: null, aiError: false })
+    setSaveError(false)
+    window.api.getDueFlashcards(language)
       .then(due => {
         setCards(due)
         if (due.length === 0) {
@@ -52,7 +71,7 @@ export function ReviewSession() {
       .catch(() => setPhase('error'))
   }
 
-  useEffect(() => { load() }, [])
+  useEffect(() => { load() }, [language])
 
   const card = cards[index]
 
@@ -69,13 +88,13 @@ export function ReviewSession() {
     const newEval: EvalState = { textResult: null, audioResult: null, aiError: false }
     try {
       if (mode === 'audio') {
-        const res = await window.api.evaluateAudioAnswer(card.english, audioEnInput, audioItInput)
+        const res = await window.api.evaluateAudioAnswer(card.english, card.translation, audioEnInput, audioTranslationInput, language)
         if (res.rawOutput) { newEval.aiError = true; newEval.rawOutput = res.rawOutput }
         else newEval.audioResult = res as AIAudioEvalResult
       } else {
-        const correct = mode === 'text-en-it' ? card.italian : card.english
-        const direction = mode === 'text-en-it' ? 'en-it' : 'it-en'
-        const res = await window.api.evaluateAnswer(card.english, correct, textInput, direction)
+        const correct = mode === 'text-en-native' ? card.translation : card.english
+        const direction = mode === 'text-en-native' ? 'en-native' : 'native-en'
+        const res = await window.api.evaluateAnswer(card.english, correct, textInput, direction, language)
         if (res.rawOutput) { newEval.aiError = true; newEval.rawOutput = res.rawOutput }
         else newEval.textResult = res
       }
@@ -88,7 +107,7 @@ export function ReviewSession() {
 
   function handleDontKnow() {
     if (mode === 'audio') {
-      setEvalState({ textResult: null, audioResult: { english_correct: false, italian_correct: false, quality: 0, english_explanation: '', italian_explanation: '' }, aiError: false })
+      setEvalState({ textResult: null, audioResult: { english_correct: false, translation_correct: false, quality: 0, english_explanation: '', translation_explanation: '' }, aiError: false })
     } else {
       setEvalState({ textResult: { is_correct: false, quality: 0, explanation: '', alternatives: [] }, audioResult: null, aiError: false })
     }
@@ -102,20 +121,20 @@ export function ReviewSession() {
     const quality = evalState.aiError
       ? 3
       : evalState.audioResult
-        ? computeQualityFromDual(evalState.audioResult.english_correct, evalState.audioResult.italian_correct)
+        ? computeQualityFromDual(evalState.audioResult.english_correct, evalState.audioResult.translation_correct)
         : evalState.textResult?.quality ?? 3
 
     const isCorrect = evalState.aiError
       ? false
       : evalState.audioResult
-        ? evalState.audioResult.english_correct && evalState.audioResult.italian_correct
+        ? evalState.audioResult.english_correct && evalState.audioResult.translation_correct
         : evalState.textResult?.is_correct ?? false
 
     const direction: ReviewInput['direction'] =
-      mode === 'audio' ? 'audio' : mode === 'text-en-it' ? 'en-it' : 'it-en'
+      mode === 'audio' ? 'audio' : mode === 'text-en-native' ? 'en-native' : 'native-en'
 
     const userAnswer = mode === 'audio'
-      ? `${audioEnInput} / ${audioItInput}`
+      ? `${audioEnInput} / ${audioTranslationInput}`
       : textInput
 
     try {
@@ -142,7 +161,7 @@ export function ReviewSession() {
     setMode(pickMode())
     setTextInput('')
     setAudioEnInput('')
-    setAudioItInput('')
+    setAudioTranslationInput('')
     setEvalState({ textResult: null, audioResult: null, aiError: false, rawOutput: undefined })
     setPhase('reviewing')
   }
@@ -177,7 +196,7 @@ export function ReviewSession() {
   if (!card) return null
 
   const canSubmit = mode === 'audio'
-    ? audioEnInput.trim() !== '' && audioItInput.trim() !== ''
+    ? audioEnInput.trim() !== '' && audioTranslationInput.trim() !== ''
     : textInput.trim() !== ''
 
   // ── Reviewing / Evaluating ────────────────────────────────────────────────────
@@ -207,15 +226,19 @@ export function ReviewSession() {
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 bg-surface0/30 border border-surface0 rounded-xl mb-4">
             <span className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded">
-              {mode === 'text-en-it' ? t('reviewSession.enToIt') : t('reviewSession.itToEn')}
+              {mode === 'text-en-native'
+                ? t('reviewSession.enToNative', { code: languageCode })
+                : t('reviewSession.nativeToEn', { code: languageCode })}
             </span>
             <span className="text-3xl font-bold text-text">
-              {mode === 'text-en-it' ? card.english : card.italian}
+              {mode === 'text-en-native' ? card.english : card.translation}
             </span>
             <span className="text-xs text-subtext0">
-              {mode === 'text-en-it' ? t('reviewSession.writeItalianTranslation') : t('reviewSession.writeEnglishTranslation')}
+              {mode === 'text-en-native'
+                ? t('reviewSession.writeNativeTranslation', { language: languageName })
+                : t('reviewSession.writeEnglishTranslation')}
             </span>
-            {mode === 'text-en-it' && (
+            {mode === 'text-en-native' && (
               <button
                 onClick={() => speak(card.english)}
                 className="flex items-center gap-1.5 text-xs text-blue bg-surface0 px-3 py-1
@@ -244,14 +267,14 @@ export function ReviewSession() {
               />
             </div>
             <div className="flex-1">
-              <label className="text-xs text-subtext0 mb-1 block">{t('reviewSession.italianLabel')}</label>
+              <label className="text-xs text-subtext0 mb-1 block">{t('reviewSession.nativeLabel', { language: languageName })}</label>
               <input
                 type="text"
-                value={audioItInput}
-                onChange={e => setAudioItInput(e.target.value)}
+                value={audioTranslationInput}
+                onChange={e => setAudioTranslationInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter' && canSubmit && phase === 'reviewing') handleSubmit() }}
                 disabled={phase === 'evaluating'}
-                placeholder={t('reviewSession.italianPlaceholder')}
+                placeholder={t('reviewSession.nativePlaceholder', { language: languageName })}
                 className="w-full bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text
                   placeholder:text-subtext0 outline-none focus:border-mauve transition-colors disabled:opacity-50"
               />
@@ -265,7 +288,7 @@ export function ReviewSession() {
               onChange={e => setTextInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter' && canSubmit && phase === 'reviewing') handleSubmit() }}
               disabled={phase === 'evaluating'}
-              placeholder={mode === 'text-en-it' ? t('reviewSession.italianPlaceholder') : t('reviewSession.englishPlaceholder')}
+              placeholder={mode === 'text-en-native' ? t('reviewSession.nativePlaceholder', { language: languageName }) : t('reviewSession.englishPlaceholder')}
               autoFocus
               className="w-full bg-surface0 border border-surface1 rounded-lg px-3 py-2 text-sm text-text
                 placeholder:text-subtext0 outline-none focus:border-mauve transition-colors disabled:opacity-50"
@@ -301,9 +324,9 @@ export function ReviewSession() {
 
   // ── Result ────────────────────────────────────────────────────────────────────
   const synonymsEn = card.synonyms_en?.split(', ').filter(Boolean) ?? []
-  const synonymsIt = card.synonyms_it?.split(', ').filter(Boolean) ?? []
+  const synonymsNative = card.synonyms_native?.split(', ').filter(Boolean) ?? []
   const examplesEn = card.examples_en?.split('\n\n').filter(Boolean) ?? []
-  const examplesIt = card.examples_it?.split('\n\n').filter(Boolean) ?? []
+  const examplesNative = card.examples_native?.split('\n\n').filter(Boolean) ?? []
 
   return (
     <div className="h-full flex flex-col p-6">
@@ -321,17 +344,17 @@ export function ReviewSession() {
         {evalState.textResult && (
           <>
             <div className="flex items-center gap-2 mb-1">
-              {mode === 'text-en-it' ? (
+              {mode === 'text-en-native' ? (
                 <>
                   <span className="text-sm font-bold text-text">{card.english}</span>
                   <button onClick={() => speak(card.english)} className="text-subtext0 hover:text-text transition-colors">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                   </button>
-                  <span className="text-sm font-bold text-text">→ {card.italian}</span>
+                  <span className="text-sm font-bold text-text">→ {card.translation}</span>
                 </>
               ) : (
                 <>
-                  <span className="text-sm font-bold text-text">{card.italian} →</span>
+                  <span className="text-sm font-bold text-text">{card.translation} →</span>
                   <span className="text-sm font-bold text-text">{card.english}</span>
                   <button onClick={() => speak(card.english)} className="text-subtext0 hover:text-text transition-colors">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
@@ -365,14 +388,14 @@ export function ReviewSession() {
             <p className="text-xs text-subtext0 mb-2">{evalState.audioResult.english_explanation}</p>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs text-subtext0 w-20 shrink-0">{t('reviewSession.translationLabel')}</span>
-              <span className="text-sm font-medium text-text">{card.italian}</span>
+              <span className="text-sm font-medium text-text">{card.translation}</span>
               <span className={`text-xs px-2 py-0.5 rounded ${
-                evalState.audioResult.italian_correct ? 'bg-green/20 text-green' : 'bg-red/20 text-red'
+                evalState.audioResult.translation_correct ? 'bg-green/20 text-green' : 'bg-red/20 text-red'
               }`}>
-                {evalState.audioResult.italian_correct ? '✓' : '✗'}
+                {evalState.audioResult.translation_correct ? '✓' : '✗'}
               </span>
             </div>
-            <p className="text-xs text-subtext0 mb-3">{evalState.audioResult.italian_explanation}</p>
+            <p className="text-xs text-subtext0 mb-3">{evalState.audioResult.translation_explanation}</p>
           </>
         )}
 
@@ -383,7 +406,7 @@ export function ReviewSession() {
               <button onClick={() => speak(card.english)} className="text-subtext0 hover:text-text transition-colors">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
               </button>
-              <span className="text-sm font-bold text-text">→ {card.italian}</span>
+              <span className="text-sm font-bold text-text">→ {card.translation}</span>
             </div>
             {evalState.rawOutput && (
               <p className="text-xs text-subtext0 whitespace-pre-wrap">{evalState.rawOutput}</p>
@@ -401,11 +424,11 @@ export function ReviewSession() {
             </div>
           </>
         )}
-        {synonymsIt.length > 0 && (
+        {synonymsNative.length > 0 && (
           <>
-            <p className="text-xs text-subtext0 uppercase tracking-wider mb-1.5">{t('reviewSession.synonymsIt')}</p>
+            <p className="text-xs text-subtext0 uppercase tracking-wider mb-1.5">{t('reviewSession.synonymsNative', { code: languageCode })}</p>
             <div className="flex flex-wrap gap-1.5 mb-3">
-              {synonymsIt.map(s => (
+              {synonymsNative.map(s => (
                 <span key={s} className="text-xs bg-surface0 text-subtext0 px-2 py-0.5 rounded-full">{s}</span>
               ))}
             </div>
@@ -419,7 +442,7 @@ export function ReviewSession() {
             {examplesEn.map((ex, i) => (
               <div key={i} className="mb-2">
                 <p className="text-xs text-text">{ex}</p>
-                {examplesIt[i] && <p className="text-xs text-subtext0">{examplesIt[i]}</p>}
+                {examplesNative[i] && <p className="text-xs text-subtext0">{examplesNative[i]}</p>}
               </div>
             ))}
           </>

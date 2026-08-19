@@ -44,6 +44,47 @@ describe('migrateDb', () => {
     expect(cols).toContain('ease_factor')
     expect(cols).toContain('repetitions')
     expect(cols).toContain('next_review')
+    expect(cols).toContain('native_language')
+    expect(cols).toContain('translation')
+    expect(cols).toContain('synonyms_native')
+    expect(cols).toContain('examples_native')
+  })
+
+  it('migrates existing Italian flashcards to the generic native-language fields', () => {
+    db.close()
+    db = new Database(':memory:')
+    db.exec(`
+      CREATE TABLE flashcards (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        english TEXT NOT NULL,
+        italian TEXT NOT NULL,
+        synonyms_en TEXT,
+        synonyms_it TEXT,
+        examples_en TEXT,
+        examples_it TEXT,
+        interval INTEGER NOT NULL DEFAULT 1,
+        ease_factor REAL NOT NULL DEFAULT 2.5,
+        repetitions INTEGER NOT NULL DEFAULT 0,
+        next_review INTEGER NOT NULL,
+        created_at INTEGER NOT NULL,
+        source TEXT
+      );
+      INSERT INTO flashcards
+        (english, italian, synonyms_en, synonyms_it, examples_en, examples_it, next_review, created_at)
+      VALUES ('hello', 'ciao', 'hi', 'salve', 'Hello there.', 'Ciao.', 0, 0);
+    `)
+
+    migrateDb(db)
+
+    const card = db.prepare(
+      'SELECT translation, native_language, synonyms_native, examples_native FROM flashcards'
+    ).get() as Record<string, string>
+    expect(card).toEqual({
+      translation: 'ciao',
+      native_language: 'it',
+      synonyms_native: 'salve',
+      examples_native: 'Ciao.',
+    })
   })
 
   it('is idempotent — migrate twice does not throw', () => {

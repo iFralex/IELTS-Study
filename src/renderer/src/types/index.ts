@@ -102,14 +102,33 @@ export interface ExamRun extends ExamRunInput {
   id: number
 }
 
+export const FLASHCARD_LANGUAGES = [
+  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
+] as const
+
+export type FlashcardLanguageCode = typeof FLASHCARD_LANGUAGES[number]['code']
+
+export function isFlashcardLanguage(value: string): value is FlashcardLanguageCode {
+  return FLASHCARD_LANGUAGES.some(language => language.code === value)
+}
+
+export function getFlashcardLanguageName(code: FlashcardLanguageCode): string {
+  return FLASHCARD_LANGUAGES.find(language => language.code === code)?.name ?? code
+}
+
 export interface Flashcard {
   id: number
   english: string
-  italian: string
+  translation: string
+  native_language: FlashcardLanguageCode
   synonyms_en: string | null
-  synonyms_it: string | null
+  synonyms_native: string | null
   examples_en: string
-  examples_it: string
+  examples_native: string
   interval: number
   ease_factor: number
   repetitions: number
@@ -120,18 +139,19 @@ export interface Flashcard {
 
 export interface FlashcardInput {
   english: string
-  italian: string
+  translation: string
+  native_language: FlashcardLanguageCode
   synonyms_en?: string | null
-  synonyms_it?: string | null
+  synonyms_native?: string | null
   examples_en: string
-  examples_it: string
+  examples_native: string
   source?: string
 }
 
 export interface ReviewInput {
   flashcard_id: number
   reviewed_at: number
-  direction: 'en-it' | 'it-en' | 'audio'
+  direction: 'en-native' | 'native-en' | 'audio'
   user_answer: string
   quality: number
   is_correct: boolean
@@ -139,11 +159,11 @@ export interface ReviewInput {
 
 export interface AIFlashcardData {
   english: string
-  italian: string
+  translation: string
   synonyms_en: string
-  synonyms_it: string
+  synonyms_native: string
   examples_en: string
-  examples_it: string
+  examples_native: string
 }
 
 export interface AIEvalResult {
@@ -156,10 +176,10 @@ export interface AIEvalResult {
 
 export interface AIAudioEvalResult {
   english_correct: boolean
-  italian_correct: boolean
+  translation_correct: boolean
   quality: number
   english_explanation: string
-  italian_explanation: string
+  translation_explanation: string
   rawOutput?: string
 }
 
@@ -236,14 +256,14 @@ export interface IElectronAPI {
   saveWritingSubmission: (sub: WritingInput) => Promise<void>
   saveExamRun: (run: ExamRunInput) => Promise<void>
   getExamRuns: () => Promise<ExamRun[]>
-  getFlashcards: () => Promise<Flashcard[]>
-  getDueFlashcards: () => Promise<Flashcard[]>
+  getFlashcards: (nativeLanguage: FlashcardLanguageCode) => Promise<Flashcard[]>
+  getDueFlashcards: (nativeLanguage: FlashcardLanguageCode) => Promise<Flashcard[]>
   saveFlashcard: (card: FlashcardInput) => Promise<number>
   updateFlashcardSM2: (id: number, quality: number) => Promise<void>
   saveFlashcardReview: (review: ReviewInput) => Promise<void>
-  generateFlashcard: (word: string) => Promise<AIFlashcardData>
-  evaluateAnswer: (word: string, correct: string, userAnswer: string, direction: string) => Promise<AIEvalResult>
-  evaluateAudioAnswer: (word: string, userEnglish: string, userItalian: string) => Promise<AIAudioEvalResult>
+  generateFlashcard: (word: string, nativeLanguage: FlashcardLanguageCode) => Promise<AIFlashcardData>
+  evaluateAnswer: (word: string, correct: string, userAnswer: string, direction: string, nativeLanguage: FlashcardLanguageCode) => Promise<AIEvalResult>
+  evaluateAudioAnswer: (word: string, correctTranslation: string, userEnglish: string, userTranslation: string, nativeLanguage: FlashcardLanguageCode) => Promise<AIAudioEvalResult>
   deleteFlashcard: (id: number) => Promise<void>
   evaluateWriting: (taskType: 'task1' | 'task2', userText: string, prompt: string, wordCount: number) => Promise<AIWritingFeedback>
   resetAllData: () => Promise<void>

@@ -7,6 +7,11 @@ import type {
   SessionInput, AnswerInput, WritingInput,
   ExamRunInput, FlashcardInput, ReviewInput
 } from '../renderer/src/types'
+import {
+  getFlashcardLanguageName,
+  isFlashcardLanguage,
+  type FlashcardLanguageCode,
+} from '../renderer/src/types'
 
 const dataDir = app.isPackaged
   ? path.join(process.resourcesPath, 'data')
@@ -18,6 +23,10 @@ function readJson<T>(relPath: string): T[] {
   } catch {
     return []
   }
+}
+
+function normalizeFlashcardLanguage(value: unknown): FlashcardLanguageCode {
+  return typeof value === 'string' && isFlashcardLanguage(value) ? value : 'it'
 }
 
 
@@ -105,7 +114,12 @@ export function registerIpcHandlers(): void {
   ipcMain.handle('get-analytics', (_e, days: number) => {
     const since = days === 0 ? 0 : Date.now() - days * 86_400_000
 
-    type SessionRow = SessionInput & { id: number; question_type: string | null; time_spent_seconds: number | null }
+    type SessionRow = SessionInput & {
+      id: number
+      question_type: string | null
+      time_spent_seconds: number | null
+      band_score: number | null
+    }
     const sessions = db.prepare(
       'SELECT * FROM sessions WHERE started_at >= ? AND completed_at IS NOT NULL'
     ).all(since) as SessionRow[]
@@ -265,10 +279,17 @@ export function registerIpcHandlers(): void {
     }
 
     // Flashcard stats
-    const fcTotal = (db.prepare('SELECT COUNT(*) as c FROM flashcards').get() as { c: number }).c
-    const fcMastered = (db.prepare('SELECT COUNT(*) as c FROM flashcards WHERE interval >= 21').get() as { c: number }).c
-    const fcDue = (db.prepare('SELECT COUNT(*) as c FROM flashcards WHERE next_review <= ?').get(Date.now()) as { c: number }).c
-    const fcReviews = db.prepare('SELECT COUNT(*) as total, SUM(is_correct) as correct FROM flashcard_reviews').get() as { total: number; correct: number }
+    const languageSetting = db.prepare("SELECT value FROM settings WHERE key = 'flashcard_native_language'").get() as { value: string } | undefined
+    const flashcardLanguage = normalizeFlashcardLanguage(languageSetting?.value)
+    const fcTotal = (db.prepare('SELECT COUNT(*) as c FROM flashcards WHERE native_language = ?').get(flashcardLanguage) as { c: number }).c
+    const fcMastered = (db.prepare('SELECT COUNT(*) as c FROM flashcards WHERE native_language = ? AND interval >= 21').get(flashcardLanguage) as { c: number }).c
+    const fcDue = (db.prepare('SELECT COUNT(*) as c FROM flashcards WHERE native_language = ? AND next_review <= ?').get(flashcardLanguage, Date.now()) as { c: number }).c
+    const fcReviews = db.prepare(`
+      SELECT COUNT(*) as total, SUM(r.is_correct) as correct
+      FROM flashcard_reviews r
+      JOIN flashcards f ON f.id = r.flashcard_id
+      WHERE f.native_language = ?
+    `).get(flashcardLanguage) as { total: number; correct: number }
     const flashcard_stats = {
       total: fcTotal,
       mastered: fcMastered,
@@ -352,18 +373,18 @@ export function registerIpcHandlers(): void {
   })
 
   // ── Flashcards ───────────────────────────────────────────────────────────────
-  ipcMain.handle('get-flashcards', () =>
-    db.prepare('SELECT * FROM flashcards ORDER BY created_at DESC').all()
+  ipcMain.handle('get-flashcards', (_e, nativeLanguage: string) =>
+    db.prepare('SELECT * FROM flashcards WHERE native_language = ? ORDER BY created_at DESC').all(normalizeFlashcardLanguage(nativeLanguage))
   )
 
-  ipcMain.handle('get-due-flashcards', () =>
-    db.prepare('SELECT * FROM flashcards WHERE next_review <= ? ORDER BY next_review ASC, RANDOM()').all(Date.now())
+  ipcMain.handle('get-due-flashcards', (_e, nativeLanguage: string) =>
+    db.prepare('SELECT * FROM flashcards WHERE native_language = ? AND next_review <= ? ORDER BY next_review ASC, RANDOM()').all(normalizeFlashcardLanguage(nativeLanguage), Date.now())
   )
 
   ipcMain.handle('save-flashcard', (_e, c: FlashcardInput) =>
     db.prepare(
-      'INSERT INTO flashcards (english, italian, synonyms_en, synonyms_it, examples_en, examples_it, next_review, created_at, source) VALUES (?,?,?,?,?,?,?,?,?)'
-    ).run(c.english, c.italian, c.synonyms_en ?? null, c.synonyms_it ?? null, c.examples_en, c.examples_it, Date.now(), Date.now(), c.source ?? 'manual').lastInsertRowid
+      'INSERT INTO flashcards (english, translation, native_language, synonyms_en, synonyms_native, examples_en, examples_native, next_review, created_at, source) VALUES (?,?,?,?,?,?,?,?,?,?)'
+    ).run(c.english, c.translation, normalizeFlashcardLanguage(c.native_language), c.synonyms_en ?? null, c.synonyms_native ?? null, c.examples_en, c.examples_native, Date.now(), Date.now(), c.source ?? 'manual').lastInsertRowid
   )
 
   ipcMain.handle('update-flashcard-sm2', (_e, id: number, quality: number) => {
@@ -396,18 +417,21 @@ export function registerIpcHandlers(): void {
   )
 
   // ── AI (Flashcard) ───────────────────────────────────────────────────────────
-  ipcMain.handle('generate-flashcard', async (_e, word: string) => {
+  ipcMain.handle('generate-flashcard', async (_e, word: string, requestedLanguage: string) => {
+    const language = normalizeFlashcardLanguage(requestedLanguage)
+    const languageName = getFlashcardLanguageName(language)
     const { text } = await generateText({
       model: getModel(),
-      prompt: `Generate a flashcard for the English word or phrase: "${word}"\n\nFor single words: fill synonyms_en/synonyms_it with synonyms.\nFor multi-word phrases: fill synonyms_en/synonyms_it with equivalent expressions or paraphrases.\nKeep each example sentence SHORT (max 12 words).\n\nReturn ONLY valid JSON, no markdown, no explanation:\n{"english":"${word}","italian":"traduzione principale","synonyms_en":"syn1, syn2","synonyms_it":"sin1, sin2","examples_en":"Short sentence 1.\\n\\nShort sentence 2.\\n\\nShort sentence 3.","examples_it":"Frase breve 1.\\n\\nFrase breve 2.\\n\\nFrase breve 3."}`,
+      prompt: `Generate a bilingual flashcard for the English word or phrase: "${word}". The learner's native language is ${languageName}.\n\nFor single words: fill synonyms_en and synonyms_native with synonyms in their respective languages.\nFor multi-word phrases: fill those fields with equivalent expressions or paraphrases.\nKeep each example sentence SHORT (max 12 words) and translate each English example into ${languageName}.\n\nReturn ONLY valid JSON, no markdown, no explanation:\n{"english":"${word}","translation":"main ${languageName} translation","synonyms_en":"syn1, syn2","synonyms_native":"native synonym 1, native synonym 2","examples_en":"Short sentence 1.\\n\\nShort sentence 2.\\n\\nShort sentence 3.","examples_native":"${languageName} sentence 1.\\n\\n${languageName} sentence 2.\\n\\n${languageName} sentence 3."}`,
     })
     return parseAiJson(text)
   })
 
-  ipcMain.handle('evaluate-answer', async (_e, word: string, correct: string, userAnswer: string, direction: string) => {
+  ipcMain.handle('evaluate-answer', async (_e, word: string, correct: string, userAnswer: string, direction: string, requestedLanguage: string) => {
+    const languageName = getFlashcardLanguageName(normalizeFlashcardLanguage(requestedLanguage))
     const { text } = await generateText({
       model: getModel(),
-      prompt: `Evaluate this translation answer:\nWord: ${word}\nDirection: ${direction}\nUser answer: "${userAnswer}"\nCorrect: "${correct}"\n\nAccept variants and synonyms. Return ONLY valid JSON:\n{"is_correct":true,"quality":5,"explanation":"brief","alternatives":["alt1"]}`,
+      prompt: `Evaluate this English ↔ ${languageName} translation answer:\nEnglish word: ${word}\nDirection: ${direction}\nUser answer: "${userAnswer}"\nReference answer: "${correct}"\n\nAccept valid variants and synonyms in the expected language. Return ONLY valid JSON:\n{"is_correct":true,"quality":5,"explanation":"brief","alternatives":["alt1"]}`,
     })
     try {
       return parseAiJson(text)
@@ -416,10 +440,11 @@ export function registerIpcHandlers(): void {
     }
   })
 
-  ipcMain.handle('evaluate-audio-answer', async (_e, word: string, userEnglish: string, userItalian: string) => {
+  ipcMain.handle('evaluate-audio-answer', async (_e, word: string, correctTranslation: string, userEnglish: string, userTranslation: string, requestedLanguage: string) => {
+    const languageName = getFlashcardLanguageName(normalizeFlashcardLanguage(requestedLanguage))
     const { text } = await generateText({
       model: getModel(),
-      prompt: `Evaluate these two answers for the word "${word}":\nSpelling: "${userEnglish}" (correct: "${word}")\nTranslation: "${userItalian}"\n\nAccept minor spelling variants for the translation. Return ONLY valid JSON:\n{"english_correct":true,"italian_correct":true,"quality":5,"english_explanation":"brief","italian_explanation":"brief"}`,
+      prompt: `Evaluate these two answers for the English word "${word}":\nEnglish spelling: "${userEnglish}" (reference: "${word}")\n${languageName} translation: "${userTranslation}" (reference: "${correctTranslation}")\n\nAccept valid translation variants and synonyms. Return ONLY valid JSON:\n{"english_correct":true,"translation_correct":true,"quality":5,"english_explanation":"brief","translation_explanation":"brief"}`,
     })
     try {
       return parseAiJson(text)

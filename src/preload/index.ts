@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import type {
   SessionInput, AnswerInput, WritingInput, ExamRunInput,
-  FlashcardInput, ReviewInput
+  FlashcardInput, FlashcardLanguageCode, ReviewInput
 } from '../renderer/src/types'
 
 contextBridge.exposeInMainWorld('api', {
@@ -16,16 +16,16 @@ contextBridge.exposeInMainWorld('api', {
   saveWritingSubmission: (s: WritingInput)   => ipcRenderer.invoke('save-writing-submission', s),
   saveExamRun:           (r: ExamRunInput)   => ipcRenderer.invoke('save-exam-run', r),
   getExamRuns:           ()                  => ipcRenderer.invoke('get-exam-runs'),
-  getFlashcards:         ()                  => ipcRenderer.invoke('get-flashcards'),
-  getDueFlashcards:      ()                  => ipcRenderer.invoke('get-due-flashcards'),
+  getFlashcards:         (language: FlashcardLanguageCode) => ipcRenderer.invoke('get-flashcards', language),
+  getDueFlashcards:      (language: FlashcardLanguageCode) => ipcRenderer.invoke('get-due-flashcards', language),
   saveFlashcard:         (c: FlashcardInput) => ipcRenderer.invoke('save-flashcard', c),
   updateFlashcardSM2:    (id: number, q: number) => ipcRenderer.invoke('update-flashcard-sm2', id, q),
   saveFlashcardReview:   (r: ReviewInput)    => ipcRenderer.invoke('save-flashcard-review', r),
-  generateFlashcard:     (word: string)      => ipcRenderer.invoke('generate-flashcard', word),
-  evaluateAnswer:        (word: string, correct: string, userAnswer: string, direction: string) =>
-                           ipcRenderer.invoke('evaluate-answer', word, correct, userAnswer, direction),
-  evaluateAudioAnswer: (word: string, userEnglish: string, userItalian: string) =>
-    ipcRenderer.invoke('evaluate-audio-answer', word, userEnglish, userItalian),
+  generateFlashcard:     (word: string, language: FlashcardLanguageCode) => ipcRenderer.invoke('generate-flashcard', word, language),
+  evaluateAnswer:        (word: string, correct: string, userAnswer: string, direction: string, language: FlashcardLanguageCode) =>
+                           ipcRenderer.invoke('evaluate-answer', word, correct, userAnswer, direction, language),
+  evaluateAudioAnswer: (word: string, correctTranslation: string, userEnglish: string, userTranslation: string, language: FlashcardLanguageCode) =>
+    ipcRenderer.invoke('evaluate-audio-answer', word, correctTranslation, userEnglish, userTranslation, language),
   deleteFlashcard: (id: number) =>
     ipcRenderer.invoke('delete-flashcard', id),
   evaluateWriting: (taskType: string, userText: string, prompt: string, wordCount: number) =>

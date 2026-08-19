@@ -3,7 +3,7 @@ import { pickMode, computeQualityFromDual } from '../renderer/src/components/fla
 
 describe('pickMode', () => {
   it('always returns a valid mode', () => {
-    const valid = new Set(['text-en-it', 'text-it-en', 'audio'])
+    const valid = new Set(['text-en-native', 'text-native-en', 'audio'])
     for (let i = 0; i < 100; i++) expect(valid.has(pickMode())).toBe(true)
   })
   it('returns all three modes across many calls', () => {
@@ -15,6 +15,6 @@ describe('pickMode', () => {
 describe('computeQualityFromDual', () => {
   it('both correct → 5', () => expect(computeQualityFromDual(true, true)).toBe(5))
   it('english only → 3', () => expect(computeQualityFromDual(true, false)).toBe(3))
-  it('italian only → 3', () => expect(computeQualityFromDual(false, true)).toBe(3))
+  it('translation only → 3', () => expect(computeQualityFromDual(false, true)).toBe(3))
   it('both wrong → 1', () => expect(computeQualityFromDual(false, false)).toBe(1))
 })

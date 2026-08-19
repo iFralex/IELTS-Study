@@ -38,12 +38,29 @@ describe('scoreAnswers', () => {
 })
 
 describe('estimateBand', () => {
-  it('returns 8 for >=85%', () => expect(estimateBand(9, 10)).toBe(8))
-  it('returns 7 for >=70%', () => expect(estimateBand(7, 10)).toBe(7))
-  it('returns 6 for >=55%', () => expect(estimateBand(6, 10)).toBe(6))
-  it('returns 5 for <55%', () => expect(estimateBand(4, 10)).toBe(5))
-  it('returns 0 for maxScore=0', () => expect(estimateBand(0, 0)).toBe(0))
-  it('100% → band 8', () => expect(estimateBand(10, 10)).toBe(8))
+  it('returns 0 when maxScore is 0', () => {
+    expect(estimateBand(0, 0, 'listening')).toBe(0)
+  })
+
+  it('scales a perfect score to band 9', () => {
+    expect(estimateBand(10, 10, 'listening')).toBe(9)
+    expect(estimateBand(10, 10, 'reading')).toBe(9)
+  })
+
+  it('returns half bands from the conversion tables', () => {
+    expect(estimateBand(7, 10, 'listening')).toBe(6.5)
+    expect(estimateBand(7, 10, 'reading')).toBe(6.5)
+  })
+
+  it('uses different Listening and Academic Reading thresholds', () => {
+    expect(estimateBand(8, 10, 'listening')).toBe(7.5)
+    expect(estimateBand(8, 10, 'reading')).toBe(7)
+  })
+
+  it('maps lower scaled scores through the selected table', () => {
+    expect(estimateBand(6, 10, 'listening')).toBe(6)
+    expect(estimateBand(4, 10, 'reading')).toBe(5)
+  })
 })
 
 describe('filterExercises', () => {
